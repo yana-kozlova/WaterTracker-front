@@ -1,0 +1,33 @@
+.button {
+  width: 280px;
+  height: 36px;
+  background-color: #407bff;
+  border-radius: 10px;
+  padding: 6px 76px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    border-radius: 10px;
+    padding: 10px 104px;
+    width: 336px;
+    height: 44px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .button {
+    border-radius: 10px;
+    padding: 10px 30px;
+    width: 178px;
+    height: 44px;
+  }
+}
