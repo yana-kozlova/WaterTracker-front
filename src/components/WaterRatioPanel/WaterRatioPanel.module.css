@@ -1,0 +1,96 @@
+.water-ratio-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 592px;
+    height: 90px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 8px; */
+    background-color: #f9f9f9;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .panel-header {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .slider-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .slider {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .slider-label {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .add-water-button {
+    padding: 8px 16px;
+    background-color: #407BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-water-button:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 1440px) {
+    .water-ratio-panel {
+      width: 704px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .water-ratio-panel {
+      width: 90%;
+      height: auto;
+      padding: 8px;
+    }
+  
+    .add-water-button {
+      width: 280px;
+      height: 36px;
+      font-size: 12px;
+    }
+  
+    .slider-label {
+      font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .water-ratio-panel {
+      width: 100%;
+      padding: 5px;
+    }
+  
+    .panel-header {
+      font-size: 14px;
+    }
+  
+    .add-water-button {
+      width: 100%;
+      font-size: 10px;
+    }
+  
+    .slider {
+      margin: 0 5px;
+    }
+  }
+  
