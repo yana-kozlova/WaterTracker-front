@@ -1,0 +1,35 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*default*/
+:root {
+  --primary-color-blue: #407BFF;
+  --primary-color-white: #FFFFFF;
+  --primary-color-black: #2F2F2F;
+  --secondary-color-2: #ECF2FF;
+  --secondary-color-3: ##EF5050;
+  --secondary-color-4: ##9EBBFF;
+  --secondary-color-5: ##FF9D43;
+  --secondary-color-6: ##D7E3FF;
+  --font-family: 'Roboto', sans-serif;
+}
+
+/* styles */
+body {
+  font-family: var(--font-family);
+  color: var(--primary-color-black);
+  background-color: var(--primary-color-white);
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+a:hover,
+button:hover {
+  transform: scale(1.05);
+}
