@@ -1,0 +1,8 @@
+.header { 
+  max-width: 1216px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
