@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import { useId } from "react";
-import css from './SignUp.module.css';
+import css from "./SignUp.module.css";
 
 function SignUp() {
   const emailFieldId = useId();
