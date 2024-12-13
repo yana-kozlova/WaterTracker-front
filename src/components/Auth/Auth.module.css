@@ -3,10 +3,11 @@
   padding-top: 24px;
   position: relative;
   flex-grow: 1;
-  background-image: url("/auth-page/background-mobil-1x.png");
+  background-image: url("../../assets/images/background-mobil.png");
   background-repeat: no-repeat;
   background-position: 0px 45px;
-  background-size: 100% auto;
+
+  min-height: 100vh;
 }
 
 /* Контейнер */
@@ -25,7 +26,7 @@
   max-width: 300px;
   width: 100%;
   z-index: 0;
-  background-image: url("../../assets/images/bottle.png");
+
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -51,16 +52,16 @@
   }
 
   .picture {
-    max-width: 600px;
-    top: 80%;
-    left: 68%;
+    max-width: 645px;
+    top: 70%;
+    left: 62%;
     transform: translate(-50%, -50%);
   }
 
   .section {
     padding-top: 40px;
-    background-image: url("/auth-page/background-tabl-1x.png");
-    background-position: 0 -60px;
+    background-image: url("../../assets/images/background-tabl.png");
+    background-position: 0 60px;
   }
 }
 
@@ -81,8 +82,8 @@
 
   .section {
     padding-top: 162px;
-    background-image: url("/auth-page/background-deskt-1x.png");
-    background-position: center;
+    background-image: url("../../assets/images/background-deskt.png");
+    background-position: 0 49px;
   }
 
   .signInForm {

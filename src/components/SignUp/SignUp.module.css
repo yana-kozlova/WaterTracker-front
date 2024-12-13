@@ -29,7 +29,7 @@
 }
 
 .inputField {
-  width: 255px;
+  width: 220px;
   padding: 12px 10px;
   margin-bottom: 16px;
   border: 1px solid #d7e3ff;
@@ -106,6 +106,7 @@
 }
 
 .inputFieldWrapper {
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -135,7 +136,7 @@
   }
   .inputField {
     padding: 11px 10px;
-    width: 336px;
+    width: 296px;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -144,6 +145,6 @@
   }
   .inputField {
     padding: 11px 10px;
-    width: 384px;
+    width: 344px;
   }
 }

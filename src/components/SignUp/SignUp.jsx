@@ -5,7 +5,7 @@ import css from "./SignUp.module.css"; // Import CSS module
 import * as Yup from "yup";
 import clsx from "clsx";
 import { NavLink, useLocation } from "react-router-dom";
-
+import Icon from "../Svg/Svg";
 const EyeIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   <svg
     width={size}
