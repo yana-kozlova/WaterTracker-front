@@ -8,14 +8,15 @@
     /* border: 1px solid #ccc; */
     /* border-radius: 8px; */
     background-color: #f9f9f9;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 24px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   }
   
   .panel-header {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 400px;
+    line-height: 24px;
+    margin-bottom: 16px;
   }
   
   .slider-container {
@@ -28,26 +29,33 @@
   .slider {
     flex: 1;
     margin: 0 10px;
+    font-size: 16px;
+    font-weight: 500px;
+    line-height: 20px;
   }
   
   .slider-label {
     font-size: 12px;
-    color: #666;
+    font-weight: 400px;
+    line-height: 16px;
+    color: #407BFF;
   }
   
   .add-water-button {
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     background-color: #407BFF;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: 500px;
+    line-height: 24px;
     transition: background-color 0.3s;
   }
   
   .add-water-button:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px #407BFF;
   }
   
   @media (max-width: 1440px) {
@@ -64,33 +72,27 @@
     }
   
     .add-water-button {
-      width: 280px;
-      height: 36px;
+      width: 336px;
+      height: 44px;
       font-size: 12px;
-    }
-  
-    .slider-label {
-      font-size: 10px;
     }
   }
   
   @media (max-width: 320px) {
     .water-ratio-panel {
       width: 100%;
-      padding: 5px;
-    }
-  
-    .panel-header {
-      font-size: 14px;
+      /* padding: 5px; */
     }
   
     .add-water-button {
       width: 100%;
-      font-size: 10px;
+      font-size: 16px;
+      font-weight: 500px;
+      line-height: 20px;
     }
   
     .slider {
-      margin: 0 5px;
+      margin: 16px 20px;
     }
   }
   
