@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 /*default*/
 :root {
   --primary-color-blue: #407BFF;
@@ -32,4 +33,13 @@ button {
 a:hover,
 button:hover {
   transform: scale(1.05);
+}
+
+li,
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+
 }
