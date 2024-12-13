@@ -1,5 +1,4 @@
 import WelcomePage from "../../pages/WelcomePage/WelcomePage.jsx";
-
 function App() {
   return (
     <>

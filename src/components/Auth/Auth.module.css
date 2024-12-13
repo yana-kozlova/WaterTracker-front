@@ -1,0 +1,87 @@
+.section {
+  padding-top: 24px;
+  position: relative;
+  flex-grow: 1;
+  background-image: url("../../assets/images/background-mobil.png");
+  background-repeat: no-repeat;
+  background-position: 0px 45px;
+
+  min-height: 100vh;
+}
+
+.container {
+  padding: 0 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.picture {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 300px;
+  width: 100%;
+  z-index: 0;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  overflow: hidden;
+}
+
+.signInForm {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .picture {
+    max-width: 645px;
+    top: 70%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+  }
+
+  .section {
+    padding-top: 40px;
+    background-image: url("../../assets/images/background-tabl.png");
+    background-position: 0 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    display: flex;
+    padding: 0 100px;
+    justify-content: flex-end;
+  }
+
+  .picture {
+    max-width: 916px;
+    top: 53%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
+
+  .section {
+    padding-top: 162px;
+    background-image: url("../../assets/images/background-deskt.png");
+    background-position: 0 49px;
+  }
+
+  .signInForm {
+    left: auto;
+    transform: none;
+  }
+}
