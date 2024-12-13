@@ -122,9 +122,7 @@ export const SignInForm = () => {
     <div className={css.signInFormContainer}>
       <h3 className={css.signInTitle}>Sign In</h3>
       {/* setPageTitle() */}
-      <label htmlFor={emailFieldId} className={css.inputLabel}>
-        Enter your email
-      </label>
+
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -132,6 +130,9 @@ export const SignInForm = () => {
       >
         {/* validationSchema={chooseValidationSchema} */}
         <Form>
+          <label htmlFor={emailFieldId} className={css.inputLabel}>
+            Enter your email
+          </label>
           <Field name="email">
             {({ field, form }) => (
               <div className={css.inputFieldWrapper}>
@@ -152,6 +153,9 @@ export const SignInForm = () => {
           </Field>
           <div className={css.passwordFieldWrapper}>
             <div className={css.inputFieldWrapper}>
+              <label htmlFor={passwordFieldId} className={css.inputLabel}>
+                Enter your password
+              </label>
               <Field name="password">
                 {({ field, form }) => (
                   <>
@@ -187,6 +191,9 @@ export const SignInForm = () => {
           {/* {pathname === "/signup" && ( */}
           <div className={css.passwordFieldWrapper}>
             <div className={css.inputFieldWrapper}>
+              <label htmlFor={passwordFieldId} className={css.inputLabel}>
+                Repeat your password
+              </label>
               <Field name="repeatPassword">
                 {({ field, form }) => (
                   <>

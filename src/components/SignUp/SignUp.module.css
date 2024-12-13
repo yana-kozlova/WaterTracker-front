@@ -1,9 +1,10 @@
 @import url(../../index.css);
 
 .signInFormContainer {
-  max-width: 384px;
+  position: relative;
+  z-index: 1;
+  max-width: 260px;
   padding: 20px;
-  margin: 50px auto;
 }
 
 .signInTitle {
@@ -28,7 +29,7 @@
 }
 
 .inputField {
-  width: 384px;
+  width: 255px;
   padding: 12px 10px;
   margin-bottom: 16px;
   border: 1px solid #d7e3ff;
@@ -62,7 +63,7 @@
 .passwordToggleIcon {
   position: absolute;
   right: 10px;
-  top: 40%;
+  top: 60%;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -79,7 +80,7 @@
   color: white;
   padding: 10px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s;
@@ -106,7 +107,6 @@
 
 .inputFieldWrapper {
   position: relative;
-  margin-bottom: 16px;
 }
 
 .errorMessage {
@@ -123,4 +123,27 @@
   color: #ef5050;
   border-color: #ef5050 !important;
   background: #fff;
+}
+@media screen and (min-width: 768px) {
+  .submitButton {
+    font-size: 18px;
+    line-height: 1.33;
+    padding: 10px 0;
+  }
+  .signInFormContainer {
+    max-width: 336px;
+  }
+  .inputField {
+    padding: 11px 10px;
+    width: 336px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .signInFormContainer {
+    max-width: 384px;
+  }
+  .inputField {
+    padding: 11px 10px;
+    width: 384px;
+  }
 }
