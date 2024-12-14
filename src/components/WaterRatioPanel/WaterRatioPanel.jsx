@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from "./WaterRatioPanel.module.css";
+import { ReactComponent as AddIcon } from "../../assets/images/outline.svg";
 
 export default function WaterRatioPanel() {
 const [ratio, setRatio] = useState(50);
@@ -23,7 +24,10 @@ const handleSliderChange = (e) => {
           />
           <span className="slider-label">100%</span>
         </div>
-        <button className="add-water-button">Add Water</button>
+        <button className="add-water-button">
+            <AddIcon />
+            Add Water
+        </button>
       </div>
     );
 }

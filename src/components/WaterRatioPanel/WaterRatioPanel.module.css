@@ -58,6 +58,12 @@
     box-shadow: 0 4px 6px #407BFF;
   }
   
+  .add-water-button svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+  }
+  
   @media (max-width: 1440px) {
     .water-ratio-panel {
       width: 704px;
