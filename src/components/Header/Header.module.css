@@ -1,8 +1,22 @@
 .header { 
-  max-width: 1216px;
+position: fixed;
+top: 0;
 }
 
 .container {
+  width: 1216px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-left: 112px;
+}
+
+
+.navLink {
+display: flex;
+align-items: center;
+}
+
+.nav {
+
 }
