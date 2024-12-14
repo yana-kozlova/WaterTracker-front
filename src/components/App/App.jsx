@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from 'react'
 import Layout from "../Layout/Layout.jsx";
+import DripLoader from "../DripLoader/DripLoader.jsx";
 
 const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage.jsx'));
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage.jsx'));
