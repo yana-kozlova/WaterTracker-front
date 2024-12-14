@@ -1,5 +1,6 @@
 import css from "./Header.module.css"
 import Logo from "../Logo/Logo";
+import UserLogo from "../UserLogo/UserLogo"
 
 export default function Header() {
   return (
@@ -11,6 +12,7 @@ export default function Header() {
         <nav className={css.nav}>
           <a href="/signin" className={css.navLink}>
             Sign in
+            <UserLogo  />
           </a>
         </nav>
       </div>
