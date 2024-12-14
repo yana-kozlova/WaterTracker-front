@@ -1,3 +1,4 @@
+import DripLoader from '../../components/DripLoader/DripLoader.jsx';
 import css from "./WelcomePage.module.css";
 import Header from "../../components/Header/Header";
 import TryTrackerButton from "../../components/Buttons/TryTrackerButton/TryTrackerButton";
@@ -6,6 +7,7 @@ export default function WelcomePage() {
   return (
     <>
       <Header />
+      <DripLoader />
       <main className={css.main}>
         <div className={css.container}>
           <section className={css.hero}>

@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deploy": "vite build && vite-gh-pages"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
@@ -32,6 +33,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "prettier": "^3.4.2",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "vite-plugin-gh-pages": "^1.0.0"
   }
 }
