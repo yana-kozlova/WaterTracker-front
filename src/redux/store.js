@@ -23,14 +23,7 @@ export const store = configureStore({
   reducer: rootReducer,
 });
 
-// user
-//  -isLogedIn
-//  -data
-//   -email
-//   -avatarUrl
-//   -daylyNorm
-//   -gender
-//   -name
+
 
 // todayWaterList
 //  [
