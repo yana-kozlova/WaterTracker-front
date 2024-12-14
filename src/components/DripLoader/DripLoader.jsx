@@ -7,7 +7,7 @@ export default function DripLoader() {
   useEffect(() => {
     const interval = setInterval(() => {
       setWaterLevel((prev) => (prev < 100 ? prev + 5 : 100));
-    }, 1500); 
+    }, 1500);
     return () => clearInterval(interval);
   }, []);
 

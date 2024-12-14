@@ -1,6 +1,6 @@
-.header { 
-position: fixed;
-top: 0;
+.header {
+  position: fixed;
+  top: 0;
 }
 
 .container {
@@ -11,12 +11,10 @@ top: 0;
   margin-left: 112px;
 }
 
-
 .navLink {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav {
-
 }

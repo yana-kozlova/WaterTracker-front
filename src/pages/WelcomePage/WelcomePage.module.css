@@ -1,14 +1,13 @@
 .container {
-display: flex;
+  display: flex;
   width: 100%;
 }
 
 .hero {
   display: flex;
-width: 1014px;
-margin-top: 140px;
-margin-left: 216px ;
-
+  width: 1014px;
+  margin-top: 140px;
+  margin-left: 216px;
 }
 .footer {
   position: absolute;

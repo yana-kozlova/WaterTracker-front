@@ -232,7 +232,7 @@ export const SignInForm = () => {
           {/* setPageTitle() */}
         </Form>
       </Formik>
-      <a href="/sign-up" className={css.signUpLink}>
+      <a href="/signup" className={css.signUpLink}>
         Sign Up
       </a>
       {/*  <NavLink

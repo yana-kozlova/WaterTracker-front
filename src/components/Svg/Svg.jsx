@@ -4,7 +4,8 @@ const Icon = ({ name, size = 14, color = "currentColor", className = "" }) => (
     height={size}
     fill={color}
     aria-hidden="true"
-    className = {className}>
+    className={className}
+  >
     <use href={`/icons.svg#${name}`} />
   </svg>
 );

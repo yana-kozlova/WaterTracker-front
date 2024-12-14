@@ -1,6 +1,6 @@
-import css from "./WelcomePage.module.css"
-import Header from "../../components/Header/Header"
-import TryTrackerButton from "../../components/Buttons/TryTrackerButton/TryTrackerButton"
+import css from "./WelcomePage.module.css";
+import Header from "../../components/Header/Header";
+import TryTrackerButton from "../../components/Buttons/TryTrackerButton/TryTrackerButton";
 
 export default function WelcomePage() {
   return (
@@ -39,12 +39,13 @@ export default function WelcomePage() {
                 <li>Release of processed substances</li>
                 <li>Ensuring the stability of the internal environment</li>
                 <li>Maintaining within the normal temperature</li>
-                <li>Maintaining an immune system capable of resisting disease</li>
+                <li>
+                  Maintaining an immune system capable of resisting disease
+                </li>
               </ul>
             </aside>
           </section>
         </div>
-
       </main>
 
       <footer className={css.footer}>
