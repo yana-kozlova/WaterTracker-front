@@ -1,11 +1,12 @@
-import css from "./Header.module.css";
+import css from "./Header.module.css"
+import Logo from "../Logo/Logo";
 
 export default function Header() {
   return (
     <header className={css.header}>
       <div className={css.container}>
         <a href="#" className={css.logo}>
-          Tracker of Water
+          <Logo />
         </a>
         <nav className={css.nav}>
           <a href="/signin" className={css.navLink}>
