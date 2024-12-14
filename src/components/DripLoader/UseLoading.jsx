@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export function useLoading(duration = 3000) {
   const [isLoading, setIsLoading] = useState(true);
