@@ -1,22 +1,69 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-// import { register, login, logout,refreshUser } from "./operations";
-
+import { addWater, deleteWater, editWater } from "./operations";
 
 const initialState = {
-  item: {
-    date:null,
-    amount:null,
-    curDaylyNorm:null
-  },
+  waterAmount: [],
   isLoading: false,
   error: false,
 };
-
 const slice = createSlice({
   name: "todayWater",
   initialState,
   extraReducers: (builder) => {
-
+    builder
+      //Add
+      .addCase(addWater.fulfilled, (state, action) => {
+        state.waterAmount.push(action.payload);
+      })
+      //Delete
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        state.waterAmount = state.waterAmount.filter(
+          (waterItem) => waterItem.id !== action.payload.id
+        );
+      })
+      //Edit
+      .addCase(editWater.fulfilled, (state, action) => {
+        state.waterAmount = state.waterAmount.map((waterItem) =>
+          waterItem.id === action.payload.id ? action.payload : waterItem
+        );
+      })
+      //addMatcher
+      .addMatcher(
+        isAnyOf(addWater.pending, deleteWater.pending, editWater.pending),
+        (state) => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          addWater.fulfilled,
+          addWater.rejected,
+          deleteWater.fulfilled,
+          deleteWater.rejected,
+          editWater.fulfilled,
+          editWater.rejected
+        ),
+        (state) => {
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        isAnyOf(addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
+        (state) => {
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          addWater.rejected,
+          deleteWater.rejected,
+          editWater.fulfilled,
+          editWater.rejected
+        ),
+        (state) => {
+          state.error = action.payload;
+        }
+      );
   },
 });
 
