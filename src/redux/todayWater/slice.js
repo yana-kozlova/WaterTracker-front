@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { addWater, deleteWater, editWater } from "./operations";
+import { getWater,addWater, deleteWater, editWater } from "./operations";
 
 const initialState = {
   waterAmount: [],
@@ -12,7 +12,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       //GetAll
-      .addCase(getAll.fulfilled, (state, action) => {
+      .addCase(getWater.fulfilled, (state, action) => {
         state.waterAmount = action.payload;
       })
       //Add
@@ -33,15 +33,15 @@ const slice = createSlice({
       })
       //addMatcher
       .addMatcher(
-        isAnyOf(getAll.pending,addWater.pending, deleteWater.pending, editWater.pending),
+        isAnyOf(getWater.pending,addWater.pending, deleteWater.pending, editWater.pending),
         (state) => {
           state.isLoading = true;
         }
       )
       .addMatcher(
         isAnyOf(
-          getAll.fulfilled,
-          getAll.rejected,
+          getWater.fulfilled,
+          getWater.rejected,
           addWater.fulfilled,
           addWater.rejected,
           deleteWater.fulfilled,
@@ -54,14 +54,14 @@ const slice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(getAll.fulfilled,addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
+        isAnyOf(getWater.fulfilled,addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
         (state) => {
           state.error = null;
         }
       )
       .addMatcher(
         isAnyOf(
-          getAll.rejected,
+          getWater.rejected,
           addWater.rejected,
           deleteWater.rejected,
           editWater.rejected

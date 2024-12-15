@@ -13,8 +13,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { monthWaterReducer } from "./monthWater/slice";
-
 
 const authPersistConfig = {
   key: "auth",
@@ -27,17 +25,15 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     todayWater: todayWaterReducer,
     monthWater: monthWaterReducer,
-    
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),  
+    }),
 });
 
 export const persistor = persistStore(store);
-
 
 // auth: persistReducer(authPersistConfig, authReducer),
