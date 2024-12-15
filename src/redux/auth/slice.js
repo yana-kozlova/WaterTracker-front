@@ -1,8 +1,14 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { register, login, logout,refreshUser } from "./operations";
+import { register, login, logout, refreshUser } from "./operations";
 
 const initialState = {
-  user: {},
+  user: {
+    name: null,
+    email: null,
+    gender: "woman",
+    avatarUrl: null,
+    daylyNorm: 2000,
+  },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -34,7 +40,7 @@ const slice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-      .addCase(logout.rejected, () => {        
+      .addCase(logout.rejected, () => {
         state.error = true;
       })
       //Refresh
@@ -67,7 +73,7 @@ export const authReducer = slice.reducer;
 
 // name: null,
 // email: null,
-// gender: "femail",
+// gender: "woman",
 // avatarUrl: null,
 // daylyNorm: 2000,
 // password:null,
