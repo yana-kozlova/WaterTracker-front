@@ -79,23 +79,23 @@ const initialValues = {
   repeatPassword: "",
 };
 export const SignInForm = () => {
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
-    // try {
-    //   if (pathname === "/signin") {
-    //     //
-    //   } else if (pathname === "/signup") {
-    //     //
-    //   }
-    //   actions.resetForm();
-    // } catch (error) {
-    //   error.message;
-    // }
+    try {
+      if (pathname === "/signin") {
+        //
+      } else if (pathname === "/signup") {
+        //
+      }
+      actions.resetForm();
+    } catch (error) {
+      error.message;
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -120,15 +120,13 @@ export const SignInForm = () => {
 
   return (
     <div className={css.signInFormContainer}>
-      <h3 className={css.signInTitle}>Sign In</h3>
-      {/* setPageTitle() */}
+      <h3 className={css.signInTitle}>{setPageTitle()}</h3>
 
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={SignUpSchema}
+        validationSchema={chooseValidationSchema}
       >
-        {/* validationSchema={chooseValidationSchema} */}
         <Form>
           <label htmlFor={emailFieldId} className={css.inputLabel}>
             Enter your email
@@ -188,59 +186,56 @@ export const SignInForm = () => {
               </span>
             </div>
           </div>
-          {/* {pathname === "/signup" && ( */}
-          <div className={css.passwordFieldWrapper}>
-            <div className={css.inputFieldWrapper}>
-              <label htmlFor={passwordFieldId} className={css.inputLabel}>
-                Repeat your password
-              </label>
-              <Field name="repeatPassword">
-                {({ field, form }) => (
-                  <>
-                    <input
-                      {...field}
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Repeat Password"
-                      className={clsx(css.inputField, {
-                        [css.inputFieldError]: form.errors.repeatPassword,
-                      })}
-                    />
-                    {form.errors.repeatPassword && (
-                      <span className={css.errorMessage}>
-                        {form.errors.repeatPassword}
-                      </span>
-                    )}
-                  </>
-                )}
-              </Field>
-              <span
-                className={css.passwordToggleIcon}
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? (
-                  <EyeSlashIcon color="#2F2F2F" />
-                ) : (
-                  <EyeIcon color="#2F2F2F" />
-                )}
-              </span>
+          {pathname === "/signup" && (
+            <div className={css.passwordFieldWrapper}>
+              <div className={css.inputFieldWrapper}>
+                <label htmlFor={passwordFieldId} className={css.inputLabel}>
+                  Repeat your password
+                </label>
+                <Field name="repeatPassword">
+                  {({ field, form }) => (
+                    <>
+                      <input
+                        {...field}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Repeat Password"
+                        className={clsx(css.inputField, {
+                          [css.inputFieldError]: form.errors.repeatPassword,
+                        })}
+                      />
+                      {form.errors.repeatPassword && (
+                        <span className={css.errorMessage}>
+                          {form.errors.repeatPassword}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </Field>
+                <span
+                  className={css.passwordToggleIcon}
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <EyeSlashIcon color="#2F2F2F" />
+                  ) : (
+                    <EyeIcon color="#2F2F2F" />
+                  )}
+                </span>
+              </div>
             </div>
-          </div>
-          {/* )} */}
+          )}
           <button type="submit" className={css.submitButton}>
-            Sign Up
+            {setPageTitle()}
           </button>
-          {/* setPageTitle() */}
         </Form>
       </Formik>
-      <a href="/signup" className={css.signUpLink}>
-        Sign Up
-      </a>
-      {/*  <NavLink
+
+      <NavLink
         className={css.signUpLink}
-        to={pathname === '/signin' ? '/signup' : '/signin'}
+        to={pathname === "/signin" ? "/signup" : "/signin"}
       >
-        {pathname === '/signin' ? 'Sign Up' : 'Sign In'}
-      </NavLink> */}
+        {pathname === "/signin" ? "Sign Up" : "Sign In"}
+      </NavLink>
     </div>
   );
 };
