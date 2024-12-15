@@ -17,5 +17,4 @@ createRoot(document.getElementById("root")).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </StrictMode>
-);
+
