@@ -10,21 +10,21 @@ const handleSliderChange = (e) => {
   };
   
     return (
-        <div className="water-ratio-panel">
-        <div className="panel-header">Today</div>
-        <div className="slider-container">
-          <span className="slider-label">0%</span>
+        <div className={css.water-ratio-panel}>
+        <div className={css.panel-header}>Today</div>
+        <div className={css.slider-container}>
+          <span className={css.slider-label}>0%</span>
           <input
             type="range"
             min="0"
             max="100"
             value={ratio}
             onChange={handleSliderChange}
-            className="slider"
+            className={css.slider}
           />
-          <span className="slider-label">100%</span>
+          <span className={css.slider-label}>100%</span>
         </div>
-        <button className="add-water-button">
+        <button className={css.add-water-button}>
             <AddIcon />
             Add Water
         </button>
