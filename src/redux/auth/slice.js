@@ -1,105 +1,85 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { register, login,logout} from "./operations";
 
 const initialState = {
-  user: {
-    name: null,
-    email: null,
-    gender: "femail",
-    avatarUrl: null,
-    daylyNorm: 2000,
-  },
+  user: {},
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
-  error: null,
+  error: false,
 };
-
-// user
-
-//  -isLogedIn
-//  -user
-//   -email
-//   -avatarUrl
-//   -daylyNorm
-//   -gender
-//   -name
 
 const slice = createSlice({
   name: "auth",
   initialState,
   extraReducers: (builder) => {
     builder
-
-
-
-
-    // _________________Registration_________________
-      .addCase(register.pending, (state, action) => {
-        state.isLoading = true;
-      })
+      //Registration
+      .addCase(register.pending, (state) => {})
+      
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
+        state.isLoggedIn = true;
         state.isLoading = false;
-        state.error = null;
       })
-      .addCase(register.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+      .addCase(register.rejected, (state) => {
+        state.error = true;
       })
-
-
-
-
-      // _________________Login_________________
-      .addCase(login.pending, (state, action) => {
+      //Login
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
       })
-
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
-
-      .addCase(login.rejected, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+      .addCase(login.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
       })
-
-
-
-
-        // _________________Logout_________________
+      //Logout
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
       .addCase(logout.rejected, () => {
         state.isLoggedIn = false;
+        state.error = true;
+      })
+      //Refresh
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isRefreshing = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
       })
 
-    // _________________Refresh_________________
-    .addCase(refreshUser.pending, (state) => {
-      state.isRefreshing = true;
-    })
-    .addCase(refreshUser.fulfilled, (state, action) => {
-      state.user = action.payload;
-      state.isRefreshing = false;
-      state.isLoggedIn = true;
-    })
-    .addCase(refreshUser.rejected, (state) => {
-      state.isRefreshing = false;
-    })
-
-    // // .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
-    // //   state.isLoggedIn = true;
-    // // })
-    // .addMatcher(isAnyOf(register.rejected, logout.rejected), (state) => {
-    //   state.isLoggedIn = false;
-    // });
+      .addMatcher(isAnyOf(register.fulfilled, login.fulfilled), (state) => {
+        state.isLoggedIn = true;
+        state.isLoading = true;
+      })
+      .addMatcher(isAnyOf(register.rejected, logout.rejected), (state) => {
+        state.isLoading = false;
+      });
   },
 });
 
 export const authReducer = slice.reducer;
+
+// name: null,
+// email: null,
+// gender: "femail",
+// avatarUrl: null,
+// daylyNorm: 2000,
+// password:null,
+// createdAt:null,
+// updatedAt:null,
+// _id:null,
