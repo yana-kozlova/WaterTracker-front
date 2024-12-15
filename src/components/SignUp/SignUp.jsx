@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import clsx from "clsx";
 import { NavLink, useLocation } from "react-router-dom";
 import Icon from "../Svg/Svg";
+import { useDispatch } from "react-redux";
+// import toast from "react-hot-toast";
 const EyeIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   <svg
     width={size}
@@ -79,6 +81,7 @@ const initialValues = {
   repeatPassword: "",
 };
 export const SignInForm = () => {
+  // const dispatch = useDispatch();
   const { pathname } = useLocation();
   const emailFieldId = useId();
   const passwordFieldId = useId();
@@ -86,16 +89,30 @@ export const SignInForm = () => {
 
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
-    try {
-      if (pathname === "/signin") {
-        //
-      } else if (pathname === "/signup") {
-        //
-      }
-      actions.resetForm();
-    } catch (error) {
-      error.message;
-    }
+    // try {
+    //   if (pathname === "/signin") {
+    //     await dispatch(login({ email, password }))
+    //       .unwrap()
+    //       .then(() => {
+    //         toast.success("You are logged in!");
+    //       })
+    //       .catch((error) => {
+    //         toast.error("Authentication failed!");
+    //       });
+    //   } else if (pathname === "/signup") {
+    //     await dispatch(register({ email, password }))
+    //       .unwrap()
+    //       .then(() => {
+    //         toast.success("You are registered!");
+    //       })
+    //       .catch((error) => {
+    //         toast.error("Registration failed!");
+    //       });
+    //   }
+    //   actions.resetForm();
+    // } catch (error) {
+    //   error.message;
+    // }
   };
 
   const togglePasswordVisibility = () => {
