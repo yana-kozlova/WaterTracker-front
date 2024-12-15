@@ -5,7 +5,7 @@
   background-image: url("../../assets/images/background-mobil.png");
   background-repeat: no-repeat;
   background-position: 0px 45px;
-
+  background-size: 100% auto;
   min-height: 100vh;
 }
 
@@ -17,9 +17,9 @@
 
 .picture {
   position: absolute;
-  top: 95%;
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%);
   max-width: 300px;
   width: 100%;
   z-index: 0;
@@ -41,14 +41,14 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 768px) and (max-width: 1439px) {
+@media screen and (min-width: 768px) {
   .container {
     padding: 0 32px;
   }
 
   .picture {
     max-width: 645px;
-    top: 70%;
+    top: 80%;
     left: 62%;
     transform: translate(-50%, -50%);
   }
@@ -56,7 +56,7 @@
   .section {
     padding-top: 40px;
     background-image: url("../../assets/images/background-tabl.png");
-    background-position: 0 60px;
+    background-position: 0 -60px;
   }
 }
 
@@ -70,14 +70,14 @@
   .picture {
     max-width: 916px;
     top: 53%;
-    left: 40%;
+    left: 30%;
     transform: translate(-50%, -50%);
   }
 
   .section {
     padding-top: 162px;
     background-image: url("../../assets/images/background-deskt.png");
-    background-position: 0 49px;
+    background-position: 0 100px;
   }
 
   .signInForm {
