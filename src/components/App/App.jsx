@@ -1,9 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout.jsx";
-import DripLoader from "../DripLoader/DripLoader.jsx";  
-import { delayImport } from "../../utils/delayImport"
-
+import DripLoader from "../DripLoader/DripLoader.jsx";
+import { delayImport } from "../../utils/delayImport";
 
 // імпорти з затримкою
 const MainPage = lazy(() =>
@@ -41,7 +40,7 @@ export default function App() {
           <Route path="/signin" element={<SigninPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        </Suspense>
+      </Suspense>
     </>
   );
 }
