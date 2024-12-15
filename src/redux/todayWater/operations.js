@@ -1,8 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-
-
-
 export const getWater = createAsyncThunk(
   "todayWater/getAll",
   async (_, thunkAPI) => {
@@ -14,7 +11,6 @@ export const getWater = createAsyncThunk(
     }
   }
 );
-
 
 export const addWater = createAsyncThunk(
   "todayWater/addWater",

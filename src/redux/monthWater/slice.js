@@ -1,9 +1,9 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
-monthWaterList[-date - daylyNorm - servings - planDaylyNorm];
+
 
 const initialState = {
-  waterAmount: [],
+  monthWater: [],
   isLoading: false,
   error: false,
 };
@@ -12,54 +12,19 @@ const slice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      //Add
-      .addCase(addWater.fulfilled, (state, action) => {
-        state.waterAmount.push(action.payload);
+      //GetAll
+      .addCase(getAll.pending, (state) => {
+        state.isLoading = true;
       })
-      //Delete
-      .addCase(deleteWater.fulfilled, (state, action) => {
-        state.waterAmount = state.waterAmount.filter(
-          (waterItem) => waterItem.id !== action.payload.id
-        );
+      .addCase(getAll.fulfilled, (state, action) => {
+        state.monthWater = action.payload;
+        state.isLoading = false;
+        state.error = null;
       })
-      //Edit
-      .addCase(editWater.fulfilled, (state, action) => {
-        state.waterAmount = state.waterAmount.map((waterItem) =>
-          waterItem.id === action.payload.id ? action.payload : waterItem
-        );
-      })
-      //addMatcher
-      .addMatcher(
-        isAnyOf(addWater.pending, deleteWater.pending, editWater.pending),
-        (state) => {
-          state.isLoading = true;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          addWater.fulfilled,
-          addWater.rejected,
-          deleteWater.fulfilled,
-          deleteWater.rejected,
-          editWater.fulfilled,
-          editWater.rejected
-        ),
-        (state) => {
-          state.isLoading = false;
-        }
-      )
-      .addMatcher(
-        isAnyOf(addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
-        (state) => {
-          state.error = null;
-        }
-      )
-      .addMatcher(
-        isAnyOf(addWater.rejected, deleteWater.rejected, editWater.rejected),
-        (state) => {
-          state.error = action.payload;
-        }
-      );
+      .addCase(getAll.rejected, (state) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
   },
 });
 
