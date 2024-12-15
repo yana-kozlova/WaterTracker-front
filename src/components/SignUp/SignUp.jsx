@@ -7,7 +7,8 @@ import clsx from "clsx";
 import { NavLink, useLocation } from "react-router-dom";
 import Icon from "../Svg/Svg";
 import { useDispatch } from "react-redux";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
+import { SignInSchema, SignUpSchema } from "../../utils/userValidationSchema";
 const EyeIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   <svg
     width={size}
@@ -50,31 +51,6 @@ const EyeSlashIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   </svg>
 );
 
-const SignInSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Invalid email format")
-    .required("Email is required"),
-  password: Yup.string()
-    .required("Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .max(64, "Password must be at most 64 characters"),
-});
-
-export const SignUpSchema = Yup.object({
-  email: Yup.string()
-    .required("Email is required")
-    .email("Invalid email address"),
-  password: Yup.string()
-    .required("Password is required")
-    .min(8, "Your password is too short!")
-    .max(64, "Your password is too long!"),
-  repeatPassword: Yup.string()
-    .required("Password is required")
-    .min(8, "Your password is too short!")
-    .max(64, "Your password is too long!")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
-});
-
 const initialValues = {
   email: "",
   password: "",
@@ -86,8 +62,7 @@ export const SignInForm = () => {
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = (values, actions) => {
     const { email, password } = values;
     // try {
     //   if (pathname === "/signin") {
@@ -144,28 +119,32 @@ export const SignInForm = () => {
         onSubmit={handleSubmit}
         validationSchema={chooseValidationSchema}
       >
-        <Form>
-          <label htmlFor={emailFieldId} className={css.inputLabel}>
-            Enter your email
-          </label>
-          <Field name="email">
-            {({ field, form }) => (
-              <div className={css.inputFieldWrapper}>
-                <input
-                  {...field}
-                  type="email"
-                  id={emailFieldId}
-                  placeholder="E-mail"
-                  className={clsx(css.inputField, {
-                    [css.inputFieldError]: form.errors.email,
-                  })}
-                />
-                {form.errors.email && (
-                  <span className={css.errorMessage}>{form.errors.email}</span>
-                )}
-              </div>
-            )}
-          </Field>
+        <Form className={css.form}>
+          <div className={css.fieldWrapper}>
+            <label htmlFor={emailFieldId} className={css.inputLabel}>
+              Enter your email
+            </label>
+            <Field name="email">
+              {({ field, form }) => (
+                <div className={css.inputFieldWrapper}>
+                  <input
+                    {...field}
+                    type="email"
+                    id={emailFieldId}
+                    placeholder="E-mail"
+                    className={clsx(css.inputField, {
+                      [css.inputFieldError]: form.errors.email,
+                    })}
+                  />
+                  {form.errors.email && (
+                    <span className={css.errorMessage}>
+                      {form.errors.email}
+                    </span>
+                  )}
+                </div>
+              )}
+            </Field>
+          </div>
           <div className={css.passwordFieldWrapper}>
             <div className={css.inputFieldWrapper}>
               <label htmlFor={passwordFieldId} className={css.inputLabel}>

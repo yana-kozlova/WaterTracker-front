@@ -7,9 +7,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 320px;
-  max-width: 375px;
+  max-width: 100%;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
   box-sizing: border-box;
   min-height: 100vh;
 }
@@ -58,14 +58,14 @@ ol {
 
 @media screen and (min-width: 768px) {
   :root {
-    max-width: 768px;
-    padding: 0 32px;
+    max-width: 100%;
+    padding: 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   :root {
-    max-width: 1440px;
-    padding: 0 18px;
+    max-width: 100%;
+    padding: 0;
   }
 }
