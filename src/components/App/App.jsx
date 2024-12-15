@@ -6,6 +6,10 @@ import { delayImport } from "../../utils/delayImport"
 
 
 // імпорти з затримкою
+
+const WelcomePage = lazy(() =>
+  delayImport(() => import("../../pages/WelcomePage/WelcomePage.jsx"))
+);
 const MainPage = lazy(() =>
   delayImport(() => import("../../pages/MainPage/MainPage.jsx"))
 );
@@ -18,9 +22,7 @@ const SignupPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   delayImport(() => import("../../pages/NotFoundPage.jsx"))
 );
-const WelcomePage = lazy(() =>
-  delayImport(() => import("../../pages/WelcomePage/WelcomePage.jsx"))
-);
+
 
 // const MainPage = lazy(() => import("../../pages/MainPage/MainPage.jsx"));
 // const SigninPage = lazy(() => import("../../pages/SigninPage/SigninPage.jsx"));
@@ -35,7 +37,7 @@ export default function App() {
       <Suspense fallback={<DripLoader />}>
         <Routes>
           <Route path="/" element={<Layout />} />
-          <Route path="/welcome" element={<WelcomePage />} />
+          <Route index element={<WelcomePage />} />
           <Route path="/home" element={<MainPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signin" element={<SigninPage />} />
