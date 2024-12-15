@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useId } from "react";
-import css from "./SignUp.module.css"; // Import CSS module
+import css from "./SignUp.module.css";
 import * as Yup from "yup";
 import clsx from "clsx";
 import { NavLink, useLocation } from "react-router-dom";

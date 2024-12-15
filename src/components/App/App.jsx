@@ -35,8 +35,7 @@ export default function App() {
     <>
       <Toaster
         toastOptions={{
-          duration: 5000, // Уведомление будет видно 5 секунд
-          // Общие стили
+          duration: 5000,
           style: {
             background: "var(--primary-color-white)",
             color: "var(--primary-color-black)",
