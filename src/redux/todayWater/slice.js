@@ -57,7 +57,6 @@ const slice = createSlice({
         isAnyOf(
           addWater.rejected,
           deleteWater.rejected,
-          editWater.fulfilled,
           editWater.rejected
         ),
         (state) => {
