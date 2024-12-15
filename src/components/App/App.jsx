@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate} from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout.jsx";
 import DripLoader from "../DripLoader/DripLoader.jsx";  
@@ -36,8 +36,9 @@ export default function App() {
     <>
       <Suspense fallback={<DripLoader />}>
         <Routes>
+          <Route path="/" element={<Navigate to="/welcome" />} />
           <Route path="/" element={<Layout />} />
-          <Route index element={<WelcomePage />} />
+          <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/home" element={<MainPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signin" element={<SigninPage />} />
