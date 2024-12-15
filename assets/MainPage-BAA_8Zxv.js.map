@@ -1,1 +1,0 @@
-{"version":3,"file":"MainPage-BAA_8Zxv.js","sources":["../../src/pages/MainPage/MainPage.jsx"],"sourcesContent":["export default function MainPage() {\n  return (\n    <div>\n    </div>\n  );\n}\n"],"names":["MainPage"],"mappings":"wCAAA,SAAwBA,GAAW,CACjC,aACG,MACD,EAAA,CAEJ"}
