@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { register, login,logout} from "./operations";
+import { register, login, logout } from "./operations";
 
 const initialState = {
   user: {},
@@ -16,26 +16,15 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       //Registration
-      .addCase(register.pending, (state) => {})
-      
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-        state.isLoading = false;
+        // state.user = action.payload.user;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
       })
-      .addCase(register.rejected, (state) => {
-        state.error = true;
-      })
-      //Login
-      .addCase(login.pending, (state) => {
-        state.isLoading = true;
-      })
+      // Login
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        state.isLoggedIn = true;
-        state.isLoading = false;
       })
       .addCase(login.rejected, (state) => {
         state.isLoading = false;
@@ -45,8 +34,7 @@ const slice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-      .addCase(logout.rejected, () => {
-        state.isLoggedIn = false;
+      .addCase(logout.rejected, () => {        
         state.error = true;
       })
       //Refresh
@@ -56,18 +44,21 @@ const slice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isRefreshing = false;
-        state.isLoggedIn = true;
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
-
-      .addMatcher(isAnyOf(register.fulfilled, login.fulfilled), (state) => {
-        state.isLoggedIn = true;
+      .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
         state.isLoading = true;
       })
-      .addMatcher(isAnyOf(register.rejected, logout.rejected), (state) => {
+      .addMatcher(isAnyOf(register.fulfilled, login.fulfilled), (state) => {
         state.isLoading = false;
+      })
+      .addMatcher(isAnyOf(register.rejected, logout.rejected), (state) => {
+        state.isLoggedIn = false;
+      })
+      .addMatcher(isAnyOf(login.fulfilled, refreshUser.fulfilled), (state) => {
+        state.isLoggedIn = true;
       });
   },
 });
