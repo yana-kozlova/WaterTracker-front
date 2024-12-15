@@ -11,6 +11,10 @@ const slice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      //GetAll
+      .addCase(getAll.fulfilled, (state, action) => {
+        state.waterAmount = action.payload;
+      })
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
         state.waterAmount.push(action.payload);
@@ -29,13 +33,15 @@ const slice = createSlice({
       })
       //addMatcher
       .addMatcher(
-        isAnyOf(addWater.pending, deleteWater.pending, editWater.pending),
+        isAnyOf(getAll.pending,addWater.pending, deleteWater.pending, editWater.pending),
         (state) => {
           state.isLoading = true;
         }
       )
       .addMatcher(
         isAnyOf(
+          getAll.fulfilled,
+          getAll.rejected,
           addWater.fulfilled,
           addWater.rejected,
           deleteWater.fulfilled,
@@ -48,13 +54,14 @@ const slice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
+        isAnyOf(getAll.fulfilled,addWater.fulfilled, deleteWater.fulfilled, editWater.fulfilled),
         (state) => {
           state.error = null;
         }
       )
       .addMatcher(
         isAnyOf(
+          getAll.rejected,
           addWater.rejected,
           deleteWater.rejected,
           editWater.rejected
