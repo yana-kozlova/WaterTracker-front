@@ -1,20 +1,21 @@
 import css from "./Header.module.css";
+import Logo from "../Logo/Logo";
+import UserLogo from "../UserLogo/UserLogo";
 
 export default function Header() {
   return (
-    <div div>
-      <header class="header">
-        <div class="container">
-          <a href="#" class="logo">
-            Tracker of Water
+    <header className={css.header}>
+      <div className={css.container}>
+        <a href="#" className={css.logo}>
+          <Logo />
+        </a>
+        <nav className={css.nav}>
+          <a href="/signin" className={css.navLink}>
+            Sign in
+            <UserLogo />
           </a>
-          <nav class="nav">
-            <a href="/signin" class="nav-link">
-              Sign in
-            </a>
-          </nav>
-        </div>
-      </header>
-    </div>
+        </nav>
+      </div>
+    </header>
   );
 }

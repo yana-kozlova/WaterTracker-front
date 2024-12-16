@@ -1,0 +1,39 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*default*/
+:root {
+  --primary-color-blue: #407bff;
+  --primary-color-white: #ffffff;
+  --primary-color-black: #2f2f2f;
+  --secondary-color-2: #ecf2ff;
+  --secondary-color-3: #ef5050;
+  --secondary-color-4: #9ebbff;
+  --secondary-color-5: #ff9d43;
+  --secondary-color-6: #d7e3ff;
+  --font-family: "Roboto", sans-serif;
+}
+
+/* styles */
+body {
+  font-family: var(--font-family);
+  color: var(--primary-color-black);
+  background-color: var(--primary-color-white);
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+li,
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+}
