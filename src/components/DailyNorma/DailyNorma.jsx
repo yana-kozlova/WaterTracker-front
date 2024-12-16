@@ -1,55 +1,33 @@
 import React, { useState } from "react";
-import BaseModal from "./BaseModal";
-import styles from "./DailyNorma.module.css";
+import DailyNormaModal from "./DailyNormaModal";
+import "./DailyNorma.css";
 
 const DailyNorma = () => {
-  const [dailyNorm, setDailyNorm] = useState(2.0); // мінімальна норма 2л
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const [newNorm, setNewNorm] = useState(dailyNorm);
+  const [dailyNorm, setDailyNorm] = useState(2.0); // Початкове значення: 2.0 літри
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditClick = () => {
     setIsModalOpen(true);
   };
 
-  const handleModalClose = () => {
+  const closeModal = () => {
     setIsModalOpen(false);
-    setNewNorm(dailyNorm);
   };
 
-  const handleSave = () => {
+  const updateDailyNorm = (newNorm) => {
     setDailyNorm(newNorm);
-    setIsModalOpen(false);
+    closeModal();
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.info}>
-        <h2>Your Daily Water Intake</h2>
-        <p>{dailyNorm} liters</p>
-      </div>
-      <button className={styles.editButton} onClick={handleEditClick}>
+    <div className="daily-norma">
+      <p>Запланована денна норма води: {dailyNorm} л</p>
+      <button className="edit-button" onClick={handleEditClick}>
         Edit
       </button>
-      <BaseModal isOpen={isModalOpen} onClose={handleModalClose}>
-        <div className={styles.modalContent}>
-          <h3>Edit Daily Water Intake</h3>
-          <input
-            type="number"
-            value={newNorm}
-            onChange={(e) => setNewNorm(parseFloat(e.target.value) || 0)}
-            className={styles.input}
-            min="0"
-          />
-          <div className={styles.modalActions}>
-            <button className={styles.saveButton} onClick={handleSave}>
-              Save
-            </button>
-            <button className={styles.cancelButton} onClick={handleModalClose}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      </BaseModal>
+      {isModalOpen && (
+        <DailyNormaModal currentNorm={dailyNorm} onSave={updateDailyNorm} />
+      )}
     </div>
   );
 };
