@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../../redux/auth/operations.js';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 import PrivateRoute from '../../pages/Routes/PrivateRoute.jsx'
-import  PublicRegisterRoute from '../../pages/Routes/PublicRegisterRoute.jsx';
+import PublicRegisterRoute from '../../pages/Routes/PublicRegisterRoute.jsx';
 import PublicRoute from '../../pages/Routes/PublicRoute.jsx'
 import { Navigate } from "react-router-dom";
 import DripLoader from "../DripLoader/DripLoader.jsx";

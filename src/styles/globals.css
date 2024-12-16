@@ -20,9 +20,14 @@
 
 /* styles */
 body {
+      display: flex;
+      flex-direction: column;
   font-family: var(--font-family);
   color: var(--primary-color-black);
   background-color: var(--primary-color-white);
+}
+main {
+  flex: 1;
 }
 
 a,
