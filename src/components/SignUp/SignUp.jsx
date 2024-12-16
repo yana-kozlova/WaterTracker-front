@@ -9,6 +9,8 @@ import Icon from "../Svg/Svg";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { SignInSchema, SignUpSchema } from "../../utils/userValidationSchema";
+import {register,login} from "../../redux/auth/operations.js"
+
 const EyeIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   <svg
     width={size}
@@ -57,37 +59,37 @@ const initialValues = {
   repeatPassword: "",
 };
 export const SignInForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = (values, actions) => {
+  const handleSubmit =  async (values, actions) => {
     const { email, password } = values;
-    // try {
-    //   if (pathname === "/signin") {
-    //     await dispatch(login({ email, password }))
-    //       .unwrap()
-    //       .then(() => {
-    //         toast.success("You are logged in!");
-    //       })
-    //       .catch((error) => {
-    //         toast.error("Authentication failed!");
-    //       });
-    //   } else if (pathname === "/signup") {
-    //     await dispatch(register({ email, password }))
-    //       .unwrap()
-    //       .then(() => {
-    //         toast.success("You are registered!");
-    //       })
-    //       .catch((error) => {
-    //         toast.error("Registration failed!");
-    //       });
-    //   }
-    //   actions.resetForm();
-    // } catch (error) {
-    //   error.message;
-    // }
+    try {
+      if (pathname === "/signin") {
+        await dispatch(login({ email, password }))
+          .unwrap()
+          .then(() => {
+            toast.success("You are logged in!");
+          })
+          .catch((error) => {
+            toast.error("Authentication failed!");
+          });
+      } else if (pathname === "/signup") {
+        await dispatch(register({ email, password }))
+          .unwrap()
+          .then(() => {
+            toast.success("You are registered!");
+          })
+          .catch((error) => {
+            toast.error("Registration failed!");
+          });
+      }
+      actions.resetForm();
+    } catch (error) {
+      error.message;
+    }
   };
 
   const togglePasswordVisibility = () => {
