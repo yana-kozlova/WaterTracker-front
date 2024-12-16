@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from './TodayListModal.module.css';
 
-const TodayListModal = ({ onClose, onSave }) => {
+export default function TodayListModal ({ onClose, onSave }) {
   const [waterAmount, setWaterAmount] = useState(50);
 
   const handleIncrement = () => {
@@ -33,11 +33,11 @@ const TodayListModal = ({ onClose, onSave }) => {
           </div>
         </div>
         <div className={css.inputGroup}>
-          <label htmlFor="time">Recording time:</label>
+          <label htmlFor="time" className={css.inputTime}>Recording time:</label>
           <input type="time" id="time" name="time" defaultValue="07:00" />
         </div>
         <div className={css.inputGroup}>
-          <label htmlFor="value">Enter the value of the water used:</label>
+          <label htmlFor="value" className={css.inputValue}>Enter the value of the water used:</label>
           <input type="number" id="value" name="value" defaultValue={waterAmount} />
         </div>
         <div className={css.modalActions}>
@@ -51,4 +51,3 @@ const TodayListModal = ({ onClose, onSave }) => {
   );
 };
 
-export default TodayListModal;
