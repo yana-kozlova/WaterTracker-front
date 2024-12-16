@@ -1,12 +1,17 @@
 @import url(../../index.css);
 
 .signInFormContainer {
-  position: relative;
   z-index: 1;
-  max-width: 260px;
-  padding: 20px;
+  position: relative;
+  max-width: 336px;
 }
-
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 16px;
+}
 .signInTitle {
   margin-bottom: 20px;
   text-align: left;
@@ -27,11 +32,13 @@
   color: var(--primary-color-black);
   text-align: left;
 }
-
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+}
 .inputField {
-  width: 220px;
   padding: 12px 10px;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   border: 1px solid var(--secondary-color-6);
   border-radius: 5px;
   box-sizing: border-box;
@@ -63,7 +70,7 @@
 .passwordToggleIcon {
   position: absolute;
   right: 10px;
-  top: 60%;
+  top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -79,7 +86,7 @@
 .submitButton {
   color: var(--primary-color-white);
   font-family: var(--font-family);
-
+  margin-top: 5px;
   padding: 10px 30px;
   border: none;
   border-radius: 10px;
@@ -93,6 +100,7 @@
 }
 
 .submitButton:hover {
+  transform: none;
   background-color: #3063cc;
 }
 
@@ -108,14 +116,16 @@
 }
 
 .inputFieldWrapper {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+
   position: relative;
 }
 
 .errorMessage {
   width: 320px;
   position: absolute;
-  bottom: -5px;
+  bottom: -15px;
   left: 0;
   color: red;
   font-size: 0.8rem;
@@ -140,7 +150,6 @@
   }
   .inputField {
     padding: 11px 10px;
-    width: 296px;
   }
 }
 @media screen and (min-width: 1440px) {

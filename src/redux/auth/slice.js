@@ -14,6 +14,7 @@ const initialState = {
   isRefreshing: false,
   isLoading: false,
   error: false,
+  isRegistered: false,
 };
 
 const slice = createSlice({
@@ -23,9 +24,9 @@ const slice = createSlice({
     builder
       //Registration
       .addCase(register.fulfilled, (state, action) => {
-        // state.user = action.payload.user;
-        // state.token = action.payload.token;
-        // state.isLoggedIn = true;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
       })
       // Login
       .addCase(login.fulfilled, (state, action) => {
@@ -40,7 +41,7 @@ const slice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-      .addCase(logout.rejected, () => {
+      .addCase(logout.rejected, (state) => {
         state.error = true;
       })
       //Refresh

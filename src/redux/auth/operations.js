@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://watertracker-lzxr.onrender.com/";
+axios.defaults.baseURL = "https://watertracker-back-i1qk.onrender.com/";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -58,7 +58,7 @@ export const register = createAsyncThunk(
         const { data } = await axios.get("/users/current");
         return  data;
       } catch (e) {
-        return thunkAPI.rejectWithValue(error.e);
+        return thunkAPI.rejectWithValue(e.message);
       }
     },
     {
