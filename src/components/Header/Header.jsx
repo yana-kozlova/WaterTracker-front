@@ -1,6 +1,7 @@
 import css from "./Header.module.css";
 import Logo from "../Logo/Logo";
 import UserLogo from "../UserLogo/UserLogo";
+import UserLogoModal from "../UserLogoModal/UserLogoModal";
 
 export default function Header() {
   return (
@@ -14,6 +15,7 @@ export default function Header() {
             Sign in
             <UserLogo />
           </a>
+          <UserLogoModal/>
         </nav>
       </div>
     </header>
