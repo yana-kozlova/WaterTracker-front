@@ -15,7 +15,6 @@ export default function Header() {
             Sign in
             <UserLogo />
           </a>
-          <UserLogoModal/>
         </nav>
       </div>
     </header>
