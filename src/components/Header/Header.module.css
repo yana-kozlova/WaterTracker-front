@@ -1,14 +1,15 @@
 .header {
   position: fixed;
   top: 0;
+  width: 100%;
 }
 
 .container {
-  width: 1216px;
+  max-width: 1216px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 112px;
+  margin: 0 auto;
 }
 
 .navLink {
