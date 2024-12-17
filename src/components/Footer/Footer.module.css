@@ -1,7 +1,6 @@
 footer {
-  min-width: 100vh;
-  max-width: 1440px;
-  background-color: var(--primary-color-blue);
+  width: 1440px;
+  background-color: var(--primary-color-white);
   color: var(--secondary-color-2);
   text-align: center;
   padding: 5px 0;
