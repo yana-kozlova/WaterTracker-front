@@ -3,7 +3,7 @@ import Button from "../Buttons/Button/Button";
 import css from "./UserLogoutModal.module.css";
 import { useDispatch } from "react-redux";
 
-const LogoutModal = () => {
+const LogoutModal = ({ onCloseLogout }) => {
   const dispatch = useDispatch();
   return (
     <div className={css.container}>
@@ -14,9 +14,17 @@ const LogoutModal = () => {
           type="button"
           name="Log out"
           className={css.buttonLogout}
-          onClick={() => dispatch(logout())}
+          onClick={() => {
+            dispatch(logout());
+            onCloseLogout();
+          }}
         />
-        <Button type="button" name="Cancel" className={css.buttonCancel} />
+        <Button
+          type="button"
+          name="Cancel"
+          className={css.buttonCancel}
+          onClick={onCloseLogout}
+        />
       </div>
     </div>
   );
