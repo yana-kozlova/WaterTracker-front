@@ -81,8 +81,6 @@ export const SignInForm = () => {
                 password: error.message,
               });
 
-              toast.error(error.message);
-            } else {
               toast.error("Authentication failed!");
             }
           });
@@ -98,8 +96,6 @@ export const SignInForm = () => {
                 email: error.message,
               });
 
-              toast.error(error.message);
-            } else {
               toast.error("Registration failed!");
             }
           });
