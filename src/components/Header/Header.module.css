@@ -1,16 +1,14 @@
 .header {
   position: fixed;
   top: 0;
+  width: 100%;
 }
 
 .container {
-  width: 1216px;
-  height: 48px;
+  max-width: 1216px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-    margin-left: 102px;
-  margin-top: 12px;
+  margin: 0 auto;
 }
 
 .navLink {
