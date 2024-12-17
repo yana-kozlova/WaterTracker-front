@@ -14,18 +14,32 @@
 .modalContent {
   background: #fff;
   border-radius: 10px;
-  padding: 32px 12px;
-  min-width: 280px;
-  width: 90%;
+  padding: 24px 12px;
+  width: 280px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
 .modalClose {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 28px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    width: 708px;
+    padding: 32px 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modalContent {
+    width: 592px;
+  }
 }
