@@ -1,0 +1,29 @@
+.img {
+  height: auto;
+  display: block;
+  width: 100%;
+}
+.picture {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .picture {
+    top: 20%;
+    left: 60%;
+    max-width: 556px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .picture {
+    top: 10%;
+    left: 70%;
+    max-width: 916px;
+  }
+}

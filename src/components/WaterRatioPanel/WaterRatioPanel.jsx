@@ -3,9 +3,9 @@ import css from "./WaterRatioPanel.module.css";
 import { ReactComponent as AddIcon } from "../../assets/images/outline.svg";
 
 export default function WaterRatioPanel() {
-const [ratio, setRatio] = useState(50);
+  const [ratio, setRatio] = useState(50);
 
-const handleSliderChange = (e) => {
+  const handleSliderChange = (e) => {
     setRatio(e.target.value);
   };
   
@@ -28,6 +28,6 @@ const handleSliderChange = (e) => {
             <AddIcon />
             Add Water
         </button>
-      </div>
-    );
+    </div>
+  );
 }

@@ -1,54 +1,163 @@
 @import url(../../index.css);
 
-.singupWrap {
-  display: flex;
-  flex-direction: column;
-  max-width: 384px;
-  gap: 16px;
-  color: var(--primary-black);
+.signInFormContainer {
+  z-index: 1;
+  position: relative;
+  max-width: 336px;
 }
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.signInTitle {
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 123%;
+  color: var(--primary-color-black);
 }
 
-.formPlace {
+.inputLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 133%;
+  color: var(--primary-color-black);
+  text-align: left;
+}
+.fieldWrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+}
+.inputField {
+  padding: 12px 10px;
+  margin-bottom: 5px;
+  border: 1px solid var(--secondary-color-6);
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  line-height: 125%;
+  color: var(--primary-color-blue);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.inputField::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--secondary-color-4);
+}
+.inputField:focus {
+  border-color: var(--primary-color-blue);
+}
+
+.passwordFieldWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  stroke: var(--primary-color-black);
+  transition: stroke 0.3s;
+}
+
+.passwordToggleIcon:hover svg path {
+  stroke-width: 1px;
+  stroke: var(--primary-color-blue);
+}
+
+.submitButton {
+  color: var(--primary-color-white);
+  font-family: var(--font-family);
+  margin-top: 5px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  height: 44px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: var(--primary-color-blue);
+}
+
+.submitButton:hover {
+  transform: none;
+  background-color: #3063cc;
+}
+
+.signUpLink {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  display: block;
+  text-align: left;
+  margin-top: 16px;
+  color: var(--primary-color-blue);
+  text-decoration: none;
+}
+
+.inputFieldWrapper {
+  display: flex;
+  flex-direction: column;
+
   position: relative;
 }
 
-input {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  color: var(--primary-color);
-  border: 1px solid var(--secondary-color);
-  border-radius: 6px;
-  padding: 10px 12px;
-  outline: transparent;
-}
-
-input:focus {
-  border: 1px solid var(--secondary-color);
-}
-
-input:active {
-  border: 1px solid var(--secondary-color);
-}
-
-input::placeholder {
-  font-size: 16px;
-  color: var(--secondary-color);
-}
-
-.error {
-  color: var(--secondary-red);
-  font-size: 14px;
-  line-height: 1.125rem;
+.errorMessage {
+  width: 320px;
   position: absolute;
-  bottom: -18px;
+  bottom: -15px;
+  left: 0;
+  color: red;
+  font-size: 0.8rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.inputFieldWrapper .inputField.inputFieldError {
+  color: var(--secondary-color-3);
+  border-color: var(--secondary-color-3);
+  background: var(--primary-color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .submitButton {
+    font-size: 18px;
+    line-height: 1.33;
+    padding: 10px 0;
+  }
+  .signInFormContainer {
+    max-width: 336px;
+  }
+  .inputField {
+    padding: 11px 10px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .signInFormContainer {
+    max-width: 384px;
+  }
+  .inputField {
+    padding: 11px 10px;
+    width: 344px;
+  }
 }

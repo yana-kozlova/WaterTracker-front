@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1216px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+}
+
