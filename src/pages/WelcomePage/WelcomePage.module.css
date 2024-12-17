@@ -4,11 +4,12 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+    margin: 140px auto;
   background-image:
     url('/src/assets/images/bottle.png'),
     url('/src/assets/images/background-deskt.png'),
     url('/src/assets/images/Group\ 15.svg');
-  background-size: 374px, cover, cover;
+  background-size:  374px, cover, cover;
   background-position:
     bottom 24px left 1016px,
     bottom center,
@@ -18,11 +19,12 @@
 }
 .container {
   display: flex;
+  align-items: end;
   width: 100%;
   max-width: 1014px;
   height: 366px;
-  margin: 140px auto;
   padding: 20px;
+  margin: 0 140px 0  ;
 }
 
 
