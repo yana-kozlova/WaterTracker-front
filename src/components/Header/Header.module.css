@@ -5,10 +5,12 @@
 
 .container {
   width: 1216px;
+  height: 48px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-left: 112px;
+  justify-content: space-between;
+    margin-left: 102px;
+  margin-top: 12px;
 }
 
 .navLink {
@@ -16,5 +18,3 @@
   align-items: center;
 }
 
-.nav {
-}
