@@ -24,14 +24,15 @@ const slice = createSlice({
     builder
       //Registration
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.data.user;
+        state.token = action.payload.data.accessToken;
         state.isLoggedIn = true;
       })
       // Login
       .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.data.user;
+        state.token = action.payload.data.accessToken;
+        state.isLoggedIn = true;
       })
       .addCase(login.rejected, (state) => {
         state.isLoading = false;

@@ -55,7 +55,7 @@ export const register = createAsyncThunk(
       const state = thunkAPI.getState();
       try {
         setAuthHeader(state.auth.token);
-        const { data } = await axios.get("/users/current");
+        const { data } = await axios.get("/user");
         return  data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);

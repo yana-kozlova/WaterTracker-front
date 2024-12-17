@@ -1,6 +1,7 @@
 import css from "./WelcomePage.module.css";
 import Header from "../../components/Header/Header";
 import TryTrackerButton from "../../components/Buttons/TryTrackerButton/TryTrackerButton";
+// import Icon from "../../components/Svg/Svg";
 
 export default function WelcomePage() {
   return (
@@ -16,15 +17,27 @@ export default function WelcomePage() {
               </p>
               <ul className={css.benefits}>
                 <li className={css.benefit}>
-                  <span className={css.icon}>&#128197;</span>
+                  <span className={css.icon}>
+                    <svg width="30" height="30">
+                      <use href="/icons.svg#calendar-daysoutline"></use>
+                    </svg>
+                  </span>
                   <span className={css.text}>Habit drive</span>
                 </li>
                 <li className={css.benefit}>
-                  <span className={css.icon}>&#128202;</span>
+                  <span className={css.icon}>
+                    <svg width="30" height="30">
+                      <use href="/icons.svg#presentation-chart-baroutline"></use>
+                    </svg>
+                  </span>
                   <span className={css.text}>View statistics</span>
                 </li>
                 <li className={css.benefit}>
-                  <span className={css.icon}>&#9881;</span>
+                  <span className={css.icon}>
+                    <svg width="32" height="32">
+                      <use href="/icons.svg#wrench-screwdriveroutline"></use>
+                    </svg>
+                  </span>
                   <span className={css.text}>Personal rate setting</span>
                 </li>
               </ul>
