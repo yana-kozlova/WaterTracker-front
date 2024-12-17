@@ -1,1 +1,0 @@
-{"version":3,"file":"MainPage-CahIYxi8.js","sources":["../../src/pages/MainPage/MainPage.jsx"],"sourcesContent":["export default function MainPage() {\n  return <div></div>;\n}\n"],"names":["MainPage"],"mappings":"wCAAA,SAAwBA,GAAW,CACjC,aAAQ,MAAI,EAAA,CACd"}
