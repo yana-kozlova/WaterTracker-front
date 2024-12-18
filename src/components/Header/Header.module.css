@@ -5,8 +5,7 @@
 }
 
 .container {
-  width: 1216px;
-  height: 48px;
+  max-width: 1216px;
   display: flex;
   align-items: center;
   margin: 0 auto;
