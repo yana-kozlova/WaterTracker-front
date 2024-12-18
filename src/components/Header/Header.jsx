@@ -7,7 +7,7 @@ import Container from "../../Container/Container";
 export default function Header() {
   return (
     <header className={css.header}>
-      <Container>
+      <Container className={css.containerRow}>
         <Link to="/welcome">
           <Logo />
         </Link>

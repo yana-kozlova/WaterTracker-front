@@ -4,14 +4,8 @@
   width: 100%;
 }
 
-.container {
-  max-width: 1216px;
+.containerRow {
   display: flex;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.navLink {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
