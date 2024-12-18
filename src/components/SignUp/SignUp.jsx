@@ -9,7 +9,7 @@ import Icon from "../Svg/Svg";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { SignInSchema, SignUpSchema } from "../../utils/userValidationSchema";
-import {register,login} from "../../redux/auth/operations.js"
+import { register, login } from "../../redux/auth/operations.js";
 
 const EyeIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   <svg
@@ -64,8 +64,9 @@ export const SignInForm = () => {
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit =  async (values, actions) => {
+  const handleSubmit = async (values, actions) => {
     const { email, password } = values;
+
     try {
       if (pathname === "/signin") {
         await dispatch(login({ email, password }))
@@ -74,7 +75,14 @@ export const SignInForm = () => {
             toast.success("You are logged in!");
           })
           .catch((error) => {
-            toast.error("Authentication failed!");
+            if (error.message) {
+              actions.setErrors({
+                email: error.message,
+                password: error.message,
+              });
+
+              toast.error("Authentication failed!");
+            }
           });
       } else if (pathname === "/signup") {
         await dispatch(register({ email, password }))
@@ -83,12 +91,17 @@ export const SignInForm = () => {
             toast.success("You are registered!");
           })
           .catch((error) => {
-            toast.error("Registration failed!");
+            if (error.message) {
+              actions.setErrors({
+                email: error.message,
+              });
+
+              toast.error("Registration failed!");
+            }
           });
       }
-      actions.resetForm();
     } catch (error) {
-      error.message;
+      toast.error("Something went wrong!");
     }
   };
 
@@ -138,7 +151,7 @@ export const SignInForm = () => {
                       [css.inputFieldError]: form.errors.email,
                     })}
                   />
-                  {form.errors.email && (
+                  {form.errors.email && form.touched.email && (
                     <span className={css.errorMessage}>
                       {form.errors.email}
                     </span>

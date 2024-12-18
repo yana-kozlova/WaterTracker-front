@@ -8,26 +8,26 @@ export default function WaterRatioPanel() {
   const handleSliderChange = (e) => {
     setRatio(e.target.value);
   };
-
-  return (
-    <div className="water-ratio-panel">
-      <div className="panel-header">Today</div>
-      <div className="slider-container">
-        <span className="slider-label">0%</span>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={ratio}
-          onChange={handleSliderChange}
-          className="slider"
-        />
-        <span className="slider-label">100%</span>
-      </div>
-      <button className="add-water-button">
-        <AddIcon />
-        Add Water
-      </button>
+  
+    return (
+        <div className={css.water-ratio-panel}>
+        <div className={css.panel-header}>Today</div>
+        <div className={css.slider-container}>
+          <span className={css.slider-label}>0%</span>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={ratio}
+            onChange={handleSliderChange}
+            className={css.slider}
+          />
+          <span className={css.slider-label}>100%</span>
+        </div>
+        <button className={css.add-water-button}>
+            <AddIcon />
+            Add Water
+        </button>
     </div>
   );
 }
