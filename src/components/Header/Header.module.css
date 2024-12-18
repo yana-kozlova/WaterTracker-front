@@ -5,9 +5,9 @@
 }
 
 .container {
-  max-width: 1216px;
+  width: 1216px;
+  height: 48px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 }
@@ -15,7 +15,4 @@
 .navLink {
   display: flex;
   align-items: center;
-}
-
-.nav {
 }
