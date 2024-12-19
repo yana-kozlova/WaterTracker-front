@@ -1,7 +1,7 @@
-.water-ratio-panel {
+.waterRatioPanel {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: space-between;
   justify-content: center;
   width: 592px;
   height: 90px;
@@ -12,85 +12,122 @@
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-.panel-header {
+.panelHeader {
   font-size: 18px;
   font-weight: 400px;
   line-height: 24px;
-  margin-bottom: 16px;
+  padding-left: 10px;
+  color: #407bff;
+  /* align-items: left; */
 }
 
-.slider-container {
+.sliderContainer {
+  position: relative;
   display: flex;
+  /* flex-direction: column; */
   align-items: center;
   width: 100%;
-  margin-bottom: 10px;
+  max-width: 100%;
+  /* margin-bottom: 10px; */
 }
 
 .slider {
   flex: 1;
-  margin: 0 10px;
+  width: 100%;
+  /* margin: 0 5px; */
   font-size: 16px;
   font-weight: 500px;
   line-height: 20px;
 }
 
-.slider-label {
+.sliderCenterLabel {
+  position: absolute;
+  top: 55px; /* Відступ під слайдером */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 500px;
+  line-height: 20px;
+  color: #407bff;
+}
+
+.sliderLabel {
+  margin-top: 30px;
   font-size: 12px;
   font-weight: 400px;
   line-height: 16px;
   color: #407bff;
 }
 
-.add-water-button {
-  /* padding: 8px 16px; */
+.addWaterButton {
+  padding: 10px 30px;
   background-color: #407bff;
+  width: 178px;
+  height: 44px;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
   font-weight: 500px;
   line-height: 24px;
+  text-align: center;
+  margin: 25px 0 21px 23px;
   transition: background-color 0.3s;
 }
 
-.add-water-button:hover {
+.addWaterButton:hover {
   box-shadow: 0 4px 6px #407bff;
 }
 
-.add-water-button svg {
+.addWaterButton svg {
   width: 24px;
   height: 24px;
   fill: white;
 }
 
 @media (max-width: 1440px) {
-  .water-ratio-panel {
+  .waterRatioPanel {
     width: 704px;
   }
+  /* .slider {
+    width: 90%;
+  } */
 }
 
 @media (max-width: 768px) {
-  .water-ratio-panel {
-    width: 90%;
+  .waterRatioPanel {
+    /* width: 90%; */
     height: auto;
     padding: 8px;
   }
 
-  .add-water-button {
+  .sliderContainer {
+    width: 356px;
+    height: 90px;
+  }
+
+  .slider {
+    width: 100%;
+  }
+
+  .addWaterButton {
     width: 336px;
     height: 44px;
-    font-size: 12px;
+    /* font-size: 12px; */
+    /* text-align: center; */
   }
 }
 
 @media (max-width: 320px) {
-  .water-ratio-panel {
-    width: 100%;
+  .waterRatioPanel {
+    flex-direction: column;
+    width: 280px;
+    height: 134px;
     /* padding: 5px; */
   }
 
-  .add-water-button {
+  .addWaterButton {
     width: 100%;
     font-size: 16px;
     font-weight: 500px;
@@ -99,5 +136,10 @@
 
   .slider {
     margin: 16px 20px;
+    width: 150%;
+  }
+
+  .sliderCenterLabel {
+    top: 40px;
   }
 }
