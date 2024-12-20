@@ -1,66 +1,75 @@
 
-.modal-overlay {
+.modalOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 148px;
+    left: 424px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    /* height: 580px; */
+    /* padding: 32px 24px; */
+    /* background-color: rgba(0, 0, 0, 0.5); */
     display: flex;
+    gap: 24px;
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
   
-  .modal-container {
+  .modalContainer {
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 20px;
+    /* padding: 20px; */
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    width: 100%;
-    max-width: 704px;
+    width: 592px;
+    height: 504px;
+    padding: 32px 24px;
   }
   
-  .modal-title {
+  .modalTitle {
     font-size: 26px;
     font-weight: 500px;
     line-height: 32px;
     margin-bottom: 20px;
     color: #2f2f2f;
+    margin-bottom: 24px;
   }
   
-  .input-group {
+  .inputGroup {
     margin-bottom: 20px;
+    /* color: #407BFF; */
   }
   
-  .input-group label {
+  .inputGroup label {
     display: block;
     font-size: 18px;
     font-weight: 500px;
     line-height: 20px;
-    margin-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 16px;
     color: #2f2f2f;
   }
 
-  .input-group h3 {
+  .inputGroup h3 {
     font-size: 16px;
     font-weight: 400px;
     line-height: 20px;
+    margin-bottom: 16px;
   }
 
   .inputTime {
     font-size: 16px;
     font-weight: 400px;
     line-height: 20px;
+    color: #407BFF;
   }
 
   .inputValue {
     font-size: 18px;
     font-weight: 500px;
     line-height: 20px;
+    color: #407BFF;
   }
 
-  .input-group input {
+  .inputGroup input {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -69,7 +78,7 @@
     outline: none;
   }
   
-  .input-group input:focus {
+  .inputGroup input:focus {
     border-color: #407bff;
     box-shadow: 0 0 4px rgba(64, 123, 255, 0.5);
   }
@@ -93,7 +102,7 @@
     background-color: #305ecc;
   }
   
-  .modal-actions {
+  .modalActions {
     display: flex;
     justify-content: space-between;
   }
@@ -105,7 +114,7 @@
     text-align: center;
   }
   
-  .save-button {
+  .saveButton {
     background-color: #407bff;
     color: #fff;
     border: none;
@@ -114,12 +123,14 @@
     cursor: pointer;
   }
   
-  .save-button:hover {
+  .saveButton:hover {
     background-color: #305ecc;
   }
   
-  .close-button {
-    background-color: #ef5050;
+  .closeButton {
+    background-color: #407BFF;
+    width: 24px;
+    height: 24px;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -127,34 +138,34 @@
     cursor: pointer;
   }
   
-  .close-button:hover {
+  .closeButton:hover {
     background-color: #d43f3f;
   }
   
   @media (max-width: 1440px) {
-    .modal-container {
+    .modalContainer {
       max-width: 592px;
     }
   }
   
   @media (max-width: 768px) {
-    .modal-container {
+    .modalContainer {
       max-width: 704px;
     }
   }
   
   @media (max-width: 320px) {
-    .modal-container {
+    .modalContainer {
       max-width: 280px;
       padding: 15px;
     }
   
-    .modal-title {
+    .modalTitle {
       font-size: 1.25rem;
     }
   
-    .save-button,
-    .close-button {
+    .saveButton,
+    .closeButton {
       padding: 8px 15px;
       font-size: 0.9rem;
     }
