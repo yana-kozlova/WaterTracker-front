@@ -1,4 +1,4 @@
-import TryTrackerButton from "../Buttons/TryTrackerButton/TryTrackerButton";
+import TryTrackerButton from "../../../../components/Buttons/TryTrackerButton/TryTrackerButton";
 import css from './WaterСonsumptionTracker.module.css'
 
 export default function WaterConsuptionTracker() {
