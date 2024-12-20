@@ -3,15 +3,15 @@ import { Outlet } from "react-router-dom";
 // import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
 import DripLoader from '../DripLoader/DripLoader.jsx';
 import Header from "../Header/Header";
-import BaseModal from "../BaseModal/BaseModal.jsx";
-import WaterRatioPanel from "../WaterRatioPanel/WaterRatioPanel.jsx"
+// import BaseModal from "../BaseModal/BaseModal.jsx";
+// import WaterRatioPanel from "../WaterRatioPanel/WaterRatioPanel.jsx"
 
 export default function Layout() {
   return (
     <>
-    <BaseModal isOpen={true}> /*додаємо модалку*/
+    {/* <BaseModal isOpen={true}> /*додаємо модалку*/
         <WaterRatioPanel/> /*вкладаємо свій компонент*/
-      </BaseModal>
+      </BaseModal> */}
       <Header />
       {/* <DaysGeneralStats consumedWater={600} dailyNorm={1500} portions={5} selectedDate={new Date()}/> */}
       <Suspense fallback={<DripLoader />}>

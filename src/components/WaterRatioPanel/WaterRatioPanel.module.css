@@ -5,11 +5,8 @@
   justify-content: center;
   width: 592px;
   height: 90px;
-  /* border: 1px solid #ccc; */
-  /* border-radius: 8px; */
   background-color: #f9f9f9;
   margin: 24px;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .panelHeader {
@@ -18,23 +15,19 @@
   line-height: 24px;
   padding-left: 10px;
   color: #407bff;
-  /* align-items: left; */
 }
 
 .sliderContainer {
   position: relative;
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   width: 100%;
   max-width: 100%;
-  /* margin-bottom: 10px; */
 }
 
 .slider {
   flex: 1;
   width: 100%;
-  /* margin: 0 5px; */
   font-size: 16px;
   font-weight: 500px;
   line-height: 20px;
@@ -90,14 +83,11 @@
   .waterRatioPanel {
     width: 704px;
   }
-  /* .slider {
-    width: 90%;
-  } */
 }
 
 @media (max-width: 768px) {
   .waterRatioPanel {
-    /* width: 90%; */
+    width: 100vw;
     height: auto;
     padding: 8px;
   }
@@ -114,8 +104,6 @@
   .addWaterButton {
     width: 336px;
     height: 44px;
-    /* font-size: 12px; */
-    /* text-align: center; */
   }
 }
 
@@ -124,7 +112,6 @@
     flex-direction: column;
     width: 280px;
     height: 134px;
-    /* padding: 5px; */
   }
 
   .addWaterButton {
@@ -132,11 +119,6 @@
     font-size: 16px;
     font-weight: 500px;
     line-height: 20px;
-  }
-
-  .slider {
-    margin: 16px 20px;
-    width: 150%;
   }
 
   .sliderCenterLabel {
