@@ -45,9 +45,9 @@
 
 .input {
   border: 1px solid #d7e3ff;
+  width : 100%;
   border-radius: 6px;
   padding: 12px 10px;
-  width: 256px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
@@ -58,10 +58,10 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  gap: 8px;
   align-items: center;
-  width: 253px;
-  height: 40px;
+  /* justify-content: space-between; */
+  gap: 8px;
+  width: 100%;
   margin-bottom: 24px;
 }
 
@@ -79,7 +79,9 @@
   line-height: 1.33;
   color: #407bff;
   display: flex;
+  flex-wrap: nowrap;
   gap: 4px;
+
 }
 
 .writeWaterBox {
@@ -99,16 +101,13 @@
 .button {
   border-radius: 10px;
   padding: 8px 30px;
-  width: 280px;
+  width: 100%;
   height: 36px;
 }
 
 @media screen and (min-width: 768px) {
   .input {
-  width : 686px;  
-  }
-  .amountBox {
-    width: 376px;
+  width : 100%;  
   }
   .button {
     width: 160px;
@@ -119,9 +118,6 @@
 @media screen and (min-width: 1440px) {
   .input {
   width : 572px;  
-  }
-  .amountBox {
-    width: 376px;
   }
   .button {
     width: 160px;
