@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./DaysGeneralStats.module.css";
 
@@ -7,59 +7,80 @@ const DaysGeneralStats = ({
   dailyNorm,
   consumedWater,
   portions,
+  onClose, // Функція для закриття модалки
 }) => {
+  // Якщо selectedDate не передано, використовуємо поточну дату
+  const dateToDisplay = selectedDate || new Date();
+
+  // Форматування дати у вигляді "5, April"
   const formatDate = (date) => {
     const months = [
-      "січня",
-      "лютого",
-      "березня",
-      "квітня",
-      "травня",
-      "червня",
-      "липня",
-      "серпня",
-      "вересня",
-      "жовтня",
-      "листопада",
-      "грудня",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const day = date.getDate();
     const month = months[date.getMonth()];
-    return `${day} ${month}`;
+    return `${day}, ${month}`;
   };
 
+  // Обчислення виконання денної норми
   const calculateCompletionPercentage = () => {
     if (dailyNorm === 0) return "0%";
     return `${Math.min(((consumedWater / dailyNorm) * 100).toFixed(0), 100)}%`;
   };
 
+  // Закриваємо модалку при натисканні на поле за нею або на клавішу ESC
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    const handleOutsideClick = (e) => {
+      if (e.target === e.currentTarget) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEsc);
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [onClose]);
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <button
-          className={styles.closeButton}
-          onClick={() => window.dispatchEvent(new Event("closeModal"))}
-        >
-          ×
-        </button>
-        <h2 className={styles.title}>Статистика дня</h2>
         <ul className={styles.list}>
           <li>
-            <span className={styles.label}>Дата:</span>
-            <span className={styles.value}>{formatDate(selectedDate)}</span>
+            <span className={styles.value}>{formatDate(dateToDisplay)}</span>
           </li>
           <li>
-            <span className={styles.label}>Денна норма:</span>
-            <span className={styles.value}>{dailyNorm} л</span>
+            <span className={styles.label}>Daily Norm:</span>
+            <span className={styles.value}>{dailyNorm} L</span>
           </li>
           <li>
-            <span className={styles.label}>Виконання денної норми:</span>
+            <span className={styles.label}>Fulfillment of the daily norm:</span>
             <span className={styles.value}>
               {calculateCompletionPercentage()}
             </span>
           </li>
           <li>
-            <span className={styles.label}>Кількість порцій води:</span>
+            <span className={styles.label}>How many servings of water:</span>
             <span className={styles.value}>{portions}</span>
           </li>
         </ul>
@@ -69,10 +90,15 @@ const DaysGeneralStats = ({
 };
 
 DaysGeneralStats.propTypes = {
-  selectedDate: PropTypes.instanceOf(Date).isRequired,
+  selectedDate: PropTypes.instanceOf(Date), // Необов'язковий
   dailyNorm: PropTypes.number.isRequired,
   consumedWater: PropTypes.number.isRequired,
   portions: PropTypes.number.isRequired,
+  onClose: PropTypes.func.isRequired, // Функція для закриття модалки
+};
+
+DaysGeneralStats.defaultProps = {
+  selectedDate: new Date(), // Якщо не передано selectedDate, використовуємо поточну дату
 };
 
 export default DaysGeneralStats;
