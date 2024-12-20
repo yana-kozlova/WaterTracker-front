@@ -1,32 +1,24 @@
-.main {
-  background-color: var(--primary-color-white);
+.pageContainer {
+  display: flex;
+  flex-direction: column;
   max-width: 1440px;
-  min-height: 100vh;
-  display: flex;
+  margin: 109px auto;
   align-items: center;
-    margin: 140px auto;
-  background-image:
-    url('/src/assets/images/bottle.png'),
-    url('/src/assets/images/background-deskt.png'),
-    url('/src/assets/images/Group\ 15.svg');
-  background-size:  374px, cover, cover;
-  background-position:
-    bottom 24px left 1016px,
-    bottom center,
-    center;
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-blend-mode: normal, normal, normal;
-}
-.container {
-  display: flex;
-  align-items: end;
-  width: 100%;
-  max-width: 1014px;
-  height: 366px;
-  padding: 20px;
-  margin: 0 140px 0  ;
-}
+  justify-content: center;
 
+  background-color: var(--primary-color-white);
+  background-image:
+    url('/src/assets/images/background-deskt.png'),
+    url('/src/assets/images/bottle.png'),
+    url('/src/assets/images/Group_15.png');
+  background-size: contain, 374px, cover;
+  background-position:
+    center center,
+      bottom left 1016px,
+    center bottom;
+  
+  background-repeat: no-repeat;
+}
 
 .text {
   margin-left: 10px;
@@ -35,7 +27,29 @@
   color: var(--primary-color-black);
 }
 
+.button:hover {
+  background-color: red;
+}
 
-button:hover {
-  background-color: var(--secondary-color-5);
+
+@media (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
 }

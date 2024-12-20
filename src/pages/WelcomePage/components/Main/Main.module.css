@@ -1,0 +1,8 @@
+.main {
+  display: flex;
+  justify-content: center;
+  max-width: 1014px;
+  max-height: 366px;
+  align-items: end;
+  margin-bottom: 294px; 
+}

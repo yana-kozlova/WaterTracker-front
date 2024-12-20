@@ -1,5 +1,42 @@
-.iconLogo {
-  width: 24px;
-  height: auto;
-  margin-left: 8px;
+.userLogo {
+  /* color: var(--primary-color-black); */
+}
+
+.userButtonContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-color-black);
+}
+
+.avatarCircle {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary-color-blue);
+  color: var(--primary-color-white);
+}
+
+.navActions {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px #407bff33;
+}
+
+.actionLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary-color-blue);
+}
+
+.actionLinkIcon {
 }

@@ -1,11 +1,11 @@
-/* Reset styles */
+/* Скидання стилів */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/*default*/
+/* Змінні */
 :root {
   --primary-color-blue: #407bff;
   --primary-color-white: #ffffff;
@@ -16,19 +16,23 @@
   --secondary-color-5: #ff9d43;
   --secondary-color-6: #d7e3ff;
   --font-family: "Roboto", sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 320px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1440px;
 }
 
-/* styles */
+/* Глобальні стилі */
 body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  font-family: var(--font-family);
-  color: var(--primary-color-black);
-  background-color: var(--primary-color-white);
-}
-main {
-  flex: 1;
+  font-family: var(--font-family, Arial, sans-serif);
+  color: var(--primary-color-black, #000000);
+  background-color: var(--primary-color-white, #ffffff);
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 a,
@@ -36,10 +40,94 @@ button {
   transition: all 0.3s ease;
 }
 
-li,
 ul,
 ol {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+}
+
+/* Основні стилі */
+main {
+  flex: 1;
+  padding: 16px;
+}
+
+.container {
+  max-width: 100%;
+  padding: 16px;
+  margin: 0 auto;
+}
+
+/* Адаптивний дизайн */
+
+/* Mobile First (<= 320px) */
+body {
+  font-size: 14px;
+}
+
+/* Tablet (>= 768px) */
+@media screen and (min-width: var(--breakpoint-tablet)) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 720px;
+    padding: 24px;
+  }
+}
+
+/* Desktop (>= 1440px) */
+@media screen and (min-width: var(--breakpoint-desktop)) {
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+}
+
+/* Додаткові стилі для посилань */
+a {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color-blue, #407bff);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-color-5, #ff9d43);
+}
+
+/* Стилі для заголовків */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.17;
+  color: var(--primary-color-black);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Списки */
+li {
   margin: 0 auto;
 }

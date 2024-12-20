@@ -13,7 +13,7 @@ function UserAuth() {
   return (
     <button type="button" onClick={handleSigninRedirect}>
       Sign In
-      <Icon name="icon-close" color="#2f2f2f" className={css.iconUser} />
+      <Icon name="useroutline" color="#2f2f2f" className={css.iconUser} />
     </button>
   );
 }
