@@ -1,8 +1,28 @@
+
 .main {
-  display: flex;
-  justify-content: center;
-  max-width: 1014px;
-  max-height: 366px;
-  align-items: end;
-  margin-bottom: 294px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+max-width: 1014px;
+  height: auto;
+  margin: 0 auto 294px;
+  padding: 0 16px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+    padding: 0 12px;
+ 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    margin-bottom: 100px;
+    padding: 0 8px;
+  }
 }
