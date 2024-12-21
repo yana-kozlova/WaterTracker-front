@@ -1,0 +1,35 @@
+/* Медіа-запити для мобільних пристроїв */
+@media screen and (max-width: 767px) {
+  .pageContainer {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Медіа-запити для планшетів */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .pageContainer {
+    padding: 40px;
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+
+/* Медіа-запити для великих екранів */
+@media screen and (min-width: 1024px) {
+  .pageContainer {
+    padding: 60px;
+  }
+
+  .footer {
+    padding: 20px;
+    font-size: 18px;
+  }
+}

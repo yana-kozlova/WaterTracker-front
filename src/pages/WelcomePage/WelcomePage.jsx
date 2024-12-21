@@ -1,13 +1,12 @@
-import css from './WelcomePage.module.css'; // Імпортуємо стиль
-import MainContainer from "./components/Container/MainContainer";
-
+import MainContainer from "./components/Container/MainContainer/MainContainer";
 import Footer from "../../components/Footer/Footer";
+import PageContainer from './components/Container/PageContainer/Page Container';
 
 export default function WelcomePage() {
   return (
-        <div className={css.pageContainer}>
+    <PageContainer>
       <MainContainer />
       <Footer />
-    </div>
+      </PageContainer>
   );
 };
