@@ -1,75 +1,113 @@
 
-.modal-overlay {
+.modalOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 148px;
+    left: 424px;
     width: 100%;
-    height: 100%;
+    /* height: 580px; */
+    /* padding: 32px 24px; */
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
+    gap: 24px;
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
   
-  .modal-container {
+  .modalContainer {
     background-color: #ffffff;
     border-radius: 10px;
-    padding: 20px;
+    /* padding: 20px; */
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    width: 100%;
-    max-width: 704px;
+    width: 592px;
+    height: 504px;
+    padding: 32px 24px;
+    /* transform: translateY(-50px); */
+  }
+
+  .modalHeader {
+    position: relative; /* Відносне позиціонування для контейнера заголовка */
+    display: flex;
+    justify-content: space-between; /* Вирівнювання елементів: заголовок ліворуч, кнопка праворуч */
+    align-items: center; /* Вирівнювання елементів по вертикалі */
   }
   
-  .modal-title {
+  .modalTitle {
     font-size: 26px;
     font-weight: 500px;
     line-height: 32px;
     margin-bottom: 20px;
     color: #2f2f2f;
+    margin: 0;
+  }
+
+  .closeButton {
+    position: absolute; /* Абсолютне позиціонування */
+    top: 0; /* Вирівнювання по верхньому краю */
+    right: 0; /* Вирівнювання по правому краю */
+    background-color: transparent; /* Забираємо фон, якщо не потрібен */
+    border: none;
+    cursor: pointer;
+    padding: 8px;
   }
   
-  .input-group {
+  .closeButton svg {
+    width: 24px;
+    height: 24px;
+    fill: #407bff; /* Колір іконки */
+  }
+  
+  .closeButton:hover svg {
+    fill: #305ecc; /* Колір іконки при наведенні */
+  }
+  
+  .inputGroup {
     margin-bottom: 20px;
+    /* color: #407BFF; */
   }
   
-  .input-group label {
+  .inputGroup label {
     display: block;
     font-size: 18px;
     font-weight: 500px;
     line-height: 20px;
-    margin-bottom: 8px;
+    margin-top: 24px;
+    margin-bottom: 16px;
     color: #2f2f2f;
   }
 
-  .input-group h3 {
+  .inputGroup h3 {
     font-size: 16px;
     font-weight: 400px;
     line-height: 20px;
+    margin-bottom: 16px;
   }
 
   .inputTime {
     font-size: 16px;
     font-weight: 400px;
     line-height: 20px;
+    
   }
 
   .inputValue {
     font-size: 18px;
     font-weight: 500px;
     line-height: 20px;
+    color: #407BFF;
   }
 
-  .input-group input {
+  .inputGroup input {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
+    color: #407BFF;
   }
   
-  .input-group input:focus {
+  .inputGroup input:focus {
     border-color: #407bff;
     box-shadow: 0 0 4px rgba(64, 123, 255, 0.5);
   }
@@ -81,45 +119,72 @@
   }
   
   .stepper button {
-    background-color: #407bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
+    background-color: #fff;
+    color: #9EBBFF;
+    border-color: #9EBBFF;
+    /* border: none; */
     padding: 5px 10px;
     cursor: pointer;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 50%;
+    border: 3px;
+  }
+
+  .stepper span {
+    margin-left: -10px;
+    width: 92px;
+    height: 36px;
+    padding: 6px 10px;
+    gap: 10px;
+    border-radius: 40px;
+    background-color: #D7E3FF;
+    color: #407BFF;
+    text-align: center;
   }
   
   .stepper button:hover {
     background-color: #305ecc;
   }
   
-  .modal-actions {
+  .modalActions {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
   }
 
   .waterAmountLabel {
     font-size: 18px;
     font-weight: 700px;
     line-height: 24px;
-    text-align: center;
+    /* text-align: center; */
+    color: #407bff;
   }
   
-  .save-button {
+  .saveButton {
     background-color: #407bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
+    text-align: center; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
   }
   
-  .save-button:hover {
+  .saveButton:hover {
     background-color: #305ecc;
   }
   
-  .close-button {
-    background-color: #ef5050;
+  .closeButton {
+    background-color: #407BFF;
+    width: 24px;
+    height: 24px;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -127,36 +192,62 @@
     cursor: pointer;
   }
   
-  .close-button:hover {
+  .closeButton:hover {
     background-color: #d43f3f;
   }
   
-  @media (max-width: 1440px) {
-    .modal-container {
+  /* @media (max-width: 1440px) {
+    .modalContainer {
       max-width: 592px;
     }
-  }
+  } */
   
   @media (max-width: 768px) {
-    .modal-container {
-      max-width: 704px;
+    .modalOverlay {
+      width: 704px;
+      top: 40px;
+      left: 32px;
+    }
+
+    .modalContainer {
+      width: 704px;
+      height: 504px;
+    }
+
+    .saveButton {
+      width: 160px;
+      height: 44px;
+      text-align: center;
     }
   }
   
   @media (max-width: 320px) {
-    .modal-container {
-      max-width: 280px;
+    .modalOverlay {
+      width: 300px;
+      top: 40px;
+      left: px;
+    }
+
+    .modalContainer {
+      width: 280px;
+      height: 540px;
       padding: 15px;
     }
   
-    .modal-title {
-      font-size: 1.25rem;
+    .modalTitle {
+      font-weight: 500px;
+      font-size: 26px;
+      line-height: 32px;
     }
   
-    .save-button,
-    .close-button {
-      padding: 8px 15px;
-      font-size: 0.9rem;
+    .modalActions {
+      flex-direction: column;
+    }
+
+    .saveButton {
+      width: 256px;
+      height: 36px;
+      border-radius: 10px;
     }
   }
   
