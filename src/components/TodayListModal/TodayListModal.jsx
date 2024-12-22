@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import css from './TodayListModal.module.css';
 // import { ReactComponent as CloseIcon } from '../../public/svg/x.svg';
 
