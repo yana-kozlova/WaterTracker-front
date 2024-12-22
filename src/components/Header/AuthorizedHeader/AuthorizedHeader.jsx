@@ -10,11 +10,11 @@ import { Link } from "react-router-dom";
 
 export default function AuthorizedHeader() {
   const user = useSelector(selectUser);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   function handleToggleLogoModal() {
-    setIsModalOpen(!isModalOpen);
+    setIsPopupOpen(!isPopupOpen);
   }
 
   function getInitial() {
@@ -43,21 +43,21 @@ export default function AuthorizedHeader() {
           />
         </span>
       </div>
-      {isModalOpen && (
+      {isPopupOpen && (
         <div className={css.navActions}>
           <div className={css.actionLink} onClick={() => setIsSettingOpen(!isSettingOpen)}>
             <Icon
               name="cog-6-toothoutline"
-              color="#407BFF"
+              color="#407bff"
               className={css.actionLinkIcon}
             />
             Settings
-            <SettingModal isModalOpen={isSettingOpen} onClose={() => setIsModalOpen(false)} />
+            <SettingModal isModalOpen={isSettingOpen} onClose={() => setIsPopupOpen(false)} />
           </div>
           <div className={css.actionLink}>
             <Icon
               name="arrow-right-on-rectangleoutline"
-              color="#407BFF"
+              color="#407bff"
               className={css.actionLinkIcon}
             />
             <UserLogoModal />
