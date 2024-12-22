@@ -4,7 +4,6 @@
   align-items: space-between;
   justify-content: center;
   width: 592px;
-  /* height: 90px; */
   background-color: #f9f9f9;
   margin: 24px;
 }
@@ -23,7 +22,6 @@
   align-items: center;
   width: 100%;
   margin-left: -50px;
-  /* max-width: 100%; */
 }
 
 .slider {
@@ -74,7 +72,7 @@
   box-shadow: 0 4px 6px #407bff;
 }
 
-.addWaterButton svg {
+.addIcon {
   width: 24px;
   height: 24px;
   fill: white;
