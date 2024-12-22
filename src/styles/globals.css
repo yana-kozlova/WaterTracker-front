@@ -40,7 +40,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
   min-height: 100vh;
-  margin: 0;
 }
 
 /* Глобальні стилі для посилань і кнопок */
@@ -57,14 +56,12 @@ a {
 }
 
 a:hover {
-  color: var(--secondary-color-4);
+  color: var(--secondary-color-5);
   cursor: pointer;
-  transform: scale(1.03);
 }
 
 button:hover {
   cursor: pointer;
-  transform: scale(1.03);
 }
 
 /* Заголовки та текст */
@@ -81,19 +78,16 @@ p {
 h1 {
   font-weight: 700;
   font-size: 2.25rem;
-  /* 36px */
   color: var(--primary-color-black);
 }
 
 h2 {
   font-weight: 600;
   font-size: 1.875rem;
-  /* 30px */
 }
 
 p {
   font-size: 1rem;
-  /* 16px */
 }
 
 /* Зображення */
@@ -107,12 +101,6 @@ img {
 ul,
 ol {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  margin: 0;
 }
 
 /* Контейнер */

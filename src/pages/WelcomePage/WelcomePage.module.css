@@ -1,4 +1,4 @@
-@import './mediaQueries.css';
+@import './mediaQueries.module.css';
 
 .pageContainer {
   display: flex;
@@ -27,26 +27,4 @@
   font-size: 16px;
   line-height: 20px;
   color: var(--primary-color-black);
-}
-
-@media (max-width: 1200px) {
-  .main {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .container {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
 }

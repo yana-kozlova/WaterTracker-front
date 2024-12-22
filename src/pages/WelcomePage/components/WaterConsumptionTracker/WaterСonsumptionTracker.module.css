@@ -1,29 +1,26 @@
 .hero {
   display: flex;
   width: 100%;
-  max-width: 439px;
-  max-height: 366px;
 }
 
 .heroContent {
   display: flex;
   flex-direction: column;
-  margin-right: 81px;
+  width: 100%;
 }
 
 .heroTitle {
   font-size: 36px;
   font-weight: 700;
-  color: #2b4d66;
-  margin-bottom: 20px;
-  line-height: 42px;
+  color: var(--primary-color-black);
+  margin-bottom: 16px;
 }
 
 .heroSubtitle {
   font-size: 26px;
   line-height: 32px;
   color: var(--primary-color-black);
-  margin-bottom: 30px;
+  margin-bottom: 16px;
 }
 
 .benefits {
@@ -35,65 +32,54 @@
   font-size: 16px;
   line-height: 1.25;
   gap: 12px;
+  margin-bottom: 28px;
+}
+
+.benefitsTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .benefit {
   display: flex;
   justify-items: start;
-  margin-left: 0;
+  align-items: center;
 }
 
 .icon {
-  font-size: 30px;
   color: var(--primary-color-blue);
 }
 
 .text {
   margin-left: 10px;
   line-height: 1.25;
+  font-weight: 400;
+  font-size: 16px;
   color: var(--primary-color-black);
 }
 
-/* Додаткові медіа-запити */
-
-@media screen and (min-width: 320px) {
-  .hero {
-    max-width: 320PX;
-    gap: 40px
-  }
+.tryButton {
+  max-width: 324px;
 }
 
-@media screen and (min-width: 768px) {
-  .hero {
-    max-width: 600px;
-  }
+/* Медіа-запити для мобільних пристроїв */
+@media screen and (max-width: 767px) {
 
-.heroTitle {
-  font-size: clamp(28px, 5vw, 36px);
-  font-weight: 700;
-  line-height: 1.25;
 }
 
-  .heroSubtitle {
-      font-size: clamp(20px, 4vw, 26px);
-    font-size: 30px;
-    line-height: 36px;
-    
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .hero {
-    max-width: 800px;
+/* Медіа-запити для планшетів */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .benefits {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
-  .heroTitle {
-    font-size: 48px;
-    line-height: 54px;
+  .tryButton {
+    max-width: 336px;
   }
 
-  .heroSubtitle {
-    font-size: 34px;
-    line-height: 40px;
+  .heroContent {
+    margin-bottom: 32px;
   }
 }
