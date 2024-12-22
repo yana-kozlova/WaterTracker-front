@@ -36,6 +36,7 @@
   align-items: center;
   gap: 8px;
   color: var(--primary-color-blue);
+  cursor: pointer;
 }
 
 .actionLinkIcon {

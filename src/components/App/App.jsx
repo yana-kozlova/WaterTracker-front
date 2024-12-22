@@ -1,15 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
 import Layout from "../Layout/Layout.jsx";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from '../../redux/auth/operations.js';
 import { selectIsRefreshing } from '../../redux/auth/selectors.js';
 import PrivateRoute from '../.././routes/PrivateRoute.jsx'
 import PublicRegisterRoute from '../.././routes/PublicRegisterRoute.jsx';
 import PublicRoute from '../.././routes/PublicRoute.jsx'
+
 import { Navigate } from "react-router-dom";
 import DripLoader from "../DripLoader/DripLoader.jsx";
 import { Toaster } from "react-hot-toast";
+// Імпортуємо компонент SettingModal
+import SettingModal from "../SettingModal/SettingModal.jsx";
 
 // import DripLoader from "../DripLoader/DripLoader.jsx";
 // import { delayImport } from "../../utils/delayImport";
@@ -99,20 +103,23 @@ import { Toaster } from "react-hot-toast";
 //   );
 // }
 
-const WelcomePage = lazy(() => import('../../pages/WelcomePage/WelcomePage.jsx'));
-const MainPage = lazy(() => import('../../pages/MainPage/MainPage.jsx'));
-const SigninPage = lazy(() => import('../../pages/SigninPage/SigninPage.jsx'));
-const SignupPage = lazy(() => import('../../pages/SignupPage/SignupPage.jsx'));
-const NotFoundPage = lazy(() => import('../../pages/NotFoundPage.jsx'));
+const WelcomePage = lazy(
+  () => import("../../pages/WelcomePage/WelcomePage.jsx")
+);
+const MainPage = lazy(() => import("../../pages/MainPage/MainPage.jsx"));
+const SigninPage = lazy(() => import("../../pages/SigninPage/SigninPage.jsx"));
+const SignupPage = lazy(() => import("../../pages/SignupPage/SignupPage.jsx"));
+const NotFoundPage = lazy(() => import("../../pages/NotFoundPage.jsx"));
+
 
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
 
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  
 
   return (
     <>
@@ -142,13 +149,38 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Navigate to="/welcome" />} />
-              <Route path="/welcome" element={<PublicRoute component={WelcomePage} redirectTo="/home" />} />
-              <Route path="/home" element={<PrivateRoute component={MainPage} redirectTo="/signin" />} />
-              <Route path="/signup" element={<PublicRegisterRoute component={SignupPage} redirectTo="/signin" />} />
-              <Route path="/signin" element={<PublicRoute component={SigninPage} redirectTo="/home" />} />
+              <Route
+                path="/welcome"
+                element={
+                  <PublicRoute component={WelcomePage} redirectTo="/home" />
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute component={MainPage} redirectTo="/signin" />
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <PublicRegisterRoute
+                    component={SignupPage}
+                    redirectTo="/signin"
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <PublicRoute component={SigninPage} redirectTo="/home" />
+                }
+              />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
+          {/* Додаємо SettingModal */}
+          <SettingModal />
         </Suspense>
       )}
     </>
