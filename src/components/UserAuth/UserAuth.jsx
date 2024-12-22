@@ -1,21 +1,24 @@
-import { useNavigate } from "react-router-dom";
-import Icon from "../Svg/Svg";
-import css from "./UserAuth.module.css";
+import { NavLink, useLocation } from 'react-router-dom';
+import Icon from '../Svg/Svg.jsx';
+import css from './UserAuth.module.css';
 
-// Does not work icon-User in the Icon component(svg)!
 function UserAuth() {
-  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  function handleSigninRedirect() {
-    navigate("/signin");
-  }
-
-  return (
-    <button type="button" onClick={handleSigninRedirect}>
-      Sign In
-      <Icon name="useroutline" color="#2f2f2f" className={css.iconUser} />
-    </button>
-  );
+  return (<div className={css.flexContainer}>
+      <NavLink
+        className={css.signUpLink}
+        to={pathname === '/signin' ? '/signup' : '/signin'}
+      >
+        {pathname === '/signin' ? 'Sign Up' : 'Sign In'}
+      </NavLink>
+    <Icon
+      name="useroutline"
+      size="100%"
+      color="#9ebbff"
+      className={css.iconUser}
+    />
+    </div>);
 }
 
 export default UserAuth;

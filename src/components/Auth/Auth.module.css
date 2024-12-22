@@ -1,25 +1,16 @@
 .section {
-  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   flex-grow: 1;
-  background-image: url("../../assets/images/background-mobil.png");
-  background-repeat: no-repeat;
-  background-position: 0px 45px;
-  background-size: 100% auto;
-  min-height: 100vh;
-}
-
-.container {
-  padding: 0 20px;
-  margin: 0 auto;
-  position: relative;
+  overflow: visible;
 }
 
 .picture {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, 180%);
   max-width: 300px;
   width: 100%;
   z-index: 0;
@@ -55,16 +46,15 @@
 
   .section {
     padding-top: 40px;
-    background-image: url("../../assets/images/background-tabl.png");
-    background-position: 0 -60px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
+  .section {
     display: flex;
     padding: 0 100px;
     justify-content: flex-end;
+    align-items: flex-end;
   }
 
   .picture {
@@ -76,8 +66,7 @@
 
   .section {
     padding-top: 162px;
-    background-image: url("../../assets/images/background-deskt.png");
-    background-position: 0 100px;
+    justify-content: flex-end;
   }
 
   .signInForm {

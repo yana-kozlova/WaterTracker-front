@@ -1,0 +1,15 @@
+.background {
+  position: absolute;
+  top: 80px;
+  width: 100vw;
+  max-width: 1404px;
+  height: 582px;
+  background-image: url("../../assets/images/background-deskt.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
