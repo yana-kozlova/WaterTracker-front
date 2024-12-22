@@ -1,6 +1,7 @@
 import UserLogoModal from '../../components/UserLogoModal/UserLogoModal.jsx';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable.jsx'
 import css from './MainPage.module.css'
+import TodayWaterList from '../../components/TodayWaterList/TodayWaterList.jsx';
 
 export default function MainPage() {
   return (
@@ -9,6 +10,7 @@ export default function MainPage() {
         <UserLogoModal />
       </div>
       <div className={css.waterContainer}>
+        <TodayWaterList/>
         <MonthStatsTable />
       </div>;
     </>
