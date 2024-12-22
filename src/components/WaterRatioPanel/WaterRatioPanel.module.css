@@ -4,7 +4,7 @@
   align-items: space-between;
   justify-content: center;
   width: 592px;
-  height: 90px;
+  /* height: 90px; */
   background-color: #f9f9f9;
   margin: 24px;
 }
@@ -22,7 +22,8 @@
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 100%;
+  margin-left: -50px;
+  /* max-width: 100%; */
 }
 
 .slider {
@@ -114,11 +115,17 @@
     height: 134px;
   }
 
+  .sliderContainer {
+    max-width: 100%;
+    left: 35px;
+  }
+
   .addWaterButton {
     width: 100%;
     font-size: 16px;
     font-weight: 500px;
     line-height: 20px;
+    margin-left: -15px;
   }
 
   .sliderCenterLabel {
