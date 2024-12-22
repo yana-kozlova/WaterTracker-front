@@ -65,7 +65,13 @@
 
 /* Медіа-запити для мобільних пристроїв */
 @media screen and (max-width: 767px) {
-
+  .heroTitle {
+    font-size: 28px;
+  }
+  .heroSubtitle {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 /* Медіа-запити для планшетів */
@@ -77,9 +83,5 @@
 
   .tryButton {
     max-width: 336px;
-  }
-
-  .heroContent {
-    margin-bottom: 32px;
   }
 }
