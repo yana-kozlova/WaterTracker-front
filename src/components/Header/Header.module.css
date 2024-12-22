@@ -2,10 +2,19 @@
   position: fixed;
   top: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
 }
 
 .containerRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 20px;
+
+  @media screen and (min-width: 768px) {
+    padding: 16px 32px;
+  }
 }
