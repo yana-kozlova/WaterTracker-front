@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { closeModal } from "../../redux/modal/slice";
-import { selectIsSettingModalOpen } from "../../redux/settingModal/selectors";
 import { selectUser } from "../../redux/settingModal/selectors";
 import {
   updateUserAvatar,
@@ -18,8 +16,7 @@ import PasswordField from "./PasswordField";
 import css from "./SettingModal.module.css";
 import useToggle from "./useToogle";
 
-const SettingModal = () => {
-  const isModalOpen = useSelector(selectIsSettingModalOpen);
+const SettingModal = ({isModalOpen, onClose}) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -175,9 +172,9 @@ const SettingModal = () => {
 
   return (
     <BaseModal
-      isOpen={isModalOpen} // Заміна на коректний пропс
-      closeModal={() => dispatch(closeModal())}
-      customClass={css.settingModal}
+      isOpen={isModalOpen}
+      onClose={onClose}
+      className={css.settingModal}
     >
       <h2 className={css["name-header"]}>Setting</h2>
       {message && (

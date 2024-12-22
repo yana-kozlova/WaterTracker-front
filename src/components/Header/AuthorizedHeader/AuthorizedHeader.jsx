@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 export default function AuthorizedHeader() {
   const user = useSelector(selectUser);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   function handleToggleLogoModal() {
     setIsModalOpen(!isModalOpen);
@@ -44,13 +45,14 @@ export default function AuthorizedHeader() {
       </div>
       {isModalOpen && (
         <div className={css.navActions}>
-          <div className={css.actionLink}>
+          <div className={css.actionLink} onClick={() => setIsSettingOpen(!isSettingOpen)}>
             <Icon
               name="cog-6-toothoutline"
               color="#407BFF"
               className={css.actionLinkIcon}
             />
-            <SettingModal />
+            Settings
+            <SettingModal isModalOpen={isSettingOpen} onClose={() => setIsModalOpen(false)} />
           </div>
           <div className={css.actionLink}>
             <Icon
