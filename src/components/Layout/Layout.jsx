@@ -1,22 +1,18 @@
-import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
-// import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats.jsx';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+
+import Container from '../Container/Container.jsx';
 import DripLoader from '../DripLoader/DripLoader.jsx';
-import Header from "../Header/Header";
-// import BaseModal from "../BaseModal/BaseModal.jsx";
-// import WaterRatioPanel from "../WaterRatioPanel/WaterRatioPanel.jsx"
+import Header from '../Header/Header';
 
 export default function Layout() {
-  return (
-    <>
-    {/* <BaseModal isOpen={true}> /*додаємо модалку*/
-        <WaterRatioPanel/> /*вкладаємо свій компонент*/
-      </BaseModal> */}
-      <Header />
+  return (<>
+    <Header/>
+    <Container>
       {/* <DaysGeneralStats consumedWater={600} dailyNorm={1500} portions={5} selectedDate={new Date()}/> */}
-      <Suspense fallback={<DripLoader />}>
-        <Outlet />
+      <Suspense fallback={<DripLoader/>}>
+        <Outlet/>
       </Suspense>
-    </>
-  );
+    </Container>
+  </>);
 }
