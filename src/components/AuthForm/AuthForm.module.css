@@ -71,6 +71,7 @@
   top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   stroke: var(--primary-text-color);
   transition: stroke 0.3s;
