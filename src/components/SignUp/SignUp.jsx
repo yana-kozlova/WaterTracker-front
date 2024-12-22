@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useId } from "react";
+import Button from '../Buttons/Button/Button.jsx';
 import css from "./SignUp.module.css";
 import * as Yup from "yup";
 import clsx from "clsx";
@@ -235,9 +236,13 @@ export const SignInForm = () => {
               </div>
             </div>
           )}
-          <button type="submit" className={css.submitButton}>
-            {setPageTitle()}
-          </button>
+          {/*<button type="submit" className={css.submitButton}>*/}
+          {/*  */}
+          {/*</button>*/}
+          <Button
+            type="submit"
+            name={setPageTitle()}
+          />
         </Form>
       </Formik>
 
