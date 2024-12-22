@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
-import css from "./TodayWaterList.module.css"
 import { useEffect, useState } from "react";
-import getWater from '../../redux/water/operations.js';
+
+import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
+
 import EditWater from "./EditWater.jsx";
 import DeleteWater from "./DeleteWater.jsx";
 import AddWater from "./AddWater.jsx";
 
+import css from "./TodayWaterList.module.css"
 
 export default function TodayWaterList() {
   const dispatch = useDispatch();
@@ -14,10 +16,12 @@ export default function TodayWaterList() {
   const [currentWater, setCurrentWater] = useState(null);
   
   useEffect(() => {
-    dispatch(getWater());
+    // dispatch(getWater());
   }, [dispatch]);
 
-  const { waterItems } = useSelector(selectWaterItem);
+  // const { waterItems } = useSelector(selectWaterItem);
+
+  const waterItems = [];
 
   const openModal = (type, water = null) => {
     setModalType(type);
