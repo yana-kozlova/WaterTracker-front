@@ -10,7 +10,7 @@
 }
 
 .wyDrinkWater h2 {
-  color: var(--primary-color-black);
+  /* color: var(--primary-color-black); */
     font-size: 18px;
     font-weight: 500;
     line-height: 20px;
@@ -25,7 +25,7 @@
 }
 
 .wyDrinkWater li {
-  color: var(--primary-color-black);
+  /* color: var(--primary-color-black); */
   margin-bottom: 10px;
     line-height: 20px;
     text-align: left;
