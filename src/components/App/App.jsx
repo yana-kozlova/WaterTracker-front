@@ -121,7 +121,7 @@ export default function App() {
           duration: 5000,
           style: {
             background: "var(--primary-color-white)",
-            color: "var(--primary-color-black)",
+            color: "var(--primary-text-color)",
             boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)",
             borderRadius: "12px",
             padding: "12px 20px",

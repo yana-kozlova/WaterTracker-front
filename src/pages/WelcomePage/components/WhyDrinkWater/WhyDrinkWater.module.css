@@ -10,7 +10,7 @@
 }
 
 .whyDrinkWater h2 {
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
     font-size: 18px;
     font-weight: 500;
     line-height: 20px;
