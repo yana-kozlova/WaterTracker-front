@@ -1,3 +1,5 @@
+@import './mediaQueries.module.css';
+
 .pageContainer {
   display: flex;
   flex-direction: column;
@@ -13,8 +15,8 @@
     url('/src/assets/images/Group_15.png');
   background-size: contain, 374px, cover;
   background-position:
-    center center,
-      bottom left 1016px,
+    center bottom,
+      bottom  124px left 1016px,
     center bottom;
   
   background-repeat: no-repeat;
@@ -25,31 +27,4 @@
   font-size: 16px;
   line-height: 20px;
   color: var(--primary-color-black);
-}
-
-.button:hover {
-  background-color: red;
-}
-
-
-@media (max-width: 1200px) {
-  .main {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .container {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
 }

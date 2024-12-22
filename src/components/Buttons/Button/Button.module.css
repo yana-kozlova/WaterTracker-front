@@ -1,11 +1,27 @@
-.button {
+.baseButton {
+  display: flex;
+  width: 100%;
+  /*max-width: 280px;*/
+  height: 36px;
   background-color: #407bff;
   border-radius: 10px;
-  padding: 6px 76px;
+  padding: 10px 30px;
   color: #fff;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
+  justify-content: center;
   text-align: center;
   border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
+
+.baseButton:hover {
+  /*background: linear-gradient(to left, #407bff, #9ebbff, #407bff);*/
+  /*color: var(--primary-color-black, #000);*/
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /*transform: translateY(-2px);*/
+}
+
+/*TODO Think about styling of hover*/

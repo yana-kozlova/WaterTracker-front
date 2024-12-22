@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectIsLoggedIn, selectIsRegistered } from "../../redux/auth/selectors";
+import { selectIsLoggedIn, selectIsRegistered } from "../redux/auth/selectors.js";
 
 
 export default function PublicRegisterRoute({ redirectTo = "/", component: Component }) {

@@ -1,6 +1,9 @@
 import { Formik, Form, Field } from "formik";
 import Button from "../Buttons/Button/Button";
-import css from './DailyNormaForm.module.css'
+import css from "./DailyNormaForm.module.css";
+import { useState, useEffect, useId } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 
 const initialValues = {
   gender: "for woman",
@@ -10,47 +13,115 @@ const initialValues = {
 };
 
 const calculateDailyNorma = (gender, weight, activeTime) => {
+  const userWeight = parseFloat(weight) || 0;
+  const userActiveTime = parseFloat(activeTime) || 0;
+
   if (gender === "for woman") {
-    const result = Math.round(weight * 0.04 + activeTime * 0.4 * 10) / 10;
-    return result;
+    const calculateResult =
+      Math.round(userWeight * 0.04 + userActiveTime * 0.4 * 10) / 10;
+    return calculateResult;
   } else {
-    const result = Math.round(weight * 0.04 + activeTime * 0.6 * 10) / 10;
-    return result;
+    const calculateResult =
+      Math.round(userWeight * 0.04 + userActiveTime * 0.6 * 10) / 10;
+    return calculateResult;
   }
 };
 
 const DailyNormaForm = () => {
+  const { daily_norma } = useSelector(selectUser);
+  const userDailyNorma = daily_norma / 1000;
+
+  const genderWomanField = useId();
+  const genderMenField = useId();
+  const weightField = useId();
+  const activeTimeField = useId();
+  const userNormaField = useId();
+
+  const [formData, setFormData] = useState(initialValues);
+  const [dailyNorma, setDailyNorma] = useState("0");
+
+  useEffect(() => {
+    const norma = calculateDailyNorma(
+      formData.gender,
+      formData.weight,
+      formData.activeTime
+    );
+    setDailyNorma(norma);
+  }, [formData]);
+
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
-      {({ values }) => (
+      {({ handleChange }) => (
         <Form className={css.form}>
           <div className={css.radioBox}>
             <div className={css.radio}>
-              <Field type="radio" name="gender" value="for woman" />
-              <p className={css.text}>For woman</p>
+              <Field
+                type="radio"
+                name="gender"
+                value="for woman"
+                id={genderWomanField}
+                onChange={(evt) => {
+                  handleChange(evt);
+                  setFormData({ ...formData, gender: evt.target.value });
+                }}
+              />
+              <label htmlFor={genderWomanField} className={css.text}>
+                For woman
+              </label>
             </div>
 
             <div className={css.radio}>
-              <Field type="radio" name="gender" value="for men" />
-              <p className={css.text}>For men</p>
+              <Field
+                type="radio"
+                name="gender"
+                value="for men"
+                id={genderMenField}
+                onChange={(evt) => {
+                  handleChange(evt);
+                  setFormData({ ...formData, gender: evt.target.value });
+                }}
+              />
+              <label htmlFor={genderMenField} className={css.text}>
+                For men
+              </label>
             </div>
           </div>
           <div className={css.userInfoBox}>
             <div className={css.userInfoinputBox}>
-              <label className={css.userInfoText}>
+              <label htmlFor={weightField} className={css.userInfoText}>
                 Your weight in kilograms:
               </label>
-              <Field type="text" name="weight" className={css.input} />
+              <Field
+                type="text"
+                name="weight"
+                id={weightField}
+                className={css.input}
+                onChange={(evt) => {
+                  handleChange(evt);
+                  setFormData({ ...formData, weight: evt.target.value });
+                }}
+              />
             </div>
             <div className={css.userInfoinputBox}>
-              <label className={css.userInfoText}>
+              <label htmlFor={activeTimeField} className={css.userInfoText}>
                 The time of active participation in sports or other activities
                 with a high physical. load in hours:
               </label>
-              <Field type="text" name="activeTime" className={css.input} />
+              <Field
+                type="text"
+                name="activeTime"
+                className={css.input}
+                id={activeTimeField}
+                onChange={(evt) => {
+                  handleChange(evt);
+                  setFormData({ ...formData, activeTime: evt.target.value });
+                }}
+              />
             </div>
           </div>
           <div className={css.amountBox}>
@@ -61,20 +132,27 @@ const DailyNormaForm = () => {
             </div>
             <div>
               <span className={css.amountResult}>
-                {calculateDailyNorma(
-                  values.gender,
-                  values.weight,
-                  values.activeTime
+                {dailyNorma === 0 ? (
+                  <p>{userDailyNorma} L</p>
+                ) : (
+                  <div className={css.amountResult}>
+                    <p>{dailyNorma}</p>
+                    <p>L</p>
+                  </div>
                 )}
-                <p>L</p>
               </span>
             </div>
           </div>
           <div className={css.writeWaterBox}>
-            <label className={css.writeWaterText}>
+            <label htmlFor={userNormaField} className={css.writeWaterText}>
               Write down how much water you will drink:
             </label>
-            <Field type="text" name="userDailyNorma" className={css.input} />
+            <Field
+              id={userNormaField}
+              type="text"
+              name="userDailyNorma"
+              className={css.input}
+            />
           </div>
           <Button type="submit" name="Save" className={css.button} />
         </Form>

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/slice";
-import { todayWaterReducer } from "./todayWater/slice";
+import { todayWaterReducer } from "./water/slice";
 import { monthWaterReducer } from "./monthWater/slice";
 import { modalReducer } from "./modal/slice"; // Редюсер модалки
 import { settingModalReducer } from "./settingModal/slice"; // Редюсер користувача
