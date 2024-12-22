@@ -84,6 +84,7 @@
 }
 
 .submitButton {
+  display: block;
   color: var(--primary-color-white);
   font-family: var(--font-family);
   margin-top: 5px;
@@ -114,7 +115,9 @@
   color: var(--primary-color-blue);
   text-decoration: none;
 }
-
+.signUpLink:hover {
+  transform: none;
+}
 .inputFieldWrapper {
   display: flex;
   flex-direction: column;
@@ -132,13 +135,36 @@
   margin: 0;
   line-height: 1.2;
 }
-
+.googleButton {
+  display: flex;
+  justify-content: center;
+  color: var(--primary-color-blue);
+  font-family: var(--font-family);
+  margin-top: 5px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  height: 44px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: var(--primary-color-white);
+}
+.googleButton:hover {
+  box-shadow: 0 4px 14px 0 #407bff8a;
+  transform: none;
+}
 .inputFieldWrapper .inputField.inputFieldError {
   color: var(--secondary-color-3);
   border-color: var(--secondary-color-3);
   background: var(--primary-color-white);
 }
-
+.googleIcon {
+  width: 30px;
+  height: 30px;
+}
 @media screen and (min-width: 768px) {
   .submitButton {
     font-size: 18px;
