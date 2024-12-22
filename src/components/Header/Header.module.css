@@ -1,7 +1,6 @@
 .containerRow {
   position: fixed;
   top: 12px;
-  left: 112px;
   width: 100%;
   height: 48px;
   z-index: 1000;
