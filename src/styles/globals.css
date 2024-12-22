@@ -1,5 +1,8 @@
 /* Глобальні змінні */
 :root {
+  /* ========== Змінні для світлої теми ========== */
+  --primary-background-color: #ffffff;
+  --primary-text-color: #2f2f2f;
   --primary-color-blue: #407bff;
   --primary-color-white: #ffffff;
   --primary-color-black: #2f2f2f;
@@ -9,7 +12,18 @@
   --secondary-color-5: #ff9d43;
   --secondary-color-6: #d7e3ff;
 
-  --font-family: "Roboto", sans-serif;
+  /* ========== Змінні для темної теми ========== */
+  [data-theme="dark"] {
+    --primary-background-color: #2f2f2f;
+    --primary-text-color: #ecf2ff;
+    --primary-color-blue: #4c9bf4;
+    --secondary-color-2: #2f2f2f;
+    --secondary-color-4: #9ebbff;
+    ;
+  }
+
+  --font-family: "Roboto",
+  sans-serif;
 
   /* Breakpoints */
   --breakpoint-mobile: 320px;
@@ -33,8 +47,10 @@ body {
   font-family: var(--font-family, Arial, sans-serif);
   font-size: var(--font-size-base);
   line-height: 1.5;
-  color: var(--primary-color-black, #000000);
-  background-color: var(--primary-color-white, #ffffff);
+  color: var(--primary-text-color, #000000);
+  /* Встановлюємо колір тексту для теми */
+  background-color: var(--primary-background-color, #ffffff);
+  /* Встановлюємо колір фону для теми */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,7 +94,7 @@ p {
 h1 {
   font-weight: 700;
   font-size: 2.25rem;
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
 }
 
 h2 {
@@ -86,7 +102,7 @@ h2 {
   font-size: 1.875rem;
 }
 
-p, span {
+p {
   font-size: 14px;
 }
 
@@ -121,13 +137,47 @@ main {
   background-color: var(--primary-color-blue);
   color: var(--primary-color-white);
   text-align: center;
-  padding: var(--spacing-base);
+  padding:
+    var(--spacing-base);
+}
+
+/* Темна тема для основних елементів */
+[data-theme="dark"] body {
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
+[data-theme="dark"] .header,
+[data-theme="dark"] .footer {
+  background-color: var(--primary-color);
+  color: var(--primary-background-color);
+}
+
+[data-theme="dark"] a {
+  color: var(--primary-color);
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--secondary-text-color);
 }
 
 /* Адаптивний дизайн */
+
+
+@media (max-width: var(--breakpoint-mobile)) {
+  :root {
+    --font-size-base: 8px;
+  }
+
+  .header,
+  .footer {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: var(--breakpoint-tablet)) {
   :root {
-    --font-size-base: 14px;
+    --font-size-base: 16px;
     --spacing-base: 12px;
   }
 
@@ -141,20 +191,10 @@ main {
   }
 }
 
-@media (max-width: var(--breakpoint-mobile)) {
-  :root {
-    --font-size-base: 12px;
-  }
-
-  .header,
-  .footer {
-    font-size: 0.9rem;
-  }
-}
 
 @media (min-width: var(--breakpoint-desktop)) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .container {
