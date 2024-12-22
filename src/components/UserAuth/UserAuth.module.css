@@ -1,18 +1,11 @@
-@import url(../../styles/globals.css);
-
-button {
-  font-size: 18px;
-  line-height: 18 / 24;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  color: var(--primary-color-blue);
+.flexContainer {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
 }
 
 .iconUser {
   height: 28px;
   width: 28px;
+  margin: 0 8px;
 }
