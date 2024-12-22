@@ -8,6 +8,7 @@ import DeleteWater from "./DeleteWater.jsx";
 import AddWater from "./AddWater.jsx";
 
 
+
 export default function TodayWaterList() {
   const dispatch = useDispatch();
   const [modalType, setModalType] = useState(null);
@@ -43,7 +44,7 @@ export default function TodayWaterList() {
       <h2 className={css.title}>Today</h2>
       <div className={css.listWrapper}>
         <ul className={css.list}>
-          {waterItems?.length > 0 &&
+          {waterItems?.length > 0 ? (
             waterItems
               .slice()
               .sort((a, b) => new Date(a.date) - new Date(b.date))
@@ -51,7 +52,7 @@ export default function TodayWaterList() {
                 <li className={css.item} key={_id}>
                   <div className={css.infoWrapper}>
                     <svg className={css.iconCup}>
-                      <use href="/public/svg/today.svg#icon-cup" alt="Cup Icon"></use>
+                      <use href="/public/svg/#icon-cup" alt="Cup Icon"></use>
                     </svg>
                     <p className={css.textVolume}>{amount}ml</p>
                     <p className={css.textTime}>{timeFromDate(date)}</p>
@@ -59,21 +60,26 @@ export default function TodayWaterList() {
                   <div className={css.btnWrap}>
                     <button className={css.btnEdit} onClick={() => openModal('EDIT', { amount, date, _id })}>
                       <svg className={css.iconEdit}>
-                        <use href="/public/svg/today.svg#pencil-squareoutline" alt="Edit Icon"></use>
+                        <use href="/public/svg/pencil-squareoutline.svg" alt="Edit Icon"></use>
                       </svg>
                     </button>
                     <button className={css.btnDelete} onClick={() => openModal('DELETE', { _id })}>
                       <svg className={css.iconDelete}>
-                        <use href="/public/svg/today.svg#trashoutline" alt="Delete Icon"></use>
+                        <use href="/public/svg/trashoutline.svg" alt="Delete Icon"></use>
                       </svg>
                     </button>
                   </div>
                 </li>
-              ))}
+              ))
+          ) : (
+            <li>
+              <p>No notes yet</p>
+            </li>
+          )}
           <li>
             <button className={css.btnAdd} onClick={() => openModal('ADD')}>
               <svg className={css.iconAdd}>
-                <use href="/public/svg/today.svg#plus-smalloutline" alt="Add Icon"></use>
+                <use href="/public/svg/plus-smalloutline.svg" alt="Add Icon"></use>
               </svg>
               Add water
             </button>
