@@ -11,7 +11,11 @@ export default function BaseModal({ isOpen, onClose, children, className }) {
         onClick={(e) => e.stopPropagation()}
       >
         <button className={css.modalClose} onClick={onClose}>
-          <Icon name="icon-close" size={14} color="#407bff" />
+          <Icon
+            name="x"
+            size={14}
+            color="#407bff"
+          />
         </button>
         {children}
       </div>
