@@ -1,0 +1,17 @@
+.pageContainer {
+    margin: 48px auto;
+    width: 100%;
+    max-width: 1014px;
+}
+
+/* Медіа-запити для мобільних пристроїв */
+@media screen and (max-width: 767px) {
+
+}
+
+/* Медіа-запити для планшетів */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .pageContainer {
+        margin: 0 auto 16px;
+    }
+}

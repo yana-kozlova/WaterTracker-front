@@ -1,12 +1,8 @@
-import MainContainer from "./components/Container/MainContainer/MainContainer";
-import Footer from "../../components/Footer/Footer";
 import PageContainer from './components/Container/PageContainer/Page Container';
+import Main from './components/Main/Main.jsx';
 
 export default function WelcomePage() {
-  return (
-    <PageContainer>
-      <MainContainer />
-      <Footer />
-      </PageContainer>
-  );
+  return (<PageContainer>
+      <Main />
+    </PageContainer>);
 };

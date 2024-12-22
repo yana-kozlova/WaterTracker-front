@@ -1,5 +1,6 @@
 import css from './Footer.module.css';
 
+// TODO does we need that?
 
 export default function Footer() {
   return (
