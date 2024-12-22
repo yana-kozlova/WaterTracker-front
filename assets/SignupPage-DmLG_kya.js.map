@@ -1,1 +1,0 @@
-{"version":3,"file":"SignupPage-DmLG_kya.js","sources":["../../src/pages/SignupPage/SignupPage.jsx"],"sourcesContent":["import Auth from \"../../components/Auth/Auth\";\nconst SignupPage = () => {\n  return (\n      <Auth />\n  );\n};\n\nexport default SignupPage;\n"],"names":["SignupPage","Auth"],"mappings":"+EACA,MAAMA,EAAa,UAEZC,EAAK,EAAA"}
