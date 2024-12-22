@@ -1,16 +1,15 @@
-import css from "./UserLogo.module.css";
-import Icon from "../Svg/Svg";
-import UserLogoModal from "../UserLogoModal/UserLogoModal";
-import SettingModal from "../SettingModal/SettingModal";
+import css from "./AuthorizedHeader.module.css";
+import Icon from "../../Svg/Svg.jsx";
+import UserLogoModal from "../../UserLogoModal/UserLogoModal.jsx";
+import SettingModal from "../../SettingModal/SettingModal.jsx";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
+import { selectUser } from "../../../redux/auth/selectors.js";
 import { Link } from "react-router-dom";
 
-export default function UserLogo() {
+export default function AuthorizedHeader() {
   const user = useSelector(selectUser);
-  // console.log(user);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleToggleLogoModal() {
@@ -32,7 +31,7 @@ export default function UserLogo() {
 
   return (
     <div className={css.userLogo}>
-      <button className={css.userButton} onClick={handleToggleLogoModal}>
+      <div className={css.userButton} onClick={handleToggleLogoModal}>
         <span className={css.userButtonContent}>
           {user.name || user.email}
           <span className={css.avatarCircle}>{hasAvatar()}</span>
@@ -42,7 +41,7 @@ export default function UserLogo() {
             className={css.iconUser}
           />
         </span>
-      </button>
+      </div>
       {isModalOpen && (
         <div className={css.navActions}>
           <div className={css.actionLink}>
