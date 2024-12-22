@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getWater = createAsyncThunk(
-  "todayWater/getAll",
+  "water/getAll",
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("/waterlist");
@@ -14,10 +14,10 @@ export const getWater = createAsyncThunk(
 );
 
 export const addWater = createAsyncThunk(
-  "todayWater/addWater",
+  "water/addWater",
   async (value, thunkAPI) => {
     try {
-      const { data } = await axios.post("today-water/add", value);
+      const { data } = await axios.post("water/add", value);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -26,10 +26,10 @@ export const addWater = createAsyncThunk(
 );
 
 export const deleteWater = createAsyncThunk(
-  "todayWater/deleteWater",
+  "water/deleteWater",
   async (WaterId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`today-water/${WaterId}`);
+      const { data } = await axios.delete(`water/${WaterId}`);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -38,10 +38,10 @@ export const deleteWater = createAsyncThunk(
 );
 
 export const editWater = createAsyncThunk(
-  "todayWater/editWater",
+  "water/editWater",
   async (WaterId, thunkAPI) => {
     try {
-      const { data } = await axios.patch(`today-water/edit/${WaterId}`);
+      const { data } = await axios.patch(`water/edit/${WaterId}`);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
