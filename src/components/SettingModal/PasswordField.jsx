@@ -29,7 +29,6 @@ const PasswordField = ({
           type={isHiddenPassword ? "text" : "password"}
           name={name}
           placeholder={placeholder}
-          
         />
         <button
           className={css["eye-button"]}

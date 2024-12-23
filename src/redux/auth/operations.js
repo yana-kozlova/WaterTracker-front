@@ -75,3 +75,45 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
+export const loginWithGoogle = createAsyncThunk(
+  "auth/loginWithGoogle",
+  async (code, { rejectWithValue }) => {
+    try {
+      const response = await axios.post("/auth/confirm-oauth", { code });
+
+      if (!response.data || !response.data.data) {
+        throw new Error("Invalid response format from server");
+      }
+
+      const { accessToken } = response.data.data;
+
+      setAuthHeader(accessToken);
+
+      const { data: userResponse } = await axios.get("/users/current");
+      const userData = userResponse.data || userResponse;
+
+      return {
+        token: accessToken,
+        user: {
+          name: userData.name || "",
+          email: userData.email || "",
+          gender: userData.gender || "woman",
+          avatarUrl: "",
+          daylyNorm: userData.daily_norma || 2000,
+        },
+      };
+    } catch (error) {
+      console.error("Error in Google login:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+      });
+
+      return rejectWithValue(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to get user data"
+      );
+    }
+  }
+);
