@@ -22,10 +22,6 @@ const slice = createSlice({
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
         state.waterItem.push(action.payload.data.waterList);
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
       })
       //Delete
       .addCase(deleteWater.fulfilled, (state, action) => {

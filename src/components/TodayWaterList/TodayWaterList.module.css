@@ -1,21 +1,71 @@
-.title {
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 1.23;
-    color: #2f2f2f;
+.container {
+    width: 264px;
+    height: 258px;
+    margin-bottom: 24px;
 }
 
 
+.title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.25;
+    color: #2f2f2f;
+    margin-bottom: 16px;
+    text-align: left;
+}
+.listWrapper {
+    width: inherit;
+    max-height: 212px;
+}
+
+.list {
+    overflow-y: auto;
+    height: 212px;
+}
+/* Стилізація скролбару */
+.list::-webkit-scrollbar {
+    width: 4px;
+    background-color: #d7e3ff;
+}
+/* Доріжка (фон скролбару) */
+.list::-webkit-scrollbar-track {
+    margin-block: 5px;
+    background-color: #d7e3ff;
+    border-radius: 8px;
+    /* height: 170px; */
+}
+
+/* Повзунок (рухома частина) */
+ .list::-webkit-scrollbar-thumb {
+     border-radius: 8px;
+     background-color: #9ebbff;
+ }
+ 
+ .list::-webkit-scrollbar-thumb:hover{
+    background-color: #407BFF;
+ }
 .item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 12px 4px 0 ;
+    padding: 0 0 12px 0;
+    border: 1px solid #d7e3ff;
+}
+
+.infoWrapper {
+    width: 166px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
 }
 
 .iconCup {
-    width: 23px;
-    height: 30px;
+    width: 17px;
+    height: 22px;
     fill: #407BFF;
 }
 
@@ -33,15 +83,6 @@
     color: #2f2f2f;
 }
 
-.infoWrapper {
-    width: 206px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 0 12px 0;
-    margin: 12px 4px 0 4px;
-}
 
 .btnWrap {
     display: flex;
@@ -51,7 +92,7 @@
 
 .btnEdit {
     width: 16px;
-    height: 18px;
+    height: 16px;
     padding: 0;
     border: none;
     cursor: pointer;
@@ -61,13 +102,13 @@
 
 .iconEdit {
     fill: #9ebbff;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 .btnDelete {
     width: 16px;
-    height: 18px;
+    height: 16px;
     padding: 0;
     border: none;
     background-color: transparent;
@@ -76,8 +117,8 @@
 
 .iconDelete {
     fill: #ef5050;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 14px;
 }
 
 .btnAdd {
@@ -87,13 +128,51 @@
     border: none;
     background-color: transparent;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 1.33;
+    font-size: 16px;
+    line-height: 1.25;
     color: #407bff;
 }
 
 .iconAdd {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     fill: #407bff;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 656px;
+        height: 260px;
+    }
+
+    .title {
+        font-size: 26px;
+        line-height: 1.23;
+    }
+
+    .infoWrapper {
+        width: 206px;
+    }
+
+    .iconCup {
+        width: 23px;
+        height: 30px;
+    }
+    
+    .btnAdd {
+        font-size: 18px;
+        line-height: 1.33;
+    }
+
+    .iconAdd {
+        width: 24px;
+        height: 24px;
+        fill: #407bff;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 544px;
+    }
 }
