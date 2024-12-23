@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
 
-import EditWater from "./EditWater.jsx";
-import DeleteWater from "./DeleteWater.jsx";
+import EditWater from "./EditWater/EditWater.jsx";
+import DeleteWater from "./DeleteWater/DeleteWater.jsx";
 import AddWater from "./AddWater/AddWater.jsx";
 import Icon from '../Svg/Svg.jsx'
 // import EditWater from "./EditWater.jsx";
