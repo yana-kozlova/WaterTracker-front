@@ -13,7 +13,8 @@ import { Toaster } from "react-hot-toast";
 // Імпортуємо компонент SettingModal
 import SettingModal from "../SettingModal/SettingModal.jsx";
 import ConfirmOAuth from "../../pages/ConfirmOAuth/ConfirmOAuth.jsx";
-
+import ResetPasswordPage from "../../pages/ResetPasswordPage/ResetPasswordPage.jsx";
+import ResetPasswordConfirmPage from "../../pages/ResetPasswordConfirmPage/ResetPasswordConfirmPage.jsx";
 
 const WelcomePage = lazy(
   () => import("../../pages/WelcomePage/WelcomePage.jsx")
@@ -115,6 +116,19 @@ export default function App() {
               />
               <Route path="/confirm-oauth" element={<ConfirmOAuth />} />
               <Route path="*" element={<NotFoundPage />} />
+              <Route
+                path="/reset-password-form"
+                element={<ResetPasswordPage />}
+              />
+              <Route
+                path="/reset-password"
+                element={
+                  <PublicRoute
+                    component={ResetPasswordConfirmPage}
+                    redirectTo="/signin"
+                  />
+                }
+              />
             </Route>
           </Routes>
           {/* Додаємо SettingModal */}
