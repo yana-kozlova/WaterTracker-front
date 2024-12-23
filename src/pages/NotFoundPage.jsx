@@ -1,48 +1,68 @@
-import { Link } from "react-router-dom";
 import React from "react";
 
 const NotFoundPage = () => {
   return (
     <div style={styles.container}>
-      <div style={styles.bottle}></div>
-      <button
-        style={styles.button}
-        onClick={() => (window.location.href = "/")}
-      >
-        Go to Homepage
-      </button>
+      
+      <div style={styles.background}></div>
+
+      
+      <div style={styles.content}>
+        <h1 style={styles.errorCode}>404</h1>
+        <p style={styles.message}>Це помилка. Сторінку не знайдено.</p>
+        <a href="/" style={styles.link}>
+          Повернутися на головну
+        </a>
+      </div>
     </div>
   );
 };
 
 const styles = {
   container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f7f9fc",
-    fontFamily: "Arial, sans-serif",
     position: "relative",
+    height: "100vh",
+    width: "100%", 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center", 
+    overflow: "hidden",
   },
-  bottle: {
-    width: "200px",
-    height: "400px",
-    backgroundImage: <img src="../components/404background/Background Main Page.png" alt="" />, 
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain",
-    backgroundPosition: "center",
+  background: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundImage: <img src="../components/404background/BackgroundMainPage.png" alt="" />, 
+    backgroundSize: "cover", 
+    backgroundPosition: "center", 
+    zIndex: -1, 
   },
-  button: {
-    backgroundColor: "#007bff",
+  content: {
+    textAlign: "center",
     color: "#fff",
-    border: "none",
+    textShadow: "0px 2px 4px rgba(0, 0, 0, 0.8)",
+  },
+  errorCode: {
+    fontSize: "150px", 
+    fontWeight: "bold",
+    margin: 0,
+  },
+  message: {
+    fontSize: "24px",
+    margin: "10px 0 20px",
+  },
+  link: {
+    fontSize: "18px",
+    textDecoration: "none",
+    color: "#007bff",
+    backgroundColor: "#fff",
     padding: "10px 20px",
     borderRadius: "5px",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    transition: "0.3s",
     cursor: "pointer",
-    fontSize: "16px",
-    marginTop: "20px",
   },
 };
 
