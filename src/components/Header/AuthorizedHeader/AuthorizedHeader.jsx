@@ -27,16 +27,15 @@ export default function AuthorizedHeader() {
   }
 
   function getInitial() {
-
-    if (user.name) {
-      return user.name.charAt(0).toUpperCase();
+    if (user.data.name) {
+      return user.data.name.charAt(0).toUpperCase();
     }
     return 'U';
   }
 
   function hasAvatar() {
-    if (user.avatarUrl) {
-      return <img href={user.avatarUrl} alt={user.name} />;
+    if (user.data.avatar_url) {
+      return <img src={user.data.avatar_url} alt={user.data.name} />;
     } else return <span>{getInitial()}</span>;
   }
 
@@ -44,7 +43,7 @@ export default function AuthorizedHeader() {
     <div className={css.userLogo}>
       <div className={css.userButton} onClick={handleToggleLogoModal}>
         <span className={css.userButtonContent}>
-          {user.name || user.email}
+          {user.data.name || user.data.email}
           <span className={css.avatarCircle}>{hasAvatar()}</span>
           <Icon
             name="chevron-double-upsolid"

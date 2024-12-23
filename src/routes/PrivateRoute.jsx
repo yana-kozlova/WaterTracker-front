@@ -11,9 +11,9 @@ export default function PrivateRoute({ redirectTo = "/", component: Component })
     
     const requireRedirect = !isLoggedIn && !isRefreshing;
 
-    console.log("PrivateRoute: isLoggedIn:", isLoggedIn);
-  console.log("PrivateRoute: isRefreshing:", isRefreshing);
-  console.log("PrivateRoute: Component:", Component);
+  //   console.log("PrivateRoute: isLoggedIn:", isLoggedIn);
+  // console.log("PrivateRoute: isRefreshing:", isRefreshing);
+  // console.log("PrivateRoute: Component:", Component);
 
     return requireRedirect ? <Navigate to={redirectTo} /> : <Component />;
 
