@@ -123,7 +123,7 @@ export default function App() {
               <Route
                 path="/reset-password"
                 element={
-                  <PublicRoute
+                  <PublicRegisterRoute
                     component={ResetPasswordConfirmPage}
                     redirectTo="/signin"
                   />

@@ -105,6 +105,7 @@ const slice = createSlice({
       .addCase(updatePassword.fulfilled, (state) => {
         state.isLoading = false;
         state.error = false;
+        state.isRegistered = true;
       })
       .addCase(updatePassword.rejected, (state) => {
         state.isLoading = false;
