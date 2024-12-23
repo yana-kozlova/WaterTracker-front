@@ -141,6 +141,10 @@ main {
     var(--spacing-base);
 }
 
+input[type="file"] {
+  display: none;
+}
+
 /* Темна тема для основних елементів */
 [data-theme="dark"] body {
   background-color: var(--primary-background-color);

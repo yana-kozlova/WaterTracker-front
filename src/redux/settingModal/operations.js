@@ -76,16 +76,17 @@ export const updateUserEmail = createAsyncThunk(
 
 export const updateUserPassword = createAsyncThunk(
   "user/updateUserPassword",
-  async ({ oldPassword, newPassword }, thunkAPI) => {
+  async ({old_password, new_password}, thunkAPI) => {
     try {
       const response = await axios.patch("/users/current", {
-        old_password: oldPassword,
-        new_password: newPassword,
+        old_password,
+        new_password
       });
       return response.data.message;
     } catch (error) {
+      console.log(error.response?.data?.message);
       return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Error updating password"
+        error.response?.data || "Error updating password"
       );
     }
   }

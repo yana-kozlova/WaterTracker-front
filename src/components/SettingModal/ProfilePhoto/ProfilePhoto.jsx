@@ -6,6 +6,8 @@ import defaultImage from "./image/default-image.png"
 const ProfilePhoto = ({ avatar, isSubmitBlocked, handleAvatarChange }) => {
   const fileInputId = useId();
 
+  console.log(avatar);
+
   return (
     <div className={css.photoGroup}>
       <h3 className={css.subtitle}>Your photo</h3>
@@ -18,7 +20,7 @@ const ProfilePhoto = ({ avatar, isSubmitBlocked, handleAvatarChange }) => {
           />
         </div>
         <div>
-          <div className={css["upload-button"]} type="button">
+          <div className={css["upload-button"]}>
             <label
               htmlFor={fileInputId}
               className={clsx(

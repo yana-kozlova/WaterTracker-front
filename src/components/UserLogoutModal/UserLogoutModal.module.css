@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 544px;
 }
 
 .title {
@@ -22,30 +23,31 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100%;
 }
 
 .buttonLogout {
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: #ef5050;
+  max-width: 160px;
 }
 
 .buttonCancel {
   background: #d7e3ff;
   color: #407bff;
+  max-width: 160px;
 }
 
 @media screen and (min-width: 768px) {
   .buttonLogout {
     font-size: 18px;
-    padding: 10px 30px;
   }
   .buttonCancel {
     font-size: 18px;
-    padding: 10px 30px;
   }
   .buttonContainer {
     flex-direction: row;
-    align-self: flex-end;
+    justify-content: flex-end;
   }
 }
 
