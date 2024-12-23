@@ -41,14 +41,18 @@
   gap: 0px;
   opacity: 0px;
   font-size: 16px;
+  border: none;
+  background-color: transparent;
 }
 .edit-container {
   width: 94px;
   height: 24px;
   display: flex;
+  justify-content: baseline;
+  align-items: center;
   gap: 12px;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  color: #ff9d43;
 }
