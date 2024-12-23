@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
-
 import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
 
 import EditWater from "./EditWater.jsx";
 import DeleteWater from "./DeleteWater.jsx";
 import AddWater from "./AddWater/AddWater.jsx";
+import Icon from '../Svg/Svg.jsx'
+// import EditWater from "./EditWater.jsx";
+// import DeleteWater from "./DeleteWater.jsx";
+// import AddWater from "./AddWater.jsx";
 
 import css from "./TodayWaterList.module.css"
 
@@ -17,12 +20,10 @@ export default function TodayWaterList() {
   const [currentWater, setCurrentWater] = useState(null);
   
   useEffect(() => {
-    // dispatch(getWater());
+    dispatch(getWater());
   }, [dispatch]);
 
-  // const { waterItems } = useSelector(selectWaterItem);
-
-  const waterItems = [];
+  const { waterList } = useSelector(selectWaterItem);
 
   const openModal = (type, water = null) => {
     setModalType(type);
@@ -48,29 +49,32 @@ export default function TodayWaterList() {
       <h2 className={css.title}>Today</h2>
       <div className={css.listWrapper}>
         <ul className={css.list}>
-          {waterItems?.length > 0 ? (
-            waterItems
+          {waterList?.length > 0 ? (
+            waterList
               .slice()
               .sort((a, b) => new Date(a.date) - new Date(b.date))
               .map(({ amount, date, _id }) => (
                 <li className={css.item} key={_id}>
                   <div className={css.infoWrapper}>
-                    <svg className={css.iconCup}>
+                    {/* <svg className={css.iconCup}>
                       <use href="/public/svg/#icon-cup" alt="Cup Icon"></use>
-                    </svg>
+                    </svg> */}
+                    <Icon id="icon-cup" className={css.iconCup} />
                     <p className={css.textVolume}>{amount}ml</p>
                     <p className={css.textTime}>{timeFromDate(date)}</p>
                   </div>
                   <div className={css.btnWrap}>
                     <button className={css.btnEdit} onClick={() => openModal('EDIT', { amount, date, _id })}>
-                      <svg className={css.iconEdit}>
+                      {/* <svg className={css.iconEdit}>
                         <use href="/public/svg/pencil-squareoutline.svg" alt="Edit Icon"></use>
-                      </svg>
+                      </svg> */}
+                      <Icon id="pencil-squareoutline" className={css.iconEdit} />
                     </button>
                     <button className={css.btnDelete} onClick={() => openModal('DELETE', { _id })}>
-                      <svg className={css.iconDelete}>
-                        <use href="/public/svg/trashoutline.svg" alt="Delete Icon"></use>
-                      </svg>
+                      {/* <svg className={css.iconDelete}>
+                        <use href="/public/svg/trashoutline.svg" alt="Delete Icon" ></use>
+                      </svg> */}
+                      <Icon id="trashoutline" className={css.iconDelete} />
                     </button>
                   </div>
                 </li>
@@ -82,9 +86,10 @@ export default function TodayWaterList() {
           )}
           <li>
             <button className={css.btnAdd} onClick={() => openModal('ADD')}>
-              <svg className={css.iconAdd}>
+              {/* <svg className={css.iconAdd}>
                 <use href="/public/svg/plus-smalloutline.svg" alt="Add Icon"></use>
-              </svg>
+              </svg> */}
+              <Icon id="plus-smalloutline" className={css.iconAdd} />
               Add water
             </button>
           </li>

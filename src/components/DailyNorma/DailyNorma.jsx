@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState } from 'react';
 import DailyNormaModal from "../DailyNormaModal/DailyNormaModal";
 import styles from "./DailyNorma.module.css";
 import BaseModal from "../BaseModal/BaseModal";
@@ -7,9 +7,8 @@ import { selectUser } from "../../redux/user/selectors";
 
 
 const DailyNorma = () => {
-  
-  const data = useSelector(selectUser);
-  const userDailyNorma = data.daily_norma / 1000;
+  const user = useSelector(selectUser);
+  const [userDailyNorma, setUserDailyNorma] = useState(0);
   
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,6 +19,12 @@ const DailyNorma = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    if (user?.data?.daily_norma) {
+      setUserDailyNorma(user?.data?.daily_norma / 1000);
+    }
+  }, [user, closeModal])
 
   return (
     <div className={styles["daily-norma"]}>

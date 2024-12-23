@@ -7,3 +7,4 @@ export default function PublicRoute({ redirectTo = "/home", component: Component
 
     return  isLoggedIn ? <Navigate to={redirectTo}/> : <Component/>
 };
+

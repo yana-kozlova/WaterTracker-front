@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import Icon from '../Svg/Svg.jsx';
 import css from "./WaterRatioPanel.module.css";
-// import Icon from "../../Svg/Svg.jsx";
-// import { ReactComponent as AddIcon } from "../../assets/images/outline.svg";
 
 export default function WaterRatioPanel() {
   const [ratio, setRatio] = useState(50);
 
-  const handleSliderChange = (e) => {
-    setRatio(e.target.value);
-  };
+
+  useEffect(() => {
+    setRatio(50);
+  }, [])
   
     return (
         <div className={css.waterRatioPanel}>
@@ -20,7 +20,6 @@ export default function WaterRatioPanel() {
             min="0"
             max="100"
             value={ratio}
-            onChange={handleSliderChange}
             className={css.slider}
           />
           <span className={css.sliderLabel}>100%</span>
@@ -29,12 +28,11 @@ export default function WaterRatioPanel() {
       
         <div>
         <button className={css.addWaterButton}>
-        {/* <Icon */}
-            {/* name="plus-circleoutline" */}
-            {/* // color="#2f2f2f" */}
-            {/* className={css.addIcon} */}
-          {/* /> */}
-            {/* <AddIcon /> */}
+         <Icon
+             name="plus-circleoutline"
+             color="#000000"
+             className={css.addIcon}
+           />
             Add Water
         </button>
         </div>
