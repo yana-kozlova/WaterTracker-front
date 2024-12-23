@@ -26,7 +26,7 @@
 }
 .daily-norma-l {
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 24px;
   text-align: left;
@@ -52,3 +52,23 @@
 .edit-button:hover {
   background-color: #0056b3;
 }
+@media (min-width: 320px) {
+  .daily-norma-l {
+    font-size: 24px;
+  }
+}
+
+/* @media (min-width: 768px) {
+  .daily-norma-l {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1440px) {
+  .daily-norma-p {
+    font-size: 21px;
+  }
+
+  .daily-norma-l {
+    font-size: 25px;
+  }
+} */
