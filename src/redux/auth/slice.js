@@ -88,6 +88,33 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = true;
       })
+      //Reset Password
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(resetPassword.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      //Update Password
+      .addCase(updatePassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(updatePassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+        state.isRegistered = true;
+      })
+      .addCase(updatePassword.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
       // _________________________UserAddCases_______________________________________
 
       .addCase(getUser.fulfilled, (state, action) => {
