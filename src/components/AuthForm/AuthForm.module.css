@@ -162,7 +162,7 @@
 .googleButton svg {
   width: 24px;
   height: 24px;
-  flex-shrink: 0; /* Чтобы иконка не уменьшалась */
+  flex-shrink: 0;
 }
 
 @media screen and (min-width: 768px) {
