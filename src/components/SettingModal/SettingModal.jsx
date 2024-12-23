@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import {
   updateUserAvatar, updateUserInfo, updateUserPassword,
-} from '../../redux/settingModal/operations';
+} from '../../redux/auth/operations';
 import { Formik, Form } from 'formik';
 import BaseModal from '../BaseModal/BaseModal';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';

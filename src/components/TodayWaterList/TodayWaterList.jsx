@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
-import { getWater } from '../../redux/water/operations.js';
+// import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
 import Icon from '../Svg/Svg.jsx'
 // import EditWater from "./EditWater.jsx";
@@ -15,9 +15,9 @@ export default function TodayWaterList() {
   const [modalType, setModalType] = useState(null);
   const [currentWater, setCurrentWater] = useState(null);
   
-  useEffect(() => {
-    dispatch(getWater());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getWater());
+  // }, [dispatch]);
 
   const { waterList } = useSelector(selectWaterItem);
 

@@ -3,9 +3,9 @@ import Button from "../Buttons/Button/Button";
 import css from "./DailyNormaForm.module.css";
 import { useState, useEffect, useId } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/user/selectors";
+import { selectUser } from "../../redux/auth/selectors";
 import { useDispatch } from "react-redux";
-import { updateUserDailyNorm } from '../../redux/user/operations';
+import { updateUserDailyNorm } from '../../redux/auth/operations';
 
 const initialValues = {
   gender: "for woman",

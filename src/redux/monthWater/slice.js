@@ -29,10 +29,4 @@ const slice = createSlice({
 
 export const monthWaterReducer = slice.reducer;
 
-// monthWaterList
-//  [
-//    -date
-//    -daylyNorm
-//    -servings
-//    -planDaylyNorm
-//  ]
+
