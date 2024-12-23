@@ -41,6 +41,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
       })
       // Login
+
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.data.user;
         state.token = action.payload.data.accessToken;
@@ -115,29 +116,7 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = true;
       })
-      // _________________________UserAddCases_______________________________________
 
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.error = null;
-        state.isLoading = false;
-        state.user = action.payload.data;
-      })
-      .addCase(updateUserData.fulfilled, (state, action) => {
-        state.error = null;
-        state.isLoading = false;
-        state.user = { ...state.user, ...action.payload };
-      })
-      .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
-        state.error = null;
-        state.isLoading = false;
-        state.error = false;
-        state.isRegistered = true;
-      })
-      .addCase(updateUserPhoto.fulfilled, (state, action) => {
-        state.error = null;
-        state.isLoading = false;
-        state.user.avatarUrl = action.payload.data.avatar_url;
-      })
       // _________________________UserAddCases_______________________________________
 
       .addCase(getUser.fulfilled, (state, action) => {
