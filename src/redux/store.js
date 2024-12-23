@@ -24,7 +24,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     todayWater: todayWaterReducer,
-    monthWater: monthWaterReducer,
+    monthStats: monthWaterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
