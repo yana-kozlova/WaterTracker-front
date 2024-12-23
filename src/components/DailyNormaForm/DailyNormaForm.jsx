@@ -30,8 +30,8 @@ const calculateDailyNorma = (gender, weight, activeTime) => {
 };
 
 const DailyNormaForm = ({onClose}) => {
-  const data = useSelector(selectUser);
-  const userDailyNorma = data.daily_norma / 1000;
+  const user = useSelector(selectUser);
+  const userDailyNorma = user.data.daily_norma / 1000;
   const dispatch = useDispatch();
 
   const genderWomanField = useId();
