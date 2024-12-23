@@ -1,5 +1,5 @@
 function SettingModal() {
-  return <button>Settins</button>;
+  return <button>Settings</button>;
 }
 
 export default SettingModal;

@@ -1,20 +1,40 @@
+import React from "react";
 import css from "./UserLogo.module.css";
 import Icon from "../Svg/Svg";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import SettingModal from "../SettingModal/SettingModal";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
-import { Link } from "react-router-dom";
 
 export default function UserLogo() {
   const user = useSelector(selectUser);
-  // console.log(user);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const menuRef = useRef();
 
   function handleToggleLogoModal() {
-    setIsModalOpen(!isModalOpen);
+    setIsModalOpen((prev) => !prev);
+  }
+
+  function handleEscapeKey(event) {
+    if (event.key === "Escape") {
+      setIsModalOpen(false);
+    }
+  }
+
+  function handleOutsideClick(event) {
+    // console.log(event.target);
+    // console.log(isModalOpen);
+    // console.log(menuRef.current);
+    if (
+      isModalOpen &&
+      menuRef.current &&
+      menuRef.current.contains(event.target)
+    ) {
+      setIsModalOpen(false);
+    }
   }
 
   function getInitial() {
@@ -26,9 +46,25 @@ export default function UserLogo() {
 
   function hasAvatar() {
     if (user.avatarUrl) {
-      return <img href={user.avatarUrl} alt={user.name} />;
+      return (
+        <img href={user.avatarUrl} alt={user.name} width="28" height="28" />
+      );
     } else return <span>{getInitial()}</span>;
   }
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.addEventListener("click", handleOutsideClick);
+      document.addEventListener("keydown", handleEscapeKey);
+    } else {
+      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscapeKey);
+    }
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isModalOpen]);
 
   return (
     <div className={css.userLogo}>
@@ -43,26 +79,30 @@ export default function UserLogo() {
           />
         </span>
       </button>
-      {isModalOpen && (
-        <div className={css.navActions}>
-          <div className={css.actionLink}>
-            <Icon
-              name="cog-6-toothoutline"
-              color="#407BFF"
-              className={css.actionLinkIcon}
-            />
-            <SettingModal />
-          </div>
-          <div className={css.actionLink}>
-            <Icon
-              name="arrow-right-on-rectangleoutline"
-              color="#407BFF"
-              className={css.actionLinkIcon}
-            />
-            <UserLogoModal />
-          </div>
-        </div>
-      )}
+      {isModalOpen ? <MenuPopUp ref={menuRef} /> : ""}
     </div>
   );
 }
+
+const MenuPopUp = React.forwardRef(function MenuPopUp(props, ref) {
+  return (
+    <ul className={css.navActions} ref={ref}>
+      <li className={css.actionLink}>
+        <Icon
+          name="cog-6-toothoutline"
+          color="#407BFF"
+          className={css.actionLinkIcon}
+        />
+        <SettingModal />
+      </li>
+      <li className={css.actionLink}>
+        <Icon
+          name="arrow-right-on-rectangleoutline"
+          color="#407BFF"
+          className={css.actionLinkIcon}
+        />
+        <UserLogoModal />
+      </li>
+    </ul>
+  );
+});
