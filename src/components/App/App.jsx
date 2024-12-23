@@ -10,6 +10,8 @@ import PublicRoute from "../.././routes/PublicRoute.jsx";
 import { Navigate } from "react-router-dom";
 import DripLoader from "../DripLoader/DripLoader.jsx";
 import { Toaster } from "react-hot-toast";
+// Імпортуємо компонент SettingModal
+import SettingModal from "../SettingModal/SettingModal.jsx";
 import ConfirmOAuth from "../../pages/ConfirmOAuth/ConfirmOAuth.jsx";
 
 // import DripLoader from "../DripLoader/DripLoader.jsx";
@@ -123,7 +125,7 @@ export default function App() {
           duration: 5000,
           style: {
             background: "var(--primary-color-white)",
-            color: "var(--primary-color-black)",
+            color: "var(--primary-text-color)",
             boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)",
             borderRadius: "12px",
             padding: "12px 20px",
@@ -171,10 +173,39 @@ export default function App() {
                   <PublicRoute component={SigninPage} redirectTo="/home" />
                 }
               />
+              <Route
+                path="/welcome"
+                element={
+                  <PublicRoute component={WelcomePage} redirectTo="/home" />
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute component={MainPage} redirectTo="/signin" />
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <PublicRegisterRoute
+                    component={SignupPage}
+                    redirectTo="/signin"
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <PublicRoute component={SigninPage} redirectTo="/home" />
+                }
+              />
               <Route path="/confirm-oauth" element={<ConfirmOAuth />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
+          {/* Додаємо SettingModal */}
+          <SettingModal />
         </Suspense>
       )}
     </>

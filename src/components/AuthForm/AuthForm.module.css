@@ -17,7 +17,7 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 123%;
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
 }
 
 .inputLabel {
@@ -27,7 +27,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 133%;
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
   text-align: left;
 }
 .fieldWrapper {
@@ -71,8 +71,9 @@
   top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
-  stroke: var(--primary-color-black);
+  stroke: var(--primary-text-color);
   transition: stroke 0.3s;
 }
 

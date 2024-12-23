@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import css from './TodayListModal.module.css';
+import Icon from "../../Svg/Svg.jsx";
 // import { ReactComponent as CloseIcon } from '../../public/svg/x.svg';
 
 export default function TodayListModal({ onClose, onSave }) {
@@ -23,9 +24,14 @@ export default function TodayListModal({ onClose, onSave }) {
         <div className={css.modalHeader}>
           <h2 className={css.modalTitle}>Add water</h2>
           <button className={css.closeButton} onClick={onClose} aria-label="Close">
-            <svg>
+          <Icon
+            name="x"
+            // color="#2f2f2f"
+            className={css.icon}
+          />
+            {/* <svg>
           <use href="../../public/svg/x.svg" alt="Add Icon" className={css.icon}></use>
-          </svg>
+          </svg> */}
           </button>
         </div>
         <div className={css.inputGroup}>
