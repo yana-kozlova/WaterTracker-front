@@ -1,23 +1,33 @@
+import BaseModal from '../../BaseModal/BaseModal.jsx';
+import UserLogoutModal from '../../UserLogoutModal/UserLogoutModal.jsx';
 import css from "./AuthorizedHeader.module.css";
 import Icon from "../../Svg/Svg.jsx";
-import UserLogoModal from "../../UserLogoModal/UserLogoModal.jsx";
 import SettingModal from "../../SettingModal/SettingModal.jsx";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../redux/auth/selectors.js";
-import { Link } from "react-router-dom";
 
 export default function AuthorizedHeader() {
   const user = useSelector(selectUser);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [isOpenLogout, setIsOpenLogout] = useState(false);
+
+  const openLogoutModal = () => {
+    setIsOpenLogout(true);
+  }
+  const closeLogoutModal = () => {
+    setIsOpenLogout(false);
+    setIsPopupOpen(false);
+  }
 
   function handleToggleLogoModal() {
     setIsPopupOpen(!isPopupOpen);
   }
 
   function getInitial() {
+
     if (user.name) {
       return user.name.charAt(0).toUpperCase();
     }
@@ -45,22 +55,32 @@ export default function AuthorizedHeader() {
       </div>
       {isPopupOpen && (
         <div className={css.navActions}>
-          <div className={css.actionLink} onClick={() => setIsSettingOpen(!isSettingOpen)}>
+          <div className={css.actionLink} onClick={() => {
+            setIsSettingOpen(true);
+          }}>
             <Icon
               name="cog-6-toothoutline"
               color="#407bff"
               className={css.actionLinkIcon}
             />
             Settings
-            <SettingModal isModalOpen={isSettingOpen} onClose={() => setIsPopupOpen(false)} />
+            <SettingModal isModalOpen={isSettingOpen} onClose={() => {
+              setIsSettingOpen(false);
+              setIsPopupOpen(false);
+            }}/>
           </div>
-          <div className={css.actionLink}>
+          <div className={css.actionLink} onClick={openLogoutModal}>
             <Icon
               name="arrow-right-on-rectangleoutline"
               color="#407bff"
               className={css.actionLinkIcon}
             />
-            <UserLogoModal />
+            <div>
+              Log out
+            </div>
+            <BaseModal isOpen={isOpenLogout} onClose={closeLogoutModal}>
+              <UserLogoutModal onCloseLogout={closeLogoutModal} />
+            </BaseModal>
           </div>
         </div>
       )}

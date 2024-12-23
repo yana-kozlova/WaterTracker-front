@@ -2,6 +2,7 @@
     display: block;
     cursor: pointer;
     margin-bottom: 8px;
+    color: var(--primary-text-color);
 }
 
 .thin {

@@ -14,8 +14,9 @@
 
 .subtitle {
     margin: 0;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
+    color: var(--primary-text-color);
 }
 
 .upload-button {
@@ -24,6 +25,13 @@
     padding: 0;
 }
 
+.upload-button:hover .file-upload-label {
+    color: var(--secondary-color-5);
+}
+
+.upload-button:hover .upload-icon {
+    stroke: var(--secondary-color-5);
+}
 .avatar-container {
     width: 80px;
     height: 80px;

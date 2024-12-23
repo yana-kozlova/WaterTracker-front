@@ -1,5 +1,6 @@
 .userLogo {
   position: relative;
+  cursor: pointer;
 }
 
 .userButtonContent {
@@ -22,6 +23,7 @@
 
 .navActions {
   position: absolute;
+  top: 36px;
   right: 0;
   padding: 1rem;
   display: flex;

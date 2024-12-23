@@ -1,7 +1,7 @@
 .settingModal {
     max-width: 1008px;
     height: 594px;
-    padding: 32px;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -16,11 +16,11 @@
 }
 
 .name-header {
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: 24px;
-  margin: 0;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--primary-text-color);
 }
 
 .label {
@@ -35,8 +35,9 @@
 
 .subtitle {
     margin: 0;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
+    color: var(--primary-text-color);
 }
 
 .thin {
@@ -86,6 +87,7 @@
 .desktop-right {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 12px;
 }
 
@@ -180,7 +182,6 @@
 }
 
 
-
 @media screen and (min-width: 768px) {
     :root {
         max-width: 768px;
@@ -203,6 +204,10 @@
 
     .input-wrapper {
         width: 392px;
+    }
+
+    .settingModal {
+        padding: 32px;
     }
 }
 
@@ -231,11 +236,11 @@
         gap: 0;
     }
 
-    .desktop-left>*:nth-child(1) {
+    .desktop-left > *:nth-child(1) {
         margin-bottom: 52px;
     }
 
-    .desktop-left>*:nth-child(2) {
+    .desktop-left > *:nth-child(2) {
         margin-bottom: 24px;
     }
 }
