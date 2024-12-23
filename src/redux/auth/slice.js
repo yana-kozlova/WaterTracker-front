@@ -90,7 +90,7 @@ const slice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user = action.payload;
+        state.user = action.payload.data;
       })
       .addCase(updateUserData.fulfilled, (state, action) => {
         state.error = null;

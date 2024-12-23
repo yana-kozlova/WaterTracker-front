@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import {
-  updateUserAvatar, updateUserInfo, updateUserPassword,
+  updateUserPhoto, updateUserData, updateUserPassword,
 } from '../../redux/auth/operations';
 import { Formik, Form } from 'formik';
 import BaseModal from '../BaseModal/BaseModal';
@@ -79,7 +79,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
 
       // Оновлення іншої інформації
       if (name !== user?.data?.name || email !== user?.data?.email || gender !== user?.data?.gender) {
-        promises.push(dispatch(updateUserInfo({ name, email, gender }))
+        promises.push(dispatch(updateUserData({ name, email, gender }))
           .unwrap()
           .then((r) => r.message && toast.success(r.message))
           .catch((error) => {
@@ -120,7 +120,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
       const formData = new FormData();
       formData.append('avatar_url', file);
 
-      dispatch(updateUserAvatar(formData))
+      dispatch(updateUserPhoto(formData))
         .unwrap()
         .then((r) => r.message && toast.success(r.message))
         .catch((error) => console.error(error.message))

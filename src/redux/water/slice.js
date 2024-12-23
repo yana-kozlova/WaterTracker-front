@@ -3,10 +3,7 @@ import {  addWater, deleteWater, editWater } from "./operations";
 
 const initialState = {
   waterItem: [],
-  formattedDate: null,
-  servings: null,
-  totalAmount: null,
-  progress: null,
+
   isLoading: false,
   error: false,
 };
@@ -22,30 +19,21 @@ const slice = createSlice({
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
         state.waterItem.push(action.payload.data.waterList);
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
+
       })
       //Delete
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.filter(
           (waterItem) => waterItem.id !== action.payload.id
         );
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
+
       })
       //Edit
       .addCase(editWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.map((waterItem) =>
           waterItem.id === action.payload.id ? action.payload : waterItem
         );
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
+
       })
       //addMatcher
       .addMatcher(
