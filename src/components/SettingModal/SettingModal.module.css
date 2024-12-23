@@ -1,6 +1,8 @@
 .settingModal {
     max-width: 1008px;
-    height: 594px;
+    min-height: 594px;
+    height: fit-content;
+    max-height: calc(100vh - 10%);
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;

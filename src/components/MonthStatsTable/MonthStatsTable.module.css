@@ -1,34 +1,96 @@
 .wrapperCalendar {
     display: flex;
     flex-direction: column;
-    margin-top: 312px;
 }
-
-.containerNav {
+.wrapperMonth {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 16px;
 }
 
 .title {
     font-weight: 500;
-    font-size: 26px;
-    line-height: 1.23077;
+    font-size: 24px;
+    line-height: 1.25;
     color: #2f2f2f;
 }
 
-.changeMonth {
+.month {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #407bff;
+    
+}
+
+.span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+    color: #407bff;
+    margin-left: 10px;
+
+}
+
+.buttonLeft,
+.buttonRight {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    cursor: pointer;
+    margin-left:10px;
+    background-color: transparent;
+    border: none;
+    color: #407bff;
+}
+
+.buttonRight:disabled {
+    color: #a9a9a9;
+    cursor: not-allowed;
 }
 
 
-.wrapperDays {
+
+.containerDays {
     display: flex;
-    column-gap: 22px;
-    row-gap: 20px;
+    column-gap: 26px;
+    row-gap: 16px;
     flex-wrap: wrap;
     width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 26px;
+        line-height: 1.23;
+    }
+    .containerDays {
+        column-gap: 34px;
+        row-gap: 20px;
+
+    }
+    .span {
+        margin-left: 12px;
+    }
+    .buttonLeft,
+    .buttonRight {
+        margin-left: 12px;
+        }
+}
+
+@media screen and (min-width: 1440px) {
+    .waterContainer {
+        width: 592px;
+        height: 680px;
+    }
+
+    .containerDays {
+        display: flex;
+        column-gap: 22px;
+        row-gap: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 }
