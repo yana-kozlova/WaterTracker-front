@@ -22,7 +22,7 @@ const WelcomePage = lazy(
 const MainPage = lazy(() => import("../../pages/MainPage/MainPage.jsx"));
 const SigninPage = lazy(() => import("../../pages/SigninPage/SigninPage.jsx"));
 const SignupPage = lazy(() => import("../../pages/SignupPage/SignupPage.jsx"));
-const NotFoundPage = lazy(() => import("../../pages/NotFoundPage.jsx"));
+const NotFoundPage = lazy(() => import("../../pages/404/NotFoundPage.jsx"));
 
 export default function App() {
   const dispatch = useDispatch();
