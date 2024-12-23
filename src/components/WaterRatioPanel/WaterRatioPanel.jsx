@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import css from "./WaterRatioPanel.module.css";
 // import Icon from "../../Svg/Svg.jsx";
 // import { ReactComponent as AddIcon } from "../../assets/images/outline.svg";

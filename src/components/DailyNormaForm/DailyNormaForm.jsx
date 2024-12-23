@@ -3,7 +3,9 @@ import Button from "../Buttons/Button/Button";
 import css from "./DailyNormaForm.module.css";
 import { useState, useEffect, useId } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
+import { selectUser } from "../../redux/user/selectors";
+import { useDispatch } from "react-redux";
+import { updateUserDailyNorm } from '../../redux/user/operations';
 
 const initialValues = {
   gender: "for woman",
@@ -27,9 +29,10 @@ const calculateDailyNorma = (gender, weight, activeTime) => {
   }
 };
 
-const DailyNormaForm = () => {
-  const { daily_norma } = useSelector(selectUser);
-  const userDailyNorma = daily_norma / 1000;
+const DailyNormaForm = ({onClose}) => {
+  const data = useSelector(selectUser);
+  const userDailyNorma = data.daily_norma / 1000;
+  const dispatch = useDispatch();
 
   const genderWomanField = useId();
   const genderMenField = useId();
@@ -49,11 +52,13 @@ const DailyNormaForm = () => {
     setDailyNorma(norma);
   }, [formData]);
 
+
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        console.log(values);
+        dispatch(updateUserDailyNorm({ daily_norma : values.userDailyNorma*1000 } ))
+          onClose();
       }}
     >
       {({ handleChange }) => (
