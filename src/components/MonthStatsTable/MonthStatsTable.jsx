@@ -1,5 +1,8 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DayComponent from "../DayComponent/DayComponent.jsx";
@@ -107,4 +110,7 @@ export default function MonthStatsTable() {
     </div>
   );
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
