@@ -3,7 +3,6 @@ import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList.jsx';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
 
-import css from './MainPage.module.css'
 
 export default function MainPage() {
   return (

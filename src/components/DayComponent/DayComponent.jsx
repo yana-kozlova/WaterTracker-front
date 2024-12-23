@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import css from './DayComponent.module.css';
 import DaysGeneralStats from '../DaysGeneralStats/DaysGeneralStats'
-// import DaysGeneralStats from "./DaysGeneralStats";
+
+
 
 export default function DayComponent({ calendarRef, day, waterPercent }) {
     const [isModalOpen, setIsModalOpen] = useState(false) // відображення модального вікна.
