@@ -7,9 +7,10 @@ export default function MainPage() {
   return (
     <>
       <div className={css.waterContainer}>
-        <TodayWaterList/>
+        <TodayWaterList />
         <MonthStatsTable />
-      </div>;
+      </div>
+      ;
     </>
-  )
+  );
 }

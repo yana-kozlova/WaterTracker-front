@@ -6,7 +6,7 @@ import { selectWaterItem } from "../../redux/water/selectors";
 
 import EditWater from "./EditWater.jsx";
 import DeleteWater from "./DeleteWater.jsx";
-import AddWater from "./AddWater.jsx";
+import AddWater from "./AddWater/AddWater.jsx";
 
 import css from "./TodayWaterList.module.css"
 
