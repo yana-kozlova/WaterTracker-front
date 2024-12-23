@@ -3,8 +3,8 @@ import DailyNormaModal from "../DailyNormaModal/DailyNormaModal";
 import styles from "./DailyNorma.module.css";
 import BaseModal from "../BaseModal/BaseModal";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
 
+import { selectUser } from "../../redux/auth/selectors";
 
 const DailyNorma = () => {
   const user = useSelector(selectUser);

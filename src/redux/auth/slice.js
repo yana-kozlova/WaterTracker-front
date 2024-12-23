@@ -5,8 +5,10 @@ import {
   logout,
   refreshUser,
   loginWithGoogle,
-  resetPassword,
-  updatePassword,
+  getUser,
+  updateUserData,
+  updateUserDailyNorm,
+  updateUserPhoto
 } from "./operations";
 
 const initialState = {
@@ -15,7 +17,7 @@ const initialState = {
     email: null,
     gender: "woman",
     avatarUrl: null,
-    daylyNorm: 2000,
+    daily_norma: 2000,
   },
   token: null,
   isLoggedIn: false,
@@ -84,32 +86,31 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = true;
       })
-      //Reset Password
-      .addCase(resetPassword.pending, (state) => {
-        state.isLoading = true;
-        state.error = false;
-      })
-      .addCase(resetPassword.fulfilled, (state) => {
+      // _________________________UserAddCases_______________________________________
+
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.error = null;
         state.isLoading = false;
-        state.error = false;
+        state.user = action.payload.data;
       })
-      .addCase(resetPassword.rejected, (state) => {
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.error = null;
         state.isLoading = false;
-        state.error = true;
+        state.user = { ...state.user, ...action.payload };
       })
-      //Update Password
-      .addCase(updatePassword.pending, (state) => {
-        state.isLoading = true;
-        state.error = false;
-      })
-      .addCase(updatePassword.fulfilled, (state) => {
+      .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
+        state.error = null;
         state.isLoading = false;
-        state.error = false;
+        state.user.daily_norma = action.payload.data.daily_norma;
       })
-      .addCase(updatePassword.rejected, (state) => {
+      .addCase(updateUserPhoto.fulfilled, (state, action) => {
+        state.error = null;
         state.isLoading = false;
-        state.error = true;
+        state.user.avatarUrl = action.payload.data.avatar_url;
       })
+
+      //  _____________________________addMatcher_________________________________
+
       .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
         state.isLoading = true;
       })
@@ -121,18 +122,34 @@ const slice = createSlice({
       })
       .addMatcher(isAnyOf(login.fulfilled, refreshUser.fulfilled), (state) => {
         state.isLoggedIn = true;
-      });
+      })
+      // _________________________UserAddCases_______________________________________
+      .addMatcher(
+        isAnyOf(
+          getUser.pending,
+          updateUserData.pending,
+          updateUserDailyNorm.pending,
+          updateUserPhoto.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getUser.rejected,
+          updateUserData.rejected,
+          updateUserDailyNorm.rejected,
+          updateUserPhoto.rejected
+        ),
+        (state) => {
+          state.isLoading = false;
+          state.error = true;
+        }
+      );
   },
 });
 
 export const authReducer = slice.reducer;
 
-// name: null,
-// email: null,
-// gender: "woman",
-// avatarUrl: null,
-// daylyNorm: 2000,
-// password:null,
-// createdAt:null,
-// updatedAt:null,
-// _id:null,
+
