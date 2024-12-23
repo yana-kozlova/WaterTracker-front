@@ -186,23 +186,23 @@ export const loginWithGoogle = createAsyncThunk(
 //   }
 // );
 
-// export const updateUserPassword = createAsyncThunk(
-//   "user/updateUserPassword",
-//   async ({old_password, new_password}, thunkAPI) => {
-//     try {
-//       const response = await axios.patch("/users/current", {
-//         old_password,
-//         new_password
-//       });
-//       return response.data.message;
-//     } catch (error) {
-//       console.log(error.response?.data?.message);
-//       return thunkAPI.rejectWithValue(
-//         error.response?.data || "Error updating password"
-//       );
-//     }
-//   }
-// );
+export const updateUserPassword = createAsyncThunk(
+  "user/updateUserPassword",
+  async ({old_password, new_password}, thunkAPI) => {
+    try {
+      const response = await axios.patch("/users/current", {
+        old_password,
+        new_password
+      });
+      return response.data.message;
+    } catch (error) {
+      console.log(error.response?.data?.message);
+      return thunkAPI.rejectWithValue(
+        error.response?.data || "Error updating password"
+      );
+    }
+  }
+);
 
 // _________________________________________________________________
 
