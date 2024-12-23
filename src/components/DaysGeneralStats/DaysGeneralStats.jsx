@@ -10,7 +10,7 @@ const DaysGeneralStats = ({
   onClose, // Функція для закриття модалки
 }) => {
   // Якщо selectedDate не передано, використовуємо поточну дату
-  const dateToDisplay = selectedDate || new Date();
+  // const dateToDisplay = selectedDate || new Date();
 
   // Форматування дати у вигляді "5, April"
   const formatDate = (date) => {
@@ -67,7 +67,7 @@ const DaysGeneralStats = ({
       <div className={styles.modal}>
         <ul className={styles.list}>
           <li>
-            <span className={styles.value}>{formatDate(dateToDisplay)}</span>
+            <span className={styles.value}>{selectedDate}</span>
           </li>
           <li>
             <span className={styles.label}>Daily Norm:</span>
