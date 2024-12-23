@@ -67,12 +67,11 @@ const slice = createSlice({
         state.error = false;
       })
       .addCase(loginWithGoogle.fulfilled, (state, action) => {
-        // Устанавливаем токен
         state.token = action.payload.token;
-        // Обновляем данные пользователя, сохраняя структуру
+
         state.user = {
-          ...state.user, // сохраняем дефолтные значения
-          ...action.payload.user, // перезаписываем полученными данными
+          ...state.user,
+          ...action.payload.user,
         };
         state.isLoggedIn = true;
         state.isLoading = false;

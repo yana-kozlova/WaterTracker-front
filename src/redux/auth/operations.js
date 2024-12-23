@@ -78,58 +78,36 @@ export const loginWithGoogle = createAsyncThunk(
   "auth/loginWithGoogle",
   async (code, { rejectWithValue }) => {
     try {
-      // 1. Получаем токен
-      console.log("Sending OAuth code to server...");
       const response = await axios.post("/auth/confirm-oauth", { code });
-      console.log("Server response:", response.data);
+
+      if (!response.data || !response.data.data) {
+        throw new Error("Invalid response format from server");
+      }
 
       const { accessToken } = response.data.data;
-      console.log("Received access token:", accessToken);
 
-      // 2. Устанавливаем токен
       setAuthHeader(accessToken);
-      console.log("Authorization header set");
 
-      // 3. Небольшая задержка перед запросом данных пользователя
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      // 4. Получаем данные пользователя с полным URL
-      console.log("Fetching user data...");
-      const { data: userResponse } = await axios.get("/users/current", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      console.log("User data received:", userResponse);
-
-      // Проверяем структуру данных
+      const { data: userResponse } = await axios.get("/users/current");
       const userData = userResponse.data || userResponse;
-      console.log("Processed user data:", userData);
 
-      // 5. Формируем ответ
-      const result = {
+      return {
         token: accessToken,
         user: {
-          name: userData?.name || null,
-          email: userData?.email || null,
-          gender: userData?.gender || "woman",
-          avatarUrl: userData?.avatarUrl || null,
-          daylyNorm: userData?.daylyNorm || 2000,
+          name: userData.name || "",
+          email: userData.email || "",
+          gender: userData.gender || "woman",
+          avatarUrl: "",
+          daylyNorm: userData.daily_norma || 2000,
         },
       };
-      console.log("Final structured data:", result);
-
-      return result;
     } catch (error) {
-      console.error("Error details:", {
+      console.error("Error in Google login:", {
         message: error.message,
         response: error.response?.data,
         status: error.response?.status,
       });
-      console.log(
-        "Current Authorization header:",
-        axios.defaults.headers.common.Authorization
-      );
+
       return rejectWithValue(
         error.response?.data?.message ||
           error.message ||

@@ -158,10 +158,12 @@
   box-shadow: 0 4px 14px 0 #407bff8a;
   transform: none;
 }
-.googleIcon {
-  width: 25px;
-  height: 25px;
+.googleButton svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0; /* Чтобы иконка не уменьшалась */
 }
+
 @media screen and (min-width: 768px) {
   .submitButton {
     font-size: 18px;
