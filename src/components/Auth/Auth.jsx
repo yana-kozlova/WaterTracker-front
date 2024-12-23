@@ -5,8 +5,9 @@ import BottleImg from "./BottleImg.jsx";
 const Auth = () => {
   return (
     <section className={css.section}>
-        <SignInForm />
-        <BottleImg className={css.picture} />
+      <div className={css.background}></div>
+      <SignInForm/>
+      <BottleImg className={css.picture}/>
     </section>
   );
 };

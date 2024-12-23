@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { useId } from "react";
-import Button from '../Buttons/Button/Button.jsx';
-import { EyeIcon, EyeSlashIcon } from './const.jsx';
+import Button from "../Buttons/Button/Button.jsx";
+import { EyeIcon, EyeSlashIcon, GoogleIcon } from "./const.jsx";
 import css from "./AuthForm.module.css";
 import clsx from "clsx";
 import { NavLink, useLocation } from "react-router-dom";
-
+import PasswordField from "./PasswordField";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { SignInSchema, SignUpSchema } from "../../utils/userValidationSchema";
 import { register, login } from "../../redux/auth/operations.js";
+import axios from "axios";
 
 const initialValues = {
   email: "",
@@ -23,9 +24,7 @@ const initialValues = {
 export const SignInForm = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-  const emailFieldId = useId();
-  const passwordFieldId = useId();
-  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
 
@@ -67,8 +66,19 @@ export const SignInForm = () => {
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get("/auth/get-oauth-url");
+      const url = response.data?.data.url;
+
+      if (url) {
+        window.location.href = url;
+      } else {
+        toast.error("Failed to get Google OAuth URL!");
+      }
+    } catch (error) {
+      toast.error("Failed to get Google OAuth URL!");
+    }
   };
 
   const chooseValidationSchema = () => {
@@ -98,7 +108,7 @@ export const SignInForm = () => {
       >
         <Form className={css.form}>
           <div className={css.fieldWrapper}>
-            <label htmlFor={emailFieldId} className={css.inputLabel}>
+            <label htmlFor="email" className={css.inputLabel}>
               Enter your email
             </label>
             <Field name="email">
@@ -107,7 +117,7 @@ export const SignInForm = () => {
                   <input
                     {...field}
                     type="email"
-                    id={emailFieldId}
+                    id="email"
                     placeholder="E-mail"
                     className={clsx(css.inputField, {
                       [css.inputFieldError]: form.errors.email,
@@ -122,85 +132,30 @@ export const SignInForm = () => {
               )}
             </Field>
           </div>
-          <div className={css.passwordFieldWrapper}>
-            <div className={css.inputFieldWrapper}>
-              <label htmlFor={passwordFieldId} className={css.inputLabel}>
-                Enter your password
-              </label>
-              <Field name="password">
-                {({ field, form }) => (
-                  <>
-                    <input
-                      {...field}
-                      type={showPassword ? "text" : "password"}
-                      id={passwordFieldId}
-                      placeholder="Password"
-                      className={clsx(css.inputField, {
-                        [css.inputFieldError]: form.errors.password,
-                      })}
-                    />
-                    {form.errors.password && (
-                      <span className={css.errorMessage}>
-                        {form.errors.password}
-                      </span>
-                    )}
-                  </>
-                )}
-              </Field>
-              <span
-                className={css.passwordToggleIcon}
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? (
-                  <EyeSlashIcon color="#2F2F2F" />
-                ) : (
-                  <EyeIcon color="#2F2F2F" />
-                )}
-              </span>
-            </div>
-          </div>
-          {pathname === "/signup" && (
-            <div className={css.passwordFieldWrapper}>
-              <div className={css.inputFieldWrapper}>
-                <label htmlFor={passwordFieldId} className={css.inputLabel}>
-                  Repeat your password
-                </label>
-                <Field name="repeatPassword">
-                  {({ field, form }) => (
-                    <>
-                      <input
-                        {...field}
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Repeat Password"
-                        className={clsx(css.inputField, {
-                          [css.inputFieldError]: form.errors.repeatPassword,
-                        })}
-                      />
-                      {form.errors.repeatPassword && (
-                        <span className={css.errorMessage}>
-                          {form.errors.repeatPassword}
-                        </span>
-                      )}
-                    </>
-                  )}
-                </Field>
-                <span
-                  className={css.passwordToggleIcon}
-                  onClick={togglePasswordVisibility}
-                >
-                  {showPassword ? (
-                    <EyeSlashIcon color="#2F2F2F" />
-                  ) : (
-                    <EyeIcon color="#2F2F2F" />
-                  )}
-                </span>
-              </div>
-            </div>
-          )}
-          <Button
-            type="submit"
-            name={setPageTitle()}
+
+          <PasswordField
+            name="password"
+            label="Enter your password"
+            placeholder="Password"
           />
+
+          {pathname === "/signup" && (
+            <PasswordField
+              name="repeatPassword"
+              label="Repeat your password"
+              placeholder="Repeat Password"
+            />
+          )}
+
+          <Button type="submit" name={setPageTitle()} />
+          <button
+            type="button"
+            className={css.googleButton}
+            onClick={handleGoogleLogin}
+          >
+            <GoogleIcon />
+            Enter with Google
+          </button>
         </Form>
       </Formik>
 

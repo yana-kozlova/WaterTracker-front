@@ -1,8 +1,8 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import Icon from '../Svg/Svg.jsx';
-import css from './UserAuth.module.css';
+import Icon from '../../Svg/Svg.jsx';
+import css from './UnauthorizedHeader.module.css';
 
-function UserAuth() {
+function UnauthorizedHeader() {
   const { pathname } = useLocation();
 
   return (<div className={css.flexContainer}>
@@ -21,4 +21,4 @@ function UserAuth() {
     </div>);
 }
 
-export default UserAuth;
+export default UnauthorizedHeader;

@@ -1,10 +1,11 @@
 import { Formik, Form, Field } from "formik";
 import Button from "../Buttons/Button/Button";
-import css from './DailyNormaForm.module.css';
+import css from "./DailyNormaForm.module.css";
 import { useState, useEffect, useId } from "react";
 import { useSelector } from "react-redux";
-import { selectWaterAmount } from "../../redux/monthWater/selectors";
-
+import { selectUser } from "../../redux/user/selectors";
+import { useDispatch } from "react-redux";
+import { updateUserDailyNorm } from '../../redux/user/operations';
 
 const initialValues = {
   gender: "for woman",
@@ -14,8 +15,8 @@ const initialValues = {
 };
 
 const calculateDailyNorma = (gender, weight, activeTime) => {
-const userWeight = parseFloat(weight) || 0;
-const userActiveTime = parseFloat(activeTime) || 0;
+  const userWeight = parseFloat(weight) || 0;
+  const userActiveTime = parseFloat(activeTime) || 0;
 
   if (gender === "for woman") {
     const calculateResult =
@@ -28,12 +29,10 @@ const userActiveTime = parseFloat(activeTime) || 0;
   }
 };
 
-
-
-const DailyNormaForm = () => {
-
-  const waterRate = useSelector(selectWaterAmount);
-  console.log(waterRate);
+const DailyNormaForm = ({onClose}) => {
+  const user = useSelector(selectUser);
+  const userDailyNorma = user.data.daily_norma / 1000;
+  const dispatch = useDispatch();
 
   const genderWomanField = useId();
   const genderMenField = useId();
@@ -45,14 +44,22 @@ const DailyNormaForm = () => {
   const [dailyNorma, setDailyNorma] = useState("0");
 
   useEffect(() => {
-    const norma = calculateDailyNorma(formData.gender, formData.weight, formData.activeTime);
+    const norma = calculateDailyNorma(
+      formData.gender,
+      formData.weight,
+      formData.activeTime
+    );
     setDailyNorma(norma);
   }, [formData]);
+
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => {
+        dispatch(updateUserDailyNorm({ daily_norma : values.userDailyNorma*1000 } ))
+          onClose();
+      }}
     >
       {({ handleChange }) => (
         <Form className={css.form}>
@@ -131,7 +138,7 @@ const DailyNormaForm = () => {
             <div>
               <span className={css.amountResult}>
                 {dailyNorma === 0 ? (
-                  <p>1.8L</p>
+                  <p>{userDailyNorma} L</p>
                 ) : (
                   <div className={css.amountResult}>
                     <p>{dailyNorma}</p>

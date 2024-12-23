@@ -17,7 +17,7 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 123%;
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
 }
 
 .inputLabel {
@@ -27,7 +27,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 133%;
-  color: var(--primary-color-black);
+  color: var(--primary-text-color);
   text-align: left;
 }
 .fieldWrapper {
@@ -71,8 +71,9 @@
   top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
-  stroke: var(--primary-color-black);
+  stroke: var(--primary-text-color);
   transition: stroke 0.3s;
 }
 
@@ -135,6 +136,33 @@
   color: var(--secondary-color-3);
   border-color: var(--secondary-color-3);
   background: var(--primary-color-white);
+}
+.googleButton {
+  gap: 5px;
+  display: flex;
+  justify-content: center;
+  color: var(--primary-color-blue);
+  font-family: var(--font-family);
+  margin-top: 5px;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  height: 44px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: var(--primary-color-white);
+}
+.googleButton:hover {
+  box-shadow: 0 4px 14px 0 #407bff8a;
+  transform: none;
+}
+.googleButton svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 @media screen and (min-width: 768px) {

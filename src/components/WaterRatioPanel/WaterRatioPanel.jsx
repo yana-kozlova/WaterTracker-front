@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import css from "./WaterRatioPanel.module.css";
+// import Icon from "../../Svg/Svg.jsx";
 // import { ReactComponent as AddIcon } from "../../assets/images/outline.svg";
 
 export default function WaterRatioPanel() {
@@ -28,6 +29,11 @@ export default function WaterRatioPanel() {
       
         <div>
         <button className={css.addWaterButton}>
+        {/* <Icon */}
+            {/* name="plus-circleoutline" */}
+            {/* // color="#2f2f2f" */}
+            {/* className={css.addIcon} */}
+          {/* /> */}
             {/* <AddIcon /> */}
             Add Water
         </button>
