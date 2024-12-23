@@ -1,7 +1,7 @@
 import { useId } from "react";
 import { Field, ErrorMessage } from "formik";
 import Label from "./Label/Label";
-import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+// import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import clsx from "clsx";
 import css from "./SettingModal.module.css";
 

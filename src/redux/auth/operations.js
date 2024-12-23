@@ -75,6 +75,56 @@ export const refreshUser = createAsyncThunk(
     },
   }
 );
+
+export const resetPassword = createAsyncThunk(
+  "auth/resetPassword",
+  async (emailData, thunkAPI) => {
+    try {
+      const email = emailData.email;
+
+      if (!email || typeof email !== "string" || !isValidEmail(email)) {
+        return thunkAPI.rejectWithValue({
+          message: "Invalid email format",
+        });
+      }
+
+      const { data } = await axios.post(
+        "/auth/send-reset-email",
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return data;
+    } catch (e) {
+      if (e.response && e.response.data) {
+        return thunkAPI.rejectWithValue(e.response.data);
+      }
+      return thunkAPI.rejectWithValue(e.message || "An unknown error occurred");
+    }
+  }
+);
+export const updatePassword = createAsyncThunk(
+  "auth/updatePassword",
+  async (passwordData, thunkAPI) => {
+    try {
+      await axios.post("/auth/reset-pwd", passwordData);
+      return null;
+    } catch (e) {
+      if (e.response && e.response.data) {
+        return thunkAPI.rejectWithValue(e.response.data);
+      }
+      return thunkAPI.rejectWithValue(e.message || "An unknown error occurred");
+    }
+  }
+);
+
+const isValidEmail = (email) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
+
 export const loginWithGoogle = createAsyncThunk(
   "auth/loginWithGoogle",
   async (code, { rejectWithValue }) => {

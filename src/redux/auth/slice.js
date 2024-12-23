@@ -5,6 +5,8 @@ import {
   logout,
   refreshUser,
   loginWithGoogle,
+  resetPassword,
+  updatePassword,
 } from "./operations";
 
 const initialState = {
@@ -62,6 +64,7 @@ const slice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
+      //Login with Google
       .addCase(loginWithGoogle.pending, (state) => {
         state.isLoading = true;
         state.error = false;
@@ -78,6 +81,32 @@ const slice = createSlice({
         state.error = false;
       })
       .addCase(loginWithGoogle.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      //Reset Password
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(resetPassword.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      //Update Password
+      .addCase(updatePassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(updatePassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(updatePassword.rejected, (state) => {
         state.isLoading = false;
         state.error = true;
       })
