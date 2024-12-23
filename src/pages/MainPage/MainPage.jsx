@@ -1,8 +1,7 @@
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable.jsx'
-import css from './MainPage.module.css'
-// import TodayWaterList from '../../components/TodayWaterList/TodayWaterList.jsx';
 import DailyNorma from '../../components/DailyNorma/DailyNorma.jsx';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList.jsx';
+import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel.jsx';
 
 
 export default function MainPage() {
@@ -14,15 +13,12 @@ export default function MainPage() {
           <div className={css.dailyNorma}>
             <DailyNorma />
           </div>
+          <WaterRatioPanel />
         </div>
         <div className={css.waterContainer}>
           <TodayWaterList />
           <MonthStatsTable />
         </div>
-      </div>
-      <div className={css.waterContainer}>
-        <TodayWaterList />
-        <MonthStatsTable />
       </div>
     </>
   )

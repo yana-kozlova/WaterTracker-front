@@ -1,16 +1,13 @@
 .waterRatioPanel {
   display: flex;
   flex-direction: row;
-  align-items: space-between;
-  justify-content: center;
-  width: 592px;
-  background-color: #f9f9f9;
-  margin: 24px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .panelHeader {
   font-size: 18px;
-  font-weight: 400px;
+  font-weight: 400;
   line-height: 24px;
   padding-left: 10px;
   color: #407bff;
@@ -28,7 +25,7 @@
   flex: 1;
   width: 100%;
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 20px;
 }
 
@@ -38,7 +35,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 20px;
   color: #407bff;
 }
@@ -79,9 +76,9 @@
 }
 
 @media (max-width: 1440px) {
-  .waterRatioPanel {
-    width: 704px;
-  }
+  /*.waterRatioPanel {*/
+  /*  width: 704px;*/
+  /*}*/
 }
 
 @media (max-width: 768px) {
@@ -121,7 +118,7 @@
   .addWaterButton {
     width: 100%;
     font-size: 16px;
-    font-weight: 500px;
+    font-weight: 500;
     line-height: 20px;
     margin-left: -15px;
   }
