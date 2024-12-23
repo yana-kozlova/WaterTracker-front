@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DailyNormaModal from "../DailyNormaModal/DailyNormaModal";
 import styles from "./DailyNorma.module.css";
 

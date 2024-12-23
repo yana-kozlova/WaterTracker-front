@@ -1,0 +1,21 @@
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconUser {
+  height: 28px;
+  width: 28px;
+  margin: 0 8px;
+}
+
+.signUpLink {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .signUpLink {
+    font-size: 18px;
+  }
+}

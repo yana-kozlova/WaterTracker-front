@@ -4,7 +4,7 @@ export default function Button({ type, name, className, onClick }) {
   return (
     <button
       type={type}
-      className={`${css.button} ${className || ""}`}
+      className={`${css.baseButton} ${className || ""}`}
       onClick={onClick}
     >
       {name}
