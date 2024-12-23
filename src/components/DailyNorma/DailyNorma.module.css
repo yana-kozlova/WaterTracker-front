@@ -1,38 +1,31 @@
 .daily-norma {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
+  padding: 8px 20px;
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
-  top: 112px;
-  left: 112px;
-  gap: 12px;
   border-radius: 10px;
-  width: 164px;
-  height: 76px;
   border: 1px solid rgba(236, 242, 255, 1);
 }
 
 .daily-norma-p {
+  margin-bottom: 8px;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: rgba(47, 47, 47, 1);
+  color: var(--primary-text-color);
 }
+
 .daily-norma-l {
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 24px;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-  color: rgba(64, 123, 255, 1);
+  color: var(--primary-color-blue);
 }
 .edit-button {
   color: rgba(139, 174, 255, 1);
@@ -41,14 +34,38 @@
   gap: 0px;
   opacity: 0px;
   font-size: 16px;
+  border: none;
+  background-color: transparent;
 }
 .edit-container {
   width: 94px;
   height: 24px;
   display: flex;
+  justify-content: baseline;
+  align-items: center;
   gap: 12px;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  color: var(--secondary-color-5);
 }
+@media (min-width: 320px) {
+  .daily-norma-l {
+    font-size: 24px;
+  }
+}
+
+/* @media (min-width: 768px) {
+  .daily-norma-l {
+    font-size: 25px;
+  }
+}
+@media (min-width: 1440px) {
+  .daily-norma-p {
+    font-size: 21px;
+  }
+
+  .daily-norma-l {
+    font-size: 25px;
+  }
+} */

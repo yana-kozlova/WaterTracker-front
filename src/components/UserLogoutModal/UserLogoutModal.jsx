@@ -5,11 +5,18 @@ import { useDispatch } from "react-redux";
 
 const LogoutModal = ({ onCloseLogout }) => {
   const dispatch = useDispatch();
+
   return (
     <div className={css.container}>
       <p className={css.title}>Log out</p>
       <p className={css.text}>Do you really want to leave?</p>
       <div className={css.buttonContainer}>
+        <Button
+          type="button"
+          name="Cancel"
+          className={css.buttonCancel}
+          onClick={onCloseLogout}
+        />
         <Button
           type="button"
           name="Log out"
@@ -18,12 +25,6 @@ const LogoutModal = ({ onCloseLogout }) => {
             dispatch(logout());
             onCloseLogout();
           }}
-        />
-        <Button
-          type="button"
-          name="Cancel"
-          className={css.buttonCancel}
-          onClick={onCloseLogout}
         />
       </div>
     </div>

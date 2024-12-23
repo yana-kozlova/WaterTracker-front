@@ -5,7 +5,6 @@
   margin: 109px auto;
   align-items: center;
   justify-content: center;
-
   background-color: var(--primary-color-white);
   background-image:
     url('/src/assets/images/background-deskt.png'),
@@ -16,7 +15,6 @@
     center bottom,
       bottom  124px left 1016px,
     center bottom;
-  
   background-repeat: no-repeat;
 }
 
@@ -24,27 +22,5 @@
   margin-left: 10px;
   font-size: 16px;
   line-height: 20px;
-  color: var(--primary-color-black);
-}
-
-@media (max-width: 1200px) {
-  .main {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .container {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
+  color: var(--primary-text-color);
 }

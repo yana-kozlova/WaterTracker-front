@@ -1,5 +1,15 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  loginWithGoogle,
+  getUser,
+  updateUserData,
+  updateUserDailyNorm,
+  updateUserPhoto
+} from "./operations";
 
 const initialState = {
   user: {
@@ -7,7 +17,7 @@ const initialState = {
     email: null,
     gender: "woman",
     avatarUrl: null,
-    daylyNorm: 2000,
+    daily_norma: 2000,
   },
   token: null,
   isLoggedIn: false,
@@ -56,6 +66,51 @@ const slice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
+      //Login with Google
+      .addCase(loginWithGoogle.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        state.token = action.payload.token;
+
+        state.user = {
+          ...state.user,
+          ...action.payload.user,
+        };
+        state.isLoggedIn = true;
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(loginWithGoogle.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      // _________________________UserAddCases_______________________________________
+
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user = action.payload.data;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user = { ...state.user, ...action.payload };
+      })
+      .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user.daily_norma = action.payload.data.daily_norma;
+      })
+      .addCase(updateUserPhoto.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user.avatarUrl = action.payload.data.avatar_url;
+      })
+
+      //  _____________________________addMatcher_________________________________
+
       .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
         state.isLoading = true;
       })
@@ -67,18 +122,34 @@ const slice = createSlice({
       })
       .addMatcher(isAnyOf(login.fulfilled, refreshUser.fulfilled), (state) => {
         state.isLoggedIn = true;
-      });
+      })
+      // _________________________UserAddCases_______________________________________
+      .addMatcher(
+        isAnyOf(
+          getUser.pending,
+          updateUserData.pending,
+          updateUserDailyNorm.pending,
+          updateUserPhoto.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getUser.rejected,
+          updateUserData.rejected,
+          updateUserDailyNorm.rejected,
+          updateUserPhoto.rejected
+        ),
+        (state) => {
+          state.isLoading = false;
+          state.error = true;
+        }
+      );
   },
 });
 
 export const authReducer = slice.reducer;
 
-// name: null,
-// email: null,
-// gender: "woman",
-// avatarUrl: null,
-// daylyNorm: 2000,
-// password:null,
-// createdAt:null,
-// updatedAt:null,
-// _id:null,
+

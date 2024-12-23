@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import {useState } from 'react';
 import DailyNormaModal from "../DailyNormaModal/DailyNormaModal";
 import styles from "./DailyNorma.module.css";
+import BaseModal from "../BaseModal/BaseModal";
+import { useSelector } from "react-redux";
+
+import { selectUser } from "../../redux/auth/selectors";
 
 const DailyNorma = () => {
-  const [dailyNorm, setDailyNorm] = useState(2.0); // Початкове значення: 2.0 літри
+  const user = useSelector(selectUser);
+  const userDailyNorma = user.data.daily_norma / 1000;
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditClick = () => {
@@ -14,22 +20,17 @@ const DailyNorma = () => {
     setIsModalOpen(false);
   };
 
-  const updateDailyNorm = (newNorm) => {
-    setDailyNorm(newNorm);
-    closeModal();
-  };
-
   return (
     <div className={styles["daily-norma"]}>
       <p className={styles["daily-norma-p"]}>My daily norma </p>
       <div className={styles["edit-container"]}>
-        <p className={styles["daily-norma-l"]}>{dailyNorm} L</p>
+        <p className={styles["daily-norma-l"]}>{userDailyNorma} L</p>
         <button className={styles["edit-button"]} onClick={handleEditClick}>
           Edit
         </button>
-        {isModalOpen && (
-          <DailyNormaModal currentNorm={dailyNorm} onSave={updateDailyNorm} />
-        )}
+        <BaseModal isOpen={isModalOpen} onClose={closeModal}>
+          <DailyNormaModal onClose={closeModal}/>
+        </BaseModal>
       </div>
     </div>
   );
