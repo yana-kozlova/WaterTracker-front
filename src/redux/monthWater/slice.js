@@ -16,13 +16,14 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(getAll.fulfilled, (state, action) => {
-        state.monthWater = action.payload;
+        state.monthWater = action.payload.data;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(getAll.rejected, (state) => {
-        state.error = action.payload;
+        state.error = true;
         state.isLoading = false;
+        
       });
   },
 });

@@ -5,12 +5,6 @@ import {
   logout,
   refreshUser,
   loginWithGoogle,
-
-  // fetchUserInfo,
-  // updateUserInfo,
-  // updateUserAvatar,
-  // updateUserEmail,
-  // updateUserPassword,
   getUser,
   updateUserData,
   updateUserDailyNorm,
@@ -23,7 +17,7 @@ const initialState = {
     email: null,
     gender: "woman",
     avatarUrl: null,
-    dailyNorm: 2000,
+    daily_norma: 2000,
   },
   token: null,
   isLoggedIn: false,
@@ -91,79 +85,6 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = true;
       })
-      // _____________________________settingModal_____________________________
-
-      // Отримання даних користувача
-      .addCase(fetchUserInfo.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchUserInfo.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.user = action.payload;
-        state.error = null;
-      })
-      .addCase(fetchUserInfo.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      // Оновлення інформації користувача
-      .addCase(updateUserInfo.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateUserInfo.fulfilled, (state, action) => {
-        const updatedData = action.payload.data;
-        state.user = {
-          ...state.user,
-          ...updatedData,
-        };
-      })
-      .addCase(updateUserInfo.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      // Оновлення аватару
-      .addCase(updateUserAvatar.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateUserAvatar.fulfilled, (state, action) => {
-        console.log("Avatar updated response:", action.payload);
-        const updatedAvatar = action.payload.data.avatar_url;
-        if (updatedAvatar) {
-          state.user.avatar = updatedAvatar;
-        } else {
-          console.error("No avatar URL returned from API.");
-        }
-      })
-      .addCase(updateUserAvatar.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      //оновлення пошти користувача
-      .addCase(updateUserEmail.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(updateUserEmail.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        if (state.user) {
-          state.user.email = action.payload.email;
-        }
-      })
-      //оновлення пароля користувача
-      .addCase(updateUserPassword.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(updateUserPassword.fulfilled, (state) => {
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(updateUserPassword.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-
       // _________________________UserAddCases_______________________________________
 
       .addCase(getUser.fulfilled, (state, action) => {
@@ -179,7 +100,7 @@ const slice = createSlice({
       .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user.dailyNorm = action.payload.data.dailyNorm;
+        state.user.daily_norma = action.payload.data.daily_norma;
       })
       .addCase(updateUserPhoto.fulfilled, (state, action) => {
         state.error = null;
@@ -222,7 +143,7 @@ const slice = createSlice({
         ),
         (state) => {
           state.isLoading = false;
-          state.error = action.payload;
+          state.error = true;
         }
       );
   },

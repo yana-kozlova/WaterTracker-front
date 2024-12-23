@@ -57,7 +57,7 @@ const DailyNormaForm = ({onClose}) => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        dispatch(updateUserDailyNorm({ daily_norma : values.userDailyNorma*1000 } ))
+        dispatch(updateUserDailyNorm({ daily_norma : values.userDailyNorma } ))
           onClose();
       }}
     >
