@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import css from './TodayListModal.module.css';
-import Icon from "../../Svg/Svg.jsx";
+import Icon from "../Svg/Svg";
 // import { ReactComponent as CloseIcon } from '../../public/svg/x.svg';
 
 export default function TodayListModal({ onClose, onSave }) {
