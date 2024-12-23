@@ -24,3 +24,20 @@ export const SignUpSchema = Yup.object({
     .max(64, "Your password is too long!")
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
+
+export const ResetPasswordFormSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+});
+export const ResetPasswordSchema = Yup.object().shape({
+  newPassword: Yup.string()
+    .required("Password is required")
+    .min(8, "Your password is too short!")
+    .max(64, "Your password is too long!"),
+  repeatNewPassword: Yup.string()
+    .required("Password is required")
+    .min(8, "Your password is too short!")
+    .max(64, "Your password is too long!")
+    .oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
+});

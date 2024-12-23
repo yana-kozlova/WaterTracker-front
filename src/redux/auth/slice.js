@@ -66,6 +66,7 @@ const slice = createSlice({
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
       })
+      //Login with Google
       .addCase(loginWithGoogle.pending, (state) => {
         state.isLoading = true;
         state.error = false;

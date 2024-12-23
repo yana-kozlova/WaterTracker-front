@@ -1,7 +1,7 @@
-import Button from "../Buttons/Button/Button";
-import css from "./DeleteEntryModal.module.css";
+import Button from "../../Buttons/Button/Button";
+import css from "./DeleteWater.module.css";
 
-const DeleteEntryModal = () => {
+const DeleteWater = () => {
   return (
     <div className={css.container}>
       <p className={css.title}>Delete entry</p>
@@ -19,4 +19,4 @@ const DeleteEntryModal = () => {
   );
 };
 
-export default DeleteEntryModal;
+export default DeleteWater;

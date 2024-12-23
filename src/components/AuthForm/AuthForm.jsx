@@ -9,21 +9,32 @@ import { NavLink, useLocation } from "react-router-dom";
 import PasswordField from "./PasswordField";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { SignInSchema, SignUpSchema } from "../../utils/userValidationSchema";
-import { register, login } from "../../redux/auth/operations.js";
+import {
+  SignInSchema,
+  SignUpSchema,
+  ResetPasswordFormSchema,
+  ResetPasswordSchema,
+} from "../../utils/userValidationSchema";
+import {
+  register,
+  login,
+  resetPassword,
+  updatePassword,
+} from "../../redux/auth/operations.js";
 import axios from "axios";
 
 const initialValues = {
   email: "",
   password: "",
   repeatPassword: "",
+  newPassword: "",
+  repeatNewPassword: "",
 };
 
-// TODO separate eye icon logic for diff password's input
-
 export const SignInForm = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
+  const { pathname } = location;
 
   const handleSubmit = async (values, actions) => {
     const { email, password } = values;
@@ -60,6 +71,61 @@ export const SignInForm = () => {
               toast.error("Registration failed!");
             }
           });
+      } else if (pathname === "/reset-password-form") {
+        if (!email || typeof email !== "string") {
+          toast.error("Please provide a valid email address.");
+          return;
+        }
+        await dispatch(resetPassword({ email }))
+          .unwrap()
+          .then(() => {
+            toast.success("Password reset link sent to your email!");
+          })
+          .catch((error) => {
+            console.error("Error during password reset:", error);
+
+            if (error.message) {
+              actions.setErrors({
+                email: error.message,
+              });
+              toast.error(error.message);
+            } else {
+              toast.error("Password reset failed!");
+            }
+          });
+      } else if (pathname === "/reset-password") {
+        const { newPassword, repeatNewPassword } = values;
+
+        const urlToken = new URLSearchParams(location.search).get("token");
+
+        if (!newPassword || !repeatNewPassword || !urlToken) {
+          toast.error("Please provide a valid password and token.");
+          return;
+        }
+
+        if (newPassword !== repeatNewPassword) {
+          toast.error("Passwords do not match.");
+          return;
+        }
+
+        await dispatch(
+          updatePassword({ token: urlToken, password: newPassword })
+        )
+          .unwrap()
+          .then(() => {
+            toast.success("Password updated!");
+          })
+          .catch((error) => {
+            console.error("Error during password update:", error);
+            if (error.message) {
+              actions.setErrors({
+                newPassword: error.message,
+              });
+              toast.error(error.message);
+            } else {
+              toast.error("Password update failed!");
+            }
+          });
       }
     } catch (error) {
       toast.error("Something went wrong!");
@@ -86,6 +152,10 @@ export const SignInForm = () => {
       return SignInSchema;
     } else if (pathname === "/signup") {
       return SignUpSchema;
+    } else if (pathname === "/reset-password-form") {
+      return ResetPasswordFormSchema;
+    } else if (pathname === "/reset-password") {
+      return ResetPasswordSchema;
     }
   };
 
@@ -94,6 +164,10 @@ export const SignInForm = () => {
       return "Sign In";
     } else if (pathname === "/signup") {
       return "Sign Up";
+    } else if (pathname === "/reset-password-form") {
+      return "Reset Password";
+    } else if (pathname === "/reset-password") {
+      return "Update Password";
     }
   };
 
@@ -104,67 +178,97 @@ export const SignInForm = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        validationSchema={chooseValidationSchema}
+        validationSchema={chooseValidationSchema()}
       >
         <Form className={css.form}>
-          <div className={css.fieldWrapper}>
-            <label htmlFor="email" className={css.inputLabel}>
-              Enter your email
-            </label>
-            <Field name="email">
-              {({ field, form }) => (
-                <div className={css.inputFieldWrapper}>
-                  <input
-                    {...field}
-                    type="email"
-                    id="email"
-                    placeholder="E-mail"
-                    className={clsx(css.inputField, {
-                      [css.inputFieldError]: form.errors.email,
-                    })}
-                  />
-                  {form.errors.email && form.touched.email && (
-                    <span className={css.errorMessage}>
-                      {form.errors.email}
-                    </span>
+          {pathname === "/reset-password" ? (
+            <>
+              <PasswordField
+                name="newPassword"
+                label="Enter new password"
+                placeholder="Enter new password"
+              />
+              <PasswordField
+                name="repeatNewPassword"
+                label="Repeat new password"
+                placeholder="Repeat new password"
+              />
+            </>
+          ) : (
+            <>
+              <div className={css.fieldWrapper}>
+                <label htmlFor="email" className={css.inputLabel}>
+                  Enter your email
+                </label>
+                <Field name="email">
+                  {({ field, form }) => (
+                    <div className={css.inputFieldWrapper}>
+                      <input
+                        {...field}
+                        type="email"
+                        id="email"
+                        placeholder="E-mail"
+                        className={clsx(css.inputField, {
+                          [css.inputFieldError]: form.errors.email,
+                        })}
+                      />
+                      {form.errors.email && form.touched.email && (
+                        <span className={css.errorMessage}>
+                          {form.errors.email}
+                        </span>
+                      )}
+                    </div>
                   )}
-                </div>
+                </Field>
+              </div>
+
+              {pathname !== "/reset-password-form" && (
+                <>
+                  <PasswordField
+                    name="password"
+                    label="Enter your password"
+                    placeholder="Password"
+                  />
+                  {pathname === "/signup" && (
+                    <PasswordField
+                      name="repeatPassword"
+                      label="Repeat your password"
+                      placeholder="Repeat Password"
+                    />
+                  )}
+                </>
               )}
-            </Field>
-          </div>
-
-          <PasswordField
-            name="password"
-            label="Enter your password"
-            placeholder="Password"
-          />
-
-          {pathname === "/signup" && (
-            <PasswordField
-              name="repeatPassword"
-              label="Repeat your password"
-              placeholder="Repeat Password"
-            />
+            </>
           )}
-
           <Button type="submit" name={setPageTitle()} />
-          <button
-            type="button"
-            className={css.googleButton}
-            onClick={handleGoogleLogin}
-          >
-            <GoogleIcon />
-            Enter with Google
-          </button>
+          {(pathname === "/signin" || pathname === "/signup") && (
+            <button
+              type="button"
+              className={css.googleButton}
+              onClick={handleGoogleLogin}
+            >
+              <GoogleIcon />
+              Enter with Google
+            </button>
+          )}
         </Form>
       </Formik>
 
-      <NavLink
-        className={css.signUpLink}
-        to={pathname === "/signin" ? "/signup" : "/signin"}
-      >
-        {pathname === "/signin" ? "Sign Up" : "Sign In"}
-      </NavLink>
+      {pathname !== "/reset-password" && (
+        <div className={css.linkContainer}>
+          <NavLink
+            className={css.signUpLink}
+            to={pathname === "/signin" ? "/signup" : "/signin"}
+          >
+            {pathname === "/signin" ? "Sign Up" : "Sign In"}
+          </NavLink>
+          {(pathname === "/signup" || pathname === "/signin") && (
+            <NavLink className={css.signUpLink} to="/reset-password-form">
+              Reset password
+            </NavLink>
+          )}
+        </div>
+      )}
     </div>
   );
 };

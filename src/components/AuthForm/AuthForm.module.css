@@ -19,7 +19,11 @@
   line-height: 123%;
   color: var(--primary-text-color);
 }
-
+.linkContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .inputLabel {
   display: block;
   margin-bottom: 8px;
