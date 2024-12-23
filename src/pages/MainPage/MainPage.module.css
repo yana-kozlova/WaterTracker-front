@@ -1,4 +1,5 @@
 .mainContainer {
+    height: 80vh;
     display: flex;
     justify-content: space-between;
     gap: 3rem;
@@ -6,7 +7,6 @@
 
 .waterContainer {
     width: 50%;
-    height: 836px;
     border-radius: 10px;
     padding: 24px 8px 24px 8px;
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
@@ -21,16 +21,19 @@
 
 @media screen and (min-width: 1440px) {
     .waterContainer {
-    background: #ecf2ff;
+        background: #ecf2ff;
+    }
 }
 
 .bottle {
+    display: flex;
+    align-items: flex-end;
     position: relative;
     width: 50%;
     background-image: url("../../assets/images/Bottle-home.png");
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 150%; /* Увеличиваем изображение */
+    background-position: top center;
+    /*background-size: 150%; !* Увеличиваем изображение *!*/
     overflow: visible;
 }
 
