@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux"
-import css from "./TodayWaterList.module.css"
 import { useEffect, useState } from "react";
 import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
@@ -8,6 +7,7 @@ import Icon from '../Svg/Svg.jsx'
 // import DeleteWater from "./DeleteWater.jsx";
 // import AddWater from "./AddWater.jsx";
 
+import css from "./TodayWaterList.module.css"
 
 
 export default function TodayWaterList() {

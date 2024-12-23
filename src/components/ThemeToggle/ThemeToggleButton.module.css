@@ -1,0 +1,59 @@
+.slider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #ccc;
+  border: #082a37 1px solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider--light {
+  background-color: #ffffff;
+}
+
+.slider--dark {
+  background-color: #307fe6;
+  /* Чорний фон для темної теми */
+}
+
+.thumb {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #030a47;
+  transition: left 0.3s ease, background-color 0.3s ease;
+}
+
+.slider--light .thumb {
+  left: 5px;
+  background-color: #0c303e;
+}
+
+.slider--dark .thumb {
+  left: 35px;
+  background-color: #ffffff;
+}
+
+.knob {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+/* .knob .central-knob {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 6px;
+  left: 6px;
+  border-radius: 50%;
+  background-color: #0c303e;
+} */

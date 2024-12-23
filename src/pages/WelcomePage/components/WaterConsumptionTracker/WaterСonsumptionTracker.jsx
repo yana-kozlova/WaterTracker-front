@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../../components/Buttons/Button/Button.jsx';
 import css from './WaterСonsumptionTracker.module.css'
 
 export default function WaterConsumptionTracker() {
+  const navigate = useNavigate();
+
   return (<section className={css.hero}>
       <div className={css.heroContent}>
         <h1 className={css.heroTitle}>Water consumption tracker</h1>
@@ -40,8 +43,7 @@ export default function WaterConsumptionTracker() {
           name="Try tracker"
           className={css.tryButton}
           onClick={() => {
-            // dispatch(logout());
-            // onCloseLogout();
+            navigate("/home");
           }}
         />
       </div>
