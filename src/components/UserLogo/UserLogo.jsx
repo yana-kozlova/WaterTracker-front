@@ -21,7 +21,7 @@ export default function UserLogo() {
     if (user.name) {
       return user.name.charAt(0).toUpperCase();
     }
-    return 'U';
+    return "U";
   }
 
   function hasAvatar() {

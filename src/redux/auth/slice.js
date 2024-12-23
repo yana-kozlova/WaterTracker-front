@@ -1,5 +1,11 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { register, login, logout, refreshUser } from "./operations";
+import {
+  register,
+  login,
+  logout,
+  refreshUser,
+  loginWithGoogle,
+} from "./operations";
 
 const initialState = {
   user: {
@@ -55,6 +61,26 @@ const slice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
+      })
+      .addCase(loginWithGoogle.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        // Устанавливаем токен
+        state.token = action.payload.token;
+        // Обновляем данные пользователя, сохраняя структуру
+        state.user = {
+          ...state.user, // сохраняем дефолтные значения
+          ...action.payload.user, // перезаписываем полученными данными
+        };
+        state.isLoggedIn = true;
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(loginWithGoogle.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
       })
       .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
         state.isLoading = true;
