@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #407bff;
+    color: var(--primary-color-blue);
     
 }
 
@@ -33,7 +33,7 @@
     font-size: 16px;
     line-height: 1.25;
     text-align: center;
-    color: #407bff;
+    color:var(--primary-color-blue);
     margin-left: 10px;
 
 }
@@ -48,11 +48,11 @@
     margin-left: 10px;
     background-color: transparent;
     border: none;
-    color: #407bff;
+    color:var(--primary-color-blue);
 }
 
 .buttonRightDisabled {
-    color: #a9a9a9;
+    color: var(--calculateExplainText);
     cursor: not-allowed;
 }
 

@@ -26,12 +26,12 @@
 
 .buttonDelete {
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #ef5050;
+  background: var(--secondary-color-3);
 }
 
 .buttonCancel {
-  background: #d7e3ff;
-  color: #407bff;
+  background: var(--secondary-color-6);
+  color: var(--primary-color-blue);
 }
 
 @media screen and (min-width: 768px) {
