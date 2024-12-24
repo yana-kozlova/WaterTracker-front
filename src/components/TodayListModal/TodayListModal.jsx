@@ -5,6 +5,8 @@ import Icon from "../Svg/Svg";
 
 export default function TodayListModal({ onClose, onSave }) {
   const [waterAmount, setWaterAmount] = useState(50);
+  const [time, setTime] = useState('07:00');
+  const [value, setValue] = useState(waterAmount);
 
   const handleIncrement = () => {
     setWaterAmount((prev) => prev + 50);
@@ -45,7 +47,12 @@ export default function TodayListModal({ onClose, onSave }) {
         </div>
         <div className={css.inputGroup}>
           <label htmlFor="time" className={css.inputTime}>Recording time:</label>
-          <input type="time" id="time" name="time" defaultValue="07:00" />
+          <input 
+          type="time" 
+          id="time" 
+          name="time" 
+          defaultValue="07:00" 
+          onChange={(e) => setTime(e.target.value)}/>
         </div>
         <div className={css.inputGroup}>
           <label htmlFor="value" className={css.inputValue}>Enter the value of the water used:</label>
