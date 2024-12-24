@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getWater } from '../../redux/water/operations.js';
 import DayComponent from "../DayComponent/DayComponent.jsx";
 import { selectWaterAmount } from "../../redux/monthWater/selectors.js";
 import { getAll } from "../../redux/monthWater/operations";
