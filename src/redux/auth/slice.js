@@ -101,7 +101,7 @@ const slice = createSlice({
       .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user.daily_norma = action.payload.data.daily_norma;
+        state.user.data.daily_norma = action.payload.data.daily_norma;
       })
       .addCase(updateUserPhoto.fulfilled, (state, action) => {
         state.error = null;
