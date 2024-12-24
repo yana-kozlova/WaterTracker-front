@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./DaysGeneralStats.module.css";
@@ -30,7 +31,7 @@ const DaysGeneralStats = ({
     ];
     const day = date.getDate();
     const month = months[date.getMonth()];
-    return `${day}, ${month}`;
+    return `${day}`, `${month}`;
   };
 
   // Обчислення виконання денної норми

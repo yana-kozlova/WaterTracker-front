@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMonthItem } from '../../redux/water/selectors.js';
 import DayComponent from "../DayComponent/DayComponent.jsx";
-
+import { getMonthWater } from '../../redux/water/operations.js'
 import css from "./MonthStatsTable.module.css";
 
 export default function MonthStatsTable() {
@@ -29,7 +29,7 @@ export default function MonthStatsTable() {
 
   useEffect(() => {
     const month = `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
-    // dispatch(getAll(month));
+    dispatch(getMonthWater(month));
   }, [dispatch, currentDate]); //отримання даних з бази при зміні місяця, денну норму
 
   const getDaysInMonth = () => {
