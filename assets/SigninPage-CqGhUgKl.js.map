@@ -1,1 +1,0 @@
-{"version":3,"file":"SigninPage-CqGhUgKl.js","sources":["../../src/pages/SigninPage/SigninPage.jsx"],"sourcesContent":["import Auth from \"../../components/Auth/Auth\";\nconst SigninPage = () => {\n  return (\n      <Auth />\n  );\n};\n\nexport default SigninPage;\n"],"names":["SigninPage","Auth"],"mappings":"+CACA,MAAMA,EAAa,UAEZC,EAAK,EAAA"}
