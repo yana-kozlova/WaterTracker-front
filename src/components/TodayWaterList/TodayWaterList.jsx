@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect, useState } from "react";
 // import { getWater } from '../../redux/water/operations.js';
-import { selectWaterItem } from "../../redux/water/selectors";
+import { selectTodayItem } from '../../redux/water/selectors';
 
 import EditWater from "./EditWater/EditWater.jsx";
 import DeleteWater from "./DeleteWater/DeleteWater.jsx";
 import AddWater from "./AddWater/AddWater.jsx";
-import Icon from '../Svg/Svg.jsx'
+// import Icon from '../Svg/Svg.jsx'
 // import EditWater from "./EditWater.jsx";
 // import DeleteWater from "./DeleteWater.jsx";
 // import AddWater from "./AddWater.jsx";
@@ -27,42 +27,44 @@ export default function TodayWaterList() {
   //   dispatch(getWater());
   // }, [dispatch]);
 
-  // const { waterList } = useSelector(selectWaterItem);
+  const waterList = useSelector(selectTodayItem);
 
-  const waterList = [
-    {
-      "_id": "6769f1f8b101194e6c9ef581",
-      "userId": "67677ffee2c4d59f5a819417",
-      "date": "2024-12-11T14:01:00.500Z",
-      "amount": 250,
-      "createdAt": "2024-12-23T23:27:52.092Z",
-      "updatedAt": "2024-12-23T23:27:52.092Z"
-    },
-    {
-      "_id": "6769f1fcb101194e6c9ef587",
-      "userId": "67677ffee2c4d59f5a819417",
-      "date": "2024-12-11T14:01:00.500Z",
-      "amount": 250,
-      "createdAt": "2024-12-23T23:27:56.537Z",
-      "updatedAt": "2024-12-23T23:27:56.537Z"
-    },
-    {
-      "_id": "6769f1fcb101194e6c9ef587",
-      "userId": "67677ffee2c4d59f5a819417",
-      "date": "2024-12-11T14:01:00.500Z",
-      "amount": 250,
-      "createdAt": "2024-12-23T23:27:56.537Z",
-      "updatedAt": "2024-12-23T23:27:56.537Z"
-    },
-    {
-      "_id": "6769f1fcb101194e6c9ef587",
-      "userId": "67677ffee2c4d59f5a819417",
-      "date": "2024-12-11T14:01:00.500Z",
-      "amount": 250,
-      "createdAt": "2024-12-23T23:27:56.537Z",
-      "updatedAt": "2024-12-23T23:27:56.537Z"
-    }
-  ];
+  console.log(waterList);
+
+  // const waterList = [
+  //   {
+  //     "_id": "6769f1f8b101194e6c9ef581",
+  //     "userId": "67677ffee2c4d59f5a819417",
+  //     "date": "2024-12-11T14:01:00.500Z",
+  //     "amount": 250,
+  //     "createdAt": "2024-12-23T23:27:52.092Z",
+  //     "updatedAt": "2024-12-23T23:27:52.092Z"
+  //   },
+  //   {
+  //     "_id": "6769f1fcb101194e6c9ef587",
+  //     "userId": "67677ffee2c4d59f5a819417",
+  //     "date": "2024-12-11T14:01:00.500Z",
+  //     "amount": 250,
+  //     "createdAt": "2024-12-23T23:27:56.537Z",
+  //     "updatedAt": "2024-12-23T23:27:56.537Z"
+  //   },
+  //   {
+  //     "_id": "6769f1fcb101194e6c9ef587",
+  //     "userId": "67677ffee2c4d59f5a819417",
+  //     "date": "2024-12-11T14:01:00.500Z",
+  //     "amount": 250,
+  //     "createdAt": "2024-12-23T23:27:56.537Z",
+  //     "updatedAt": "2024-12-23T23:27:56.537Z"
+  //   },
+  //   {
+  //     "_id": "6769f1fcb101194e6c9ef587",
+  //     "userId": "67677ffee2c4d59f5a819417",
+  //     "date": "2024-12-11T14:01:00.500Z",
+  //     "amount": 250,
+  //     "createdAt": "2024-12-23T23:27:56.537Z",
+  //     "updatedAt": "2024-12-23T23:27:56.537Z"
+  //   }
+  // ];
 
   const openModal = (type, water = null) => {
     setModalType(type);

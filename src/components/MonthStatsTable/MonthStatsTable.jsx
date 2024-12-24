@@ -1,17 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getWater } from '../../redux/water/operations.js';
+import { selectMonthItem } from '../../redux/water/selectors.js';
 import DayComponent from "../DayComponent/DayComponent.jsx";
-import { selectMonthWater } from '../../redux/monthWater/selectors.js';
-import { getAll } from "../../redux/monthWater/operations";
+
 import css from "./MonthStatsTable.module.css";
 
 export default function MonthStatsTable() {
   const [currentDate, setCurrentDate] = useState(new Date()); //керування датою, зберігаю поточну дату, для визначення поточного місяцяб початку нового при переключенні
   const dispatch = useDispatch();
-  const monthWater = useSelector(selectMonthWater); //отримує дані про воду.
+  const monthWater = useSelector(selectMonthItem); //отримує дані про воду.
   const ref = useRef(null); // доступу до елементів календаря
-  const [date, setDate] = useState(new Date());
 
   const changeMonth = (step) => {
     setCurrentDate((prevDate) => {
@@ -31,7 +29,7 @@ export default function MonthStatsTable() {
 
   useEffect(() => {
     const month = `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
-    dispatch(getAll(month));
+    // dispatch(getAll(month));
   }, [dispatch, currentDate]); //отримання даних з бази при зміні місяця, денну норму
 
   const getDaysInMonth = () => {
@@ -44,10 +42,12 @@ export default function MonthStatsTable() {
     const daysInMonth = getDaysInMonth(); // Кількість днів у місяці
     return Array.from({ length: daysInMonth }, (_, index) => {
       const day = index + 1; // День місяця (починаючи з 1)
+      const month = currentDate.getMonth();
 
       const waterStats = monthWater?.find((item) => {
-        return Number(item.dayOfMonth.split("-")[0]) === day;
-      }); // Дані про воду для конкретного дня
+        const [year, cMonth, cDay] = item._id.split("-").map(Number);
+        return day === cDay && month + 1 === cMonth;
+      });
 
       const months = [
         "January",
@@ -64,7 +64,7 @@ export default function MonthStatsTable() {
         "December",
       ];
 
-      const dayLabel = `${day}, ${months[currentDate.getMonth() - 1]}`;
+      const dayLabel = `${day}, ${months[currentDate.getMonth()]}`;
 
       return (
         <DayComponent
@@ -73,7 +73,6 @@ export default function MonthStatsTable() {
           dayLabel={dayLabel}
           calendarRef={ref}
           waterStats={waterStats}
-          dailyNorm={2}
         />
       );
     });

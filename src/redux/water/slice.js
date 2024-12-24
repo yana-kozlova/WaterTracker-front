@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { addWater, deleteWater, editWater, getTodayWater, getWater } from './operations';
+import { addWater, deleteWater, editWater, getTodayWater, getMonthWater } from './operations';
 
 const initialState = {
   waterItem: [],
@@ -13,10 +13,10 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       // GetAll
-      .addCase(getWater.fulfilled, (state, action) => {
-        state.waterItem = action.payload.data;
+      .addCase(getMonthWater.fulfilled, (state, action) => {
+        state.monthWater = action.payload.data;
       })
-      // GetA Today
+      // Get Today
       .addCase(getTodayWater.fulfilled, (state, action) => {
         state.waterItem = action.payload.data;
       })
@@ -39,7 +39,7 @@ const slice = createSlice({
       //addMatcher
       .addMatcher(
         isAnyOf(
-          getWater.pending,
+          getMonthWater.pending,
           addWater.pending,
           deleteWater.pending,
           editWater.pending
@@ -50,8 +50,8 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.fulfilled,
-          getWater.rejected,
+          getMonthWater.fulfilled,
+          getMonthWater.rejected,
           addWater.fulfilled,
           addWater.rejected,
           deleteWater.fulfilled,
@@ -65,7 +65,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.fulfilled,
+          getMonthWater.fulfilled,
           addWater.fulfilled,
           deleteWater.fulfilled,
           editWater.fulfilled
@@ -76,7 +76,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.rejected,
+          getMonthWater.rejected,
           addWater.rejected,
           deleteWater.rejected,
           editWater.rejected
@@ -88,4 +88,4 @@ const slice = createSlice({
   },
 });
 
-export const todayWaterReducer = slice.reducer;
+export const waterReducer = slice.reducer;
