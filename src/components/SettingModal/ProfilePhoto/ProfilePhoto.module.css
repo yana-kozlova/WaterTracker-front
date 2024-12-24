@@ -54,7 +54,7 @@
     align-items: center;
     font-size: 14px;
     font-weight: 500;
-    color: rgba(64, 123, 255, 1);
+    color: var(--primary-color-blue);
     line-height: 18px;
     text-align: left;
     cursor: pointer;
@@ -70,7 +70,7 @@
     width: 16px;
     height: 16px;
     fill: transparent;
-    stroke: rgba(64, 123, 255, 1);
+    stroke: var(--primary-color-blue);
     margin-right: 8px;
     margin-left: 0;
 }
