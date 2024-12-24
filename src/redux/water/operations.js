@@ -13,6 +13,18 @@ export const getWater = createAsyncThunk(
   }
 );
 
+export const getTodayWater = createAsyncThunk(
+  "water/getToday",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/water");
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const addWater = createAsyncThunk(
   "water/addWater",
   async (value, thunkAPI) => {
