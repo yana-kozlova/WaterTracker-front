@@ -10,17 +10,10 @@ import { selectUser, selectLoading } from "../../../redux/auth/selectors.js";
 import { refreshUser } from "../../../redux/auth/operations.js";
 
 export default function AuthorizedHeader() {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [isOpenLogout, setIsOpenLogout] = useState(false);
-
-  useEffect(() => {
-    if (!user?.data) {
-      dispatch(refreshUser());
-    }
-  }, [dispatch, user?.data]);
 
   function getInitial() {
     if (user?.data?.name) {
@@ -28,7 +21,7 @@ export default function AuthorizedHeader() {
     } else if (user?.data?.email) {
       return user.data.email.charAt(0).toUpperCase();
     }
-    return "U";
+    return "G";
   }
 
   function hasAvatar() {

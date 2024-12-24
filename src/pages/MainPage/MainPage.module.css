@@ -1,8 +1,10 @@
 .mainContainer {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     justify-content: space-between;
     gap: 3rem;
+    padding-bottom: 24px;
+    padding-top: 48px;
 }
 
 .waterContainer {
@@ -30,10 +32,10 @@
     align-items: flex-end;
     position: relative;
     width: 50%;
+    min-height: 592px;
     background-image: url("../../assets/images/Bottle-home.png");
     background-repeat: no-repeat;
     background-position: top center;
-    /*background-size: 150%; !* Увеличиваем изображение *!*/
     overflow: visible;
 }
 
@@ -65,11 +67,34 @@
     .background {
         background-image: url("../../assets/images/bg-home-mobile.png");
     }
+
+    .waterContainer, .bottle {
+        width: 100%;
+    }
+
+    .mainContainer {
+        flex-direction: column;
+        padding-top: 0;
+    }
+
+    .bottle {
+        min-height: 460px;
+        background-size: 125%;
+        background-position: center 35%;
+    }
 }
 
 /* Медіа-запити для планшетів */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .background {
         background-image: url("../../assets/images/bg-home.png");
+    }
+
+    .waterContainer, .bottle {
+        width: 100%;
+    }
+
+    .mainContainer {
+        flex-direction: column;
     }
 }
