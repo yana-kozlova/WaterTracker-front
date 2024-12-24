@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import Icon from '../Svg/Svg.jsx';
 import css from "./WaterRatioPanel.module.css";
+import TodayListModal from '../TodayListModal/TodayListModal.jsx'
 
 export default function WaterRatioPanel() {
   const [ratio, setRatio] = useState(50);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  const handleSave = (waterAmount) => {
+    // Логіка для обробки збереження даних
+    console.log(`Збережено ${waterAmount} мл води`);
+    closeModal();
 
   useEffect(() => {
     setRatio(50);
@@ -27,7 +34,7 @@ export default function WaterRatioPanel() {
         </div>
       
         <div>
-        <button className={css.addWaterButton}>
+        <button className={css.addWaterButton} onClick={openModal}>
          <Icon
              name="plus-circleoutline"
              color="#000000"
@@ -35,6 +42,9 @@ export default function WaterRatioPanel() {
            />
             Add Water
         </button>
+        {isModalOpen && (
+        <TodayListModal onClose={closeModal} onSave={handleSave} />
+        )}
         </div>
         
     </div>
