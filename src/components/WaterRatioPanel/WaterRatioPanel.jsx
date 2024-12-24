@@ -37,7 +37,7 @@ export default function WaterRatioPanel() {
         <button className={css.addWaterButton} onClick={openModal}>
          <Icon
              name="plus-circleoutline"
-             color="#000000"
+             color="#fffff"
              className={css.addIcon}
            />
             Add Water
