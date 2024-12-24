@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import {  addWater, deleteWater, editWater,getWater } from "./operations";
+import { addWater, deleteWater, editWater, getWater } from "./operations";
 
 const initialState = {
   waterItem: [],
@@ -12,28 +12,25 @@ const slice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      GetAll
+      // GetAll
       .addCase(getWater.fulfilled, (state, action) => {
-        state.waterItem = action.payload.data.waterList;
+        state.waterItem = action.payload.data;
       })
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
         state.waterItem.push(action.payload.data.waterList);
-
       })
       //Delete
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.filter(
           (waterItem) => waterItem.id !== action.payload.id
         );
-
       })
       //Edit
       .addCase(editWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.map((waterItem) =>
           waterItem.id === action.payload.id ? action.payload : waterItem
         );
-
       })
       //addMatcher
       .addMatcher(
