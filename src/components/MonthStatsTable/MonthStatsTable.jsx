@@ -2,14 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getWater } from '../../redux/water/operations.js';
 import DayComponent from "../DayComponent/DayComponent.jsx";
-import { selectWaterAmount } from "../../redux/monthWater/selectors.js";
+import { selectMonthWater } from '../../redux/monthWater/selectors.js';
 import { getAll } from "../../redux/monthWater/operations";
 import css from "./MonthStatsTable.module.css";
 
 export default function MonthStatsTable() {
   const [currentDate, setCurrentDate] = useState(new Date()); //керування датою, зберігаю поточну дату, для визначення поточного місяцяб початку нового при переключенні
   const dispatch = useDispatch();
-  const monthWater = useSelector(selectWaterAmount); //отримує дані про воду.
+  const monthWater = useSelector(selectMonthWater); //отримує дані про воду.
   const ref = useRef(null); // доступу до елементів календаря
   const [date, setDate] = useState(new Date());
 
