@@ -48,7 +48,12 @@
     margin-left: 10px;
     background-color: transparent;
     border: none;
-    color: #407bff;
+    /* color: #407bff; */
+}
+
+.buttonRightDisabled .icon {
+    fill: #a9a9a9;
+    /* Колір для disabled стану */
 }
 
 .buttonRightDisabled {
@@ -65,6 +70,12 @@
     flex-wrap: wrap;
     width: 100%;
 
+}
+
+.icon {
+    fill: #407bff;
+    width: 6px;
+    height: 10px;
 }
 
 @media screen and (min-width: 768px) {
