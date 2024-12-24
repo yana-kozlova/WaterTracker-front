@@ -57,9 +57,9 @@
 @media screen and (min-width: 1440px) {
 
     .dayPercent {
-            font-size: 12px;
+          font-size: 12px;
         }
-        .day {
+      .day {
             width: 35px;
             height: 35px;
         }
