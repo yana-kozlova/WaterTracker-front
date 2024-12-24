@@ -273,10 +273,10 @@ export const updateUserData = createAsyncThunk(
     const state = thunkAPI.getState();
     try {
       setAuthHeader(state.auth.token);
-      const { data } = await axios.patch("users/current", credentials);
-      return { data };
+      const response = await axios.patch("users/current", credentials);
+      return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -301,8 +301,8 @@ export const updateUserPhoto = createAsyncThunk(
     const state = thunkAPI.getState();
     try {
       setAuthHeader(state.auth.token);
-      const { data } = await axios.patch("users/avatar", credentials);
-      return data;
+      const response = await axios.patch("users/avatar", credentials);
+      return response.data;
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);
     }

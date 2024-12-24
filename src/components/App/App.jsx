@@ -54,7 +54,7 @@ export default function App() {
             style: { background: "var(--secondary-color-3)", color: "white" },
           },
         }}
-        position="top-right"
+        position="bottom-left"
         reverseOrder={false}
       />
 

@@ -137,7 +137,7 @@ const slice = createSlice({
       .addCase(updateUserPhoto.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user.avatarUrl = action.payload.data.avatar_url;
+        state.user.data.avatar_url = action.payload.data.avatar_url;
       })
 
       //  _____________________________addMatcher_________________________________
