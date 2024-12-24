@@ -73,6 +73,7 @@
   width: 24px;
   height: 24px;
   fill: white;
+  color: #fff;
 }
 
 @media (max-width: 1440px) {

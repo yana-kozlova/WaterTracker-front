@@ -12,7 +12,7 @@ export default function WaterRatioPanel() {
     // Логіка для обробки збереження даних
     console.log(`Збережено ${waterAmount} мл води`);
     closeModal();
-
+  }
   useEffect(() => {
     setRatio(50);
   }, [])
@@ -37,7 +37,7 @@ export default function WaterRatioPanel() {
         <button className={css.addWaterButton} onClick={openModal}>
          <Icon
              name="plus-circleoutline"
-             color="#fffff"
+            //  color="#fffff"
              className={css.addIcon}
            />
             Add Water
