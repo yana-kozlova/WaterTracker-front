@@ -8,7 +8,9 @@ import {
   getUser,
   updateUserData,
   updateUserDailyNorm,
-  updateUserPhoto
+  updateUserPhoto,
+  resetPassword,
+  updatePassword,
 } from "./operations";
 
 const initialState = {
@@ -39,6 +41,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
       })
       // Login
+
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.data.user;
         state.token = action.payload.data.accessToken;
@@ -86,6 +89,34 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = true;
       })
+      //Reset Password
+      .addCase(resetPassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+      })
+      .addCase(resetPassword.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+      //Update Password
+      .addCase(updatePassword.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+      })
+      .addCase(updatePassword.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+        state.isRegistered = true;
+      })
+      .addCase(updatePassword.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+      })
+
       // _________________________UserAddCases_______________________________________
 
       .addCase(getUser.fulfilled, (state, action) => {
@@ -151,5 +182,3 @@ const slice = createSlice({
 });
 
 export const authReducer = slice.reducer;
-
-
