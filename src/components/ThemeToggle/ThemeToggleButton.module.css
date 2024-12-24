@@ -10,11 +10,11 @@
 }
 
 .slider--light {
-  background-color: #ffffff;
+  background-color:var(--primary-color-white);
 }
 
 .slider--dark {
-  background-color: #307fe6;
+  background-color: var(--secondary-color-4);
   /* Чорний фон для темної теми */
 }
 

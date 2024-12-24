@@ -1,19 +1,18 @@
 import { useTheme } from "../../context/ThemeContext"; // шлях до вашого контексту
-import styles from "./ThemeToggleButton.module.css";
+import css from "./ThemeToggleButton.module.css";
 
 const ThemeToggleButton = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <div
-      className={`${styles.slider} ${
-        theme === "dark" ? styles["slider--dark"] : styles["slider--light"]
+      className={`${css.slider} ${
+        theme === "dark" ? css["slider--dark"] : css["slider--light"]
       }`}
       onClick={toggleTheme}
     >
-      <span className={styles.thumb}>
-        <span className={styles.knob}>
-          <span className={styles["central-knob"]}></span>
+      <span className={css.thumb}>
+        <span className={css.knob}>
         </span>
       </span>
     </div>
