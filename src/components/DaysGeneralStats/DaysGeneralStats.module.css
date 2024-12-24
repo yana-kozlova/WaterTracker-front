@@ -10,6 +10,7 @@
   z-index: 1000;
 }
 
+
 .modal {
   border-radius: 8px;
   padding: 20px 30px;
@@ -42,9 +43,10 @@
 
 .list li {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 15px;
+  gap: 6px;
 }
 
 .label {
@@ -81,4 +83,3 @@
     transform: scale(1);
   }
 }
-

@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+
 }
 
 .day {
@@ -55,7 +56,11 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .dayPercent {
-    font-size: 12px;
-  }
+    .dayPercent {
+          font-size: 12px;
+        }
+     .day {
+            width: 35px;
+            height: 35px;
+        }
 }
