@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
+import { getTodayWater, getWater } from '../../redux/water/operations.js';
 import Layout from "../Layout/Layout.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations.js";
@@ -30,6 +31,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(getTodayWater());
+    dispatch(getWater());
   }, [dispatch]);
 
   return (

@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { addWater, deleteWater, editWater, getWater } from "./operations";
+import { addWater, deleteWater, editWater, getTodayWater, getWater } from './operations';
 
 const initialState = {
   waterItem: [],
@@ -14,6 +14,10 @@ const slice = createSlice({
     builder
       // GetAll
       .addCase(getWater.fulfilled, (state, action) => {
+        state.waterItem = action.payload.data;
+      })
+      // GetA Today
+      .addCase(getTodayWater.fulfilled, (state, action) => {
         state.waterItem = action.payload.data;
       })
       //Add
