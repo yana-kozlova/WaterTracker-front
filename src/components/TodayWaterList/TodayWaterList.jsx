@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
-import React, { useEffect, useState } from "react";
-// import { getWater } from '../../redux/water/operations.js';
-import { selectTodayItem } from '../../redux/water/selectors';
+import { useEffect, useState } from "react";
+import { getTodayWater } from '../../redux/water/operations.js';
+import { selectTodayItem}  from '../../redux/water/selectors';
 
 import EditWater from "./EditWater/EditWater.jsx";
 import DeleteWater from "./DeleteWater/DeleteWater.jsx";
@@ -19,12 +19,13 @@ export default function TodayWaterList() {
   const dispatch = useDispatch();
   const [modalType, setModalType] = useState(null);
   const [currentWater, setCurrentWater] = useState(null);
-  
-  // useEffect(() => {
-  //   dispatch(getWater());
-  // }, [dispatch]);
 
   const waterList = useSelector(selectTodayItem);
+  
+  useEffect(() => {
+    dispatch(getTodayWater());
+  }, [dispatch]);
+
 
   console.log(waterList);
 

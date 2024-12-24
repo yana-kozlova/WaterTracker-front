@@ -4,10 +4,9 @@ import css from "./AuthorizedHeader.module.css";
 import Icon from "../../Svg/Svg.jsx";
 import SettingModal from "../../SettingModal/SettingModal.jsx";
 
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectUser, selectLoading } from "../../../redux/auth/selectors.js";
-import { refreshUser } from "../../../redux/auth/operations.js";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../redux/auth/selectors.js";
 
 export default function AuthorizedHeader() {
   const user = useSelector(selectUser);
@@ -31,6 +30,7 @@ export default function AuthorizedHeader() {
       return <span>{getInitial()}</span>;
     }
   }
+
   const openLogoutModal = () => {
     setIsOpenLogout(true);
   };
@@ -70,13 +70,16 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             Settings
+            {/* Закоментовано, оскільки SettingModal вбудований у компонент: */}
+            {/* 
             <SettingModal
               isModalOpen={isSettingOpen}
               onClose={() => {
                 setIsSettingOpen(false);
                 setIsPopupOpen(false);
               }}
-            />
+            /> 
+            */}
           </div>
           <div className={css.actionLink} onClick={openLogoutModal}>
             <Icon
@@ -85,9 +88,12 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             <div>Log out</div>
+            {/* Закоментовано, оскільки BaseModal може викликати помилки: */}
+            {/* 
             <BaseModal isOpen={isOpenLogout} onClose={closeLogoutModal}>
               <UserLogoutModal onCloseLogout={closeLogoutModal} />
-            </BaseModal>
+            </BaseModal> 
+            */}
           </div>
         </div>
       )}

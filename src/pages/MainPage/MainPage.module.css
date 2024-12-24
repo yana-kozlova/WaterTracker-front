@@ -12,7 +12,7 @@
     border-radius: 10px;
     padding: 24px 8px 24px 8px;
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-    background-color: #ecf2ff;
+    background-color: var(--secondary-color-2);
 }
 
 @media screen and (min-width: 768px) {
@@ -23,7 +23,7 @@
 
 @media screen and (min-width: 1440px) {
     .waterContainer {
-        background: #ecf2ff;
+        background:var(--secondary-color-2);
     }
 }
 
