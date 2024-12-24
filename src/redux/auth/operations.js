@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/login", credentials);
-      console.log(data); 
+      console.log(data);
       setAuthHeader(data.token);
       return data;
     } catch (e) {
@@ -149,7 +149,7 @@ export const loginWithGoogle = createAsyncThunk(
           email: userData.email || "",
           gender: userData.gender || "woman",
           avatarUrl: "",
-          daylyNorm: userData.daily_norma || 2000,
+          daylyNorm: userData.daily_norma || 1500,
         },
       };
     } catch (error) {
@@ -238,11 +238,11 @@ export const loginWithGoogle = createAsyncThunk(
 
 export const updateUserPassword = createAsyncThunk(
   "user/updateUserPassword",
-  async ({old_password, new_password}, thunkAPI) => {
+  async ({ old_password, new_password }, thunkAPI) => {
     try {
       const response = await axios.patch("/users/current", {
         old_password,
-        new_password
+        new_password,
       });
       return response.data.message;
     } catch (error) {
@@ -260,51 +260,51 @@ export const getUser = createAsyncThunk("users/get", async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   try {
     setAuthHeader(state.auth.token);
-  const { data } = await axios.get("users/current");
-  return data;
-} catch (error) {
-  thunkAPI.rejectWithValue(error.message);
-}
+    const { data } = await axios.get("users/current");
+    return data;
+  } catch (error) {
+    thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 export const updateUserData = createAsyncThunk(
-"users/patch",
+  "users/patch",
   async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
-      try {
+    try {
       setAuthHeader(state.auth.token);
-    const { data } = await axios.patch("users/current", credentials);
-    return { data };
-  } catch (error) {
-    thunkAPI.rejectWithValue(error.message);
+      const { data } = await axios.patch("users/current", credentials);
+      return { data };
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
   }
-}
 );
 
 export const updateUserDailyNorm = createAsyncThunk(
-"users/dailyNorm",
-async (credentials, thunkAPI) => {
-  const state = thunkAPI.getState();
-  try {
-    setAuthHeader(state.auth.token);
-    const { data } = await axios.patch("users/water-rate", credentials);
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error.message);
+  "users/dailyNorm",
+  async (credentials, thunkAPI) => {
+    const state = thunkAPI.getState();
+    try {
+      setAuthHeader(state.auth.token);
+      const { data } = await axios.patch("users/water-rate", credentials);
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
   }
-}
 );
 
 export const updateUserPhoto = createAsyncThunk(
-"users/avatar",
+  "users/avatar",
   async (credentials, thunkAPI) => {
     const state = thunkAPI.getState();
-      try {
+    try {
       setAuthHeader(state.auth.token);
-    const { data } = await axios.patch("users/avatar", credentials);
-    return data;
-  } catch (error) {
-    thunkAPI.rejectWithValue(error.message);
+      const { data } = await axios.patch("users/avatar", credentials);
+      return data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
   }
-}
 );
