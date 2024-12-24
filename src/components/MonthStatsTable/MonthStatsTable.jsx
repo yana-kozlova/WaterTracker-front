@@ -83,22 +83,21 @@ export default function MonthStatsTable() {
       <div className={css.wrapperMonth}>
         <h1 className={css.title}>Month</h1>
         <div className={css.month}>
-          <button className={css.buttonLeft} onClick={() => changeMonth(-1)}>
+          <div className={css.buttonLeft} onClick={() => changeMonth(-1)}>
             {"<"}
-          </button>
+          </div>
           <p className={css.span}>
             {currentDate.toLocaleString("en-US", {
               month: "long",
               year: "numeric",
             })}
           </p>
-          <button
-            className={css.buttonRight}
-            onClick={() => changeMonth(1)}
-            disabled={isCurrentMonth(currentDate)}
+          <div
+            className={!isCurrentMonth(currentDate) ? css.buttonRight : css.buttonRightDisabled}
+            onClick={() => !isCurrentMonth(currentDate) && changeMonth(1)}
           >
             {">"}
-          </button>
+          </div>
         </div>
       </div>
       <div className={css.containerDays}>{renderDays()}</div>

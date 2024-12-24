@@ -45,6 +45,22 @@ export default function TodayWaterList() {
       "amount": 250,
       "createdAt": "2024-12-23T23:27:56.537Z",
       "updatedAt": "2024-12-23T23:27:56.537Z"
+    },
+    {
+      "_id": "6769f1fcb101194e6c9ef587",
+      "userId": "67677ffee2c4d59f5a819417",
+      "date": "2024-12-11T14:01:00.500Z",
+      "amount": 250,
+      "createdAt": "2024-12-23T23:27:56.537Z",
+      "updatedAt": "2024-12-23T23:27:56.537Z"
+    },
+    {
+      "_id": "6769f1fcb101194e6c9ef587",
+      "userId": "67677ffee2c4d59f5a819417",
+      "date": "2024-12-11T14:01:00.500Z",
+      "amount": 250,
+      "createdAt": "2024-12-23T23:27:56.537Z",
+      "updatedAt": "2024-12-23T23:27:56.537Z"
     }
   ];
 
@@ -77,16 +93,16 @@ export default function TodayWaterList() {
               .map(({ amount, date, _id }) => (
                 <li className={css.item} key={_id}>
                   <div className={css.infoWrapper}>
-                    <img src={capIcon} alt="Cap Icon" width="50" height="50" />
+                    <img src={capIcon} alt="Cap Icon" width="50" height="50"/>
                     <p className={css.textVolume}>{amount}ml</p>
                     <p className={css.textTime}>{timeFromDate(date)}</p>
                   </div>
                   <div className={css.btnWrap}>
                     <button className={css.btnEdit} onClick={() => openModal('EDIT', { amount, date, _id })}>
-                      <img src={editIcon} alt="Cap Icon" width="50" height="50" />
+                      <img src={editIcon} alt="Cap Icon" width="50" height="50"/>
                     </button>
                     <button className={css.btnDelete} onClick={() => openModal('DELETE', { _id })}>
-                      <img src={deleteIcon} alt="Cap Icon" width="50" height="50" />
+                      <img src={deleteIcon} alt="Cap Icon" width="50" height="50"/>
                     </button>
                   </div>
                 </li>
@@ -96,19 +112,17 @@ export default function TodayWaterList() {
               <p>No notes yet</p>
             </li>
           )}
-          <li>
-            <div className={css.btnAdd} onClick={() => openModal('ADD')}>
-              + Add water
-            </div>
-          </li>
         </ul>
+      </div>
+      <div className={css.btnAdd} onClick={() => openModal('ADD')}>
+        + Add water
       </div>
       {modalType === 'ADD' && <AddWater closeModal={closeModal}/>}
       {modalType === 'EDIT' && (
-        <EditWater water={currentWater} closeModal={closeModal} />
+        <EditWater water={currentWater} closeModal={closeModal}/>
       )}
       {modalType === 'DELETE' && (
-        <DeleteWater water={currentWater} closeModal={closeModal} />
+        <DeleteWater water={currentWater} closeModal={closeModal}/>
       )}
     </div>
   )

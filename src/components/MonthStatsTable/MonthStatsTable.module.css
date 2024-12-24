@@ -1,3 +1,7 @@
+.containerCalendar {
+    margin-top: 48px;
+}
+
 .wrapperCalendar {
     display: flex;
     flex-direction: column;
@@ -35,18 +39,19 @@
 }
 
 .buttonLeft,
-.buttonRight {
-    width: 14px;
-    height: 14px;
+.buttonRight,
+.buttonRightDisabled {
+    /*width: 14px;*/
+    /*height: 14px;*/
     padding: 0;
     cursor: pointer;
-    margin-left:10px;
+    margin-left: 10px;
     background-color: transparent;
     border: none;
     color: #407bff;
 }
 
-.buttonRight:disabled {
+.buttonRightDisabled {
     color: #a9a9a9;
     cursor: not-allowed;
 }
