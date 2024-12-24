@@ -6,7 +6,7 @@ export default function DayComponent({
   calendarRef,
   day,
   dayLabel,
-  waterPercent,
+  waterStats,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // відображення модального вікна.
   const dayRef = useRef(null); //для обробки кліків поза модальним вікном
@@ -33,24 +33,50 @@ export default function DayComponent({
       {isModalOpen && (
         <DaysGeneralStats
           selectedDate={dayLabel}
-          dailyNorm={2}
-          consumedWater={2}
-          portions={2}
+          dailyNorm={waterStats?.DailyNorma / 1000 || 0}
+          consumedWater={waterStats?.progress || 0}
+          portions={waterStats?.totalServings || 0}
           calendarRef={calendarRef}
           refData={dayRef}
           closeModal={() => setIsModalOpen(false)}
         />
       )}
       <div
-        className={`${css.day} ${waterPercent < 100 ? css.incomplete : css.complete}`}
+        className={`${css.day} ${
+          waterStats?.progress < 100 ? css.incomplete : css.complete
+        }`}
         onClick={toggleModalVisibility}
         ref={dayRef}
       >
         {day}
       </div>
       <div className={css.dayPercent}>
-        {waterPercent ? `${Math.min(waterPercent, 100)}%` : "0%"}
+        {waterStats?.progress ? `${Math.min(waterStats.progress, 100)}%` : "0%"}
       </div>
     </div>
   );
 }
+
+
+
+//   const toggleModalVisibility = () => {
+//   if (!isModalOpen) {
+//     const dayRect = dayRef.current.getBoundingClientRect(); // Отримуємо позицію дня
+//     const isMobile = window.innerWidth <= 768;
+
+//     if (isMobile) {
+//       setModalPosition({ top: "10%", left: "50%", transform: "translateX(-50%)" });
+//     } else {
+//       const modalTop = dayRect.top - 195; // Розташування по центру відносно дня
+//       const modalLeft =
+//         dayRect.left + dayRect.width / 2 > window.innerWidth / 2
+//           ? dayRect.left - 140
+//           : dayRect.right + 60;
+
+//       setModalPosition({ top: `${modalTop}px`, left: `${modalLeft}px`, transform: "none" });
+//     }
+//   }
+
+//     setIsModalOpen((prevState) => !prevState); // Видимості модального вікна
+//   };
+  
