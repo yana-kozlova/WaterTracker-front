@@ -30,7 +30,7 @@ const DaysGeneralStats = ({
     ];
     const day = date.getDate();
     const month = months[date.getMonth()];
-    return `${day}, ${month}`;
+    return `${day}`, `${month}`;
   };
 
   // Обчислення виконання денної норми
