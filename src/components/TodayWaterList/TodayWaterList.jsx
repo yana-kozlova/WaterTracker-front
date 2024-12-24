@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { getWater } from '../../redux/water/operations.js';
 import { selectWaterItem } from "../../redux/water/selectors";
 
@@ -10,6 +10,10 @@ import Icon from '../Svg/Svg.jsx'
 // import EditWater from "./EditWater.jsx";
 // import DeleteWater from "./DeleteWater.jsx";
 // import AddWater from "./AddWater.jsx";
+
+import capIcon from "../../assets/icons/cap.svg";
+import editIcon from "../../assets/icons/edit.svg";
+import deleteIcon from "../../assets/icons/delete.svg";
 
 import css from "./TodayWaterList.module.css"
 
@@ -23,7 +27,26 @@ export default function TodayWaterList() {
   //   dispatch(getWater());
   // }, [dispatch]);
 
-  const { waterList } = useSelector(selectWaterItem);
+  // const { waterList } = useSelector(selectWaterItem);
+
+  const waterList = [
+    {
+      "_id": "6769f1f8b101194e6c9ef581",
+      "userId": "67677ffee2c4d59f5a819417",
+      "date": "2024-12-11T14:01:00.500Z",
+      "amount": 250,
+      "createdAt": "2024-12-23T23:27:52.092Z",
+      "updatedAt": "2024-12-23T23:27:52.092Z"
+    },
+    {
+      "_id": "6769f1fcb101194e6c9ef587",
+      "userId": "67677ffee2c4d59f5a819417",
+      "date": "2024-12-11T14:01:00.500Z",
+      "amount": 250,
+      "createdAt": "2024-12-23T23:27:56.537Z",
+      "updatedAt": "2024-12-23T23:27:56.537Z"
+    }
+  ];
 
   const openModal = (type, water = null) => {
     setModalType(type);
@@ -34,8 +57,6 @@ export default function TodayWaterList() {
     setModalType(null);
     setCurrentWater(null);
   };
-
-
 
   const timeFromDate = date => {
     return new Date(date).toLocaleTimeString('en-US', {
@@ -56,25 +77,16 @@ export default function TodayWaterList() {
               .map(({ amount, date, _id }) => (
                 <li className={css.item} key={_id}>
                   <div className={css.infoWrapper}>
-                    {/* <svg className={css.iconCup}>
-                      <use href="/public/svg/#icon-cup" alt="Cup Icon"></use>
-                    </svg> */}
-                    <Icon id="icon-cup" className={css.iconCup} />
+                    <img src={capIcon} alt="Cap Icon" width="50" height="50" />
                     <p className={css.textVolume}>{amount}ml</p>
                     <p className={css.textTime}>{timeFromDate(date)}</p>
                   </div>
                   <div className={css.btnWrap}>
                     <button className={css.btnEdit} onClick={() => openModal('EDIT', { amount, date, _id })}>
-                      {/* <svg className={css.iconEdit}>
-                        <use href="/public/svg/pencil-squareoutline.svg" alt="Edit Icon"></use>
-                      </svg> */}
-                      <Icon id="pencil-squareoutline" className={css.iconEdit} />
+                      <img src={editIcon} alt="Cap Icon" width="50" height="50" />
                     </button>
                     <button className={css.btnDelete} onClick={() => openModal('DELETE', { _id })}>
-                      {/* <svg className={css.iconDelete}>
-                        <use href="/public/svg/trashoutline.svg" alt="Delete Icon" ></use>
-                      </svg> */}
-                      <Icon id="trashoutline" className={css.iconDelete} />
+                      <img src={deleteIcon} alt="Cap Icon" width="50" height="50" />
                     </button>
                   </div>
                 </li>
@@ -85,17 +97,13 @@ export default function TodayWaterList() {
             </li>
           )}
           <li>
-            <button className={css.btnAdd} onClick={() => openModal('ADD')}>
-              {/* <svg className={css.iconAdd}>
-                <use href="/public/svg/plus-smalloutline.svg" alt="Add Icon"></use>
-              </svg> */}
-              <Icon id="plus-smalloutline" className={css.iconAdd} />
-              Add water
-            </button>
+            <div className={css.btnAdd} onClick={() => openModal('ADD')}>
+              + Add water
+            </div>
           </li>
         </ul>
       </div>
-      {modalType === 'ADD' && <AddWater closeModal={closeModal} />}
+      {modalType === 'ADD' && <AddWater closeModal={closeModal}/>}
       {modalType === 'EDIT' && (
         <EditWater water={currentWater} closeModal={closeModal} />
       )}
