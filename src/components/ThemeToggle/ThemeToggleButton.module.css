@@ -3,7 +3,7 @@
   width: 60px;
   height: 30px;
   border-radius: 50px;
-  background-color: #ccc;
+  background-color: var(--secondary-color-2);
   border: #082a37 1px solid;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -26,7 +26,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #030a47;
+  background-color: var(--primary-background-color);
   transition: left 0.3s ease, background-color 0.3s ease;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .slider--dark .thumb {
-  left: 35px;
-  background-color: #ffffff;
+  left: 33px;
+  background-color: var(--primary-color-white);;
 }
 
 .knob {
@@ -45,15 +45,5 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--primary-background-color);;
 }
-
-/* .knob .central-knob {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  top: 6px;
-  left: 6px;
-  border-radius: 50%;
-  background-color: #0c303e;
-} */

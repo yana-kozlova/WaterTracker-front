@@ -29,7 +29,7 @@
 
 .buttonLogout {
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #ef5050;
+  background: var(--secondary-color-3);
   max-width: 100%;
 }
 

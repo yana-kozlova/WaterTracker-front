@@ -120,7 +120,7 @@
 }
 
 .iconDelete {
-    fill: #ef5050;
+    fill: var(--secondary-color-3);
     width: 12px;
     height: 14px;
 }

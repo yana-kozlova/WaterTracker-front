@@ -10,7 +10,7 @@
   font-weight: 400;
   line-height: 24px;
   padding-left: 10px;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .sliderContainer {
@@ -37,7 +37,7 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .sliderLabel {
@@ -45,15 +45,15 @@
   font-size: 12px;
   font-weight: 400px;
   line-height: 16px;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .addWaterButton {
   padding: 10px 30px;
-  background-color: #407bff;
+  background-color: var(--primary-color-blue);
   width: 178px;
   height: 44px;
-  color: white;
+  color: var(--primary-background-color);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -66,13 +66,13 @@
 }
 
 .addWaterButton:hover {
-  box-shadow: 0 4px 6px #407bff;
+  box-shadow: 0 4px 6px var(--primary-color-blue);
 }
 
 .addIcon {
   width: 24px;
   height: 24px;
-  fill: white;
+  fill: var(--primary-background-color);
 }
 
 @media (max-width: 1440px) {
