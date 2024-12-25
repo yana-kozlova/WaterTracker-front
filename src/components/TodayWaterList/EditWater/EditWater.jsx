@@ -36,24 +36,12 @@ const valueFieldId = useId();
 
   const currentTime = formatToTime(date);
 
-  // const [waterAmount, setWaterAmount] = useState(amount);
-  // const [userTime, setUserTime] = useState(currentTime);
-
   const initialValues = {
     newTime: currentTime,
     newAmount: amount,
   };
 
-  // const handleIncrement = () => {
-  //   setWaterAmount((prev) => prev + 50);
-  // };
-
-  // const handleDecrement = () => {
-  //   setWaterAmount((prev) => (prev > 50 ? prev - 50 : prev));
-  // };
-
   const handleEdit = (values) => {
-    console.log(values.newAmount);
     dispatch(
       editWater({
         _id,
