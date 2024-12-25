@@ -28,13 +28,14 @@ export default function DayComponent({
     setIsModalOpen((prevState) => !prevState); //видимості модального вікна
   };
 
+  console.log(waterStats)
   return (
     <div className={css.wrapperDay}>
       {isModalOpen && (
         <DaysGeneralStats
           selectedDate={dayLabel}
-          dailyNorm={waterStats?.DailyNorma / 1000 || 0}
-          consumedWater={waterStats?.progress || 0}
+          dailyNorma={waterStats?.dailyNorma / 1000 || 0}
+          progress={waterStats?.progress || 0}
           portions={waterStats?.totalServings || 0}
           calendarRef={calendarRef}
           refData={dayRef}
