@@ -98,7 +98,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11111;
-  color:var(--primary-text-color);
+  color: var(--primary-text-color);
 }
 
 .waterAmountLabel {
@@ -125,12 +125,14 @@
   .inputValue {
     width: 100%;
   }
+
   .modalActions {
     flex-direction: row;
     gap: 24px;
     justify-content: flex-end;
     align-items: baseline;
   }
+
   .saveButton {
     border-radius: 10px;
     padding: 10px 30px;

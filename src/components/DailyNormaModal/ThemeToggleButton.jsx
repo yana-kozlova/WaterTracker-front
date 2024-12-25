@@ -1,7 +1,7 @@
 import { useTheme } from '../DarkTheme/context/ThemeContext';
 
 const ThemeToggleButton = () => {
-  const { ThemeToggle } = useTheme(); 
+  const { ThemeToggle } = useTheme();
 
   return (
     <button onClick={ThemeToggle}>

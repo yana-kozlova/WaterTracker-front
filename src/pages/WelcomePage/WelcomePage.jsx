@@ -3,6 +3,6 @@ import Main from './components/Main/Main.jsx';
 
 export default function WelcomePage() {
   return (<PageContainer>
-      <Main />
-    </PageContainer>);
+    <Main />
+  </PageContainer>);
 };

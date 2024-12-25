@@ -1,189 +1,191 @@
 .container {
-    width: 100%;
-    height: 260px;
-    margin-bottom: 24px;
+  width: 100%;
+  height: 260px;
+  margin-bottom: 24px;
 }
 
 .title {
-    font-weight: 500;
-    font-size: 24px;
-    color: var(--primary-text-color);
-    margin-bottom: 8px;
-    text-align: left;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--primary-text-color);
+  margin-bottom: 8px;
+  text-align: left;
 }
+
 .listWrapper {
-    width: inherit;
-    max-height: 202px;
-    overflow: scroll;
-    overflow-x: hidden;
+  width: inherit;
+  max-height: 202px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .list {
-    padding-right: 4px;
+  padding-right: 4px;
 }
+
 /* Стилізація скролбару */
 .listWrapper::-webkit-scrollbar {
-    width: 4px;
+  width: 4px;
 }
+
 /* Доріжка (фон скролбару) */
 .listWrapper::-webkit-scrollbar-track {
-    background-color: var(--secondary-color-6);
-    border-radius: 50px;
+  background-color: var(--secondary-color-6);
+  border-radius: 50px;
 }
 
 /* Повзунок (рухома частина) */
- .listWrapper::-webkit-scrollbar-thumb {
-    border-radius: 50px;
-    width: 2px;
-    background-color: var(--secondary-color-4);
+.listWrapper::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  width: 2px;
+  background-color: var(--secondary-color-4);
 
- }
- 
- .listWrapper::-webkit-scrollbar-thumb:hover{
-    background-color: var(--primary-color-blue);
- }
+}
+
+.listWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color-blue);
+}
+
 .item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px 4px 0 ;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--secondary-color-6);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px 4px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--secondary-color-6);
 }
 
 .infoWrapper {
-    width: 166px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    
+  width: 166px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
 }
 
 .iconCup {
-    width: 17px;
-    height: 22px;
-    fill: var(--primary-color-blue);
+  width: 17px;
+  height: 22px;
+  fill: var(--primary-color-blue);
 }
 
 .textVolume {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33;
-    color: var(--primary-color-blue);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: var(--primary-color-blue);
 }
 
 .textTime {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 2;
-    color: #2f2f2f;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  color: #2f2f2f;
 }
 
 
 .btnWrap {
-    display: flex;
-    flex-direction: row;
-    gap: 18px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
 }
 
 .btnEdit {
-    width: 24px;
-    height: 24px;
-    padding: 4px;
-    border: none;
-    cursor: pointer;
-    background-color: transparent;
-    border-bottom: 1px solid transparent;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .iconEdit {
-    fill: var(--secondary-color-4);
+  fill: var(--secondary-color-4);
 }
 
 .btnEdit:hover {
-    border-bottom: 1px solid var(--secondary-color-4);
+  border-bottom: 1px solid var(--secondary-color-4);
 }
 
 .btnDelete {
-    width: 24px;
-    height: 24px;
-    padding: 4px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid transparent;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .btnDelete:hover {
-    border-bottom: 1px solid var(--secondary-color-3);
+  border-bottom: 1px solid var(--secondary-color-3);
 }
 
 .iconDelete {
-    fill: var(--secondary-color-3);
-    width: 12px;
-    height: 14px;
+  fill: var(--secondary-color-3);
+  width: 12px;
+  height: 14px;
 }
 
 .btnAdd {
-    padding: 12px 0 0 0;
-    border: none;
-    background-color: transparent;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.25;
-    color: var(--primary-color-blue);
-    cursor: pointer;
+  padding: 12px 0 0 0;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--primary-color-blue);
+  cursor: pointer;
 }
 
 .btnAdd:hover {
-    color: var(--secondary-color-5);
+  color: var(--secondary-color-5);
 }
 
 .iconAdd {
-    width: 16px;
-    height: 16px;
-    fill: var(--primary-color-blue);
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-blue);
 }
 
 .infoWrapper img {
-    height: 36px;
-    width: 36px;
+  height: 36px;
+  width: 36px;
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        height: 260px;
-    }
+  .container {
+    height: 260px;
+  }
 
-    .title {
-        font-size: 26px;
-        line-height: 1.23;
-    }
+  .title {
+    font-size: 26px;
+    line-height: 1.23;
+  }
 
-    .infoWrapper {
-        width: 206px;
-    }
+  .infoWrapper {
+    width: 206px;
+  }
 
-    .iconCup {
-        width: 23px;
-        height: 30px;
-    }
-    
-    .btnAdd {
-        font-size: 18px;
-        line-height: 1.33;
-    }
+  .iconCup {
+    width: 23px;
+    height: 30px;
+  }
 
-    .iconAdd {
-        width: 24px;
-        height: 24px;
-        fill: var(--primary-color-blue);
-    }
+  .btnAdd {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+
+  .iconAdd {
+    width: 24px;
+    height: 24px;
+    fill: var(--primary-color-blue);
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .container {
-
-    }
+  .container {}
 }

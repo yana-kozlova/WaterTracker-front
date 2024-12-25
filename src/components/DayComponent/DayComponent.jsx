@@ -43,9 +43,8 @@ export default function DayComponent({
         />
       )}
       <div
-        className={`${css.day} ${
-          waterStats?.progress < 100 ? css.incomplete : css.complete
-        }`}
+        className={`${css.day} ${waterStats?.progress < 100 ? css.incomplete : css.complete
+          }`}
         onClick={toggleModalVisibility}
         ref={dayRef}
       >
@@ -80,4 +79,3 @@ export default function DayComponent({
 
 //     setIsModalOpen((prevState) => !prevState); // Видимості модального вікна
 //   };
-  

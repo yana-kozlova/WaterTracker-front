@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react";
 import { getTodayWater } from '../../redux/water/operations.js';
-import { selectTodayItem}  from '../../redux/water/selectors';
+import { selectTodayItem } from '../../redux/water/selectors';
 
 import EditWater from "./EditWater/EditWater.jsx";
 import DeleteWater from "./DeleteWater/DeleteWater.jsx";
@@ -21,7 +21,7 @@ export default function TodayWaterList() {
   const [currentWater, setCurrentWater] = useState(null);
 
   const waterList = useSelector(selectTodayItem);
-  
+
   useEffect(() => {
     dispatch(getTodayWater());
   }, [dispatch]);
@@ -93,16 +93,16 @@ export default function TodayWaterList() {
               .map(({ amount, date, _id }) => (
                 <li className={css.item} key={_id}>
                   <div className={css.infoWrapper}>
-                    <img src={capIcon} alt="Cap Icon" width="50" height="50"/>
+                    <img src={capIcon} alt="Cap Icon" width="50" height="50" />
                     <p className={css.textVolume}>{amount}ml</p>
                     <p className={css.textTime}>{timeFromDate(date)}</p>
                   </div>
                   <div className={css.btnWrap}>
                     <button className={css.btnEdit} onClick={() => openModal('EDIT', { amount, date, _id })}>
-                      <img src={editIcon} alt="Cap Icon" width="50" height="50"/>
+                      <img src={editIcon} alt="Cap Icon" width="50" height="50" />
                     </button>
                     <button className={css.btnDelete} onClick={() => openModal('DELETE', { _id })}>
-                      <img src={deleteIcon} alt="Cap Icon" width="50" height="50"/>
+                      <img src={deleteIcon} alt="Cap Icon" width="50" height="50" />
                     </button>
                   </div>
                 </li>
@@ -117,12 +117,12 @@ export default function TodayWaterList() {
       <div className={css.btnAdd} onClick={() => openModal('ADD')}>
         + Add water
       </div>
-      {modalType === 'ADD' && <AddWater closeModal={closeModal}/>}
+      {modalType === 'ADD' && <AddWater closeModal={closeModal} />}
       {modalType === 'EDIT' && (
-        <EditWater water={currentWater} closeModal={closeModal}/>
+        <EditWater water={currentWater} closeModal={closeModal} />
       )}
       {modalType === 'DELETE' && (
-        <DeleteWater water={currentWater} closeModal={closeModal}/>
+        <DeleteWater water={currentWater} closeModal={closeModal} />
       )}
     </div>
   )

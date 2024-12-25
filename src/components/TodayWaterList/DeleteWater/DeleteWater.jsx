@@ -11,7 +11,7 @@ const DeleteWater = () => {
           type="button"
           name="Delete"
           className={css.buttonDelete}
-          onClick={() => {}}
+          onClick={() => { }}
         />
         <Button type="button" name="Cancel" className={css.buttonCancel} />
       </div>

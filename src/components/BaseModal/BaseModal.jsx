@@ -3,7 +3,7 @@ import Icon from "../Svg/Svg";
 
 export default function BaseModal({ isOpen, onClose, children, className }) {
 
-  
+
   if (!isOpen) return null;
 
   return (
@@ -11,7 +11,7 @@ export default function BaseModal({ isOpen, onClose, children, className }) {
       <div
         className={`${css.modalContent} ${className || ""}`}
         onClick={(e) => e.stopPropagation()}
-        
+
       >
         <button className={css.modalClose} onClick={onClose}>
           <Icon

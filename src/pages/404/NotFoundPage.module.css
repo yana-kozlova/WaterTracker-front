@@ -24,7 +24,8 @@
 
 .content {
   text-align: center;
-  color: var(--primary-background-color);;
+  color: var(--primary-background-color);
+  ;
 }
 
 .errorCode {
@@ -50,6 +51,6 @@
   cursor: pointer;
 }
 
-.link:hover{
+.link:hover {
   text-decoration: none;
 }

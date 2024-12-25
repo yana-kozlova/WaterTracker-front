@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useState } from 'react';
 import DailyNormaModal from "../DailyNormaModal/DailyNormaModal";
 import styles from "./DailyNorma.module.css";
 import BaseModal from "../BaseModal/BaseModal";
@@ -8,7 +8,7 @@ import { selectDailyNorma } from "../../redux/auth/selectors";
 
 const DailyNorma = () => {
   const userDailyNorma = useSelector(selectDailyNorma) / 1000;
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleEditClick = () => {
@@ -29,7 +29,7 @@ const DailyNorma = () => {
           Edit
         </button>
         <BaseModal isOpen={isModalOpen} onClose={closeModal}>
-          <DailyNormaModal onClose={closeModal}/>
+          <DailyNormaModal onClose={closeModal} />
         </BaseModal>
       </div>
     </div>
