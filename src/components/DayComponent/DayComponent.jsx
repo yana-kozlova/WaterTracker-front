@@ -28,7 +28,7 @@ export default function DayComponent({
     setIsModalOpen((prevState) => !prevState); //видимості модального вікна
   };
 
-  console.log(waterStats)
+  // console.log(waterStats)
   return (
     <div className={css.wrapperDay}>
       {isModalOpen && (
