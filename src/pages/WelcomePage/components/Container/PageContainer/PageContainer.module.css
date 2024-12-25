@@ -1,67 +1,67 @@
 .pageContainer {
-    margin: 48px auto;
-    width: 100%;
-    max-width: 1014px;
+  margin: 48px auto;
+  width: 100%;
+  max-width: 1014px;
 }
 
 .backgroundMain {
-    position: fixed;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: url("../../../../../assets/images/bg-main-desk.png");
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: contain;
-    overflow: hidden;
-    left: 0;
-    right: 0;
-    z-index: -1;
+  position: fixed;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../../../../assets/images/bg-main-desk.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
 .backgroundBubblesMain {
-    position: fixed;
-    bottom: 0;
-    height: 100vh;
-    width: 100vw;
-    background-image: url("../../../../../assets/images/bg-bubbles-main-desk.png");
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: contain;
-    overflow: hidden;
-    left: 0;
-    right: 0;
-    z-index: -1;
+  position: fixed;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../../../../assets/images/bg-bubbles-main-desk.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  z-index: -1;
 }
 
 /* Медіа-запити для мобільних пристроїв */
 @media screen and (max-width: 767px) {
-    .pageContainer {
-        margin: 0 auto 16px;
-    }
+  .pageContainer {
+    margin: 0 auto 16px;
+  }
 
-    .backgroundMain {
-        background-image: url("../../../../../assets/images/bg-main-mobile.png");
-        background-size: cover;
-    }
+  .backgroundMain {
+    background-image: url("../../../../../assets/images/bg-main-mobile.png");
+    background-size: cover;
+  }
 
-    .backgroundBubblesMain {
-        visibility: hidden;
-    }
+  .backgroundBubblesMain {
+    visibility: hidden;
+  }
 }
 
 /* Медіа-запити для планшетів */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .pageContainer {
-        margin: 0 auto 16px;
-    }
+  .pageContainer {
+    margin: 0 auto 16px;
+  }
 
-    .backgroundMain {
-        background-image: url("../../../../../assets/images/bg-main-tablet.png");
-        background-size: cover;
-    }
+  .backgroundMain {
+    background-image: url("../../../../../assets/images/bg-main-tablet.png");
+    background-size: cover;
+  }
 
-    .backgroundBubblesMain {
-        visibility: hidden;
-    }
+  .backgroundBubblesMain {
+    visibility: hidden;
+  }
 }

@@ -56,7 +56,7 @@ export default function TodayWaterList() {
   };
 
   const waterList = useSelector(selectTodayItem);
-  
+
   useEffect(() => {
     dispatch(getTodayWater());
   }, [dispatch]);

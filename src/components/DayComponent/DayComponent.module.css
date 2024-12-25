@@ -18,7 +18,7 @@
   font-size: 14px;
   line-height: 1.28;
   text-align: center;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .complete {
@@ -56,11 +56,12 @@
 
 @media screen and (min-width: 1440px) {
 
-    .dayPercent {
-          font-size: 12px;
-        }
-      .day {
-            width: 35px;
-            height: 35px;
-        }
+  .dayPercent {
+    font-size: 12px;
+  }
+
+  .day {
+    width: 35px;
+    height: 35px;
+  }
 }

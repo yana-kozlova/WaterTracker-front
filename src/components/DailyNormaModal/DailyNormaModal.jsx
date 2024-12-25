@@ -1,7 +1,7 @@
 import DailyNormaForm from "../DailyNormaForm/DailyNormaForm";
 import css from "./DailyNormaModal.module.css";
 
-const DailyNormaModal = ({onClose}) => {
+const DailyNormaModal = ({ onClose }) => {
   return (
     <div className={css.content}>
       <div>

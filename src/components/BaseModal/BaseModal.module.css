@@ -39,7 +39,7 @@
 }
 
 @media screen and (min-width: 1440px) {
- .modalContent {
-   min-width: 592px;
- }
+  .modalContent {
+    min-width: 592px;
+  }
 }

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './DaysGeneralStats.module.css';
 
 const DaysGeneralStats = ({
-                            selectedDate, dailyNorma, progress, portions, onClose,
-                          }) => {
+  selectedDate, dailyNorma, progress, portions, onClose,
+}) => {
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
@@ -28,28 +28,28 @@ const DaysGeneralStats = ({
   }, [onClose]);
 
   return (<div className={styles.overlay}>
-      <div className={styles.modal}>
-        <ul className={styles.list}>
-          <li>
-            <span className={styles.value}>{selectedDate}</span>
-          </li>
-          <li>
-            <span className={styles.label}>Daily Norm:</span>
-            <span className={styles.value}>{dailyNorma} L</span>
-          </li>
-          <li>
-            <span className={styles.label}>Fulfillment of the daily norm:</span>
-            <span className={styles.value}>
-              {progress}%
-            </span>
-          </li>
-          <li>
-            <span className={styles.label}>How many servings of water:</span>
-            <span className={styles.value}>{portions}</span>
-          </li>
-        </ul>
-      </div>
-    </div>);
+    <div className={styles.modal}>
+      <ul className={styles.list}>
+        <li>
+          <span className={styles.value}>{selectedDate}</span>
+        </li>
+        <li>
+          <span className={styles.label}>Daily Norm:</span>
+          <span className={styles.value}>{dailyNorma} L</span>
+        </li>
+        <li>
+          <span className={styles.label}>Fulfillment of the daily norm:</span>
+          <span className={styles.value}>
+            {progress}%
+          </span>
+        </li>
+        <li>
+          <span className={styles.label}>How many servings of water:</span>
+          <span className={styles.value}>{portions}</span>
+        </li>
+      </ul>
+    </div>
+  </div>);
 };
 
 DaysGeneralStats.propTypes = {

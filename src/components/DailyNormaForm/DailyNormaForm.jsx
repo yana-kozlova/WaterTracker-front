@@ -29,8 +29,8 @@ const calculateDailyNorma = (gender, weight, activeTime) => {
   }
 };
 
-const DailyNormaForm = ({onClose}) => {
-  const userDailyNorma = (useSelector(selectDailyNorma)/1000);
+const DailyNormaForm = ({ onClose }) => {
+  const userDailyNorma = (useSelector(selectDailyNorma) / 1000);
   const dispatch = useDispatch();
 
   const genderWomanField = useId();
@@ -56,8 +56,8 @@ const DailyNormaForm = ({onClose}) => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        dispatch(updateUserDailyNorm({ daily_norma : values.userDailyNorma*1000 } ))
-          onClose();
+        dispatch(updateUserDailyNorm({ daily_norma: values.userDailyNorma * 1000 }))
+        onClose();
       }}
     >
       {({ handleChange }) => (

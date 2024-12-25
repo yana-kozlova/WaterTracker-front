@@ -27,6 +27,7 @@
   text-decoration-skip-ink: none;
   color: var(--primary-color-blue);
 }
+
 .edit-button {
   color: var(--secondary-color-4);
   width: 28px;
@@ -37,6 +38,7 @@
   border: none;
   background-color: transparent;
 }
+
 .edit-container {
   width: 94px;
   height: 24px;
@@ -49,6 +51,7 @@
 .edit-button:hover {
   color: var(--secondary-color-5);
 }
+
 @media (min-width: 320px) {
   .daily-norma-l {
     font-size: 24px;

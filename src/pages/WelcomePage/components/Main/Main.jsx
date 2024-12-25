@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <div className={css.main}>
       <WaterConsumptionTracker />
-      <WhyDrinkWater  />
+      <WhyDrinkWater />
     </div>
   );
 };

@@ -141,95 +141,95 @@ const SettingModal = ({ isModalOpen, onClose }) => {
   }, [user]);
 
   return (<BaseModal
-      isOpen={isModalOpen}
-      onClose={onClose}
-      className={css.settingModal}
+    isOpen={isModalOpen}
+    onClose={onClose}
+    className={css.settingModal}
+  >
+    <h2 className={css['name-header']}>Setting</h2>
+    {message && (<div className={`${css.message} ${css[message.type]}`}>
+      {message.text}
+    </div>)}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
     >
-      <h2 className={css['name-header']}>Setting</h2>
-      {message && (<div className={`${css.message} ${css[message.type]}`}>
-          {message.text}
-        </div>)}
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
+      {({ errors, touched, handleSubmit }) => (<Form
+        className={css['form-container']}
+        autoComplete="off"
+        noValidate
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit();
+          }
+        }}
       >
-        {({ errors, touched, handleSubmit }) => (<Form
-            className={css['form-container']}
-            autoComplete="off"
-            noValidate
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit();
-              }
-            }}
-          >
-            <ProfilePhoto
-              avatar={user?.avatar_url || ''}
-              isSubmitBlocked={isSubmitBlocked}
-              handleAvatarChange={handleAvatarChange}
+        <ProfilePhoto
+          avatar={user?.avatar_url || ''}
+          isSubmitBlocked={isSubmitBlocked}
+          handleAvatarChange={handleAvatarChange}
+        />
+        <div className={css['desktop-flex']}>
+          <div className={css['desktop-left']}>
+            <GenderChoice name="gender" />
+            <InputField
+              name="name"
+              label="Your name"
+              placeholder="Enter your name"
+              isError={errors.name && touched.name}
             />
-            <div className={css['desktop-flex']}>
-              <div className={css['desktop-left']}>
-                <GenderChoice name="gender"/>
-                <InputField
-                  name="name"
-                  label="Your name"
-                  placeholder="Enter your name"
-                  isError={errors.name && touched.name}
-                />
-                <InputField
-                  name="email"
-                  label="E-mail"
-                  type="email"
-                  placeholder="Enter your email"
-                  isError={errors.email && touched.email}
-                />
-              </div>
-              <div className={css['desktop-right']}>
-                <h3 className={css.subtitle}>Password</h3>
-                <div className={css['password-group']}>
-                  <PasswordField
-                    label="Outdated password:"
-                    name="old_password"
-                    placeholder="Enter old password"
-                    isHiddenPassword={state.old_password}
-                    toggle={toggle}
-                    isError={touched.old_password && errors.old_password}
-                  />
-                  <PasswordField
-                    label="New password:"
-                    name="new_password"
-                    placeholder="Enter new password"
-                    isHiddenPassword={state.new_password}
-                    toggle={toggle}
-                    isError={touched.new_password && errors.new_password}
-                  />
+            <InputField
+              name="email"
+              label="E-mail"
+              type="email"
+              placeholder="Enter your email"
+              isError={errors.email && touched.email}
+            />
+          </div>
+          <div className={css['desktop-right']}>
+            <h3 className={css.subtitle}>Password</h3>
+            <div className={css['password-group']}>
+              <PasswordField
+                label="Outdated password:"
+                name="old_password"
+                placeholder="Enter old password"
+                isHiddenPassword={state.old_password}
+                toggle={toggle}
+                isError={touched.old_password && errors.old_password}
+              />
+              <PasswordField
+                label="New password:"
+                name="new_password"
+                placeholder="Enter new password"
+                isHiddenPassword={state.new_password}
+                toggle={toggle}
+                isError={touched.new_password && errors.new_password}
+              />
 
-                  <PasswordField
-                    label="Repeat new password:"
-                    name="confirmPassword"
-                    placeholder="Repeat new password"
-                    isHiddenPassword={state.confirmPassword}
-                    toggle={toggle}
-                    isError={touched.confirmPassword && errors.confirmPassword}
-                  />
-                </div>
-              </div>
+              <PasswordField
+                label="Repeat new password:"
+                name="confirmPassword"
+                placeholder="Repeat new password"
+                isHiddenPassword={state.confirmPassword}
+                toggle={toggle}
+                isError={touched.confirmPassword && errors.confirmPassword}
+              />
             </div>
-            <div className={css['button-container']}>
-              <button
-                className={css['submit-button']}
-                type="submit"
-                disabled={isSubmitBlocked}
-              >
-                Save
-              </button>
-            </div>
-          </Form>)}
-      </Formik>
-    </BaseModal>);
+          </div>
+        </div>
+        <div className={css['button-container']}>
+          <button
+            className={css['submit-button']}
+            type="submit"
+            disabled={isSubmitBlocked}
+          >
+            Save
+          </button>
+        </div>
+      </Form>)}
+    </Formik>
+  </BaseModal>);
 };
 
 export default SettingModal;

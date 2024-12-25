@@ -1,253 +1,261 @@
-
 .modalOverlay {
-    position: fixed;
-    top: 148px;
-    left: 424px;
-    width: 100%;
-    /* height: 580px; */
-    /* padding: 32px 24px; */
-    background-color: var(--primary-text-color);
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modalContainer {
-    background-color: var(--primary-background-color);
-    border-radius: 10px;
-    /* padding: 20px; */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    width: 592px;
-    height: 504px;
-    padding: 32px 24px;
-    /* transform: translateY(-50px); */
-  }
+  position: fixed;
+  top: 148px;
+  left: 424px;
+  width: 100%;
+  /* height: 580px; */
+  /* padding: 32px 24px; */
+  background-color: var(--primary-text-color);
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-  .modalHeader {
-    position: relative; /* Відносне позиціонування для контейнера заголовка */
-    display: flex;
-    justify-content: space-between; /* Вирівнювання елементів: заголовок ліворуч, кнопка праворуч */
-    align-items: center; /* Вирівнювання елементів по вертикалі */
-  }
-  
-  .modalTitle {
-    font-size: 26px;
-    font-weight: 500px;
-    line-height: 32px;
-    margin-bottom: 20px;
-    color: var(--primary-text-color);
-    margin: 0;
-  }
+.modalContainer {
+  background-color: var(--primary-background-color);
+  border-radius: 10px;
+  /* padding: 20px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  width: 592px;
+  height: 504px;
+  padding: 32px 24px;
+  /* transform: translateY(-50px); */
+}
 
-  .closeButton {
-    position: absolute; /* Абсолютне позиціонування */
-    top: 0; /* Вирівнювання по верхньому краю */
-    right: 0; /* Вирівнювання по правому краю */
-    background-color: transparent; /* Забираємо фон, якщо не потрібен */
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-  }
-  
-  .closeButton svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--primary-color-blue); /* Колір іконки */
-  }
-  
-  .closeButton:hover svg {
-    fill: var(--primary-color-blue); /* Колір іконки при наведенні */
-  }
-  
-  .inputGroup {
-    margin-bottom: 20px;
-    /* color: var(--primary-color-blue);; */
-  }
-  
-  .inputGroup label {
-    display: block;
-    font-size: 18px;
-    font-weight: 500px;
-    line-height: 20px;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    color: #2f2f2f;
-  }
+.modalHeader {
+  position: relative;
+  /* Відносне позиціонування для контейнера заголовка */
+  display: flex;
+  justify-content: space-between;
+  /* Вирівнювання елементів: заголовок ліворуч, кнопка праворуч */
+  align-items: center;
+  /* Вирівнювання елементів по вертикалі */
+}
 
-  .inputGroup h3 {
-    font-size: 16px;
-    font-weight: 400px;
-    line-height: 20px;
-    margin-bottom: 16px;
-  }
+.modalTitle {
+  font-size: 26px;
+  font-weight: 500px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  color: var(--primary-text-color);
+  margin: 0;
+}
 
-  .inputTime {
-    font-size: 16px;
-    font-weight: 400px;
-    line-height: 20px;
-    
-  }
+.closeButton {
+  position: absolute;
+  /* Абсолютне позиціонування */
+  top: 0;
+  /* Вирівнювання по верхньому краю */
+  right: 0;
+  /* Вирівнювання по правому краю */
+  background-color: transparent;
+  /* Забираємо фон, якщо не потрібен */
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
 
-  .inputValue {
-    font-size: 18px;
-    font-weight: 500px;
-    line-height: 20px;
-    color: var(--primary-color-blue);
-  }
+.closeButton svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-color-blue);
+  /* Колір іконки */
+}
 
-  .inputGroup input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solidvar(--secondary-color-2);
-    border-radius: 4px;
-    outline: none;
-    color: var(--primary-color-blue);;
-  }
-  
-  .inputGroup input:focus {
-    border-color: var(--primary-color-blue);
-    box-shadow: 0 0 4px rgba(64, 123, 255, 0.5);
-  }
-  
-  .stepper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .stepper button {
-    background-color: var(--primary-background-color);
-    color: var(--secondary-color-4);
-    border-color: var(--secondary-color-4);
-    /* border: none; */
-    padding: 5px 10px;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-    gap: 10px;
-    border-radius: 50%;
-    border: 3px;
-  }
+.closeButton:hover svg {
+  fill: var(--primary-color-blue);
+  /* Колір іконки при наведенні */
+}
 
-  .stepper span {
-    margin-left: -10px;
-    width: 92px;
-    height: 36px;
-    padding: 6px 10px;
-    gap: 10px;
-    border-radius: 40px;
-    background-color: var(--secondary-color-6);
-    color: var(--primary-color-blue);
-    text-align: center;
-  }
-  
-  .stepper button:hover {
-    background-color: var(--submitButton-hover);
-  }
-  
-  .modalActions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 24px;
-  }
+.inputGroup {
+  margin-bottom: 20px;
+  /* color: var(--primary-color-blue);; */
+}
 
-  .waterAmountLabel {
-    font-size: 18px;
-    font-weight: 700px;
-    line-height: 24px;
-    /* text-align: center; */
-    color: var(--primary-color-blue)
-  }
-  
-  .saveButton {
-    background-color: var(--primary-color-blue);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-align: center; 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .saveButton:hover {
-    background-color:var(--submitButton-hover);
-  }
-  
-  .closeButton {
-    background-color: var(--primary-color-blue);
-    width: 24px;
-    height: 24px;
-    color: var(--primary-background-color);
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .closeButton:hover {
-    background-color: var(--secondary-color-3);
-  }
-  
-  /* @media (max-width: 1440px) {
+.inputGroup label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500px;
+  line-height: 20px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  color: #2f2f2f;
+}
+
+.inputGroup h3 {
+  font-size: 16px;
+  font-weight: 400px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.inputTime {
+  font-size: 16px;
+  font-weight: 400px;
+  line-height: 20px;
+
+}
+
+.inputValue {
+  font-size: 18px;
+  font-weight: 500px;
+  line-height: 20px;
+  color: var(--primary-color-blue);
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solidvar(--secondary-color-2);
+  border-radius: 4px;
+  outline: none;
+  color: var(--primary-color-blue);
+  ;
+}
+
+.inputGroup input:focus {
+  border-color: var(--primary-color-blue);
+  box-shadow: 0 0 4px rgba(64, 123, 255, 0.5);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepper button {
+  background-color: var(--primary-background-color);
+  color: var(--secondary-color-4);
+  border-color: var(--secondary-color-4);
+  /* border: none; */
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 50%;
+  border: 3px;
+}
+
+.stepper span {
+  margin-left: -10px;
+  width: 92px;
+  height: 36px;
+  padding: 6px 10px;
+  gap: 10px;
+  border-radius: 40px;
+  background-color: var(--secondary-color-6);
+  color: var(--primary-color-blue);
+  text-align: center;
+}
+
+.stepper button:hover {
+  background-color: var(--submitButton-hover);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.waterAmountLabel {
+  font-size: 18px;
+  font-weight: 700px;
+  line-height: 24px;
+  /* text-align: center; */
+  color: var(--primary-color-blue)
+}
+
+.saveButton {
+  background-color: var(--primary-color-blue);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.saveButton:hover {
+  background-color: var(--submitButton-hover);
+}
+
+.closeButton {
+  background-color: var(--primary-color-blue);
+  width: 24px;
+  height: 24px;
+  color: var(--primary-background-color);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: var(--secondary-color-3);
+}
+
+/* @media (max-width: 1440px) {
     .modalContainer {
       max-width: 592px;
     }
   } */
-  
-  @media (max-width: 768px) {
-    .modalOverlay {
-      width: 704px;
-      top: 40px;
-      left: 32px;
-    }
 
-    .modalContainer {
-      width: 704px;
-      height: 504px;
-    }
-
-    .saveButton {
-      width: 160px;
-      height: 44px;
-      text-align: center;
-    }
+@media (max-width: 768px) {
+  .modalOverlay {
+    width: 704px;
+    top: 40px;
+    left: 32px;
   }
-  
-  @media (max-width: 320px) {
-    .modalOverlay {
-      width: 300px;
-      top: 40px;
-      left: px;
-    }
 
-    .modalContainer {
-      width: 280px;
-      height: 540px;
-      padding: 15px;
-    }
-  
-    .modalTitle {
-      font-weight: 500px;
-      font-size: 26px;
-      line-height: 32px;
-    }
-  
-    .modalActions {
-      flex-direction: column;
-    }
-
-    .saveButton {
-      width: 256px;
-      height: 36px;
-      border-radius: 10px;
-    }
+  .modalContainer {
+    width: 704px;
+    height: 504px;
   }
-  
+
+  .saveButton {
+    width: 160px;
+    height: 44px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .modalOverlay {
+    width: 300px;
+    top: 40px;
+    left: px;
+  }
+
+  .modalContainer {
+    width: 280px;
+    height: 540px;
+    padding: 15px;
+  }
+
+  .modalTitle {
+    font-weight: 500px;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+
+  .saveButton {
+    width: 256px;
+    height: 36px;
+    border-radius: 10px;
+  }
+}

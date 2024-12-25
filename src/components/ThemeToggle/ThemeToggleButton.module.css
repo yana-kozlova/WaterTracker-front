@@ -10,7 +10,7 @@
 }
 
 .slider--light {
-  background-color:var(--primary-color-white);
+  background-color: var(--primary-color-white);
 }
 
 .slider--dark {
@@ -37,7 +37,8 @@
 
 .slider--dark .thumb {
   left: 33px;
-  background-color: var(--primary-color-white);;
+  background-color: var(--primary-color-white);
+  ;
 }
 
 .knob {
@@ -45,5 +46,6 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: var(--primary-background-color);;
+  background-color: var(--primary-background-color);
+  ;
 }

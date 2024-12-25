@@ -1,100 +1,102 @@
 .mainContainer {
-    min-height: 80vh;
-    display: flex;
-    justify-content: space-between;
-    gap: 3rem;
-    padding-bottom: 24px;
-    padding-top: 48px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-bottom: 24px;
+  padding-top: 48px;
 }
 
 .waterContainer {
-    width: 50%;
-    border-radius: 10px;
-    padding: 24px 8px 24px 8px;
-    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-    background-color: var(--secondary-color-2);
+  width: 50%;
+  border-radius: 10px;
+  padding: 24px 8px 24px 8px;
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  background-color: var(--secondary-color-2);
 }
 
 @media screen and (min-width: 768px) {
-    .waterContainer {
-        padding: 32px 24px 32px 24px;
-    }
+  .waterContainer {
+    padding: 32px 24px 32px 24px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .waterContainer {
-        background:var(--secondary-color-2);
-    }
+  .waterContainer {
+    background: var(--secondary-color-2);
+  }
 }
 
 .bottle {
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    width: 50%;
-    min-height: 592px;
-    background-image: url("../../assets/images/Bottle-home.png");
-    background-repeat: no-repeat;
-    background-position: top center;
-    overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  width: 50%;
+  min-height: 592px;
+  background-image: url("../../assets/images/Bottle-home.png");
+  background-repeat: no-repeat;
+  background-position: top center;
+  overflow: visible;
 }
 
 .dailyNorma {
-    position: absolute;
-    top: 0;
-    left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .background {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    max-width: 1404px;
-    height: 582px;
-    background-image: url("../../assets/images/background-deskt.png");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
-    margin: 0 auto;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  max-width: 1404px;
+  height: 582px;
+  background-image: url("../../assets/images/background-deskt.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: -1;
 }
 
 /* Медіа-запити для мобільних пристроїв */
 @media screen and (max-width: 767px) {
-    .background {
-        background-image: url("../../assets/images/bg-home-mobile.png");
-    }
+  .background {
+    background-image: url("../../assets/images/bg-home-mobile.png");
+  }
 
-    .waterContainer, .bottle {
-        width: 100%;
-    }
+  .waterContainer,
+  .bottle {
+    width: 100%;
+  }
 
-    .mainContainer {
-        flex-direction: column;
-        padding-top: 0;
-    }
+  .mainContainer {
+    flex-direction: column;
+    padding-top: 0;
+  }
 
-    .bottle {
-        min-height: 460px;
-        background-size: 125%;
-        background-position: center 35%;
-    }
+  .bottle {
+    min-height: 460px;
+    background-size: 125%;
+    background-position: center 35%;
+  }
 }
 
 /* Медіа-запити для планшетів */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .background {
-        background-image: url("../../assets/images/bg-home.png");
-    }
+  .background {
+    background-image: url("../../assets/images/bg-home.png");
+  }
 
-    .waterContainer, .bottle {
-        width: 100%;
-    }
+  .waterContainer,
+  .bottle {
+    width: 100%;
+  }
 
-    .mainContainer {
-        flex-direction: column;
-    }
+  .mainContainer {
+    flex-direction: column;
+  }
 }

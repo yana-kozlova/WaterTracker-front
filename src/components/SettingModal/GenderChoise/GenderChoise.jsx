@@ -3,7 +3,7 @@ import { useId } from "react";
 import css from "./GenderChoise.module.css";
 
 const GenderChoice = ({ labelLeft = "Woman", labelRight = "Man", name = "gender" }) => {
-    
+
   const womanRadioId = useId();
   const manRadioId = useId();
   const { values, setFieldValue } = useFormikContext();
