@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginWithGoogle } from "../../redux/auth/operations";
 import {
   selectLoading,
-  selectError,
-  selectIsLoggedIn,
+  // selectError,
+  // selectIsLoggedIn,
 } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
 import DripLoader from "../../components/DripLoader/DripLoader";

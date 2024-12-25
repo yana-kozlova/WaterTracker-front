@@ -149,7 +149,7 @@ export const loginWithGoogle = createAsyncThunk(
           name: userData.name || "",
           email: userData.email || "",
           gender: userData.gender || "woman",
-          avatarUrl: "",
+          avatarUrl: userData.avatar_url || "",
           daylyNorm: userData.daily_norma || 1500,
         },
       };

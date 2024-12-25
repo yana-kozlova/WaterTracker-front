@@ -103,7 +103,7 @@
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s;
-  font-size: 1.1rem;
+  font-size: 16px;
   height: 44px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primary-color-blue);
@@ -138,7 +138,7 @@
   bottom: -15px;
   left: 0;
   color: var(--secondary-color-3);
-  font-size: 0.8rem;
+  font-size: 14px;
   margin: 0;
   line-height: 1.2;
 }
@@ -162,7 +162,7 @@
   cursor: pointer;
   width: 100%;
   transition: background-color 0.3s;
-  font-size: 1.1rem;
+  font-size: 16px;
   height: 44px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primary-color-white);

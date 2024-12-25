@@ -8,14 +8,19 @@ export default function DayComponent({
   dayLabel,
   waterStats,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false); // відображення модального вікна.
-  const dayRef = useRef(null); //для обробки кліків поза модальним вікном
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({
+    top: "0px",
+    left: "0px",
+    transform: "none",
+  });
+  const dayRef = useRef(null);
 
   const handleClick = (event) => {
     if (dayRef.current && !dayRef.current.contains(event.target)) {
       setIsModalOpen(false);
     }
-  }; //Закриваємо модальне вікно, якщо користувач клацає поза його межами.
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
@@ -25,10 +30,44 @@ export default function DayComponent({
   }, []);
 
   const toggleModalVisibility = () => {
-    setIsModalOpen((prevState) => !prevState); //видимості модального вікна
+    if (!isModalOpen) {
+      if (!dayRef.current || !calendarRef?.current) {
+        console.warn("References are not yet set.");
+        return;
+      }
+
+      const dayRect = dayRef.current.getBoundingClientRect();
+      const calendarRect = calendarRef.current.getBoundingClientRect();
+      const isMobile = calendarRef.current.clientWidth <= 425;
+      const modalWidth = 292;
+      const modalHeight = 188;
+
+      let top, left, transform;
+
+      if (isMobile) {
+        top = dayRect.top - calendarRect.top - modalHeight - 10;
+        left = "50%";
+        transform = "none";
+      } else {
+        top = dayRect.top - calendarRect.top - modalHeight - 10;
+
+        left = dayRect.left - calendarRect.left + dayRect.width / 2 - modalWidth / 2;
+
+        if (left + modalWidth > calendarRect.width) {
+          left = calendarRect.width - modalWidth + 18;
+        }
+
+        if (left < 0) {
+          left = left + modalWidth / 2 - 18; // Якщо попап виходить за ліву межу, коригуємо значення left
+        }
+      }
+
+      setModalPosition({ top: `${top}px`, left: `${left}px`, transform: transform || "none" });
+    }
+
+    setIsModalOpen((prevState) => !prevState); // Тогл видимості модального вікна
   };
 
-  // console.log(waterStats)
   return (
     <div className={css.wrapperDay}>
       {isModalOpen && (
@@ -37,14 +76,12 @@ export default function DayComponent({
           dailyNorma={waterStats?.dailyNorma / 1000 || 0}
           progress={waterStats?.progress || 0}
           portions={waterStats?.totalServings || 0}
-          calendarRef={calendarRef}
-          refData={dayRef}
-          closeModal={() => setIsModalOpen(false)}
+          modalPosition={modalPosition}
+          onClose={() => setIsModalOpen(false)}
         />
       )}
       <div
-        className={`${css.day} ${waterStats?.progress < 100 ? css.incomplete : css.complete
-          }`}
+        className={`${css.day} ${waterStats?.progress < 100 ? css.incomplete : css.complete}`}
         onClick={toggleModalVisibility}
         ref={dayRef}
       >
@@ -59,23 +96,4 @@ export default function DayComponent({
 
 
 
-//   const toggleModalVisibility = () => {
-//   if (!isModalOpen) {
-//     const dayRect = dayRef.current.getBoundingClientRect(); // Отримуємо позицію дня
-//     const isMobile = window.innerWidth <= 768;
 
-//     if (isMobile) {
-//       setModalPosition({ top: "10%", left: "50%", transform: "translateX(-50%)" });
-//     } else {
-//       const modalTop = dayRect.top - 195; // Розташування по центру відносно дня
-//       const modalLeft =
-//         dayRect.left + dayRect.width / 2 > window.innerWidth / 2
-//           ? dayRect.left - 140
-//           : dayRect.right + 60;
-
-//       setModalPosition({ top: `${modalTop}px`, left: `${modalLeft}px`, transform: "none" });
-//     }
-//   }
-
-//     setIsModalOpen((prevState) => !prevState); // Видимості модального вікна
-//   };

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { getTodayWater, getMonthWater } from '../../redux/water/operations.js';
 import Layout from "../Layout/Layout.jsx";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,11 +28,13 @@ const NotFoundPage = lazy(() => import("../../pages/404/NotFoundPage.jsx"));
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const hasDispatchedRef = useRef(false); // Ref to track if the dispatch has been done
 
   useEffect(() => {
-    dispatch(refreshUser());
-    dispatch(getTodayWater());
-    dispatch(getMonthWater());
+    if (!hasDispatchedRef.current) {
+      dispatch(refreshUser());
+      hasDispatchedRef.current = true; // Mark that the dispatch has been done
+    }
   }, [dispatch]);
 
   return (

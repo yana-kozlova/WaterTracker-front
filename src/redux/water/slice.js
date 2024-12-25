@@ -1,11 +1,14 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addWater, deleteWater, editWater, getTodayWater, getMonthWater } from './operations';
+import { selectIsMonthWaterLoaded } from './selectors.js';
 
 const initialState = {
   waterItem: [],
   monthWater: [],
   isLoading: false,
   error: false,
+  isTodayWaterLoaded: false,
+  isMonthWaterLoaded: false,
 };
 const slice = createSlice({
   name: "water",
@@ -15,19 +18,21 @@ const slice = createSlice({
       // GetAll
       .addCase(getMonthWater.fulfilled, (state, action) => {
         state.monthWater = action.payload.data;
+        state.isMonthWaterLoaded = true;
       })
       // Get Today
       .addCase(getTodayWater.fulfilled, (state, action) => {
         state.waterItem = action.payload.data;
+        state.isTodayWaterLoaded = true;
       })
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
-        state.waterItem.push(action.payload.data.waterList);
+        state.waterItem = action.payload.data.waterList;
       })
       //Delete
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.filter(
-          (waterItem) => waterItem.id !== action.payload.id
+          (waterItem) => waterItem._id !== action.payload.id
         );
       })
       //Edit
