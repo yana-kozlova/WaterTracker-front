@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMonthItem } from '../../redux/water/selectors.js';
 import DayComponent from "../DayComponent/DayComponent.jsx";
-
+import { getMonthWater } from '../../redux/water/operations.js'
 import css from "./MonthStatsTable.module.css";
 
 export default function MonthStatsTable() {
@@ -29,7 +29,7 @@ export default function MonthStatsTable() {
 
   useEffect(() => {
     const month = `${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
-    // dispatch(getAll(month));
+    dispatch(getMonthWater(month));
   }, [dispatch, currentDate]); //отримання даних з бази при зміні місяця, денну норму
 
   const getDaysInMonth = () => {
@@ -83,24 +83,29 @@ export default function MonthStatsTable() {
       <div className={css.wrapperMonth}>
         <h1 className={css.title}>Month</h1>
         <div className={css.month}>
-          <div className={css.buttonLeft} onClick={() => changeMonth(-1)}>
-            {"<"}
-          </div>
+          <button className={css.buttonLeft} onClick={() => changeMonth(-1)}>
+            <svg className={css.icon}>
+              <use href="/src/assets/icons/arrow.svg#arrow-left"></use>
+            </svg>
+          </button>
           <p className={css.span}>
             {currentDate.toLocaleString("en-US", {
               month: "long",
               year: "numeric",
             })}
           </p>
-          <div
+          <button
             className={!isCurrentMonth(currentDate) ? css.buttonRight : css.buttonRightDisabled}
             onClick={() => !isCurrentMonth(currentDate) && changeMonth(1)}
           >
-            {">"}
-          </div>
+            <svg className={css.icon}>
+              <use href="/src/assets/icons/arrow.svg#arrow-right"></use>
+            </svg>
+          </button>
         </div>
       </div>
       <div className={css.containerDays}>{renderDays()}</div>
     </div>
   );
 }
+

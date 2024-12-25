@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #407bff;
+    color: var(--primary-color-blue);
     
 }
 
@@ -33,7 +33,7 @@
     font-size: 16px;
     line-height: 1.25;
     text-align: center;
-    color: #407bff;
+    color:var(--primary-color-blue);
     margin-left: 10px;
 
 }
@@ -48,11 +48,16 @@
     margin-left: 10px;
     background-color: transparent;
     border: none;
-    color: #407bff;
+}
+
+.buttonRightDisabled .icon {
+    fill: #a9a9a9;
+    /* Колір для disabled стану */
+    color:var(--primary-color-blue);
 }
 
 .buttonRightDisabled {
-    color: #a9a9a9;
+    color: var(--calculateExplainText);
     cursor: not-allowed;
 }
 
@@ -64,6 +69,13 @@
     row-gap: 16px;
     flex-wrap: wrap;
     width: 100%;
+
+}
+
+.icon {
+    fill: #407bff;
+    width: 6px;
+    height: 10px;
 }
 
 @media screen and (min-width: 768px) {
@@ -93,9 +105,10 @@
 
     .containerDays {
         display: flex;
-        column-gap: 22px;
+        column-gap: 20px;
         row-gap: 20px;
         flex-wrap: wrap;
         width: 100%;
+        padding-left: 4px;
     }
 }

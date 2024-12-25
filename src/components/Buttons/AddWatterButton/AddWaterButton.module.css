@@ -1,10 +1,10 @@
 .button {
   width: 280px;
   height: 36px;
-  background-color: #407bff;
+  background-color: var(--primary-color-blue);
   border-radius: 10px;
   padding: 6px 76px;
-  color: #fff;
+  color: var(--primary-background-color);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;

@@ -127,17 +127,17 @@ const slice = createSlice({
       .addCase(updateUserData.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user = { ...state.user, ...action.payload };
+        state.user = action.payload.data;
       })
       .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user.data.daily_norma = action.payload.data.daily_norma;
+        state.user.daily_norma = action.payload.data.daily_norma;
       })
       .addCase(updateUserPhoto.fulfilled, (state, action) => {
         state.error = null;
         state.isLoading = false;
-        state.user.data.avatar_url = action.payload.data.avatar_url;
+        state.user.avatar_url = action.payload.data.avatar_url;
       })
 
       //  _____________________________addMatcher_________________________________

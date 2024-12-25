@@ -7,7 +7,7 @@
     font-size: 18px;
     line-height: 1.33;
     margin-bottom: 12px;
-    color: rgba(47, 47, 47, 1);
+    color: var(--primary-text-color);
 }
 
 .radioContainer {
@@ -18,7 +18,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
-    color: rgba(47, 47, 47, 1);
+    color: var(--primary-text-color);
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -33,7 +33,7 @@
 .radioMark {
     width: 14px;
     height: 14px;
-    border: 1px solid rgba(64, 123, 255, 1);
+    border: 1px solid var(--primary-color-blue);
     border-radius: 50%;
     position: relative;
     margin-right: 8px;
@@ -43,7 +43,7 @@
     content: "";
     width: 6px;
     height: 6px;
-    background-color: rgba(64, 123, 255, 1);
+    background-color: var(--primary-color-blue);
     border-radius: 50%;
     position: absolute;
     top: 50%;

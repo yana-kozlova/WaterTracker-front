@@ -1,61 +1,66 @@
 .wrapperDay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
+
 .day {
-    border-radius: 50%;
-    padding: 7px 6px;
-    width: 32px;
-    height: 32px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.28;
-    text-align: center;
-    color: #2f2f2f;
+  border-radius: 50%;
+  padding: 7px 6px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--primary-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  text-align: center;
+  color: #2f2f2f;
 }
+
 .complete {
-    border: 1px solid #ff9d43;
+  border: 1px solid var(--secondary-color-5);
 }
 
 .incomplete {
-    border: none;
-
+  border: none;
 }
 
 .dayPercent {
-    align-items: center;
-    margin-top: 4px;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 1.6;
-    text-align: center;
-    color: #9ebbff;
-
+  align-items: center;
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--secondary-color-4);
 }
 
 @media screen and (min-width: 768px) {
-    .day {
-        padding: 7px;
-        width: 34px;
-        height: 34px;
-        font-size: 16px;
-        line-height: 1.25;
+  .day {
+    padding: 7px;
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 1.25;
 
-    }
+  }
 
-    .dayPercent {
-        font-size: 13px;
-    }
+  .dayPercent {
+    font-size: 13px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
+
     .dayPercent {
-            font-size: 12px;
+          font-size: 12px;
+        }
+      .day {
+            width: 35px;
+            height: 35px;
         }
 }
