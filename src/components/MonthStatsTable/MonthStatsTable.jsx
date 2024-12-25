@@ -104,7 +104,7 @@ export default function MonthStatsTable() {
           </button>
         </div>
       </div>
-      <div className={css.containerDays}>{renderDays()}</div>
+      <div className={css.containerDays} ref={ref}>{renderDays()}</div>
     </div>
   );
 }
