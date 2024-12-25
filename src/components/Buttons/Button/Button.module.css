@@ -25,4 +25,8 @@
   color: var(--dark-white);
 }
 
-/*TODO Think about styling of hover*/
+.baseButton:disabled {
+  background-color: var(--secondary-color-4);
+  cursor: not-allowed;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

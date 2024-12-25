@@ -163,9 +163,9 @@ input[type="file"] {
   color: var(--primary-background-color);
 }
 
-[data-theme="dark"] a {
-  color: var(--primary-color);
-}
+/*[data-theme="dark"] a {*/
+/*  color: var(--primary-color);*/
+/*}*/
 
 [data-theme="dark"] a:hover {
   color: var(--secondary-color-5);

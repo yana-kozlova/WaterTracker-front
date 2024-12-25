@@ -18,6 +18,7 @@
   line-height: 1.28;
   text-align: center;
   color: var(--primary-text-color);
+  cursor: pointer;
 }
 
 .complete {

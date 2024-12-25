@@ -223,7 +223,7 @@ export const updateUserDailyNorm = createAsyncThunk(
       const { data } = await axios.patch("users/water-rate", credentials);
       return data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -237,7 +237,7 @@ export const updateUserPhoto = createAsyncThunk(
       const response = await axios.patch("users/avatar", credentials);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

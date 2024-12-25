@@ -1,13 +1,18 @@
 import clsx from "clsx";
 import { useId } from "react";
+import { useSelector } from 'react-redux';
+import { selectLoading } from '../../../redux/auth/selectors.js';
+import DripLoader from '../../DripLoader/DripLoader.jsx';
 import css from "./ProfilePhoto.module.css";
 import defaultImage from "./image/default-image.png"
 
 const ProfilePhoto = ({ avatar, isSubmitBlocked, handleAvatarChange }) => {
   const fileInputId = useId();
+  const isLoading = useSelector(selectLoading);
 
   return (
     <div className={css.photoGroup}>
+      {isLoading && <DripLoader />}
       <h3 className={css.subtitle}>Your photo</h3>
       <div className={css["photo-flex"]}>
         <div className={css["avatar-container"]}>

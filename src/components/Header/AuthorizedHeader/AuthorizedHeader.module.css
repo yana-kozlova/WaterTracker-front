@@ -32,6 +32,7 @@
   gap: 16px;
   border-radius: 10px;
   box-shadow: 0 4px 8px #407bff33;
+  background-color: var(--primary-background-color);
 }
 
 .actionLink {
@@ -42,5 +43,3 @@
   color: var(--primary-color-blue);
   cursor: pointer;
 }
-
-.actionLinkIcon {}

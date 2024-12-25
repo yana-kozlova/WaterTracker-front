@@ -1,11 +1,14 @@
-import { Formik, Form, Field } from "formik";
-import Button from "../Buttons/Button/Button";
-import css from "./DailyNormaForm.module.css";
-import { useState, useEffect, useId } from "react";
-import { useSelector } from "react-redux";
-import { selectDailyNorma } from "../../redux/auth/selectors";
-import { useDispatch } from "react-redux";
+import { Field, Form, Formik } from 'formik';
+import { useEffect, useId, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateUserDailyNorm } from '../../redux/auth/operations';
+import { selectDailyNorma } from '../../redux/auth/selectors';
+import Button from '../Buttons/Button/Button';
+import DripLoader from '../DripLoader/DripLoader.jsx';
+import InputField from '../SettingModal/InputField.jsx';
+import { validationSchema } from './validation.js';
+import css from './DailyNormaForm.module.css';
 
 const initialValues = {
   gender: "for woman",
@@ -19,13 +22,9 @@ const calculateDailyNorma = (gender, weight, activeTime) => {
   const userActiveTime = parseFloat(activeTime) || 0;
 
   if (gender === "for woman") {
-    const calculateResult =
-      Math.round(userWeight * 0.04 + userActiveTime * 0.4 * 10) / 10;
-    return calculateResult;
+    return Math.round(userWeight * 0.04 + userActiveTime * 0.4 * 10) / 10;
   } else {
-    const calculateResult =
-      Math.round(userWeight * 0.04 + userActiveTime * 0.6 * 10) / 10;
-    return calculateResult;
+    return Math.round(userWeight * 0.04 + userActiveTime * 0.6 * 10) / 10;
   }
 };
 
@@ -41,6 +40,37 @@ const DailyNormaForm = ({ onClose }) => {
 
   const [formData, setFormData] = useState(initialValues);
   const [dailyNorma, setDailyNorma] = useState("0");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (values, { setFieldError }) => {
+    setIsLoading(true);
+
+    try {
+      const result = await dispatch(
+        updateUserDailyNorm({ daily_norma: values.userDailyNorma * 1000 })
+      );
+      console.log('result', result);
+      if (result.meta.requestStatus === "fulfilled") {
+        toast.success("Daily norm updated successfully!");
+      }
+      else if (result.meta.requestStatus === "rejected") {
+        const errorMessage = result.payload || "An error occurred";
+        toast.error(errorMessage);
+
+        if (result.payload?.errors) {
+          Object.entries(result.payload.errors).forEach(([field, messages]) => {
+            setFieldError(field, messages[0]);
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      toast.error("An unexpected error occurred");
+    } finally {
+      onClose();
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     const norma = calculateDailyNorma(
@@ -51,17 +81,15 @@ const DailyNormaForm = ({ onClose }) => {
     setDailyNorma(norma);
   }, [formData]);
 
-
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => {
-        dispatch(updateUserDailyNorm({ daily_norma: values.userDailyNorma * 1000 }))
-        onClose();
-      }}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
     >
-      {({ handleChange }) => (
+      {({ errors, touched, handleChange }) => (
         <Form className={css.form}>
+          {isLoading && <DripLoader />}
           <div className={css.radioBox}>
             <div className={css.radio}>
               <Field
@@ -114,7 +142,7 @@ const DailyNormaForm = ({ onClose }) => {
             <div className={css.userInfoinputBox}>
               <label htmlFor={activeTimeField} className={css.userInfoText}>
                 The time of active participation in sports or other activities
-                with a high physical. load in hours:
+                with a high physical load in hours:
               </label>
               <Field
                 type="text"
@@ -148,17 +176,21 @@ const DailyNormaForm = ({ onClose }) => {
             </div>
           </div>
           <div className={css.writeWaterBox}>
-            <label htmlFor={userNormaField} className={css.writeWaterText}>
-              Write down how much water you will drink:
-            </label>
-            <Field
+            <InputField
               id={userNormaField}
-              type="text"
               name="userDailyNorma"
-              className={css.input}
+              label=" Write down how much water you will drink:"
+              type="text"
+              placeholder="0"
+              isError={errors.userDailyNorma && touched.userDailyNorma}
             />
           </div>
-          <Button type="submit" name="Save" className={css.button} />
+          <Button
+            type="submit"
+            name="Save"
+            className={css.button}
+            disabled={Object.keys(errors).length > 0 || isLoading}  // Disabled when form has errors or is loading
+          />
         </Form>
       )}
     </Formik>
