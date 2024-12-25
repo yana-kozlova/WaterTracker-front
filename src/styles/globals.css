@@ -14,6 +14,7 @@
   --submitButton-hover: #3063cc;
   --calculateExplainText: #8f8f8f;
   --dark-white: #f7f8f9;
+  --blue-white: var(--primary-color-blue);
 
   /* ========== Змінні для темної теми ========== */
 
@@ -27,6 +28,7 @@
     --submitButton-hover: #3f6bbe;
     --secondary-color-2: #6796fb;
     --dark-white: #f7f8f9;
+    --blue-white: #ecf2ff;
   }
 
   --font-family: "Roboto",
