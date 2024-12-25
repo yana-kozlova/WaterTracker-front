@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   gap: 3rem;
-  padding-bottom: 24px;
-  padding-top: 48px;
+  padding-bottom: 14px;
+  /*padding-top: 48px;*/
 }
 
 .waterContainer {
@@ -47,7 +47,7 @@
 
 .background {
   position: absolute;
-  top: 0;
+  bottom: 0;
   width: 100vw;
   max-width: 1404px;
   height: 582px;

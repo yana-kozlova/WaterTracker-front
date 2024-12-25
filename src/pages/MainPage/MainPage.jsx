@@ -13,26 +13,26 @@ import css from './MainPage.module.css'
 
 export default function MainPage() {
     const dispatch = useDispatch();
-  const isTodayWaterLoaded = useSelector(selectIsTodayWaterLoaded);  // Селектор для проверки, загружена ли сегодняшняя вода
-  const isMonthWaterLoaded = useSelector(selectIsMonthWaterLoaded);  // Селектор для проверки, загружен ли месячный запас воды
+  const isTodayWaterLoaded = useSelector(selectIsTodayWaterLoaded);
+  const isMonthWaterLoaded = useSelector(selectIsMonthWaterLoaded);
 
-  const hasDispatchedTodayRef = useRef(false);  // ref для отслеживания запроса для сегодняшней воды
-  const hasDispatchedMonthRef = useRef(false);  // ref для отслеживания запроса для месячной воды
+  const hasDispatchedTodayRef = useRef(false);
+  const hasDispatchedMonthRef = useRef(false);
 
   useEffect(() => {
     const fetchWaterData = async () => {
       if (!hasDispatchedTodayRef.current && !isTodayWaterLoaded) {
-        hasDispatchedTodayRef.current = true;  // Помечаем, что запрос был отправлен
-        await dispatch(getTodayWater());  // Дожидаемся выполнения запроса
+        hasDispatchedTodayRef.current = true;
+        await dispatch(getTodayWater());
       }
 
       if (!hasDispatchedMonthRef.current && !isMonthWaterLoaded) {
-        hasDispatchedMonthRef.current = true;  // Помечаем, что запрос был отправлен
-        await dispatch(getMonthWater());  // Дожидаемся выполнения запроса
+        hasDispatchedMonthRef.current = true;
+        await dispatch(getMonthWater());
       }
     };
 
-    fetchWaterData();  // Вызовем нашу асинхронную функцию
+    fetchWaterData();
 
   }, [dispatch, isTodayWaterLoaded, isMonthWaterLoaded]);
   return (

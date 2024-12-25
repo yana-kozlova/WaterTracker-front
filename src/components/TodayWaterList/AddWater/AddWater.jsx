@@ -1,10 +1,13 @@
 import { useId } from "react";
+import { selectIsLoggedIn } from '../../../redux/auth/selectors.js';
+import { selectIsTodayWaterLoaded, selectLoading } from '../../../redux/water/selectors.js';
+import DripLoader from '../../DripLoader/DripLoader.jsx';
 import css from "./AddWater.module.css";
 import Button from "../../Buttons/Button/Button";
 import Icon from "../../Svg/Svg";
 import { Field, Form, Formik } from "formik";
-import { addWater } from "../../../redux/water/operations";
-import { useDispatch } from "react-redux";
+import { addWater, getMonthWater } from '../../../redux/water/operations';
+import { useDispatch, useSelector } from 'react-redux';
 import BaseModal from "../../BaseModal/BaseModal";
 
 function convertTimeToISO(time) {
@@ -17,6 +20,7 @@ function convertTimeToISO(time) {
 }
 
 export default function AddWater({ isOpen, onClose}) {
+  const isLoading = useSelector(selectLoading);
 
   const dispatch = useDispatch();
 
@@ -33,17 +37,24 @@ export default function AddWater({ isOpen, onClose}) {
   return (
     <>
       <BaseModal isOpen={isOpen} onClose={onClose}>
+        {isLoading && <DripLoader />}
         <h2 className={css.modalTitle}>Add water</h2>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values) => {
-            dispatch(
-              addWater({
-                amount: values.totalAmount,
-                date: convertTimeToISO(values.time),
-              })
-            );
-            onClose();
+          onSubmit={async (values) => {
+            try {
+              await dispatch(
+                addWater({
+                  amount: values.totalAmount,
+                  date: convertTimeToISO(values.time),
+                })
+              );
+              onClose();
+              dispatch(getMonthWater());
+
+            } catch (error) {
+              console.error("Error occurred while adding water or fetching month data:", error);
+            }
           }}
         >
           {({ values, setFieldValue }) => (

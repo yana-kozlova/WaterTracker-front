@@ -1,6 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { addWater, deleteWater, editWater, getTodayWater, getMonthWater } from './operations';
-import { selectIsMonthWaterLoaded } from './selectors.js';
 
 const initialState = {
   waterItem: [],
