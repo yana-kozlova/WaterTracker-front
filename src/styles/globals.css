@@ -23,7 +23,7 @@
     --primary-color-blue: #6796fb;
     --secondary-color-3: #ef5050;
     --secondary-color-4: #9ebbff;
-    --secondary-color-5: #ff9d43
+    --secondary-color-5: #ff9d43;
     --submitButton-hover: #3f6bbe;
     --secondary-color-2: #6796fb;
     --dark-white: #f7f8f9;
@@ -76,8 +76,8 @@ a {
 }
 
 a:hover {
-  color: var(--secondary-color-5);
   cursor: pointer;
+  color: var(--secondary-color-5);
 }
 
 button:hover {
@@ -139,7 +139,7 @@ main {
 .header,
 .footer {
   background-color: var(--primary-color-blue);
-  color: var(--primary-color-white);
+  color: var(--primary-background-color);
   text-align: center;
   padding:
     var(--spacing-base);
@@ -166,7 +166,7 @@ input[type="file"] {
 }
 
 [data-theme="dark"] a:hover {
-  color: var(--secondary-text-color);
+  color: var(--secondary-color-5);
 }
 
 /* Адаптивний дизайн */
