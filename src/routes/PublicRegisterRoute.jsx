@@ -4,8 +4,8 @@ import { selectIsLoggedIn, selectIsRegistered } from "../redux/auth/selectors.js
 
 
 export default function PublicRegisterRoute({ redirectTo = "/", component: Component }) {
-    const isRegistered = useSelector(selectIsRegistered); 
-    const isLoggedIn = useSelector(selectIsLoggedIn); 
+  const isRegistered = useSelector(selectIsRegistered);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-    return isRegistered ? (<Navigate to={redirectTo} />) : isLoggedIn ? (<Navigate to="/home" />) : (<Component />);
+  return isRegistered ? (<Navigate to={redirectTo} />) : isLoggedIn ? (<Navigate to="/home" />) : (<Component />);
 };

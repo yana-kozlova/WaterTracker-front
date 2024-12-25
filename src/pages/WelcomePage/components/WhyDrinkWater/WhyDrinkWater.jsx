@@ -13,15 +13,15 @@ const items = [
 
 export default function WhyDrinkWater() {
   return (
-      <aside className={css.whyDrinkWater}>
-        <h2>Why drink water</h2>
-        <div>
-          {items.map((item, index) => (
-            <div key={index} className={css.whyItem}>
-              <div className={css.whyDot}></div>
-              <div className={css.whyTitle}>{item}</div>
-            </div>
-          ))}
-        </div>
-      </aside>);
+    <aside className={css.whyDrinkWater}>
+      <h2>Why drink water</h2>
+      <div>
+        {items.map((item, index) => (
+          <div key={index} className={css.whyItem}>
+            <div className={css.whyDot}></div>
+            <div className={css.whyTitle}>{item}</div>
+          </div>
+        ))}
+      </div>
+    </aside>);
 }

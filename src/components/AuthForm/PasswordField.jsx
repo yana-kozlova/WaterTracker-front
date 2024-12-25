@@ -38,9 +38,9 @@ const PasswordField = ({ name, label, placeholder, error }) => {
               onClick={togglePasswordVisibility}
             >
               {showPassword ? (
-                <EyeSlashIcon color="#2F2F2F" />
+                <EyeSlashIcon color="currentColor" />
               ) : (
-                <EyeIcon color="#2F2F2F" />
+                <EyeIcon color="currentColor" />
               )}
             </span>
           </>

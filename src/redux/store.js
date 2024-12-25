@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/slice";
-import { todayWaterReducer } from "./water/slice";
-import { monthWaterReducer } from "./monthWater/slice";
-import { userReduser } from "./user/slice";
-import { settingModalReducer } from "./settingModal/slice"; // Редюсер користувача
+import { waterReducer } from "./water/slice";
+
 import {
   persistStore,
   persistReducer,
@@ -25,11 +23,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    water: todayWaterReducer,
-    monthStats: monthWaterReducer,
-    monthWater: monthWaterReducer,
-    settingModal: settingModalReducer,
-    users: userReduser,
+    water: waterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

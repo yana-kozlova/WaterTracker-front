@@ -20,7 +20,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .userInfoBox {
@@ -40,18 +40,18 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .input {
-  border: 1px solid #d7e3ff;
+  border: 1px solid var(--secondary-color-6);
   width: 100%;
   border-radius: 6px;
   padding: 12px 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .amountBox {
@@ -70,14 +70,14 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .amountResult {
   font-weight: 700;
   font-size: 18px;
   line-height: 1.33;
-  color: #407bff;
+  color: var(--primary-color-blue);
   display: flex;
   flex-wrap: nowrap;
   gap: 4px;
@@ -94,7 +94,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1.12;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .button {
@@ -108,6 +108,7 @@
   .input {
     width: 100%;
   }
+
   .button {
     width: 160px;
     align-self: flex-end;
@@ -118,6 +119,7 @@
   .input {
     width: 100%;
   }
+
   .button {
     width: 160px;
     align-self: flex-end;

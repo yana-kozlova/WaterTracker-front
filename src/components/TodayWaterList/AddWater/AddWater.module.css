@@ -21,14 +21,14 @@
 }
 
 .buttons {
-  border: 1px solid #9ebbff;
+  border: 1px solid var(--secondary-color-4);
   border-radius: 30px;
   padding: 10px;
   width: 44px;
   height: 44px;
   box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
-  background: #fff;
-  color: #9ebbff;
+  background: var(--primary-background-color);
+  color: var(--secondary-color-4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,9 +36,9 @@
 }
 
 .buttons:hover {
-  background: #9ebbff;
-  color: #fff;
-  border-color: #7aa6ff;
+  background: var(--secondary-color-4);
+  color: var(--primary-background-color);
+  border-color: var(--submitButton-hover);
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.4);
 }
 
@@ -54,7 +54,7 @@
   font-size: 18px;
   line-height: 1.33;
   text-align: center;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .waterAmountContainer {
@@ -62,7 +62,7 @@
   padding: 6px 10px;
   width: 92px;
   height: 36px;
-  background-color: #d7e3ff;
+  background-color: var(--secondary-color-6);
 }
 
 .inputGroup {
@@ -73,7 +73,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .inputGroup {
@@ -83,7 +83,7 @@
 }
 
 .inputValue {
-  border: 1px solid #d7e3ff;
+  border: 1px solid var(--secondary-color-6);
   border-radius: 6px;
   padding: 12px 10px;
   width: 120px;
@@ -91,14 +91,14 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .valueLabel {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11111;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .waterAmountLabel {
@@ -106,7 +106,7 @@
   font-size: 18px;
   line-height: 1.33333;
   text-align: center;
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .modalActions {
@@ -125,12 +125,14 @@
   .inputValue {
     width: 100%;
   }
+
   .modalActions {
     flex-direction: row;
     gap: 24px;
     justify-content: flex-end;
     align-items: baseline;
   }
+
   .saveButton {
     border-radius: 10px;
     padding: 10px 30px;

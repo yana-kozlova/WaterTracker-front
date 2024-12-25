@@ -6,19 +6,19 @@ function UnauthorizedHeader() {
   const { pathname } = useLocation();
 
   return (<div className={css.flexContainer}>
-      <NavLink
-        className={css.signUpLink}
-        to={pathname === '/signin' ? '/signup' : '/signin'}
-      >
-        {pathname === '/signin' ? 'Sign Up' : 'Sign In'}
-      </NavLink>
+    <NavLink
+      className={css.signUpLink}
+      to={pathname === '/signin' ? '/signup' : '/signin'}
+    >
+      {pathname === '/signin' ? 'Sign Up' : 'Sign In'}
+    </NavLink>
     <Icon
       name="useroutline"
       size="100%"
       color="#9ebbff"
       className={css.iconUser}
     />
-    </div>);
+  </div>);
 }
 
 export default UnauthorizedHeader;

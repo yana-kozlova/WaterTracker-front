@@ -19,6 +19,7 @@
   border-radius: 50%;
   background-color: var(--primary-color-blue);
   color: var(--primary-color-white);
+  overflow: hidden;
 }
 
 .navActions {
@@ -42,5 +43,4 @@
   cursor: pointer;
 }
 
-.actionLinkIcon {
-}
+.actionLinkIcon {}

@@ -8,14 +8,14 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 1.11;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .text {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.11;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .buttonContainer {
@@ -26,12 +26,12 @@
 
 .buttonDelete {
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #ef5050;
+  background: var(--secondary-color-3);
 }
 
 .buttonCancel {
-  background: #d7e3ff;
-  color: #407bff;
+  background: var(--secondary-color-6);
+  color: var(--primary-color-blue);
 }
 
 @media screen and (min-width: 768px) {
@@ -39,10 +39,12 @@
     font-size: 18px;
     padding: 10px 30px;
   }
+
   .buttonCancel {
     font-size: 18px;
     padding: 10px 30px;
   }
+
   .buttonContainer {
     flex-direction: row-reverse;
     align-self: flex-end;

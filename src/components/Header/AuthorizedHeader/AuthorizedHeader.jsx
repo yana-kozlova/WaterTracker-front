@@ -1,5 +1,5 @@
-import BaseModal from '../../BaseModal/BaseModal.jsx';
-import UserLogoutModal from '../../UserLogoutModal/UserLogoutModal.jsx';
+import BaseModal from "../../BaseModal/BaseModal.jsx";
+import UserLogoutModal from "../../UserLogoutModal/UserLogoutModal.jsx";
 import css from "./AuthorizedHeader.module.css";
 import Icon from "../../Svg/Svg.jsx";
 import SettingModal from "../../SettingModal/SettingModal.jsx";
@@ -14,37 +14,40 @@ export default function AuthorizedHeader() {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [isOpenLogout, setIsOpenLogout] = useState(false);
 
-  const openLogoutModal = () => {
-    setIsOpenLogout(true);
-  }
-  const closeLogoutModal = () => {
-    setIsOpenLogout(false);
-    setIsPopupOpen(false);
-  }
-
-  function handleToggleLogoModal() {
-    setIsPopupOpen(!isPopupOpen);
-  }
-
   function getInitial() {
-
-    if (user.name) {
+    if (user?.name) {
       return user.name.charAt(0).toUpperCase();
+    } else if (user?.email) {
+      return user.email.charAt(0).toUpperCase();
     }
-    return 'U';
+    return "G";
   }
 
   function hasAvatar() {
-    if (user.avatarUrl) {
-      return <img href={user.avatarUrl} alt={user.name} />;
-    } else return <span>{getInitial()}</span>;
+    if (user?.avatar_url) {
+      return <img src={user.avatar_url} alt={user.name} />;
+    } else {
+      return <span>{getInitial()}</span>;
+    }
+  }
+
+  const openLogoutModal = () => {
+    setIsOpenLogout(true);
+  };
+  const closeLogoutModal = () => {
+    setIsOpenLogout(false);
+    setIsPopupOpen(false);
+  };
+
+  function handleToggleLogoModal() {
+    setIsPopupOpen(!isPopupOpen);
   }
 
   return (
     <div className={css.userLogo}>
       <div className={css.userButton} onClick={handleToggleLogoModal}>
         <span className={css.userButtonContent}>
-          {user.name || user.email}
+          {user?.name || user?.email || "Guest"}
           <span className={css.avatarCircle}>{hasAvatar()}</span>
           <Icon
             name="chevron-double-upsolid"
@@ -55,19 +58,25 @@ export default function AuthorizedHeader() {
       </div>
       {isPopupOpen && (
         <div className={css.navActions}>
-          <div className={css.actionLink} onClick={() => {
-            setIsSettingOpen(true);
-          }}>
+          <div
+            className={css.actionLink}
+            onClick={() => {
+              setIsSettingOpen(true);
+            }}
+          >
             <Icon
               name="cog-6-toothoutline"
               color="#407bff"
               className={css.actionLinkIcon}
             />
             Settings
-            <SettingModal isModalOpen={isSettingOpen} onClose={() => {
-              setIsSettingOpen(false);
-              setIsPopupOpen(false);
-            }}/>
+            <SettingModal
+              isModalOpen={isSettingOpen}
+              onClose={() => {
+                setIsSettingOpen(false);
+                setIsPopupOpen(false);
+              }}
+            />
           </div>
           <div className={css.actionLink} onClick={openLogoutModal}>
             <Icon
@@ -75,9 +84,7 @@ export default function AuthorizedHeader() {
               color="#407bff"
               className={css.actionLinkIcon}
             />
-            <div>
-              Log out
-            </div>
+            <div>Log out</div>
             <BaseModal isOpen={isOpenLogout} onClose={closeLogoutModal}>
               <UserLogoutModal onCloseLogout={closeLogoutModal} />
             </BaseModal>

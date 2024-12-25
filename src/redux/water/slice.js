@@ -1,12 +1,9 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { getWater, addWater, deleteWater, editWater } from "./operations";
+import { addWater, deleteWater, editWater, getTodayWater, getMonthWater } from './operations';
 
 const initialState = {
   waterItem: [],
-  formattedDate: null,
-  servings: null,
-  totalAmount: null,
-  progress: null,
+  monthWater: [],
   isLoading: false,
   error: false,
 };
@@ -15,9 +12,13 @@ const slice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      //GetAll
-      .addCase(getWater.fulfilled, (state, action) => {
-        state.waterItem = action.payload.data.waterList;
+      // GetAll
+      .addCase(getMonthWater.fulfilled, (state, action) => {
+        state.monthWater = action.payload.data;
+      })
+      // Get Today
+      .addCase(getTodayWater.fulfilled, (state, action) => {
+        state.waterItem = action.payload.data;
       })
       //Add
       .addCase(addWater.fulfilled, (state, action) => {
@@ -28,25 +29,17 @@ const slice = createSlice({
         state.waterItem = state.waterItem.filter(
           (waterItem) => waterItem.id !== action.payload.id
         );
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
       })
       //Edit
       .addCase(editWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.map((waterItem) =>
           waterItem.id === action.payload.id ? action.payload : waterItem
         );
-        state.formattedDate = action.payload.stats.formattedDate;
-        state.servings = action.payload.stats.servings;
-        state.totalAmount = action.payload.stats.totalAmount;
-        state.progress = action.payload.stats.progress;
       })
       //addMatcher
       .addMatcher(
         isAnyOf(
-          getWater.pending,
+          getMonthWater.pending,
           addWater.pending,
           deleteWater.pending,
           editWater.pending
@@ -57,8 +50,8 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.fulfilled,
-          getWater.rejected,
+          getMonthWater.fulfilled,
+          getMonthWater.rejected,
           addWater.fulfilled,
           addWater.rejected,
           deleteWater.fulfilled,
@@ -72,7 +65,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.fulfilled,
+          getMonthWater.fulfilled,
           addWater.fulfilled,
           deleteWater.fulfilled,
           editWater.fulfilled
@@ -83,16 +76,16 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
-          getWater.rejected,
+          getMonthWater.rejected,
           addWater.rejected,
           deleteWater.rejected,
           editWater.rejected
         ),
         (state) => {
-          state.error = action.payload;
+          state.error = true;
         }
       );
   },
 });
 
-export const todayWaterReducer = slice.reducer;
+export const waterReducer = slice.reducer;

@@ -5,6 +5,10 @@ import {
   logout,
   refreshUser,
   loginWithGoogle,
+  getUser,
+  updateUserData,
+  updateUserDailyNorm,
+  updateUserPhoto,
   resetPassword,
   updatePassword,
 } from "./operations";
@@ -15,7 +19,7 @@ const initialState = {
     email: null,
     gender: "woman",
     avatarUrl: null,
-    daylyNorm: 2000,
+    daily_norma: 2000,
   },
   token: null,
   isLoggedIn: false,
@@ -37,6 +41,7 @@ const slice = createSlice({
         state.isLoggedIn = true;
       })
       // Login
+
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.data.user;
         state.token = action.payload.data.accessToken;
@@ -105,11 +110,38 @@ const slice = createSlice({
       .addCase(updatePassword.fulfilled, (state) => {
         state.isLoading = false;
         state.error = false;
+        state.isRegistered = true;
       })
       .addCase(updatePassword.rejected, (state) => {
         state.isLoading = false;
         state.error = true;
       })
+
+      // _________________________UserAddCases_______________________________________
+
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user = action.payload.data;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user = action.payload.data;
+      })
+      .addCase(updateUserDailyNorm.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user.daily_norma = action.payload.data.daily_norma;
+      })
+      .addCase(updateUserPhoto.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.user.avatar_url = action.payload.data.avatar_url;
+      })
+
+      //  _____________________________addMatcher_________________________________
+
       .addMatcher(isAnyOf(register.pending, login.pending), (state) => {
         state.isLoading = true;
       })
@@ -121,18 +153,32 @@ const slice = createSlice({
       })
       .addMatcher(isAnyOf(login.fulfilled, refreshUser.fulfilled), (state) => {
         state.isLoggedIn = true;
-      });
+      })
+      // _________________________UserAddCases_______________________________________
+      .addMatcher(
+        isAnyOf(
+          getUser.pending,
+          updateUserData.pending,
+          updateUserDailyNorm.pending,
+          updateUserPhoto.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          getUser.rejected,
+          updateUserData.rejected,
+          updateUserDailyNorm.rejected,
+          updateUserPhoto.rejected
+        ),
+        (state) => {
+          state.isLoading = false;
+          state.error = true;
+        }
+      );
   },
 });
 
 export const authReducer = slice.reducer;
-
-// name: null,
-// email: null,
-// gender: "woman",
-// avatarUrl: null,
-// daylyNorm: 2000,
-// password:null,
-// createdAt:null,
-// updatedAt:null,
-// _id:null,

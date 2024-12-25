@@ -1,13 +1,14 @@
 .content {
   display: flex;
   flex-direction: column;
+  max-width: 544px;
 }
 
 .title {
   font-weight: 500;
   font-size: 26px;
   line-height: 1.23077;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
   margin-bottom: 24px;
 }
 
@@ -22,21 +23,20 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.25;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .calculateSpan {
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
-  color: #407bff;
+  color: var(--primary-color-blue);
   margin-left: 4px;
 }
 
 .calculateExplainBox {
   padding: 10px;
-  border: 1px solid #d7e3ff;
-  border-radius: 10px;
+  border: 1px solid var(--secondary-color-6);
   margin-bottom: 24px;
 }
 
@@ -44,11 +44,11 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
-  color: #8f8f8f;
+  color: var(--calculateExplainText);
 }
 
 .calculateExplainSpan {
-  color: #407bff;
+  color: var(--primary-color-blue);
 }
 
 .calculateRate {

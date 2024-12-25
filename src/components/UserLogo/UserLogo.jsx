@@ -6,7 +6,7 @@ import SettingModal from "../SettingModal/SettingModal";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function UserLogo() {
   const user = useSelector(selectUser);

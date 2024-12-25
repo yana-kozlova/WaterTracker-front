@@ -6,8 +6,6 @@ import defaultImage from "./image/default-image.png"
 const ProfilePhoto = ({ avatar, isSubmitBlocked, handleAvatarChange }) => {
   const fileInputId = useId();
 
-  console.log(avatar);
-
   return (
     <div className={css.photoGroup}>
       <h3 className={css.subtitle}>Your photo</h3>

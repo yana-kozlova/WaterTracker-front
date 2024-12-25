@@ -5,6 +5,8 @@ import Icon from "../Svg/Svg";
 
 export default function TodayListModal({ onClose, onSave }) {
   const [waterAmount, setWaterAmount] = useState(50);
+  const [time, setTime] = useState('07:00');
+  const [value, setValue] = useState(waterAmount);
 
   const handleIncrement = () => {
     setWaterAmount((prev) => prev + 50);
@@ -24,11 +26,11 @@ export default function TodayListModal({ onClose, onSave }) {
         <div className={css.modalHeader}>
           <h2 className={css.modalTitle}>Add water</h2>
           <button className={css.closeButton} onClick={onClose} aria-label="Close">
-          <Icon
-            name="x"
-            // color="#2f2f2f"
-            className={css.icon}
-          />
+            <Icon
+              name="x"
+              // color="#2f2f2f"
+              className={css.icon}
+            />
             {/* <svg>
           <use href="../../public/svg/x.svg" alt="Add Icon" className={css.icon}></use>
           </svg> */}
@@ -45,7 +47,12 @@ export default function TodayListModal({ onClose, onSave }) {
         </div>
         <div className={css.inputGroup}>
           <label htmlFor="time" className={css.inputTime}>Recording time:</label>
-          <input type="time" id="time" name="time" defaultValue="07:00" />
+          <input
+            type="time"
+            id="time"
+            name="time"
+            defaultValue="07:00"
+            onChange={(e) => setTime(e.target.value)} />
         </div>
         <div className={css.inputGroup}>
           <label htmlFor="value" className={css.inputValue}>Enter the value of the water used:</label>

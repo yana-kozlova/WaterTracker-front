@@ -3,8 +3,8 @@ import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import {
-  updateUserAvatar, updateUserInfo, updateUserPassword,
-} from '../../redux/settingModal/operations';
+  updateUserPhoto, updateUserData, updateUserPassword,
+} from '../../redux/auth/operations';
 import { Formik, Form } from 'formik';
 import BaseModal from '../BaseModal/BaseModal';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
@@ -54,7 +54,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
     setIsSubmitBlocked(true);
     const { name, email, gender, old_password, new_password } = values;
 
-    const hasChanges = name !== user?.data?.name || email !== user?.data?.email || gender !== user?.data?.gender || new_password;
+    const hasChanges = name !== user?.name || email !== user?.email || gender !== user?.gender || new_password;
 
     if (hasChanges) {
       const promises = [];
@@ -78,8 +78,8 @@ const SettingModal = ({ isModalOpen, onClose }) => {
       }
 
       // Оновлення іншої інформації
-      if (name !== user?.data?.name || email !== user?.data?.email || gender !== user?.data?.gender) {
-        promises.push(dispatch(updateUserInfo({ name, email, gender }))
+      if (name !== user?.name || email !== user?.email || gender !== user?.gender) {
+        promises.push(dispatch(updateUserData({ name, email, gender }))
           .unwrap()
           .then((r) => r.message && toast.success(r.message))
           .catch((error) => {
@@ -120,7 +120,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
       const formData = new FormData();
       formData.append('avatar_url', file);
 
-      dispatch(updateUserAvatar(formData))
+      dispatch(updateUserPhoto(formData))
         .unwrap()
         .then((r) => r.message && toast.success(r.message))
         .catch((error) => console.error(error.message))
@@ -130,10 +130,10 @@ const SettingModal = ({ isModalOpen, onClose }) => {
 
   useEffect(() => {
     setInitialValues({
-      avatar: user?.data?.avatar_url || '/path/to/default-avatar.png',
-      gender: user?.data?.gender || 'female',
-      name: user?.data?.name || '',
-      email: user?.data?.email || '',
+      avatar: user?.avatar_url || '/path/to/default-avatar.png',
+      gender: user?.gender || 'female',
+      name: user?.name || '',
+      email: user?.email || '',
       old_password: '',
       new_password: '',
       confirmPassword: '',
@@ -141,95 +141,95 @@ const SettingModal = ({ isModalOpen, onClose }) => {
   }, [user]);
 
   return (<BaseModal
-      isOpen={isModalOpen}
-      onClose={onClose}
-      className={css.settingModal}
+    isOpen={isModalOpen}
+    onClose={onClose}
+    className={css.settingModal}
+  >
+    <h2 className={css['name-header']}>Setting</h2>
+    {message && (<div className={`${css.message} ${css[message.type]}`}>
+      {message.text}
+    </div>)}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
     >
-      <h2 className={css['name-header']}>Setting</h2>
-      {message && (<div className={`${css.message} ${css[message.type]}`}>
-          {message.text}
-        </div>)}
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
+      {({ errors, touched, handleSubmit }) => (<Form
+        className={css['form-container']}
+        autoComplete="off"
+        noValidate
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit();
+          }
+        }}
       >
-        {({ errors, touched, handleSubmit }) => (<Form
-            className={css['form-container']}
-            autoComplete="off"
-            noValidate
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit();
-              }
-            }}
-          >
-            <ProfilePhoto
-              avatar={user?.data?.avatar_url || ''}
-              isSubmitBlocked={isSubmitBlocked}
-              handleAvatarChange={handleAvatarChange}
+        <ProfilePhoto
+          avatar={user?.avatar_url || ''}
+          isSubmitBlocked={isSubmitBlocked}
+          handleAvatarChange={handleAvatarChange}
+        />
+        <div className={css['desktop-flex']}>
+          <div className={css['desktop-left']}>
+            <GenderChoice name="gender" />
+            <InputField
+              name="name"
+              label="Your name"
+              placeholder="Enter your name"
+              isError={errors.name && touched.name}
             />
-            <div className={css['desktop-flex']}>
-              <div className={css['desktop-left']}>
-                <GenderChoice name="gender"/>
-                <InputField
-                  name="name"
-                  label="Your name"
-                  placeholder="Enter your name"
-                  isError={errors.name && touched.name}
-                />
-                <InputField
-                  name="email"
-                  label="E-mail"
-                  type="email"
-                  placeholder="Enter your email"
-                  isError={errors.email && touched.email}
-                />
-              </div>
-              <div className={css['desktop-right']}>
-                <h3 className={css.subtitle}>Password</h3>
-                <div className={css['password-group']}>
-                  <PasswordField
-                    label="Outdated password:"
-                    name="old_password"
-                    placeholder="Enter old password"
-                    isHiddenPassword={state.old_password}
-                    toggle={toggle}
-                    isError={touched.old_password && errors.old_password}
-                  />
-                  <PasswordField
-                    label="New password:"
-                    name="new_password"
-                    placeholder="Enter new password"
-                    isHiddenPassword={state.new_password}
-                    toggle={toggle}
-                    isError={touched.new_password && errors.new_password}
-                  />
+            <InputField
+              name="email"
+              label="E-mail"
+              type="email"
+              placeholder="Enter your email"
+              isError={errors.email && touched.email}
+            />
+          </div>
+          <div className={css['desktop-right']}>
+            <h3 className={css.subtitle}>Password</h3>
+            <div className={css['password-group']}>
+              <PasswordField
+                label="Outdated password:"
+                name="old_password"
+                placeholder="Enter old password"
+                isHiddenPassword={state.old_password}
+                toggle={toggle}
+                isError={touched.old_password && errors.old_password}
+              />
+              <PasswordField
+                label="New password:"
+                name="new_password"
+                placeholder="Enter new password"
+                isHiddenPassword={state.new_password}
+                toggle={toggle}
+                isError={touched.new_password && errors.new_password}
+              />
 
-                  <PasswordField
-                    label="Repeat new password:"
-                    name="confirmPassword"
-                    placeholder="Repeat new password"
-                    isHiddenPassword={state.confirmPassword}
-                    toggle={toggle}
-                    isError={touched.confirmPassword && errors.confirmPassword}
-                  />
-                </div>
-              </div>
+              <PasswordField
+                label="Repeat new password:"
+                name="confirmPassword"
+                placeholder="Repeat new password"
+                isHiddenPassword={state.confirmPassword}
+                toggle={toggle}
+                isError={touched.confirmPassword && errors.confirmPassword}
+              />
             </div>
-            <div className={css['button-container']}>
-              <button
-                className={css['submit-button']}
-                type="submit"
-                disabled={isSubmitBlocked}
-              >
-                Save
-              </button>
-            </div>
-          </Form>)}
-      </Formik>
-    </BaseModal>);
+          </div>
+        </div>
+        <div className={css['button-container']}>
+          <button
+            className={css['submit-button']}
+            type="submit"
+            disabled={isSubmitBlocked}
+          >
+            Save
+          </button>
+        </div>
+      </Form>)}
+    </Formik>
+  </BaseModal>);
 };
 
 export default SettingModal;

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
+import { getTodayWater, getMonthWater } from '../../redux/water/operations.js';
 import Layout from "../Layout/Layout.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations.js";
@@ -22,7 +23,7 @@ const WelcomePage = lazy(
 const MainPage = lazy(() => import("../../pages/MainPage/MainPage.jsx"));
 const SigninPage = lazy(() => import("../../pages/SigninPage/SigninPage.jsx"));
 const SignupPage = lazy(() => import("../../pages/SignupPage/SignupPage.jsx"));
-const NotFoundPage = lazy(() => import("../../pages/NotFoundPage.jsx"));
+const NotFoundPage = lazy(() => import("../../pages/404/NotFoundPage.jsx"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(getTodayWater());
+    dispatch(getMonthWater());
   }, [dispatch]);
 
   return (
@@ -51,7 +54,7 @@ export default function App() {
             style: { background: "var(--secondary-color-3)", color: "white" },
           },
         }}
-        position="top-right"
+        position="bottom-left"
         reverseOrder={false}
       />
 
@@ -123,7 +126,7 @@ export default function App() {
               <Route
                 path="/reset-password"
                 element={
-                  <PublicRoute
+                  <PublicRegisterRoute
                     component={ResetPasswordConfirmPage}
                     redirectTo="/signin"
                   />

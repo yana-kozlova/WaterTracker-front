@@ -1,9 +1,9 @@
 .daily-norma {
   padding: 8px 20px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--primary-background-color);
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
   border-radius: 10px;
-  border: 1px solid rgba(236, 242, 255, 1);
+  border: 1px solid var(--secondary-color-2);
 }
 
 .daily-norma-p {
@@ -27,8 +27,9 @@
   text-decoration-skip-ink: none;
   color: var(--primary-color-blue);
 }
+
 .edit-button {
-  color: rgba(139, 174, 255, 1);
+  color: var(--secondary-color-4);
   width: 28px;
   height: 20px;
   gap: 0px;
@@ -37,6 +38,7 @@
   border: none;
   background-color: transparent;
 }
+
 .edit-container {
   width: 94px;
   height: 24px;
@@ -49,6 +51,7 @@
 .edit-button:hover {
   color: var(--secondary-color-5);
 }
+
 @media (min-width: 320px) {
   .daily-norma-l {
     font-size: 24px;
