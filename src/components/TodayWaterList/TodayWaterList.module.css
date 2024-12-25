@@ -14,7 +14,7 @@
 
 .listWrapper {
   width: inherit;
-  max-height: 202px;
+  height: 202px;
   overflow: scroll;
   overflow-x: hidden;
 }
