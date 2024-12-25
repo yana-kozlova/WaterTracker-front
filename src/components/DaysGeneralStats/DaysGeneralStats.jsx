@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './DaysGeneralStats.module.css';
 
 const DaysGeneralStats = ({
-  selectedDate, dailyNorma, progress, portions, onClose,
+  selectedDate, dailyNorma, progress, portions, modalPosition, onClose,
 }) => {
   useEffect(() => {
     const handleEsc = (e) => {
@@ -27,8 +27,13 @@ const DaysGeneralStats = ({
     };
   }, [onClose]);
 
-  return (<div className={styles.overlay}>
-    <div className={styles.modal}>
+  return (
+    <div className={styles.popup}
+         style={{
+           top: modalPosition.top,
+           left: modalPosition.left,
+           transform: modalPosition.transform,
+         }}>
       <ul className={styles.list}>
         <li>
           <span className={styles.value}>{selectedDate}</span>
@@ -49,19 +54,19 @@ const DaysGeneralStats = ({
         </li>
       </ul>
     </div>
-  </div>);
+  );
 };
 
-DaysGeneralStats.propTypes = {
-  selectedDate: PropTypes.instanceOf(Date), // Необов'язковий
-  dailyNorma: PropTypes.number.isRequired,
-  progress: PropTypes.number.isRequired,
-  portions: PropTypes.number.isRequired,
-  onClose: PropTypes.func.isRequired, // Функція для закриття модалки
-};
-
-DaysGeneralStats.defaultProps = {
-  selectedDate: new Date(), // Якщо не передано selectedDate, використовуємо поточну дату
-};
-
+// DaysGeneralStats.propTypes = {
+//   selectedDate: PropTypes.instanceOf(Date), // Необов'язковий
+//   dailyNorma: PropTypes.number.isRequired,
+//   progress: PropTypes.number.isRequired,
+//   portions: PropTypes.number.isRequired,
+//   onClose: PropTypes.func.isRequired, // Функція для закриття модалки
+// };
+//
+// DaysGeneralStats.defaultProps = {
+//   selectedDate: new Date(), // Якщо не передано selectedDate, використовуємо поточну дату
+// };
+//
 export default DaysGeneralStats;
