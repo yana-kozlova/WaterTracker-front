@@ -15,17 +15,17 @@ export default function AuthorizedHeader() {
   const [isOpenLogout, setIsOpenLogout] = useState(false);
 
   function getInitial() {
-    if (user?.data?.name) {
-      return user.data.name.charAt(0).toUpperCase();
-    } else if (user?.data?.email) {
-      return user.data.email.charAt(0).toUpperCase();
+    if (user?.name) {
+      return user.name.charAt(0).toUpperCase();
+    } else if (user?.email) {
+      return user.email.charAt(0).toUpperCase();
     }
     return "G";
   }
 
   function hasAvatar() {
-    if (user?.data?.avatar_url) {
-      return <img src={user.data.avatar_url} alt={user.data.name} />;
+    if (user?.avatar_url) {
+      return <img src={user.avatar_url} alt={user.name} />;
     } else {
       return <span>{getInitial()}</span>;
     }
@@ -47,7 +47,7 @@ export default function AuthorizedHeader() {
     <div className={css.userLogo}>
       <div className={css.userButton} onClick={handleToggleLogoModal}>
         <span className={css.userButtonContent}>
-          {user?.data?.name || user?.data?.email || "Guest"}
+          {user?.name || user?.email || "Guest"}
           <span className={css.avatarCircle}>{hasAvatar()}</span>
           <Icon
             name="chevron-double-upsolid"
@@ -70,16 +70,13 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             Settings
-            {/* Закоментовано, оскільки SettingModal вбудований у компонент: */}
-            {/* 
             <SettingModal
               isModalOpen={isSettingOpen}
               onClose={() => {
                 setIsSettingOpen(false);
                 setIsPopupOpen(false);
               }}
-            /> 
-            */}
+            />
           </div>
           <div className={css.actionLink} onClick={openLogoutModal}>
             <Icon
@@ -88,12 +85,9 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             <div>Log out</div>
-            {/* Закоментовано, оскільки BaseModal може викликати помилки: */}
-            {/* 
             <BaseModal isOpen={isOpenLogout} onClose={closeLogoutModal}>
               <UserLogoutModal onCloseLogout={closeLogoutModal} />
-            </BaseModal> 
-            */}
+            </BaseModal>
           </div>
         </div>
       )}

@@ -54,7 +54,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
     setIsSubmitBlocked(true);
     const { name, email, gender, old_password, new_password } = values;
 
-    const hasChanges = name !== user?.data?.name || email !== user?.data?.email || gender !== user?.data?.gender || new_password;
+    const hasChanges = name !== user?.name || email !== user?.email || gender !== user?.gender || new_password;
 
     if (hasChanges) {
       const promises = [];
@@ -78,7 +78,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
       }
 
       // Оновлення іншої інформації
-      if (name !== user?.data?.name || email !== user?.data?.email || gender !== user?.data?.gender) {
+      if (name !== user?.name || email !== user?.email || gender !== user?.gender) {
         promises.push(dispatch(updateUserData({ name, email, gender }))
           .unwrap()
           .then((r) => r.message && toast.success(r.message))
@@ -130,10 +130,10 @@ const SettingModal = ({ isModalOpen, onClose }) => {
 
   useEffect(() => {
     setInitialValues({
-      avatar: user?.data?.avatar_url || '/path/to/default-avatar.png',
-      gender: user?.data?.gender || 'female',
-      name: user?.data?.name || '',
-      email: user?.data?.email || '',
+      avatar: user?.avatar_url || '/path/to/default-avatar.png',
+      gender: user?.gender || 'female',
+      name: user?.name || '',
+      email: user?.email || '',
       old_password: '',
       new_password: '',
       confirmPassword: '',
@@ -166,7 +166,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
             }}
           >
             <ProfilePhoto
-              avatar={user?.data?.avatar_url || ''}
+              avatar={user?.avatar_url || ''}
               isSubmitBlocked={isSubmitBlocked}
               handleAvatarChange={handleAvatarChange}
             />

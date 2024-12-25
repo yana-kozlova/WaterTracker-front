@@ -3,7 +3,7 @@ import { addWater, deleteWater, editWater, getTodayWater, getMonthWater } from '
 
 const initialState = {
   waterItem: [],
-
+  monthWater: [],
   isLoading: false,
   error: false,
 };
