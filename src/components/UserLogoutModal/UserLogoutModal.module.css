@@ -34,6 +34,7 @@
 }
 
 .buttonCancel {
+  box-shadow: none;
   background: #d7e3ff;
   color: #407bff;
   max-width: 100%;
