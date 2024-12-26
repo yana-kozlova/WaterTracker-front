@@ -40,7 +40,7 @@ export const EyeSlashIcon = ({ color = "#2F2F2F", size = 24, ...props }) => (
   </svg>
 );
 
-export const GoogleIcon = (size = 24, ...props) => (
+export const GoogleIcon = ({size = 24, ...props}) => (
   <svg
     width={size}
     height={size}
