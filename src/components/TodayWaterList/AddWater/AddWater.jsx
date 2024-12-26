@@ -31,8 +31,14 @@ export default function AddWater({ isOpen, onClose}) {
 
   if (!isOpen) return null;
 
+  const date = new Date();
+const hours = date.getHours().toString().padStart(2, "0");
+const minutes = date.getMinutes().toString().padStart(2, "0");
+;
+
+
     const initialValues = {
-      time: "07:00",
+      time: `${hours}:${minutes}`,
       totalAmount: 50,
     };
 
@@ -113,7 +119,8 @@ export default function AddWater({ isOpen, onClose}) {
                 />
               </div>
               <div className={css.inputGroup}>
-                <InputField
+                  <InputField
+                    id={valueFieldId}
                   name="totalAmount"
                   label="Enter the value of the water used:"
                   type="number"

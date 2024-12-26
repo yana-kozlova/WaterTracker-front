@@ -8,11 +8,12 @@ import BaseModal from "../../BaseModal/BaseModal";
 import capIcon from "../../../assets/icons/cap.svg";
 import { editWater, getMonthWater } from '../../../redux/water/operations';
 import { useDispatch } from "react-redux";
+import { validationSchema } from "./validation.js";
 
 function formatToTime(isoString) {
   const date = new Date(isoString);
-  const hours = date.getHours().toString().padStart(2, "0");
-  const minutes = date.getMinutes().toString().padStart(2, "0");
+  const hours = date.getUTCHours().toString().padStart(2, "0");
+  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
 }
 
@@ -48,20 +49,31 @@ const valueFieldId = useId();
       <BaseModal isOpen={isOpen} onClose={onClose}>
         <p className={css.modalTitle}>Edit the entered amount of water</p>
 
-        <Formik initialValues={initialValues} onSubmit={async (values) => {
-          setIsLoading(true);
-          await dispatch(
-            editWater({
-              _id,
-              amount: values.newAmount,
-              date: convertTimeToISO(values.newTime),
-            })
-          );
-          dispatch(getMonthWater());
-          setIsLoading(false);
-          onClose();
-        }}>
-          {({ values, setFieldValue }) => (
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={async (values) => {
+            setIsLoading(true);
+            try {
+              await dispatch(
+                editWater({
+                  _id,
+                  amount: values.newAmount,
+                  date: convertTimeToISO(values.newTime),
+                })
+              );
+              dispatch(getMonthWater());
+              setIsLoading(false);
+              onClose();
+            } catch (error) {
+              console.error(
+                "Error occurred while edit water or fetching month data:",
+                error
+              );
+            }
+          }}
+        >
+          {({ values, errors, touched, setFieldValue }) => (
             <Form>
               {isLoading && <DripLoader />}
               <div className={css.waterInfo}>
@@ -132,16 +144,20 @@ const valueFieldId = useId();
                   id={valueFieldId}
                   value={values.newAmount}
                   name="newAmount"
-                  readOnly
+                  placeholder="0"
+                  isError={errors.newAmount && touched.newAmount}
                 />
               </div>
               <div className={css.modalActions}>
-                <div className={css.waterAmountLabel}>{values.newAmount} ml</div>
+                <div className={css.waterAmountLabel}>
+                  {values.newAmount} ml
+                </div>
                 <div>
                   <Button
                     type="submit"
                     name="Save"
                     className={css.saveButton}
+                    disabled={Object.keys(errors).length > 0 || isLoading}
                   />
                 </div>
               </div>
