@@ -35,6 +35,7 @@ export default function WaterRatioPanel() {
             max="100"
             value={progress ? progress : "0"}
             className={css.slider}
+            onChange={()=>{}}
           />
           <span className={css.sliderLabel}>100%</span>
           <div className={css.sliderCenterLabel}>{progress || 0}%</div>

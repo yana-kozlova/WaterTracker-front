@@ -50,7 +50,6 @@ const DailyNormaForm = ({ onClose }) => {
       const result = await dispatch(
         updateUserDailyNorm({ daily_norma: values.userDailyNorma * 1000 })
       );
-      console.log('result', result);
       if (result.meta.requestStatus === "fulfilled") {
         toast.success("Daily norm updated successfully!");
       }
