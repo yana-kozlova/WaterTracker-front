@@ -41,23 +41,21 @@ const valueFieldId = useId();
     newAmount: amount,
   };
 
-  const handleEdit = (values) => {
-    dispatch(
-      editWater({
-        _id,
-        amount: values.newAmount,
-        date: convertTimeToISO(values.newTime),
-      })
-    );
-    onClose();
-  };
-
   return (
     <div>
       <BaseModal isOpen={isOpen} onClose={onClose}>
         <p className={css.modalTitle}>Edit the entered amount of water</p>
 
-        <Formik initialValues={initialValues} onSubmit={handleEdit}>
+        <Formik initialValues={initialValues} onSubmit={(values) => {
+          dispatch(
+            editWater({
+              _id,
+              amount: values.newAmount,
+              date: convertTimeToISO(values.newTime),
+            })
+          );
+          onClose();
+        }}>
           {({ values, setFieldValue }) => (
             <Form>
               <div className={css.waterInfo}>
