@@ -205,7 +205,7 @@
   }
 
   .input-wrapper {
-    width: 392px;
+    min-width: 392px;
   }
 
   .settingModal {

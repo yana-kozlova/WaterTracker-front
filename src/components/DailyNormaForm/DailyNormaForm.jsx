@@ -179,7 +179,7 @@ const DailyNormaForm = ({ onClose }) => {
             <InputField
               id={userNormaField}
               name="userDailyNorma"
-              label=" Write down how much water you will drink:"
+              label="Write down how much water you will drink:"
               type="text"
               placeholder="0"
               isError={errors.userDailyNorma && touched.userDailyNorma}
