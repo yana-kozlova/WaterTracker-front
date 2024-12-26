@@ -13,8 +13,11 @@ export default function WaterRatioPanel() {
     dispatch(getMonthWater());
   }, [dispatch]);
 
+  const today = new Date();
   const monthStats = useSelector(selectMonthItem);
-  const progress = monthStats[0]?.progress;
+  const todayId = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+  const progress = monthStats.find((item) => item._id === todayId)?.progress;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -34,7 +37,7 @@ export default function WaterRatioPanel() {
             className={css.slider}
           />
           <span className={css.sliderLabel}>100%</span>
-          <div className={css.sliderCenterLabel}>50%</div>
+          <div className={css.sliderCenterLabel}>{progress}%</div>
         </div>
 
         <div>

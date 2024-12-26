@@ -59,8 +59,7 @@ export default function TodayWaterList() {
   }, [dispatch]);
 
   const timeFromDate = (date) => {
-    const utcDate = new Date(date);
-    return utcDate.toISOString().slice(11, 16);
+    return date.slice(11, 16);
   };
 
   return (
