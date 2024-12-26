@@ -23,11 +23,20 @@ export default function AuthorizedHeader() {
     return "G";
   }
 
-  function hasAvatar() {
+  function renderAvatar() {
     if (user?.avatar_url) {
-      return <img src={user.avatar_url} alt={user.name} />;
+      return (
+        <>
+          <img src={user.avatar_url} alt={user.name || "User Avatar"} />
+          <span className={css.userName}>{getInitial()}</span>
+        </>
+      );
     } else {
-      return <span>{getInitial()}</span>;
+      return (
+        <>
+          <span className={css.avatarInitial}>{getInitial()}</span>
+        </>
+      );
     }
   }
 
@@ -47,8 +56,7 @@ export default function AuthorizedHeader() {
     <div className={css.userLogo}>
       <div className={css.userButton} onClick={handleToggleLogoModal}>
         <span className={css.userButtonContent}>
-          {user?.name || user?.email || "Guest"}
-          <span className={css.avatarCircle}>{hasAvatar()}</span>
+          <span className={css.avatarCircle}>{renderAvatar()}</span>
           <Icon
             name="chevron-double-upsolid"
             color="#2f2f2f"
@@ -85,7 +93,11 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             <div>Log out</div>
-            <BaseModal isOpen={isOpenLogout} className={css.logoutModal} onClose={closeLogoutModal}>
+            <BaseModal
+              isOpen={isOpenLogout}
+              className={css.logoutModal}
+              onClose={closeLogoutModal}
+            >
               <UserLogoutModal onCloseLogout={closeLogoutModal} />
             </BaseModal>
           </div>
