@@ -1,7 +1,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  max-width: 544px;
 }
 
 .title {

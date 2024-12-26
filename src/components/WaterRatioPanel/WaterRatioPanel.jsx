@@ -14,7 +14,7 @@ export default function WaterRatioPanel() {
   }, [dispatch]);
 
   const monthStats = useSelector(selectMonthItem);
-  const progress = monthStats[0].progress;
+  const progress = monthStats[0]?.progress;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);

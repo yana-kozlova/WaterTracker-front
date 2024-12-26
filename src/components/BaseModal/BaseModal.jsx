@@ -25,7 +25,7 @@ export default function BaseModal({ isOpen, onClose, children, className }) {
 
   if (!isOpen) return null;
 
-  return ReactDOM.createPortal(
+  return (
     <div className={css.modalOverlay} onClick={onClose}>
       <div
         className={`${css.modalContent} ${className || ""}`}
@@ -36,7 +36,5 @@ export default function BaseModal({ isOpen, onClose, children, className }) {
         </button>
         {children}
       </div>
-    </div>,
-    document.body
-  );
+    </div>)
 }
