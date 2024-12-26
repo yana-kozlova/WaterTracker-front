@@ -61,7 +61,6 @@ export default function AddWater({ isOpen, onClose}) {
           }}
         >
           {({ values, errors, touched, setFieldValue }) => {
-            console.log(errors);
             return (
             <Form>
               <div className={css.inputGroup}>
