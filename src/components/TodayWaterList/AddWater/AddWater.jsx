@@ -1,11 +1,16 @@
 import { useId } from "react";
+import { selectLoading } from '../../../redux/water/selectors.js';
+import DripLoader from '../../DripLoader/DripLoader.jsx';
+import InputField from '../../SettingModal/InputField.jsx';
 import css from "./AddWater.module.css";
 import Button from "../../Buttons/Button/Button";
 import Icon from "../../Svg/Svg";
 import { Field, Form, Formik } from "formik";
-import { addWater } from "../../../redux/water/operations";
-import { useDispatch } from "react-redux";
+import { addWater, getMonthWater } from '../../../redux/water/operations';
+import { useDispatch, useSelector } from 'react-redux';
 import BaseModal from "../../BaseModal/BaseModal";
+
+import { validationSchema } from './validation.js';
 
 function convertTimeToISO(time) {
   const now = new Date();
@@ -17,6 +22,7 @@ function convertTimeToISO(time) {
 }
 
 export default function AddWater({ isOpen, onClose}) {
+  const isLoading = useSelector(selectLoading);
 
   const dispatch = useDispatch();
 
@@ -33,20 +39,29 @@ export default function AddWater({ isOpen, onClose}) {
   return (
     <>
       <BaseModal isOpen={isOpen} onClose={onClose}>
+        {isLoading && <DripLoader />}
         <h2 className={css.modalTitle}>Add water</h2>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values) => {
-            dispatch(
-              addWater({
-                amount: values.totalAmount,
-                date: convertTimeToISO(values.time),
-              })
-            );
-            onClose();
+          validationSchema={validationSchema}
+          onSubmit={async (values) => {
+            try {
+              await dispatch(
+                addWater({
+                  amount: values.totalAmount,
+                  date: convertTimeToISO(values.time),
+                })
+              );
+              onClose();
+              dispatch(getMonthWater());
+
+            } catch (error) {
+              console.error("Error occurred while adding water or fetching month data:", error);
+            }
           }}
         >
-          {({ values, setFieldValue }) => (
+          {({ values, errors, touched, setFieldValue }) => {
+            return (
             <Form>
               <div className={css.inputGroup}>
                 <label htmlFor="amount" className={css.inputTitle}>
@@ -98,15 +113,12 @@ export default function AddWater({ isOpen, onClose}) {
                 />
               </div>
               <div className={css.inputGroup}>
-                <label className={css.valueLabel} htmlFor="value">
-                  Enter the value of the water used:
-                </label>
-                <Field
-                  className={css.inputValue}
-                  type="number"
-                  id={valueFieldId}
+                <InputField
                   name="totalAmount"
-                  readOnly
+                  label="Enter the value of the water used:"
+                  type="number"
+                  placeholder="0"
+                  isError={errors.totalAmount && touched.totalAmount}
                 />
               </div>
               <div className={css.modalActions}>
@@ -116,11 +128,12 @@ export default function AddWater({ isOpen, onClose}) {
                     type="submit"
                     name="Save"
                     className={css.saveButton}
+                    disabled={Object.keys(errors).length > 0 || isLoading}  // Disabled when form has errors or is loading
                   />
                 </div>
               </div>
             </Form>
-          )}
+          )}}
         </Formik>
       </BaseModal>
     </>

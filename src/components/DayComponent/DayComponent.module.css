@@ -18,14 +18,15 @@
   line-height: 1.28;
   text-align: center;
   color: var(--primary-text-color);
+  cursor: pointer;
 }
 
 .complete {
-  border: 1px solid var(--secondary-color-5);
+  border: none;
 }
 
 .incomplete {
-  border: none;
+  border: 1px solid var(--secondary-color-5);
 }
 
 .dayPercent {

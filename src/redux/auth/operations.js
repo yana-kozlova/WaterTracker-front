@@ -36,8 +36,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post("/auth/login", credentials);
-      console.log(data);
-      setAuthHeader(data.token);
+      setAuthHeader(data.data.accessToken);
       return data;
     } catch (e) {
       if (e.response && e.response.data) {
@@ -223,7 +222,7 @@ export const updateUserDailyNorm = createAsyncThunk(
       const { data } = await axios.patch("users/water-rate", credentials);
       return data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -237,7 +236,7 @@ export const updateUserPhoto = createAsyncThunk(
       const response = await axios.patch("users/avatar", credentials);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

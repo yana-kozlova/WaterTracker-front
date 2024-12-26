@@ -171,7 +171,7 @@ const slice = createSlice({
           getUser.rejected,
           updateUserData.rejected,
           updateUserDailyNorm.rejected,
-          updateUserPhoto.rejected
+          updateUserPhoto.rejected,
         ),
         (state) => {
           state.isLoading = false;

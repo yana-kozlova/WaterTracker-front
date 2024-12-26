@@ -82,7 +82,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 2;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 
@@ -136,7 +136,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: var(--primary-color-blue);
+  color: var(--blue-white);
   cursor: pointer;
 }
 

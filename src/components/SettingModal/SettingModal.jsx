@@ -6,7 +6,9 @@ import {
   updateUserPhoto, updateUserData, updateUserPassword,
 } from '../../redux/auth/operations';
 import { Formik, Form } from 'formik';
+import { selectLoading } from '../../redux/auth/selectors.js';
 import BaseModal from '../BaseModal/BaseModal';
+import DripLoader from '../DripLoader/DripLoader.jsx';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import GenderChoice from './GenderChoise/GenderChoise';
 import InputField from './InputField';
@@ -17,6 +19,7 @@ import { validationSchema } from './validation.js';
 
 const SettingModal = ({ isModalOpen, onClose }) => {
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
   const [message, setMessage] = useState(null);
@@ -149,6 +152,7 @@ const SettingModal = ({ isModalOpen, onClose }) => {
     {message && (<div className={`${css.message} ${css[message.type]}`}>
       {message.text}
     </div>)}
+    {isLoading && <DripLoader />}
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}

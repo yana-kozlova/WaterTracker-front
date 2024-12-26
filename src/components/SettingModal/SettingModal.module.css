@@ -1,5 +1,5 @@
 .settingModal {
-  max-width: 1008px;
+  width: 280px;
   min-height: 594px;
   height: fit-content;
   max-height: calc(100vh - 10%);
@@ -185,8 +185,8 @@
 
 
 @media screen and (min-width: 768px) {
-  :root {
-    max-width: 768px;
+  .settingModal {
+    width: 704px;
     margin: 0 auto;
   }
 
@@ -205,7 +205,7 @@
   }
 
   .input-wrapper {
-    width: 392px;
+    min-width: 392px;
   }
 
   .settingModal {
@@ -214,8 +214,8 @@
 }
 
 @media screen and (min-width: 1440px) {
-  :root {
-    max-width: 1440px;
+  .settingModal {
+    width: 1008px;
     margin: 0 auto;
   }
 

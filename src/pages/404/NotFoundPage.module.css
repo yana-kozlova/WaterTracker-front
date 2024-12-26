@@ -9,6 +9,23 @@
   overflow: hidden;
 }
 
+.backgroundBubbles {
+  position: absolute;
+  bottom: 20px;
+  width: 100vw;
+  max-width: 1404px;
+  height: 582px;
+  background-image: url("../../assets/images/background-deskt.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  overflow: hidden;
+  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: -1;
+}
+
 .background {
   position: absolute;
   top: 0;
@@ -53,4 +70,18 @@
 
 .link:hover {
   text-decoration: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .background {
+    background-size: cover;
+    background-image: url("../../assets/images/BackgroundMainPageTablet.svg");
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .background {
+    background-size: cover;
+    background-image: url("../../assets/images/BackgroundMainPageMobile.svg");
+  }
 }

@@ -85,7 +85,7 @@ export default function AuthorizedHeader() {
               className={css.actionLinkIcon}
             />
             <div>Log out</div>
-            <BaseModal isOpen={isOpenLogout} onClose={closeLogoutModal}>
+            <BaseModal isOpen={isOpenLogout} className={css.logoutModal} onClose={closeLogoutModal}>
               <UserLogoutModal onCloseLogout={closeLogoutModal} />
             </BaseModal>
           </div>

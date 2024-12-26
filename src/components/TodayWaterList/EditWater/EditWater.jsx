@@ -36,32 +36,9 @@ const valueFieldId = useId();
 
   const currentTime = formatToTime(date);
 
-  // const [waterAmount, setWaterAmount] = useState(amount);
-  // const [userTime, setUserTime] = useState(currentTime);
-
   const initialValues = {
     newTime: currentTime,
     newAmount: amount,
-  };
-
-  // const handleIncrement = () => {
-  //   setWaterAmount((prev) => prev + 50);
-  // };
-
-  // const handleDecrement = () => {
-  //   setWaterAmount((prev) => (prev > 50 ? prev - 50 : prev));
-  // };
-
-  const handleEdit = (values) => {
-    console.log(values.newAmount);
-    dispatch(
-      editWater({
-        _id,
-        amount: values.newAmount,
-        date: convertTimeToISO(values.newTime),
-      })
-    );
-    onClose();
   };
 
   return (
@@ -69,7 +46,16 @@ const valueFieldId = useId();
       <BaseModal isOpen={isOpen} onClose={onClose}>
         <p className={css.modalTitle}>Edit the entered amount of water</p>
 
-        <Formik initialValues={initialValues} onSubmit={handleEdit}>
+        <Formik initialValues={initialValues} onSubmit={(values) => {
+          dispatch(
+            editWater({
+              _id,
+              amount: values.newAmount,
+              date: convertTimeToISO(values.newTime),
+            })
+          );
+          onClose();
+        }}>
           {({ values, setFieldValue }) => (
             <Form>
               <div className={css.waterInfo}>

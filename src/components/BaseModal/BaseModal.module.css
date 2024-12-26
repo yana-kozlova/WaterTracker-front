@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--primary-text-color);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,13 +33,13 @@
 
 @media screen and (min-width: 768px) {
   .modalContent {
-    min-width: 704px;
+    width: 704px;
     padding: 32px 24px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .modalContent {
-    min-width: 592px;
+    width: 592px;
   }
 }

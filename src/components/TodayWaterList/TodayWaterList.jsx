@@ -59,10 +59,7 @@ export default function TodayWaterList() {
   }, [dispatch]);
 
   const timeFromDate = (date) => {
-    return new Date(date).toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
+    return date.slice(11, 16);
   };
 
   return (

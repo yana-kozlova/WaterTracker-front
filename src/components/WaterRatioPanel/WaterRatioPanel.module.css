@@ -1,8 +1,14 @@
+.ratioContainer {
+  position: relative;
+  top: 25px;
+  height: 134px;
+}
+
 .waterRatioPanel {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 280px;
 }
 
 .panelHeader {
@@ -17,8 +23,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-left: -50px;
 }
 
 .slider {
@@ -27,18 +33,40 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
+  color: #9ebbff;
 }
 
 .sliderCenterLabel {
   position: absolute;
-  top: 55px;
-  /* Відступ під слайдером */
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   color: var(--primary-color-blue);
+}
+
+.addWaterButton {
+  padding: 10px 30px;
+  background-color: var(--primary-color-blue);
+  width: 100%;
+  height: 44px;
+  color: var(--primary-background-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500px;
+  line-height: 20px;
+  text-align: center;
+  margin: 25px 0 21px 23px;
+  margin-left: -1px;
+  transition: background-color 0.3s;
+}
+
+.addWaterButton:hover {
+  box-shadow: 0 4px 6px var(--primary-color-blue);
 }
 
 .sliderLabel {
@@ -49,25 +77,8 @@
   color: var(--primary-color-blue);
 }
 
-.addWaterButton {
-  padding: 10px 30px;
-  background-color: var(--primary-color-blue);
-  width: 178px;
-  height: 44px;
-  color: var(--primary-background-color);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 500px;
-  line-height: 24px;
-  text-align: center;
-  margin: 25px 0 21px 23px;
-  transition: background-color 0.3s;
-}
-
-.addWaterButton:hover {
-  box-shadow: 0 4px 6px var(--primary-color-blue);
+.sliderCenterLabel {
+  top: 40px;
 }
 
 .addIcon {
@@ -76,55 +87,42 @@
   fill: var(--primary-background-color);
 }
 
-@media (max-width: 1440px) {
-  /*.waterRatioPanel {*/
-  /*  width: 704px;*/
-  /*}*/
+.addWaterButtonContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 768px) {
+  .ratioContainer {
+    top: 70px;
+  }
   .waterRatioPanel {
-    width: 100vw;
-    height: auto;
-    padding: 8px;
+    flex-direction: row;
+    width: 708px;
+    gap: 10px;
   }
-
-  .sliderContainer {
-    width: 356px;
-    height: 90px;
-  }
-
-  .slider {
-    width: 100%;
-  }
-
   .addWaterButton {
     width: 336px;
-    height: 44px;
-  }
-}
-
-@media (max-width: 320px) {
-  .waterRatioPanel {
-    flex-direction: column;
-    width: 280px;
-    height: 134px;
-  }
-
-  .sliderContainer {
-    max-width: 100%;
-    left: 35px;
-  }
-
-  .addWaterButton {
-    width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    margin-left: -15px;
   }
 
   .sliderCenterLabel {
-    top: 40px;
+    top: 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ratioContainer {
+    top: 20px;
+  }
+
+  .waterRatioPanel {
+    width: 592px;
+    gap: 20px;
+  }
+
+  .addWaterButton {
+    width: 178px;
   }
 }

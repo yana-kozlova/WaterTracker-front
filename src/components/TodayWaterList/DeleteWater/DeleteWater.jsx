@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import Button from "../../Buttons/Button/Button";
+import DripLoader from '../../DripLoader/DripLoader.jsx';
 import css from "./DeleteWater.module.css";
 import BaseModal from "../../BaseModal/BaseModal";
 import { useDispatch } from "react-redux";
-import {deleteWater} from '../../../redux/water/operations'
+import { deleteWater, getMonthWater } from '../../../redux/water/operations'
 
 const DeleteWater = ({ isOpen, onClose, id }) => {
+  const [isLoading, setIsLoading] = useState(false);
   
   const dispatch = useDispatch();
   if (!isOpen) return null;
@@ -12,6 +15,7 @@ const DeleteWater = ({ isOpen, onClose, id }) => {
     <div>
       <BaseModal isOpen={isOpen} onClose={onClose}>
         <div className={css.container}>
+          {isLoading && <DripLoader />}
           <p className={css.title}>Delete entry</p>
           <p className={css.text}>Are you sure you want to delete the entry?</p>
           <div className={css.buttonContainer}>
@@ -19,8 +23,11 @@ const DeleteWater = ({ isOpen, onClose, id }) => {
               type="button"
               name="Delete"
               className={css.buttonDelete}
-              onClick={() => {
-                dispatch(deleteWater(id));
+              onClick={async () => {
+                setIsLoading(true);
+                await dispatch(deleteWater(id));
+                setIsLoading(false);
+                dispatch(getMonthWater());
                 onClose();
               }}
             />

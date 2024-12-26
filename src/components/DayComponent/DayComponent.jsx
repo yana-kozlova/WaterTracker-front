@@ -81,14 +81,14 @@ export default function DayComponent({
         />
       )}
       <div
-        className={`${css.day} ${waterStats?.progress < 100 ? css.incomplete : css.complete}`}
+        className={`${css.day} ${!waterStats || waterStats?.progress < 100 ? css.incomplete : css.complete}`}
         onClick={toggleModalVisibility}
         ref={dayRef}
       >
         {day}
       </div>
       <div className={css.dayPercent}>
-        {waterStats?.progress ? `${Math.min(waterStats.progress, 100)}%` : "0%"}
+        {waterStats?.progress ? `${waterStats.progress}%` : "0%"}
       </div>
     </div>
   );
