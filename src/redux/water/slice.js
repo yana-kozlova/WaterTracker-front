@@ -37,7 +37,7 @@ const slice = createSlice({
       //Edit
       .addCase(editWater.fulfilled, (state, action) => {
         state.waterItem = state.waterItem.map((waterItem) =>
-          waterItem.id === action.payload.id ? action.payload : waterItem
+          waterItem._id === action.payload.data.waterList._id ? action.payload.data.waterList : waterItem
         );
       })
       //addMatcher

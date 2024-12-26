@@ -1,11 +1,12 @@
+import DripLoader from '../../DripLoader/DripLoader.jsx';
 import Icon from "../../Svg/Svg";
-import { useId } from "react";
+import { useId, useState } from 'react';
 import css from "./EditWater.module.css";
 import { Formik, Form, Field } from "formik";
 import Button from "../../Buttons/Button/Button";
 import BaseModal from "../../BaseModal/BaseModal";
 import capIcon from "../../../assets/icons/cap.svg";
-import { editWater } from "../../../redux/water/operations";
+import { editWater, getMonthWater } from '../../../redux/water/operations';
 import { useDispatch } from "react-redux";
 
 function formatToTime(isoString) {
@@ -26,6 +27,7 @@ function convertTimeToISO(time) {
 
 const EditWater = ({ isOpen, onClose, currentWater }) => {
 const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
 const timeFieldId = useId();
 const valueFieldId = useId();
@@ -46,18 +48,22 @@ const valueFieldId = useId();
       <BaseModal isOpen={isOpen} onClose={onClose}>
         <p className={css.modalTitle}>Edit the entered amount of water</p>
 
-        <Formik initialValues={initialValues} onSubmit={(values) => {
-          dispatch(
+        <Formik initialValues={initialValues} onSubmit={async (values) => {
+          setIsLoading(true);
+          await dispatch(
             editWater({
               _id,
               amount: values.newAmount,
               date: convertTimeToISO(values.newTime),
             })
           );
+          dispatch(getMonthWater());
+          setIsLoading(false);
           onClose();
         }}>
           {({ values, setFieldValue }) => (
             <Form>
+              {isLoading && <DripLoader />}
               <div className={css.waterInfo}>
                 <div>
                   <img src={capIcon} alt="Cap Icon" width="22" height="28" />
