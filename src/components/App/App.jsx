@@ -4,7 +4,7 @@ import { getTodayWater, getMonthWater } from '../../redux/water/operations.js';
 import Layout from "../Layout/Layout.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "../../redux/auth/operations.js";
-import { selectIsRefreshing } from "../../redux/auth/selectors.js";
+import { selectIsLoggedIn, selectIsRefreshing } from '../../redux/auth/selectors.js';
 import PrivateRoute from "../.././routes/PrivateRoute.jsx";
 import PublicRegisterRoute from "../.././routes/PublicRegisterRoute.jsx";
 import PublicRoute from "../.././routes/PublicRoute.jsx";
@@ -28,15 +28,20 @@ const NotFoundPage = lazy(() => import("../../pages/404/NotFoundPage.jsx"));
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const hasDispatchedRef = useRef(false); // Ref to track if the dispatch has been done
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const hasDispatchedRef = useRef(false);
 
   useEffect(() => {
     if (!hasDispatchedRef.current) {
       dispatch(refreshUser());
-      hasDispatchedRef.current = true; // Mark that the dispatch has been done
-    }
-  }, [dispatch]);
+      hasDispatchedRef.current = true;
 
+      if (isLoggedIn) {
+        dispatch(getTodayWater());
+        dispatch(getMonthWater());
+      }
+    }
+  }, [dispatch, isLoggedIn]);
   return (
     <>
       <Toaster
