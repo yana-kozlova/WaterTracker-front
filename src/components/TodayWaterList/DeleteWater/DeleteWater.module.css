@@ -30,8 +30,13 @@
 }
 
 .buttonCancel {
+  box-shadow: none;
   background: var(--secondary-color-6);
   color: var(--primary-color-blue);
+}
+
+.buttonCancel:hover {
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
 }
 
 @media screen and (min-width: 768px) {

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserDailyNorm } from '../../redux/auth/operations';
 import { selectDailyNorma } from '../../redux/auth/selectors';
+import { getMonthWater } from '../../redux/water/operations.js';
 import Button from '../Buttons/Button/Button';
 import DripLoader from '../DripLoader/DripLoader.jsx';
 import InputField from '../SettingModal/InputField.jsx';
@@ -68,6 +69,7 @@ const DailyNormaForm = ({ onClose }) => {
       toast.error("An unexpected error occurred");
     } finally {
       onClose();
+      dispatch(getMonthWater());
       setIsLoading(false);
     }
   };
