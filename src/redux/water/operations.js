@@ -55,7 +55,7 @@ export const editWater = createAsyncThunk(
     const {_id,amount,date} = value;
     try {
       console.log(_id,amount,date)
-      const { data } = await axios.patch(`water/edit/${_id}`,amount,date);
+      const { data } = await axios.patch(`water/edit/${_id}`,{amount,date});
       console.log(data)
       return data;
     } catch (e) {
