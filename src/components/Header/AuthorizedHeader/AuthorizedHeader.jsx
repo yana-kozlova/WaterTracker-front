@@ -59,7 +59,6 @@ export default function AuthorizedHeader() {
           <span className={css.avatarCircle}>{renderAvatar()}</span>
           <Icon
             name="chevron-double-upsolid"
-            color="currentColor"
             className={css.iconUser}
           />
         </span>
