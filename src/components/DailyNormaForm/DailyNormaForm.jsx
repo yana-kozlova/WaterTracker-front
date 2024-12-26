@@ -11,27 +11,29 @@ import InputField from '../SettingModal/InputField.jsx';
 import { validationSchema } from './validation.js';
 import css from './DailyNormaForm.module.css';
 
-const initialValues = {
-  gender: "for woman",
-  weight: "0",
-  activeTime: "0",
-  userDailyNorma: "0",
-};
+
 
 const calculateDailyNorma = (gender, weight, activeTime) => {
   const userWeight = parseFloat(weight) || 0;
   const userActiveTime = parseFloat(activeTime) || 0;
 
   if (gender === "for woman") {
-    return Math.round(userWeight * 0.04 + userActiveTime * 0.4 * 10) / 10;
+    return Math.round((userWeight * 0.03 + userActiveTime * 0.4)*10)/10;
   } else {
-    return Math.round(userWeight * 0.04 + userActiveTime * 0.6 * 10) / 10;
+    return Math.round((userWeight * 0.04 + userActiveTime * 0.6)*10)/10;
   }
 };
 
 const DailyNormaForm = ({ onClose }) => {
-  const userDailyNorma = (useSelector(selectDailyNorma) / 1000);
+  const userDailyNorma = useSelector(selectDailyNorma) / 1000;
   const dispatch = useDispatch();
+
+  const initialValues = {
+    gender: "for woman",
+    weight: "0",
+    activeTime: "0",
+    userDailyNorma: userDailyNorma,
+  };
 
   const genderWomanField = useId();
   const genderMenField = useId();
