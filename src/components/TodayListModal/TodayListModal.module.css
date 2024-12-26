@@ -36,9 +36,8 @@
 
 .modalTitle {
   font-size: 26px;
-  font-weight: 500px;
+  font-weight: 500;
   line-height: 32px;
-  margin-bottom: 20px;
   color: var(--primary-text-color);
   margin: 0;
 }
@@ -81,7 +80,7 @@
   line-height: 20px;
   margin-top: 24px;
   margin-bottom: 16px;
-  color: #2f2f2f;
+  color: var(--primary-text-color);
 }
 
 .inputGroup h3 {
@@ -167,7 +166,7 @@
 
 .waterAmountLabel {
   font-size: 18px;
-  font-weight: 700px;
+  font-weight: 700;
   line-height: 24px;
   /* text-align: center; */
   color: var(--primary-color-blue)

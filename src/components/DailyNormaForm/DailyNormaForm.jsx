@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserDailyNorm } from '../../redux/auth/operations';
 import { selectDailyNorma } from '../../redux/auth/selectors';
+import { getMonthWater } from '../../redux/water/operations.js';
 import Button from '../Buttons/Button/Button';
 import DripLoader from '../DripLoader/DripLoader.jsx';
 import InputField from '../SettingModal/InputField.jsx';
@@ -49,7 +50,6 @@ const DailyNormaForm = ({ onClose }) => {
       const result = await dispatch(
         updateUserDailyNorm({ daily_norma: values.userDailyNorma * 1000 })
       );
-      console.log('result', result);
       if (result.meta.requestStatus === "fulfilled") {
         toast.success("Daily norm updated successfully!");
       }
@@ -68,6 +68,7 @@ const DailyNormaForm = ({ onClose }) => {
       toast.error("An unexpected error occurred");
     } finally {
       onClose();
+      dispatch(getMonthWater());
       setIsLoading(false);
     }
   };
@@ -179,7 +180,7 @@ const DailyNormaForm = ({ onClose }) => {
             <InputField
               id={userNormaField}
               name="userDailyNorma"
-              label=" Write down how much water you will drink:"
+              label="Write down how much water you will drink:"
               type="text"
               placeholder="0"
               isError={errors.userDailyNorma && touched.userDailyNorma}
