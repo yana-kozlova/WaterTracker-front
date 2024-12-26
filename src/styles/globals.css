@@ -3,33 +3,43 @@
   /* ========== Змінні для світлої теми ========== */
   --primary-background-color: #ffffff;
   --primary-text-color: #2f2f2f;
+
   --primary-color-blue: #407bff;
   --primary-color-white: #ffffff;
   --primary-color-black: #2f2f2f;
+
   --secondary-color-2: #ecf2ff;
   --secondary-color-3: #ef5050;
   --secondary-color-4: #9ebbff;
   --secondary-color-5: #ff9d43;
   --secondary-color-6: #d7e3ff;
+
   --submitButton-hover: #3063cc;
   --calculateExplainText: #8f8f8f;
+
   --dark-white: #f7f8f9;
-  --blue-white: var(--primary-color-blue);
+  --blue-white: #407bff;
+  --white-blue: #ecf2ff;
 
   /* ========== Змінні для темної теми ========== */
 
   [data-theme="dark"] {
     --primary-background-color: #1C1D26;
     --primary-text-color: #ecf2ff;
+    --primary-color-white: #ecf2ff;;
+
     --primary-color-blue: #6796fb;
+
+    --secondary-color-2: #1F2438;
     --secondary-color-3: #ef5050;
     --secondary-color-4: #9ebbff;
     --secondary-color-5: #ff9d43;
     --secondary-color-6: #2A3052;
     --submitButton-hover: #3f6bbe;
-    --secondary-color-2: #1F2438;
+   
     --dark-white: #f7f8f9;
     --blue-white: #ecf2ff;
+    --white-blue: #407bff;
   }
 
   --font-family: "Roboto",

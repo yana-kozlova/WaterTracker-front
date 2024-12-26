@@ -29,11 +29,11 @@ const DaysGeneralStats = ({
 
   return (
     <div className={styles.popup}
-         style={{
-           top: modalPosition.top,
-           left: modalPosition.left,
-           transform: modalPosition.transform,
-         }}>
+      style={{
+        top: modalPosition.top,
+        left: modalPosition.left,
+        transform: modalPosition.transform,
+      }}>
       <ul className={styles.list}>
         <li>
           <span className={styles.value}>{selectedDate}</span>
