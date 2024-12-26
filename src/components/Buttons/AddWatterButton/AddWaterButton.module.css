@@ -4,14 +4,18 @@
   background-color: var(--primary-color-blue);
   border-radius: 10px;
   padding: 6px 76px;
-  color: var(--primary-background-color);
+  color: var(--primary-color-white);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
   text-align: center;
   border: none;
+  transition: transform 0.3s ease;
 }
-
+.button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.01);
+}
 @media screen and (min-width: 768px) {
   .button {
     border-radius: 10px;

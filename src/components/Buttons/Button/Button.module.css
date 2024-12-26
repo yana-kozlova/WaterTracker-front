@@ -6,7 +6,7 @@
   background-color: var(--primary-color-blue);
   border-radius: 10px;
   padding: 10px 30px;
-  color: var(--primary-background-color);
+  color: var(--primary-color-white);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -14,15 +14,12 @@
   text-align: center;
   border: none;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .baseButton:hover {
-  /*background: linear-gradient(to left, #407bff, #9ebbff, #407bff);*/
-  /*color: var(--primary-color-black, #000);*/
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  /*transform: translateY(-2px);*/
-  /*color: var(--dark-white);*/
+  transform: scale(1.01);
 }
 
 .baseButton:disabled {

@@ -1,4 +1,9 @@
 .iconLogo {
   width: 102px;
   height: 48px;
+  transition: transform 0.3s ease;
+}
+
+.iconLogo:hover {
+transform: scale(1.03);
 }

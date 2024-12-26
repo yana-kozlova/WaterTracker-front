@@ -13,6 +13,8 @@ const ThemeToggleButton = () => {
     >
       <span className={css.thumb}>
         <span className={css.knob}>
+          <span className={css.centralKnob}>.
+        </span>
         </span>
       </span>
     </div>

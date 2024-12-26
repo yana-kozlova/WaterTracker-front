@@ -4,9 +4,13 @@
   height: 30px;
   border-radius: 50px;
   background-color: var(--secondary-color-2);
-  border: #082a37 1px solid;
+  border: var(--primary-text-color) 2px solid;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.slider:hover .centralKnob {
+  opacity: 1;
 }
 
 .slider--light {
@@ -15,7 +19,6 @@
 
 .slider--dark {
   background-color: var(--secondary-color-4);
-  /* Чорний фон для темної теми */
 }
 
 .thumb {
@@ -32,20 +35,34 @@
 
 .slider--light .thumb {
   left: 5px;
-  background-color: #0c303e;
+  background-color: var(--primary-background-color);
 }
 
 .slider--dark .thumb {
   left: 33px;
   background-color: var(--primary-color-white);
-  ;
 }
 
 .knob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  background-color: var(--primary-text-color);
+}
+
+.centralKnob {
   background-color: var(--primary-background-color);
-  ;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.centralKnob:hover {
+  background-color: var(--primary-text-color);
 }
